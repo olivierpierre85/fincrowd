@@ -302,7 +302,7 @@ if ( ! function_exists( 'wpneo_crowdfunding_campaign_story_tab' ) ) {
 
 if ( ! function_exists( 'wpneo_crowdfunding_campaign_rewards_tab' ) ) {
     function wpneo_crowdfunding_campaign_rewards_tab() {
-        wpneo_crowdfunding_load_template('include/tabs/rewards-tab');
+        //wpneo_crowdfunding_load_template('include/tabs/rewards-tab');
     }
 }
 

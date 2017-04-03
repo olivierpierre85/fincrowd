@@ -27,6 +27,7 @@ function wpneo_crowdfunding_language_load(){
 	load_plugin_textdomain( 'wp-crowdfunding', false, $plugin_dir );
 }
 
+
 /**
  * Define wpneo_crowdfunding version
  */

@@ -333,7 +333,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             /* ************************************ */
             /* *********** Clone Field ************ */
             /* ************************************ */
-
+            /*
 
             $reward = stripslashes($reward);
             $reward_data_array = json_decode($reward, true);
@@ -547,6 +547,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             }
 
             $html .= '</div>';
+            */
             /* ************************************ */
             /* *********** Clone Field ************ */
             /* ************************************ */
