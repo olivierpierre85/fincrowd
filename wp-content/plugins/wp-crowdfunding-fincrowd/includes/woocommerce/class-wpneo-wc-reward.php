@@ -19,7 +19,8 @@ if (! class_exists('WPNEO_WC_Reward')) {
         }
 
         public function __construct(){
-            add_filter('woocommerce_product_data_tabs',     array($this, 'wpneo_reward_tabs'));
+            //add_filter('woocommerce_product_data_tabs',     array($this, 'wpneo_reward_tabs'));//FI hide rewards table in admin
+
             add_action('woocommerce_product_data_panels',   array($this, 'wpneo_reward_options_tab_content'));
             add_action('woocommerce_process_product_meta',  array($this, 'wpneo_reward_options_field_save'));
 
@@ -29,11 +30,13 @@ if (! class_exists('WPNEO_WC_Reward')) {
             add_filter('the_content', array($this, 'wpneo_show_reward_in_general_tab'));
         }
 
+
         /*
         * Add Reward tab (Woocommerce).
         * Only show if type "Crowdfunding" Selected
         */
         function wpneo_reward_tabs($tabs){
+
             $tabs['reward'] = array(
                 'label'     => __('Reward', 'wp-crowdfunding'),
                 'target'    => 'reward_options',

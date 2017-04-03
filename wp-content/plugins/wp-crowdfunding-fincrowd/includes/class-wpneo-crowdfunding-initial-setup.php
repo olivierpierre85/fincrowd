@@ -49,6 +49,8 @@ if (! class_exists('Wpneo_Crowdfunding_Initial_Setup')) {
             update_option( 'hide_cf_campaign_from_shop_page',    'false'); //Hide campaign form shop page initial value
             update_option( 'wpneo_crowdfunding_add_to_cart_redirect', 'checkout_page'); // Redirect Add to cart
 
+
+
             //WooCommerce Settings
             update_option( 'wpneo_single_page_id', 'true'); // Redirect Add to cart
 

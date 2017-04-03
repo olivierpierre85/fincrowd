@@ -16,8 +16,8 @@ if (! class_exists('Wpneo_Crowdfunding')) {
         }
 
         public function __construct(){
-            include_once plugin_dir_path(__FILE__).'class-wpneo-wc-reward.php'; 
-            add_action( 'plugins_loaded',                                   array($this, 'includes')); //Include all of resource to the plugin 
+            include_once plugin_dir_path(__FILE__).'class-wpneo-wc-reward.php';
+            add_action( 'plugins_loaded',                                   array($this, 'includes')); //Include all of resource to the plugin
             add_filter( 'product_type_selector',                            array($this, 'wpneo_product_type_selector')); //Added one more product type in woocommerce product
             add_action( 'init',                                             array($this, 'wpneo_register_product_type') ); //Initialized the product type class
             add_action( 'woocommerce_product_options_general_product_data', array($this,'wpneo_add_meta_info')); //Additional Meta form for croudfunding campaign
@@ -113,32 +113,53 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             echo '<div class="options_group show_if_neo_crowdfunding_options">';
 
             // Expirey
-            woocommerce_wp_text_input( 
-                array( 
-                    'id'            => 'wpneo_funding_video', 
+            woocommerce_wp_text_input(
+                array(
+                    'id'            => 'wpneo_funding_video',
                     'label'         => __( 'Video Url', 'wp-crowdfunding' ),
-                    'placeholder'   => __( 'Video url', 'wp-crowdfunding' ), 
-                    'description'   => __( 'Enter a video url to show your video in campaign details page', 'wp-crowdfunding' ) 
-                    ) 
+                    'placeholder'   => __( 'Video url', 'wp-crowdfunding' ),
+                    'description'   => __( 'Enter a video url to show your video in campaign details page', 'wp-crowdfunding' )
+                    )
             );
+
+            //FI classe de risque
+            $options = array();
+
+            $options['risk_a'] = 'A';
+            $options['risk_b'] = 'B';
+            $options['risk_c'] = 'C';
+            $options['risk_D'] = 'D';
+            $options['risk_E'] = 'E';
+
+
+            woocommerce_wp_select(
+                array(
+                  'id'            => 'wpneo_fi_risk_class',
+                  'label'         => __( 'Classe de risque', 'wp-crowdfunding' ),
+                  'placeholder'   => __( 'Classe de risque', 'wp-crowdfunding' ),
+                    'class'         => 'select2 wpneo_campaign_end_method',//TODO
+                    'options'       => $options
+                )
+            );
+
 
             // Expirey
-            woocommerce_wp_text_input( 
-                array( 
-                    'id'            => '_nf_duration_start', 
+            woocommerce_wp_text_input(
+                array(
+                    'id'            => '_nf_duration_start',
                     'label'         => __( 'Start date', 'wp-crowdfunding' ),
-                    'placeholder'   => __( 'Start time of this campaign', 'wp-crowdfunding' ), 
-                    'description'   => __( 'Enter start of this campaign', 'wp-crowdfunding' ) 
-                    ) 
+                    'placeholder'   => __( 'Start time of this campaign', 'wp-crowdfunding' ),
+                    'description'   => __( 'Enter start of this campaign', 'wp-crowdfunding' )
+                    )
             );
 
-            woocommerce_wp_text_input( 
-                array( 
-                    'id'            => '_nf_duration_end', 
+            woocommerce_wp_text_input(
+                array(
+                    'id'            => '_nf_duration_end',
                     'label'         => __( 'End date', 'wp-crowdfunding' ),
-                    'placeholder'   => __( 'End time of this campaign', 'wp-crowdfunding' ), 
-                    'description'   => __( 'Enter end time of this campaign', 'wp-crowdfunding' ) 
-                    ) 
+                    'placeholder'   => __( 'End time of this campaign', 'wp-crowdfunding' ),
+                    'description'   => __( 'Enter end time of this campaign', 'wp-crowdfunding' )
+                    )
             );
 
             echo '<div class="options_group"></div>';
@@ -146,10 +167,10 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             if (get_option('wpneo_show_min_price')) {
                 woocommerce_wp_text_input(
                     array(
-                        'id'            => 'wpneo_funding_minimum_price', 
-                        'label'         => __('Minimum Price ('. get_woocommerce_currency_symbol().')', 'wp-crowdfunding'), 
-                        'placeholder'   => __('Minimum Price','wp-crowdfunding'), 
-                        'description'   => __('Enter the minimum price', 'wp-crowdfunding'), 
+                        'id'            => 'wpneo_funding_minimum_price',
+                        'label'         => __('Minimum Price ('. get_woocommerce_currency_symbol().')', 'wp-crowdfunding'),
+                        'placeholder'   => __('Minimum Price','wp-crowdfunding'),
+                        'description'   => __('Enter the minimum price', 'wp-crowdfunding'),
                         'class'         => 'wc_input_price'
                         )
                 );
@@ -158,10 +179,10 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             if (get_option('wpneo_show_max_price')) {
                 woocommerce_wp_text_input(
                     array(
-                        'id'            => 'wpneo_funding_maximum_price', 
-                        'label'         => __('Maximum Price ('. get_woocommerce_currency_symbol() . ')', 'wp-crowdfunding'), 
-                        'placeholder'   => __('Maximum Price','wp-crowdfunding'), 
-                        'description'   => __('Enter the maximum price', 'wp-crowdfunding'), 
+                        'id'            => 'wpneo_funding_maximum_price',
+                        'label'         => __('Maximum Price ('. get_woocommerce_currency_symbol() . ')', 'wp-crowdfunding'),
+                        'placeholder'   => __('Maximum Price','wp-crowdfunding'),
+                        'description'   => __('Enter the maximum price', 'wp-crowdfunding'),
                         'class'         =>'wc_input_price'
                         )
                 );
@@ -170,9 +191,9 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             if (get_option('wpneo_show_recommended_price')) {
                 woocommerce_wp_text_input(
                     array(
-                        'id'            => 'wpneo_funding_recommended_price', 
-                        'label'         => __('Recommended Price (' . get_woocommerce_currency_symbol() . ')', 'wp-crowdfunding'), 
-                        'placeholder'   => __('Recommended Price', 'wp-crowdfunding'), 
+                        'id'            => 'wpneo_funding_recommended_price',
+                        'label'         => __('Recommended Price (' . get_woocommerce_currency_symbol() . ')', 'wp-crowdfunding'),
+                        'placeholder'   => __('Recommended Price', 'wp-crowdfunding'),
                         'description'   => __('Enter the recommended price', 'wp-crowdfunding'),
                         'class'         => 'wc_input_price'
                         )
@@ -181,17 +202,17 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             echo '<div class="options_group"></div>';
 
             // Funding goal/ target
-            woocommerce_wp_text_input( 
-                array( 
-                    'id'            => '_nf_funding_goal', 
-                    'label'         => __( 'Funding Goal ('.get_woocommerce_currency_symbol().')', 'wp-crowdfunding' ), 
-                    'placeholder'   => __( 'Funding goal','wp-crowdfunding' ), 
-                    'description'   => __('Enter the funding goal', 'wp-crowdfunding' ), 
-                    'class'         => 'wc_input_price' 
+            woocommerce_wp_text_input(
+                array(
+                    'id'            => '_nf_funding_goal',
+                    'label'         => __( 'Funding Goal ('.get_woocommerce_currency_symbol().')', 'wp-crowdfunding' ),
+                    'placeholder'   => __( 'Funding goal','wp-crowdfunding' ),
+                    'description'   => __('Enter the funding goal', 'wp-crowdfunding' ),
+                    'class'         => 'wc_input_price'
                     )
             );
 
-    
+
             $options = array();
             if (get_option('wpneo_show_target_goal') == 'true'){
                 $options['target_goal'] = 'Target Goal';
@@ -216,7 +237,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                     'options'       => $options
                 )
             );
-        
+
 
             //Show contributor table
             woocommerce_wp_checkbox(
@@ -239,7 +260,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             );
             echo '<div class="options_group"></div>';
 
-
+            /*
             //Get country select
             $countries_obj      = new WC_Countries();
             $countries          = $countries_obj->__get('countries');
@@ -257,15 +278,16 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             );
 
             // Location of this campaign
-            woocommerce_wp_text_input( 
-                array( 
-                    'id'            => '_nf_location', 
+            woocommerce_wp_text_input(
+                array(
+                    'id'            => '_nf_location',
                     'label'         => __( 'Location', 'wp-crowdfunding' ),
-                    'placeholder'   => __( 'Location', 'wp-crowdfunding' ), 
-                    'description'   => __( 'Location of this campaign','wp-crowdfunding' ), 
+                    'placeholder'   => __( 'Location', 'wp-crowdfunding' ),
+                    'description'   => __( 'Location of this campaign','wp-crowdfunding' ),
                     'type'          => 'text'
-                    ) 
+                    )
             );
+            */
             do_action( 'new_crowd_funding_campaign_option' );
             echo '</div>';
         }
@@ -379,7 +401,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
 
         public function wpneo_update_status_save($post_id){
             if ( ! empty($_POST['wpneo_prject_update_title_field'])){
-                
+
                 $wpneo_prject_update_title_field = $_POST['wpneo_prject_update_title_field'];
                 $wpneo_prject_update_date_field = $_POST['wpneo_prject_update_date_field'];
                 $wpneo_prject_update_details_field = $_POST['wpneo_prject_update_details_field'];
@@ -467,6 +489,12 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             // wpneo_country
             $wpneo_country = sanitize_text_field( $_POST['wpneo_country'] );
             wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_country', $wpneo_country);
+
+            //FI new fields
+            //wpneo_fi_risk_class
+            $wpneo_fi_risk_class = sanitize_text_field( $_POST['wpneo_fi_risk_class'] );
+            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_fi_risk_class', $wpneo_fi_risk_class);
+
         }
 
 
@@ -548,7 +576,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                         WC()->session->set('wpneo_rewards_data', array('rewards_index' => $wpneo_rewards_index, 'product_id' => $product_id, '_cf_product_author_id' => $_cf_product_author_id) );
                     }
                 }
-                
+
             }
             return $array;
         }
@@ -582,7 +610,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                 $product_id = absint( $_REQUEST['add-to-cart'] );
                 $product = wc_get_product( $product_id );
                 if( $product->is_type( 'crowdfunding' ) ){
-                    
+
                     $checkout_url   = $woocommerce->cart->get_checkout_url();
                     $preferance     = get_option('wpneo_crowdfunding_add_to_cart_redirect');
 
@@ -678,7 +706,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
 
         /**
          * @param $order_id
-         * 
+         *
          * Save order reward if any with order meta
          */
         public function wpneo_crowdfunding_order_type($order_id){
@@ -696,7 +724,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                 update_post_meta($order_id, '_cf_product_author_id', $wpneo_rewards_data['_cf_product_author_id'] );
                 WC()->session->__unset('wpneo_rewards_data');
             }
-            
+
             update_post_meta($order_id, 'is_crowdfunding_order','1');
         }
 
@@ -714,4 +742,3 @@ function Wpneo_Crowdfunding(){
     require_once WPNEO_CROWDFUNDING_DIR_PATH.'includes/woocommerce/class-wpneo-wc-account-dashboard.php';
     return Wpneo_Crowdfunding::instance();
 }
-
