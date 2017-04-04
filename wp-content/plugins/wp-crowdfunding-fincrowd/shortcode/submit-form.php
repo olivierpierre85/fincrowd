@@ -48,7 +48,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
                                 $short_description  = get_the_excerpt();
                                 $description        = get_the_content();
                                 $category           = strip_tags(get_the_term_list( get_the_ID(), 'product_cat', '', ','));
-                                $tag                = strip_tags( get_the_term_list( get_the_ID(), "product_tag","",", ") );
+                                //$tag                = strip_tags( get_the_term_list( get_the_ID(), "product_tag","",", ") );
                                 if ( has_post_thumbnail() ) {
                                     $image_url          = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'full' );
                                     $image_url          = $image_url[0];
@@ -136,6 +136,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $html .= '<div class="wpneo-single">';
             $html .= '<div class="wpneo-name">'.__( "Category" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
+            /* Select ONE choice
             $html .= '<select name="wpneo-form-category">';
             $all_cat = get_terms('product_cat',array( 'hide_empty' => false ) );
             foreach ($all_cat as $value) {
@@ -143,12 +144,24 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
                 $html .= '<option '.$selected.' value="'.$value->slug.'">'.$value->name.'</option>';
             }
             $html .= '</select>';
+            */
+
+
+            $all_cat = get_terms('product_cat',array( 'hide_empty' => false ) );
+            foreach ($all_cat as $value) {
+              //check if the category belongs to the product
+                $selected = "";//($value->name inArray($category)) ? 'checked':'';//TO prefill at some point ? not sure
+                $html .= '<input type="checkbox" name="wpneo-form-category[]" value="'.$value->slug.'" '.$selected.'>'.$value->name.'<br>';
+            }
+
+
             $html .= '<small>'.__("Select your campaign category","wp-crowdfunding").'</small>';
             $html .= '</div>';
             $html .= '</div>';
 
 
             //Tag
+            /*
             $html .= '<div class="wpneo-single">';
             $html .= '<div class="wpneo-name">'.__( "Tag" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
@@ -156,7 +169,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $html .= '<small>'.__("Separate tags with commas eg: tag1,tag2","wp-crowdfunding").'</small>';
             $html .= '</div>';
             $html .= '</div>';
-
+            */
 
             //Image
             $html .= '<div class="wpneo-single">';
@@ -171,6 +184,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
 
 
             //Video
+            /*
             $html .= '<div class="wpneo-single">';
             $html .= '<div class="wpneo-name">'.__( "Video" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
@@ -178,7 +192,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $html .= '<small>'.__("Put the campaign video URL here","wp-crowdfunding").'</small>';
             $html .= '</div>';
             $html .= '</div>';
-
+            */
 
             //Start Date
             $html .= '<div class="wpneo-single wpneo-first-half">';
@@ -213,6 +227,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
 
 
             //Maximum Amount
+            /*
             if (get_option('wpneo_show_max_price') == 'true') {
                 $html .= '<div class="wpneo-single wpneo-second-half">';
                 $html .= '<div class="wpneo-name">'.__( "Maximum Amount" , "wp-crowdfunding" ).'</div>';
@@ -222,9 +237,11 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
                 $html .= '</div>';
                 $html .= '</div>';
             }
+            */
 
 
             //Recomended Amount
+            /*
             if (get_option('wpneo_show_recommended_price') == 'true') {
                 $html .= '<div class="wpneo-single">';
                 $html .= '<div class="wpneo-name">'.__( "Recomended Amount" , "wp-crowdfunding" ).'</div>';
@@ -234,7 +251,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
                 $html .= '</div>';
                 $html .= '</div>';
             }
-
+            */
 
             //Funding Goal
             $html .= '<div class="wpneo-single">';
@@ -280,6 +297,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
 
 
             //Show Contributor Table
+            /*
             $html .= '<div class="wpneo-single">';
             $html .= '<div class="wpneo-name">'.__( "Contributor Table" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
@@ -288,9 +306,10 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $html .= '<input type="checkbox" '.$checked.' name="wpneo-form-contributor-table" value="1" >'.__("Show contributor table on campaign single page","wp-crowdfunding" );
             $html .= '</div>';
             $html .= '</div>';
-
+            */
 
             //Mark Contributors as Anonymous
+            /*
             $html .= '<div class="wpneo-single">';
             $html .= '<div class="wpneo-name">'.__( "Contributor Anonymity" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
@@ -299,8 +318,10 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $html .= '<input type="checkbox" '.$checked2.' name="wpneo-form-contributor-show" value="1" >'.__("Make contributors anonymous on the contributor table","wp-crowdfunding" );
             $html .= '</div>';
             $html .= '</div>';
+            */
 
             //Country
+            /*
             $html .= '<div class="wpneo-single">';
             $html .= '<div class="wpneo-name">'.__( "Country" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
@@ -319,9 +340,10 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $html .= '<small>'.__("Select your country","wp-crowdfunding").'</small>';
             $html .= '</div>';
             $html .= '</div>';
-
+            */
 
             //Location
+            /*
             $html .= '<div class="wpneo-single">';
             $html .= '<div class="wpneo-name">'.__( "Location" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
@@ -329,7 +351,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $html .= '<small>'.__("Put the campaign location here","wp-crowdfunding").'</small>';
             $html .= '</div>';
             $html .= '</div>';
-
+            */
             /* ************************************ */
             /* *********** Clone Field ************ */
             /* ************************************ */

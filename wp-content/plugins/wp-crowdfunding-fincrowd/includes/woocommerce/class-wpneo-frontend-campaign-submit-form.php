@@ -69,24 +69,28 @@ if (! class_exists('WPNEO_Frontend_Campaign_Submit_Form')) {
             if( $_POST['wpneo-form-title'] ){               $title = sanitize_text_field($_POST['wpneo-form-title']); }
             if( $_POST['wpneo-form-description'] ){         $description = $_POST['wpneo-form-description']; }
             if( $_POST['wpneo-form-short-description'] ){   $short_description = $_POST['wpneo-form-short-description']; }
-            if( $_POST['wpneo-form-category'] ){            $category = sanitize_text_field($_POST['wpneo-form-category']); }
-            if( $_POST['wpneo-form-tag'] ){                 $tag = sanitize_text_field($_POST['wpneo-form-tag']); }
+            if( $_POST['wpneo-form-category'] ){
+
+              $category = $_POST['wpneo-form-category'];
+
+            }
+            //if( $_POST['wpneo-form-tag'] ){                 $tag = sanitize_text_field($_POST['wpneo-form-tag']); }
             if( $_POST['wpneo-form-image-id'] ){            $image_id = sanitize_text_field($_POST['wpneo-form-image-id']); }
-            if( $_POST['wpneo-form-video'] ){               $video = sanitize_text_field($_POST['wpneo-form-video']); }
+            //if( $_POST['wpneo-form-video'] ){               $video = sanitize_text_field($_POST['wpneo-form-video']); }
             if( $_POST['wpneo-form-start-date'] ){          $start_date = sanitize_text_field($_POST['wpneo-form-start-date']); }
             if( $_POST['wpneo-form-end-date'] ){            $end_date = sanitize_text_field($_POST['wpneo-form-end-date']); }
 
             if( $_POST['wpneo-form-min-price'] ){           $min_price = intval(sanitize_text_field($_POST['wpneo-form-min-price'])); }
-            if( $_POST['wpneo-form-max-price'] ){           $max_price = intval(sanitize_text_field($_POST['wpneo-form-max-price'])); }
-            if( $_POST['wpneo-form-recommended-price'] ){   $recommended_price = intval(sanitize_text_field($_POST['wpneo-form-recommended-price'])); }
+            //if( $_POST['wpneo-form-max-price'] ){           $max_price = intval(sanitize_text_field($_POST['wpneo-form-max-price'])); }
+            //if( $_POST['wpneo-form-recommended-price'] ){   $recommended_price = intval(sanitize_text_field($_POST['wpneo-form-recommended-price'])); }
             if( $_POST['wpneo-form-funding-goal'] ){        $funding_goal = intval(sanitize_text_field($_POST['wpneo-form-funding-goal'])); }
 
             if( $_POST['wpneo-form-type'] ){                $type = sanitize_text_field($_POST['wpneo-form-type']); }
-            if( $_POST['wpneo-form-contributor-table'] ){   $contributor_table = sanitize_text_field($_POST['wpneo-form-contributor-table']); }
-            if( $_POST['wpneo-form-contributor-show'] ){    $contributor_show 	= sanitize_text_field($_POST['wpneo-form-contributor-show']); }
-            if( $_POST['wpneo-form-paypal'] ){              $paypal = sanitize_text_field($_POST['wpneo-form-paypal']); }
-            if( $_POST['wpneo-form-country'] ){             $country = sanitize_text_field($_POST['wpneo-form-country']); }
-            if( $_POST['wpneo-form-location'] ){            $location = sanitize_text_field($_POST['wpneo-form-location']); }
+            //if( $_POST['wpneo-form-contributor-table'] ){   $contributor_table = sanitize_text_field($_POST['wpneo-form-contributor-table']); }
+            //if( $_POST['wpneo-form-contributor-show'] ){    $contributor_show 	= sanitize_text_field($_POST['wpneo-form-contributor-show']); }
+            //if( $_POST['wpneo-form-paypal'] ){              $paypal = sanitize_text_field($_POST['wpneo-form-paypal']); }
+            //if( $_POST['wpneo-form-country'] ){             $country = sanitize_text_field($_POST['wpneo-form-country']); }
+            //if( $_POST['wpneo-form-location'] ){            $location = sanitize_text_field($_POST['wpneo-form-location']); }
 
             $user_id = get_current_user_id();
             $my_post = array(
@@ -120,9 +124,9 @@ if (! class_exists('WPNEO_Frontend_Campaign_Submit_Form')) {
             }
 
             if ($post_id) {
-                if( $category != '' ){
-                    $cat = explode(' ',$category );
-                    wp_set_object_terms( $post_id , $cat, 'product_cat',true );
+                if( count($category) > 0){
+                    //$cat = explode(' ',$category );
+                    wp_set_object_terms( $post_id , $category, 'product_cat',true );
                 }
                 if( $tag != '' ){
                     $tag = explode( ',',$tag );
@@ -141,7 +145,7 @@ if (! class_exists('WPNEO_Frontend_Campaign_Submit_Form')) {
                 update_post_meta($post_id, 'wpneo_campaign_end_method', esc_attr($type));
                 update_post_meta($post_id, 'wpneo_show_contributor_table', esc_attr($contributor_table));
                 update_post_meta($post_id, 'wpneo_mark_contributors_as_anonymous', esc_attr($contributor_show));
-                update_post_meta($post_id, 'wpneo_campaigner_paypal_id', esc_attr($paypal));
+                //update_post_meta($post_id, 'wpneo_campaigner_paypal_id', esc_attr($paypal));
                 update_post_meta($post_id, 'wpneo_country', esc_attr($country));
                 update_post_meta($post_id, '_nf_location', esc_html($location));
 
