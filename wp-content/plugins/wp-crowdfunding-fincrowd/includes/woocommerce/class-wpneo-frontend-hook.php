@@ -43,6 +43,9 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
             $total_sales    = get_post_meta( $post->ID, 'total_sales', true );
             $enddate        = get_post_meta( $post->ID, '_nf_duration_end', true );
 
+            //FI fields
+            $wpneo_fi_risk_class       = get_post_meta( $post->ID, 'wpneo_fi_risk_class', true );
+
             //Get Country name from WooCommerce
             $countries_obj  = new WC_Countries();
             $countries      = $countries_obj->__get('countries');
@@ -68,10 +71,17 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
 
             $html = '';
             $html .= '<div class="crowdfunding_wrapper">';
-
+            /*
             if ($country_name) {
                 $html .= '<div class="wpneo_location">';
                 $html .= '<p class="wpneo_thumb_text">'. __('Location: ', 'wp-crowdfunding') . $country_name.'</p>';
+                $html .= '</div>';
+            }
+            */
+            //TODO where is this
+            if ($wpneo_fi_risk_class) {
+                $html .= '<div class="wpneo_fi_risk_class">';
+                $html .= '<p class="wpneo_thumb_text">'. __('Classe de risque: ', 'wp-crowdfunding') . $wpneo_fi_risk_class.'</p>';
                 $html .= '</div>';
             }
 
