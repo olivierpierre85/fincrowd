@@ -521,7 +521,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             $wpneo_country = sanitize_text_field( $_POST['wpneo_country'] );
             wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_country', $wpneo_country);
 
-            //FI new fields
+            //Fincrowd new fields
             //wpneo_fi_risk_class
             $wpneo_fi_risk_class = sanitize_text_field( $_POST['wpneo_fi_risk_class'] );
             wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_fi_risk_class', $wpneo_fi_risk_class);

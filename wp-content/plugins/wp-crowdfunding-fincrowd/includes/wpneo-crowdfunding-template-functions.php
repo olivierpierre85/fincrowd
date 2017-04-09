@@ -542,6 +542,7 @@ if ( ! function_exists( 'wpneo_crowdfunding_overwrite_product_feature_image' ) )
 
 //FIVE Insurance new Functions
 
+//risk class
 if ( ! function_exists( 'wpneo_crowdfunding_template_risk_class' ) ) {
     function wpneo_crowdfunding_template_risk_class() {
         wpneo_crowdfunding_load_template('include/risk-class');
@@ -554,9 +555,65 @@ if (! function_exists('wpneo_crowdfunding_loop_item_risk_class')) {
     }
 }
 
-
 if ( ! function_exists('wpneo_crowdfunding_get_risk_class')) {
     function wpneo_crowdfunding_get_risk_class($campaign_id){
         return $risk_class = get_post_meta($campaign_id, 'wpneo_fi_risk_class', true);
+    }
+}
+
+//interest rate
+if ( ! function_exists( 'wpneo_crowdfunding_template_interest_rate' ) ) {
+    function wpneo_crowdfunding_template_interest_rate() {
+        wpneo_crowdfunding_load_template('include/interest-rate');
+    }
+}
+
+if (! function_exists('wpneo_crowdfunding_loop_item_interest_rate')) {
+    function wpneo_crowdfunding_loop_item_interest_rate() {
+        wpneo_crowdfunding_load_template('include/interest-rate');//New include if I want different view for risk class in loop
+    }
+}
+
+if ( ! function_exists('wpneo_crowdfunding_get_interest_rate')) {
+    function wpneo_crowdfunding_get_interest_rate($campaign_id){
+        return $interest_rate = get_post_meta($campaign_id, 'wpneo_fi_interest_rate', true);
+    }
+}
+
+//loan duration
+if ( ! function_exists( 'wpneo_crowdfunding_template_loan_duration' ) ) {
+    function wpneo_crowdfunding_template_loan_duration() {
+        wpneo_crowdfunding_load_template('include/loan-duration');
+    }
+}
+
+if (! function_exists('wpneo_crowdfunding_loop_item_loan_duration')) {
+    function wpneo_crowdfunding_loop_item_loan_duration() {
+        wpneo_crowdfunding_load_template('include/loan-duration');//New include if I want different view for risk class in loop
+    }
+}
+
+if ( ! function_exists('wpneo_crowdfunding_get_loan_duration')) {
+    function wpneo_crowdfunding_get_loan_duration($campaign_id){
+        return $loan_duration = get_post_meta($campaign_id, 'wpneo_fi_loan_duration', true);
+    }
+}
+
+//loan insurance
+if ( ! function_exists( 'wpneo_crowdfunding_template_loan_insurance' ) ) {
+    function wpneo_crowdfunding_template_loan_insurance() {
+        wpneo_crowdfunding_load_template('include/loan-insurance');
+    }
+}
+
+if (! function_exists('wpneo_crowdfunding_loop_item_loan_insurance')) {
+    function wpneo_crowdfunding_loop_item_loan_insurance() {
+        wpneo_crowdfunding_load_template('include/loan-insurance');//New include if I want different view for risk class in loop
+    }
+}
+
+if ( ! function_exists('wpneo_crowdfunding_get_loan_insurance')) {
+    function wpneo_crowdfunding_get_loan_insurance($campaign_id){
+        return $loan_insurance = get_post_meta($campaign_id, 'wpneo_fi_loan_insurance', true);
     }
 }
