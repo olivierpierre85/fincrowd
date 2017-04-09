@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <ul>
         <li><p class="loan-insurance">
             <!--TODOMat-->
-              <?php echo wpneo_crowdfunding_get_loan_insurance(get_the_ID()); ?>
+              Assurance :<?php echo wpneo_crowdfunding_get_loan_insurance(get_the_ID()); ?>
                 </p>
         </li>
     </ul>

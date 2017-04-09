@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <ul>
         <li><p class="loan-duration">
             <!--TODOMat-->
-              <?php echo wpneo_crowdfunding_get_loan_duration(get_the_ID()); ?>
+              Durée du prêt :<?php echo wpneo_crowdfunding_get_loan_duration(get_the_ID()); ?>
                 </p>
         </li>
     </ul>

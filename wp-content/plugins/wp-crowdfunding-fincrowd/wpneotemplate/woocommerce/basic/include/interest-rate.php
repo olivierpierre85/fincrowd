@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <ul>
         <li><p class="interest-rate">
             <!--TODOMat-->
-              <?php echo wpneo_crowdfunding_get_interest_rate(get_the_ID()); ?>
+              Intérêts : <?php echo wpneo_crowdfunding_get_interest_rate(get_the_ID()); ?>
                 </p>
         </li>
     </ul>
