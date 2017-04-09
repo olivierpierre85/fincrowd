@@ -78,7 +78,7 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
                 $html .= '</div>';
             }
             */
-            //TODO where is this
+            //TODO where is this ?
             if ($wpneo_fi_risk_class) {
                 $html .= '<div class="wpneo_fi_risk_class">';
                 $html .= '<p class="wpneo_thumb_text">'. __('Classe de risque: ', 'wp-crowdfunding') . $wpneo_fi_risk_class.'</p>';

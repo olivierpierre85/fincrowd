@@ -539,3 +539,24 @@ if ( ! function_exists( 'wpneo_crowdfunding_overwrite_product_feature_image' ) )
         //wpneo_crowdfunding_load_template('include/feature-image');
     }
 }
+
+//FIVE Insurance new Functions
+
+if ( ! function_exists( 'wpneo_crowdfunding_template_risk_class' ) ) {
+    function wpneo_crowdfunding_template_risk_class() {
+        wpneo_crowdfunding_load_template('include/risk-class');
+    }
+}
+
+if (! function_exists('wpneo_crowdfunding_loop_item_risk_class')) {
+    function wpneo_crowdfunding_loop_item_risk_class() {
+        wpneo_crowdfunding_load_template('include/risk-class');//New include if I want different view for risk class in loop
+    }
+}
+
+
+if ( ! function_exists('wpneo_crowdfunding_get_risk_class')) {
+    function wpneo_crowdfunding_get_risk_class($campaign_id){
+        return $risk_class = get_post_meta($campaign_id, 'wpneo_fi_risk_class', true);
+    }
+}
