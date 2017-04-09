@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="campaign-risk-class">
     <ul>
         <li><p class="risk-class">
-            <!--TODOMathieu affichage spécial-->
+            <!--TODOMat display images(Make reusable template ?)-->
               <?php echo wpneo_crowdfunding_get_risk_class(get_the_ID()); ?>
                 </p>
         </li>

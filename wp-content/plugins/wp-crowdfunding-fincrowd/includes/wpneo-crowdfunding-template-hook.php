@@ -7,6 +7,7 @@ add_action( 'wpneo_before_crowdfunding_single_campaign_summery', 'wpneo_crowdfun
 add_action( 'wpneo_crowdfunding_after_feature_img', 'wpneo_crowdfunding_campaign_single_description');
 /**
  * Single campaign Template hook (NOT listing summary)
+ *  Mathieu, ici se trouve l'ordre des champs pour l'affichage global d'un projet
  */
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_campaign_title');
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_campaign_author');
@@ -63,6 +64,7 @@ add_action( 'wpneo_campaign_story_right_sidebar', 'wpneo_campaign_story_right_si
 
 
 //Listing Loop
+//Mathieu, ici se trouve l'ordre des champs pour l'affichage réduit (listing)
 add_action( 'wpneo_campaign_loop_item_before_content', 'wpneo_crowdfunding_loop_item_thumbnail');
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_rating_html');
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_title');
@@ -80,6 +82,7 @@ add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_f
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_button');
 
 //Dashboard Campaigns
+//Mathieu, ici se trouve l'ordre des champs pour l'affichage réduit (dashboard)
 add_action( 'wpneo_dashboard_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_title');
 add_action( 'wpneo_dashboard_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_author');
 add_action( 'wpneo_dashboard_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_location');

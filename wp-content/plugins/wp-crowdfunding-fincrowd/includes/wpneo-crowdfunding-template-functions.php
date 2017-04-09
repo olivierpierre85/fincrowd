@@ -540,7 +540,7 @@ if ( ! function_exists( 'wpneo_crowdfunding_overwrite_product_feature_image' ) )
     }
 }
 
-//FIVE Insurance new Functions
+//Fincrowd new Functions
 
 //risk class
 if ( ! function_exists( 'wpneo_crowdfunding_template_risk_class' ) ) {
@@ -551,7 +551,7 @@ if ( ! function_exists( 'wpneo_crowdfunding_template_risk_class' ) ) {
 
 if (! function_exists('wpneo_crowdfunding_loop_item_risk_class')) {
     function wpneo_crowdfunding_loop_item_risk_class() {
-        wpneo_crowdfunding_load_template('include/risk-class');//New include if I want different view for risk class in loop
+        wpneo_crowdfunding_load_template('include/loop/risk-class');//New include if I want different view for risk class in loop
     }
 }
 
@@ -570,7 +570,7 @@ if ( ! function_exists( 'wpneo_crowdfunding_template_interest_rate' ) ) {
 
 if (! function_exists('wpneo_crowdfunding_loop_item_interest_rate')) {
     function wpneo_crowdfunding_loop_item_interest_rate() {
-        wpneo_crowdfunding_load_template('include/interest-rate');//New include if I want different view for risk class in loop
+        wpneo_crowdfunding_load_template('include/loop/interest-rate');//New include if I want different view for risk class in loop
     }
 }
 
@@ -589,7 +589,7 @@ if ( ! function_exists( 'wpneo_crowdfunding_template_loan_duration' ) ) {
 
 if (! function_exists('wpneo_crowdfunding_loop_item_loan_duration')) {
     function wpneo_crowdfunding_loop_item_loan_duration() {
-        wpneo_crowdfunding_load_template('include/loan-duration');//New include if I want different view for risk class in loop
+        wpneo_crowdfunding_load_template('include/loop/loan-duration');//New include if I want different view for risk class in loop
     }
 }
 
@@ -608,7 +608,7 @@ if ( ! function_exists( 'wpneo_crowdfunding_template_loan_insurance' ) ) {
 
 if (! function_exists('wpneo_crowdfunding_loop_item_loan_insurance')) {
     function wpneo_crowdfunding_loop_item_loan_insurance() {
-        wpneo_crowdfunding_load_template('include/loan-insurance');//New include if I want different view for risk class in loop
+        wpneo_crowdfunding_load_template('include/loop/loan-insurance');//New include if I want different view for risk class in loop
     }
 }
 
