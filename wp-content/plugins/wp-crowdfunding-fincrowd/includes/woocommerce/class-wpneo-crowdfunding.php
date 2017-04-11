@@ -35,6 +35,11 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             add_action( 'woocommerce_add_to_cart_validation',               array($this, 'wpneo_remove_crowdfunding_item_from_cart'), 10, 5); // Remove crowdfunding item from cart
             add_action( 'woocommerce_new_order',                            array($this, 'wpneo_crowdfunding_order_type')); // Track is this product crowdfunding.
             add_filter( 'woocommerce_checkout_fields' ,                     array($this, 'wpneo_override_checkout_fields') ); // Remove billing address from the checkout page
+
+            //Fincrowd
+            add_action( 'woocommerce_thankyou',                  array($this, 'wpneo_fi_after_checkout'),10,1);
+            //add_filter( 'woocommerce_payment_complete_order_status' ,        array($this, 'wpneo_fi_after_checkout'),10,2 ); // Remove billing address from the checkout page
+
         }
 
         /**
@@ -766,6 +771,18 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             }
 
             update_post_meta($order_id, 'is_crowdfunding_order','1');
+        }
+
+
+        /**
+         * Fincrowd
+         * Accept Donation without validation
+         */
+        function wpneo_fi_after_checkout($order_id){
+            //Launch the validation of this donation directly after
+            global $woocommerce;
+            $order = new WC_Order($order_id);
+            $order->update_status('completed', '');
         }
 
     } //End class bracket
