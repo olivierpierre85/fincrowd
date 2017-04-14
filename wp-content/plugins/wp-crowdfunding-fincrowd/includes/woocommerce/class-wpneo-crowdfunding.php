@@ -37,8 +37,38 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             add_filter( 'woocommerce_checkout_fields' ,                     array($this, 'wpneo_override_checkout_fields') ); // Remove billing address from the checkout page
 
             //Fincrowd
-            add_action( 'woocommerce_thankyou',                  array($this, 'wpneo_fi_after_checkout'),10,1);
-            //add_filter( 'woocommerce_payment_complete_order_status' ,        array($this, 'wpneo_fi_after_checkout'),10,2 ); // Remove billing address from the checkout page
+            add_action( 'woocommerce_thankyou',                             array($this, 'wpneo_fi_after_checkout'),10,1);
+            add_filter( 'woocommerce_checkout_fields' ,                     array($this, 'wpneo_fi_checkout_page_changes'));
+            add_action( 'woocommerce_checkout_order_review',                array($this, 'wpneo_fi_checkout_page_interest_table') );
+
+
+            add_filter( 'woocommerce_locate_template', 'woo_adon_plugin_template', 1, 3 );
+               function woo_adon_plugin_template( $template, $template_name, $template_path ) {
+                 global $woocommerce;
+                 $_template = $template;
+                 if ( ! $template_path )
+                    $template_path = $woocommerce->template_url;
+
+                 $plugin_path  = untrailingslashit( plugin_dir_path( __FILE__ ) )  . '/wpneotemplate/woocommerce/basic/';
+
+                // Look within passed path within the theme - this is priority
+                $template = locate_template(
+                array(
+                  $template_path . $template_name,
+                  $template_name
+                )
+               );
+
+               if( ! $template && file_exists( $plugin_path . $template_name ) )
+                $template = $plugin_path . $template_name;
+
+               if ( ! $template )
+                $template = $_template;
+
+               return $template;
+            }
+
+
 
         }
 
@@ -783,6 +813,24 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             global $woocommerce;
             $order = new WC_Order($order_id);
             $order->update_status('completed', '');
+        }
+
+        /**
+         * Fincrowd
+         * Modify fields of checkout
+         */
+        function wpneo_fi_checkout_page_changes($fields){
+          //unset($fields['billing']);//If we don't want to display billing information
+          return $fields;
+        }
+
+        /**
+         * Fincrowd
+         * Add interest table
+         */
+        function wpneo_fi_checkout_page_interest_table() {
+          //load tab template
+            wpneo_crowdfunding_load_template('include/fincrowd/interest_tab');
         }
 
     } //End class bracket
