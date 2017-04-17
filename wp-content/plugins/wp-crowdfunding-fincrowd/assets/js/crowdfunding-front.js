@@ -438,6 +438,17 @@ jQuery(document).ready(function($){
         $(this).find('.reward_description').slideToggle();
     });
 
+    //Fincrowd
+    $('#fi_reg_physical_person,#fi_reg_society').on('click',function(e) {
+      if(e.target.id == 'fi_reg_physical_person'){
+        //show birthday
+        $('.fi_reg_birthday').show();
+      } else {
+        //hide
+        $('.fi_reg_birthday').hide();
+      }
+
+    });
 
 
 });

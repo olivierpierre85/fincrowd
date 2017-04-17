@@ -18,6 +18,26 @@ function wpneo_registration_shortcode() {
                 <input type="hidden" name="_wpnonce" value="<?php echo $nonce; ?>">
                 <?php
                 $wpneo_user_regisration_meta_array = array(
+                  array(
+                      'id'            => 'fi_reg_physical_person',
+                      'label'         => __( "Personne Physique ou Morale" , "wp-crowdfunding" ),
+                      'type'          => 'physical',
+                      'placeholder'   => __('Personne Physique ou Morale', 'wp-crowdfunding'),
+                      'value'         => '',
+                      'class'         => '',
+                      'warpclass'     => '',
+                      'autocomplete'  => 'off',
+                  ),
+                  array(
+                      'id'            => 'fi_reg_birthday',
+                      'label'         => __( "Date de Naissance" , "wp-crowdfunding" ),
+                      'type'          => 'birthday',
+                      'placeholder'   => __('Date de Naissance', 'wp-crowdfunding'),
+                      'value'         => '',
+                      'class'         => '',
+                      'warpclass'     => 'fi_reg_birthday',
+                      'autocomplete'  => 'off',
+                  ),
                     array(
                         'id'            => 'fname',
                         'label'         => __( "First Name" , "wp-crowdfunding" ),
@@ -77,6 +97,7 @@ function wpneo_registration_shortcode() {
                         'warpclass'     => 'wpneo-second-half',
                         'autocomplete'  => 'off',
                     ),
+                    /*
                     array(
                         'id'            => 'nickname',
                         'label'         => __( "Nickname" , "wp-crowdfunding" ),
@@ -97,6 +118,7 @@ function wpneo_registration_shortcode() {
                         'warpclass'     => '',
                         'autocomplete'  => 'off',
                     )
+                    */
                 );
 
                 $wpneo_user_regisration_meta = apply_filters('wpneo_user_registration_fields',$wpneo_user_regisration_meta_array);
@@ -119,6 +141,15 @@ function wpneo_registration_shortcode() {
                         case 'submit':
                           echo '<input type="submit" id="'.$item['id'].'"  class="'.$item['class'].'" name="'.$item['id'].'" />';
                             break;
+                        case 'physical':
+                            echo '<input type="radio" id="fi_reg_physical_person"  class="'.$item['class'].'" name="'.$item['id'].'" value="physical" />'.__('Personne Physique', 'wp-crowdfunding');
+                            echo '</br>';
+                            echo '<input type="radio" id="fi_reg_society"  class="'.$item['class'].'" name="'.$item['id'].'" value="society" />'.__('Personne Morale', 'wp-crowdfunding');
+                            break;
+                        case 'birthday':
+                          echo '<input type="text" id="'.$item['id'].'" autocomplete="'.$item['autocomplete'].'" class="'.$item['class'].'" name="'.$item['id'].'" placeholder="'.$item['placeholder'].'">';
+
+                            break;
                         case 'shortcode':
                           echo do_shortcode($item['shortcode']);
                             break;
@@ -126,6 +157,8 @@ function wpneo_registration_shortcode() {
                     </div>
                     </div>
                 <?php } ?>
+
+
 
                 <div class="wpneo-single wpneo-register">
                     <a href="<?php echo get_home_url(); ?>" class="wpneo-cancel-campaign"><?php _e("Cancel","wp-crowdfunding"); ?></a>
