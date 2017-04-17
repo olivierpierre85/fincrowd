@@ -32,7 +32,41 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
         public function __construct() {
             add_action( 'init',                                             array($this, 'wpneo_registration_function') );
             add_action( 'wp_ajax_wpneo_crowdfunding_registration_action',   array($this, 'wpneo_registration_function') );
+
+            //Fincrowd new fields
+            add_action( 'show_user_profile', array($this,'fincrowd_extra_profile_fields') );
+            add_action( 'edit_user_profile', array($this,'fincrowd_extra_profile_fields') );
+
+            add_action( 'personal_options_update', array($this,'fincrowd_save_extra_profile_fields') );
+            add_action( 'edit_user_profile_update', array($this,'fincrowd_save_extra_profile_fields') );
+            add_action( 'wpneo_crowdfunding_after_user_registration',array($this,'fincrowd_save_extra_profile_fields') ) ;
         }
+
+        //fincrowd
+        function fincrowd_extra_profile_fields( $user ) { ?>
+
+          	<h3>Fincrowd</h3>
+
+          	<table class="form-table">
+          		<tr>
+          			<th><label for="birthday">Date de Naissance</label></th>
+
+          			<td>
+          				<input type="text" name="fi_birthday" id="fi_birthday" value="<?php echo esc_attr( get_the_author_meta( 'birthday', $user->ID ) ); ?>" class="regular-text" /><br />
+          				<span class="description">Veuillez entrer votre date de naissance</span>
+          			</td>
+          		</tr>
+          	</table>
+          <?php
+          }
+
+          //fincrowd
+          function fincrowd_save_extra_profile_fields( $user_id ) {
+          	if ( !current_user_can( 'edit_user', $user_id ) )
+          		return false;
+
+          	update_usermeta( $user_id, 'birthday', $_POST['fi_birthday'] );
+          }
 
         // register a new user
         function wpneo_registration_function() {
@@ -82,7 +116,7 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                     'first_name'    =>  $first_name,
                     'last_name'     =>  $last_name,
                     'nickname'      =>  $nickname,
-                    'description'   =>  $bio
+                    'description'   =>  $bio,
                 );
                 $user_id = wp_insert_user( $userdata );
 

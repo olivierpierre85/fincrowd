@@ -147,7 +147,7 @@ function wpneo_registration_shortcode() {
                             echo '<input type="radio" id="fi_reg_society"  class="'.$item['class'].'" name="'.$item['id'].'" value="society" />'.__('Personne Morale', 'wp-crowdfunding');
                             break;
                         case 'birthday':
-                          echo '<input type="text" id="'.$item['id'].'" autocomplete="'.$item['autocomplete'].'" class="'.$item['class'].'" name="'.$item['id'].'" placeholder="'.$item['placeholder'].'">';
+                          echo '<input type="text" id="fi_birthday" autocomplete="'.$item['autocomplete'].'" class="'.$item['class'].'" name="fi_birthday" placeholder="'.$item['placeholder'].'">';
 
                             break;
                         case 'shortcode':
