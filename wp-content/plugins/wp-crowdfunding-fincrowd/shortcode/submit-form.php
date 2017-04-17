@@ -13,6 +13,9 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
 
             $html = '';
             $title = $description = $short_description = $category = $tag = $image_url = $image_id = $video = $start_date = $end_date = $minimum_price = $maximum_price = $recomended_price = $funding_goal = $campaign_end_method = $type = $contributor_show = $paypal = $country = $location = $edit_form = $edit_id = $checked = $checked2 = '';
+            //fincrowd
+            $company_number = $contact_person = $phone_number = $website = '';
+
 
             $reward = '';
             if(isset($_GET['action'])){
@@ -70,7 +73,10 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
                                 $reward             = get_post_meta( get_the_ID(), 'wpneo_reward', true );
                                 $edit_form          = '<input type="hidden" name="edit_form" value="editform"/>';
                                 $edit_id            = '<input type="hidden" name="edit_post_id" value="'.$_GET["postid"].'"/>';
-
+                                $company_number     = get_post_meta( get_the_ID(), 'wpneo_fi_company_number', true );
+                                $contact_person     = get_post_meta( get_the_ID(), 'wpneo_fi_contact_person', true );
+                                $phone_number       = get_post_meta( get_the_ID(), 'wpneo_fi_phone_number', true );
+                                $website            = get_post_meta( get_the_ID(), 'wpneo_fi_website', true );
                             }
                         }
                     }
@@ -100,7 +106,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
 
             //Title
             $html .= '<div class="wpneo-single">';
-            $html .= '<div class="wpneo-name">'.__( "Title" , "wp-crowdfunding" ).'</div>';
+            $html .= '<div class="wpneo-name">'.__( "Nom du projet" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
             $html .= '<input type="text" name="wpneo-form-title" value="'.$title.'">';
             $html .= '<small>'.__("Put the campaign title here","wp-crowdfunding").'</small>';
@@ -110,7 +116,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
 
             //Product Description
             $html .= '<div class="wpneo-single">';
-            $html .= '<div class="wpneo-name">'.__( "Description" , "wp-crowdfunding" ).'</div>';
+            $html .= '<div class="wpneo-name">'.__( "Description de la société" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
             ob_start();
             wp_editor( $description, 'wpneo-form-description' );
@@ -122,19 +128,19 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
 
             //Product Short Description
             $html .= '<div class="wpneo-single">';
-            $html .= '<div class="wpneo-name">'.__( "Short Description" , "wp-crowdfunding" ).'</div>';
+            $html .= '<div class="wpneo-name">'.__( "Motivation" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
             ob_start();
             wp_editor( $short_description, 'wpneo-form-short-description', array('editor_height'=>200) );
             $html .= ob_get_clean();
-            $html .= '<small>'.__("Put Here Product Short Description","wp-crowdfunding").'</small>';
+            $html .= '<small>'.__("Motivation de la demande de fond","wp-crowdfunding").'</small>';
             $html .= '</div>';
             $html .= '</div>';
 
 
             //Category
             $html .= '<div class="wpneo-single">';
-            $html .= '<div class="wpneo-name">'.__( "Category" , "wp-crowdfunding" ).'</div>';
+            $html .= '<div class="wpneo-name">'.__( "Secteurs" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
             /* Select ONE choice
             $html .= '<select name="wpneo-form-category">';
@@ -194,6 +200,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $html .= '</div>';
             */
 
+/*
             //Start Date
             $html .= '<div class="wpneo-single wpneo-first-half">';
             $html .= '<div class="wpneo-name">'.__( "Start Date" , "wp-crowdfunding" ).'</div>';
@@ -212,7 +219,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $html .= '<small>'.__("Campaign end date (dd-mm-yy)","wp-crowdfunding").'</small>';
             $html .= '</div>';
             $html .= '</div>';
-
+*/
 
             //Minimum Amount
             if (get_option('wpneo_show_min_price') == 'true') {
@@ -262,8 +269,42 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $html .= '</div>';
             $html .= '</div>';
 
+            $html .= '<div class="wpneo_fi_contact_person">';
+            $html .= '<div class="wpneo-name">'.__( "Personne de Contact" , "wp-crowdfunding" ).'</div>';
+            $html .= '<div class="wpneo-fields">';
+            $html .= '<input type="text" name="wpneo-form-contact_person" value="'.$contact_person.'">';
+            $html .= '<small>'.__("Personne de Contact","wp-crowdfunding").'</small>';
+            $html .= '</div>';
+            $html .= '</div>';
+
+            $html .= '<div class="wpneo_fi_company_number">';
+            $html .= '<div class="wpneo-name">'.__( "Numéro de Société" , "wp-crowdfunding" ).'</div>';
+            $html .= '<div class="wpneo-fields">';
+            $html .= '<input type="number" max="9999999999" name="wpneo-form-company-number" value="'.$company_number.'">';
+            $html .= '<small>'.__("Numéro de Société","wp-crowdfunding").'</small>';
+            $html .= '</div>';
+            $html .= '</div>';
+
+            $html .= '<div class="wpneo_fi_phone_number">';
+            $html .= '<div class="wpneo-name">'.__( "Numéro de Téléphone" , "wp-crowdfunding" ).'</div>';
+            $html .= '<div class="wpneo-fields">';
+            $html .= '<input type="number" name="wpneo-form-phone-number" value="'.$phone_number.'">';
+            $html .= '<small>'.__("Numéro de Téléphone","wp-crowdfunding").'</small>';
+            $html .= '</div>';
+            $html .= '</div>';
+
+            $html .= '<div class="wpneo_fi_website">';
+            $html .= '<div class="wpneo-name">'.__( "Website" , "wp-crowdfunding" ).'</div>';
+            $html .= '<div class="wpneo-fields">';
+            $html .= '<input type="text" name="wpneo-form-website" value="'.$website.'">';
+            $html .= '<small>'.__("Website","wp-crowdfunding").'</small>';
+            $html .= '</div>';
+            $html .= '</div>';
+
+
 
             //Campaign End Method
+            /*
             $html .= '<div class="wpneo-single">';
             $html .= '<div class="wpneo-name">'.__( "End Method" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
@@ -293,7 +334,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $html .= '<small>'.__("Choose the stage when campaign will end","wp-crowdfunding").'</small>';
             $html .= '</div>';
             $html .= '</div>';
-
+*/
 
 
             //Show Contributor Table

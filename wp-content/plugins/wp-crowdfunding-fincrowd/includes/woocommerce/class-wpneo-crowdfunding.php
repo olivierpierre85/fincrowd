@@ -181,7 +181,26 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                   'id'            => 'wpneo_fi_interest_rate',
                   'label'         => __( 'Intérêts', 'wp-crowdfunding' ),
                   'placeholder'   => __( 'Intérêts %', 'wp-crowdfunding' ),
-                  'description'   => __( 'Intérêts %', 'wp-crowdfunding' )
+                  'description'   => __( 'Intérêts %', 'wp-crowdfunding' ),
+                  'type'              => 'number',
+                  'custom_attributes' => array(
+              				'step' 	=> 'any',
+              				'min'	=> '0'
+              			)
+                  )
+            );
+
+            woocommerce_wp_text_input(
+                array(
+                  'id'            => 'wpneo_fi_interest_rate_insurance',
+                  'label'         => __( 'Intérêts avec garantie', 'wp-crowdfunding' ),
+                  'placeholder'   => __( 'Intérêts %', 'wp-crowdfunding' ),
+                  'description'   => __( 'Intérêts %', 'wp-crowdfunding' ),
+                  'type'              => 'number',
+                  'custom_attributes' => array(
+              				'step' 	=> 'any',
+              				'min'	=> '0'
+              			)
                   )
             );
 
@@ -190,7 +209,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                   'id'            => 'wpneo_fi_loan_duration',
                   'label'         => __( 'Durée du prêt', 'wp-crowdfunding' ),
                   'placeholder'   => __( 'Durée du prêt', 'wp-crowdfunding' ),
-                  'description'   => __( 'Durée du prêt (mois)', 'wp-crowdfunding' )
+                  'description'   => __( 'Durée du prêt (jours)', 'wp-crowdfunding' )
                   )
             );
 
@@ -202,6 +221,53 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                   'description'   => __( 'Assurance crédit', 'wp-crowdfunding' )
                   )
             );
+
+
+            woocommerce_wp_text_input(
+                array(
+                  'id'            => 'wpneo_fi_contact_person',
+                  'label'         => __( 'Personne de contact', 'wp-crowdfunding' ),
+                  'placeholder'   => __( 'Personne de contact', 'wp-crowdfunding' ),
+                  'description'   => __( 'Personne de contact', 'wp-crowdfunding' )
+                  )
+            );
+
+            woocommerce_wp_text_input(
+                array(
+                  'id'            => 'wpneo_fi_phone_number',
+                  'label'         => __( 'Numéro de Téléphone', 'wp-crowdfunding' ),
+                  'placeholder'   => __( 'Numéro de Téléphone', 'wp-crowdfunding' ),
+                  'description'   => __( 'Numéro de Téléphone', 'wp-crowdfunding' )
+                  )
+            );
+
+            woocommerce_wp_text_input(
+                array(
+                  'id'            => 'wpneo_fi_company_number',
+                  'label'         => __( 'Numéro de Société', 'wp-crowdfunding' ),
+                  'placeholder'   => __( 'Numéro de Société', 'wp-crowdfunding' ),
+                  'description'   => __( 'Numéro de Société', 'wp-crowdfunding' )
+                  )
+            );
+
+            woocommerce_wp_text_input(
+                array(
+                  'id'            => 'wpneo_fi_website',
+                  'label'         => __( 'Site Web', 'wp-crowdfunding' ),
+                  'placeholder'   => __( 'Site Web', 'wp-crowdfunding' ),
+                  'description'   => __( 'Site Web', 'wp-crowdfunding' )
+                  )
+            );
+
+            woocommerce_wp_text_input(
+                array(
+                  'id'            => 'wpneo_fi_account_number',
+                  'label'         => __( 'Numéro de compte', 'wp-crowdfunding' ),
+                  'placeholder'   => __( 'Numéro de compte', 'wp-crowdfunding' ),
+                  'description'   => __( 'Numéro de compte', 'wp-crowdfunding' )
+                  )
+            );
+
 
             echo '<div class="options_group"></div>';
             // Expirey
@@ -222,7 +288,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                     'description'   => __( 'Enter end time of this campaign', 'wp-crowdfunding' )
                     )
             );
-
+/*
             echo '<div class="options_group"></div>';
 
             if (get_option('wpneo_show_min_price')) {
@@ -236,6 +302,8 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                         )
                 );
             }
+            */
+
             /*
             if (get_option('wpneo_show_max_price')) {
                 woocommerce_wp_text_input(
@@ -276,7 +344,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                     )
             );
 
-
+/*
             $options = array();
             if (get_option('wpneo_show_target_goal') == 'true'){
                 $options['target_goal'] = 'Target Goal';
@@ -301,7 +369,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                     'options'       => $options
                 )
             );
-
+*/
 
             //Show contributor table
             /*
@@ -525,7 +593,8 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             wpneo_crowdfunding_update_post_meta_text($post_id, '_nf_funding_goal', $_nf_funding_goal);
 
             // wpneo_funding_minimum_price
-            $wpneo_funding_minimum_price = intval( sanitize_text_field($_POST['wpneo_funding_minimum_price']) );
+            //$wpneo_funding_minimum_price = intval( sanitize_text_field($_POST['wpneo_funding_minimum_price']) );
+            $wpneo_funding_minimum_price = 500;//Fincrowd TODO put in constant Todo filter when client = company!
             wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_minimum_price', $wpneo_funding_minimum_price);
 
             // wpneo_funding_maximum_price
@@ -564,11 +633,29 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             $wpneo_fi_interest_rate = sanitize_text_field( $_POST['wpneo_fi_interest_rate'] );
             wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_fi_interest_rate', $wpneo_fi_interest_rate);
 
+            $wpneo_fi_interest_rate_insurance = sanitize_text_field( $_POST['wpneo_fi_interest_rate_insurance'] );
+            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_fi_interest_rate_insurance', $wpneo_fi_interest_rate_insurance);
+
             $wpneo_fi_loan_duration = sanitize_text_field( $_POST['wpneo_fi_loan_duration'] );
             wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_fi_loan_duration', $wpneo_fi_loan_duration);
 
             $wpneo_fi_loan_insurance = sanitize_text_field( $_POST['wpneo_fi_loan_insurance'] );
             wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_fi_loan_insurance', $wpneo_fi_loan_insurance);
+
+            $wpneo_fi_account_number = sanitize_text_field( $_POST['wpneo_fi_account_number'] );
+            wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_fi_account_number', $wpneo_fi_account_number);
+
+            $wpneo_fi_company_number = sanitize_text_field( $_POST['wpneo_fi_company_number'] );
+            wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_fi_company_number', $wpneo_fi_company_number);//TOD0 10 check number
+
+            $wpneo_fi_contact_person = sanitize_text_field( $_POST['wpneo_fi_contact_person'] );
+            wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_fi_contact_person', $wpneo_fi_contact_person);
+
+            $wpneo_fi_phone_number = sanitize_text_field( $_POST['wpneo_fi_phone_number'] );
+            wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_fi_phone_number', $wpneo_fi_phone_number);
+
+            $wpneo_fi_website = sanitize_text_field( $_POST['wpneo_fi_website'] );
+            wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_fi_website', $wpneo_fi_website);
 
         }
 
