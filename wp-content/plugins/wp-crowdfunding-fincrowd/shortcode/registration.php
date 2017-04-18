@@ -19,7 +19,7 @@ function wpneo_registration_shortcode() {
                 <?php
                 $wpneo_user_regisration_meta_array = array(
                   array(
-                      'id'            => 'fi_reg_physical_person',
+                      'id'            => 'fi_reg_type_person',
                       'label'         => __( "Personne Physique ou Morale" , "wp-crowdfunding" ),
                       'type'          => 'physical',
                       'placeholder'   => __('Personne Physique ou Morale', 'wp-crowdfunding'),
@@ -38,6 +38,17 @@ function wpneo_registration_shortcode() {
                       'warpclass'     => 'fi_reg_birthday',
                       'autocomplete'  => 'off',
                   ),
+                  array(
+                      'id'            => 'email',
+                      'label'         => __( "Email *" , "wp-crowdfunding" ),
+                      'type'          => 'text',
+                      'placeholder'   => __('Enter Email', 'wp-crowdfunding'),
+                      'value'         => '',
+                      'warpclass'     => '',
+                      'class'         => 'required',
+                      'autocomplete'  => 'off',
+                  ),
+                  /*
                     array(
                         'id'            => 'fname',
                         'label'         => __( "First Name" , "wp-crowdfunding" ),
@@ -57,7 +68,7 @@ function wpneo_registration_shortcode() {
                         'class'         => '',
                         'warpclass'     => 'wpneo-second-half',
                         'autocomplete'  => 'off',
-                    ),
+                    ),*/ /*
                     array(
                         'id'            => 'username',
                         'label'         => __( "Username *" , "wp-crowdfunding" ),
@@ -67,24 +78,23 @@ function wpneo_registration_shortcode() {
                         'class'         => 'required',
                         'warpclass'     => '',
                         'autocomplete'  => 'off',
-                    ),
+                    ),*/
                     array(
                         'id'            => 'password',
                         'label'         => __('Password *', 'wp-crowdfunding'),
                         'type'          => 'password',
                         'placeholder'   => __('Enter Password', 'wp-crowdfunding'),
                         'class'         => 'required',
-                        'warpclass'     => '',
+                        'warpclass'     => 'wpneo-first-half',
                         'autocomplete'  => 'off',
                     ),
                     array(
-                        'id'            => 'email',
-                        'label'         => __( "Email *" , "wp-crowdfunding" ),
-                        'type'          => 'text',
-                        'placeholder'   => __('Enter Email', 'wp-crowdfunding'),
-                        'value'         => '',
-                        'warpclass'     => 'wpneo-first-half',
+                        'id'            => 'password2',
+                        'label'         => __('Password *', 'wp-crowdfunding'),
+                        'type'          => 'password',
+                        'placeholder'   => __('Répéter mot de passe', 'wp-crowdfunding'),
                         'class'         => 'required',
+                        'warpclass'     => 'wpneo-second-half',
                         'autocomplete'  => 'off',
                     ),
                     array(
@@ -142,7 +152,7 @@ function wpneo_registration_shortcode() {
                           echo '<input type="submit" id="'.$item['id'].'"  class="'.$item['class'].'" name="'.$item['id'].'" />';
                             break;
                         case 'physical':
-                            echo '<input type="radio" id="fi_reg_physical_person"  class="'.$item['class'].'" name="'.$item['id'].'" value="physical" />'.__('Personne Physique', 'wp-crowdfunding');
+                            echo '<input type="radio" id="fi_reg_physical_person"  class="'.$item['class'].'" name="'.$item['id'].'" value="physical" checked />'.__('Personne Physique', 'wp-crowdfunding');
                             echo '</br>';
                             echo '<input type="radio" id="fi_reg_society"  class="'.$item['class'].'" name="'.$item['id'].'" value="society" />'.__('Personne Morale', 'wp-crowdfunding');
                             break;

@@ -44,18 +44,27 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
 
         //fincrowd
         function fincrowd_extra_profile_fields( $user ) { ?>
-
+            //WARNING Keep consistant with registration.php
           	<h3>Fincrowd</h3>
 
           	<table class="form-table">
           		<tr>
-          			<th><label for="birthday">Date de Naissance</label></th>
-
+          			<th><label for="fi_birthday">Date de Naissance</label></th>
           			<td>
           				<input type="text" name="fi_birthday" id="fi_birthday" value="<?php echo esc_attr( get_the_author_meta( 'birthday', $user->ID ) ); ?>" class="regular-text" /><br />
-          				<span class="description">Veuillez entrer votre date de naissance</span>
           			</td>
           		</tr>
+              <tr>
+                <th><label for="type_person">Personne Physique ou morale</label></th>
+                <td>
+                  <input type="radio" id="fi_reg_physical_person"   name="fi_reg_type_person" value="physical" <?php if(get_the_author_meta( 'physical_person', $user->ID )){echo " checked ";} ?> />
+                  <?php echo __('Personne Physique', 'wp-crowdfunding');?>
+                  </br>
+                  <input type="radio" id="fi_reg_society"   name="fi_reg_type_person" value="society" <?php if(! get_the_author_meta( 'physical_person', $user->ID )){echo " checked ";} ?> />
+                  <?php echo __('Personne Morale', 'wp-crowdfunding');?>
+                </td>
+              </tr>
+
           	</table>
           <?php
           }
@@ -69,6 +78,12 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
 
           //All new fields for fincrowd
           function fincrowd_save_extra_profile_fields( $user_id ) {
+
+            if(isset($_POST['fi_reg_type_person']) && $_POST['fi_reg_type_person'] == 'society' ){
+              update_user_meta( $user_id, 'physical_person', false);
+            } else {
+              update_user_meta( $user_id, 'physical_person', true );
+            }
 
             if(isset($_POST['fi_birthday'])){
               //TODO check for admin part ?
@@ -87,10 +102,10 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 //Add some option
                 do_action('wpneo_before_user_registration_action');
 
-                $username = $password = $email = $website = $first_name = $last_name = $nickname = $bio = '';
+                $username = $password = $password2 = $email = $website = $first_name = $last_name = $nickname = $bio = '';
                 $birthday = '';
                 // sanitize user form input
-                $username   =   sanitize_user($_POST['username']);
+                //$username   =   sanitize_user($_POST['username']);
                 $password   =   sanitize_text_field($_POST['password']);
                 $email      =   sanitize_email($_POST['email']);
                 $website    =   sanitize_url($_POST['website']);
@@ -100,10 +115,13 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 //$bio        =   implode( "\n", array_map( 'sanitize_text_field', explode( "\n", $_POST['bio'])));
                 //fincrowd
                 $birthday   = sanitize_text_field($_POST['fi_birthday']);
+                $username   =   $email;
+                $password2   =   sanitize_text_field($_POST['password2']);
 
                 $this->wpneo_registration_validation(
                     $username ,
                     $password ,
+                    $password2 ,
                     $email ,
                     $website ,
                     $first_name ,
@@ -161,25 +179,25 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             }
         }
 
-        function wpneo_registration_validation( $username, $password, $email, $website, $first_name, $last_name, $nickname, $bio, $birthday )  {
+        function wpneo_registration_validation( $username, $password,$password2, $email, $website, $first_name, $last_name, $nickname, $bio, $birthday )  {
             global $reg_errors;
             $reg_errors = new WP_Error;
 
             if ( empty( $username ) || empty( $password ) || empty( $email ) ) {
                 $reg_errors->add('field', __('Required form field is missing','wp-crowdfunding'));
             }
-
+/*
             if ( strlen( $username ) < 4 ) {
                 $reg_errors->add('username_length', __('Username too short. At least 4 characters is required','wp-crowdfunding'));
             }
-
+*/
             if ( username_exists( $username ) )
                 $reg_errors->add('user_name', __('Sorry, that username already exists!','wp-crowdfunding'));
-
+/*
             if ( !validate_username( $username ) ) {
                 $reg_errors->add('username_invalid', __('Sorry, the username you entered is not valid','wp-crowdfunding'));
             }
-
+*/
             if ( strlen( $password ) < 6 ) {
                 $reg_errors->add('password', __('Password length must be greater than 6','wp-crowdfunding'));
             }
@@ -199,10 +217,13 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             }
 
             //Fincrowd
-            if ( ! (DateTime::createFromFormat('d/m/Y', $birthday)) !== FALSE)  {
+            if ( ! (DateTime::createFromFormat('d/m/Y', $birthday)) !== FALSE && $_POST['fi_reg_type_person'] != 'society')  {
                 $reg_errors->add('birthday_invalid', __('Date de naissance non valide','wp-crowdfunding'));
             }
 
+            if ( $password != $password2 ) {
+                $reg_errors->add('password', __('Deux mots de passe différents','wp-crowdfunding'));
+            }
 
         }
 
