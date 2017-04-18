@@ -32,7 +32,7 @@ function wpneo_registration_shortcode() {
                       'id'            => 'fi_reg_birthday',
                       'label'         => __( "Date de Naissance" , "wp-crowdfunding" ),
                       'type'          => 'birthday',
-                      'placeholder'   => __('Date de Naissance', 'wp-crowdfunding'),
+                      'placeholder'   => __('jj/mm/aaaa', 'wp-crowdfunding'),
                       'value'         => '',
                       'class'         => '',
                       'warpclass'     => 'fi_reg_birthday',

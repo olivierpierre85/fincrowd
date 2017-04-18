@@ -37,8 +37,8 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             add_action( 'show_user_profile', array($this,'fincrowd_extra_profile_fields') );
             add_action( 'edit_user_profile', array($this,'fincrowd_extra_profile_fields') );
 
-            add_action( 'personal_options_update', array($this,'fincrowd_save_extra_profile_fields') );
-            add_action( 'edit_user_profile_update', array($this,'fincrowd_save_extra_profile_fields') );
+            add_action( 'personal_options_update', array($this,'fincrowd_save_extra_profile_fields_check') );
+            add_action( 'edit_user_profile_update', array($this,'fincrowd_save_extra_profile_fields_check') );
             add_action( 'wpneo_crowdfunding_after_user_registration',array($this,'fincrowd_save_extra_profile_fields') ) ;
         }
 
@@ -61,12 +61,23 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
           }
 
           //fincrowd
-          function fincrowd_save_extra_profile_fields( $user_id ) {
-          	if ( !current_user_can( 'edit_user', $user_id ) )
+          function fincrowd_save_extra_profile_fields_check( $user_id ) {
+            if ( !current_user_can( 'edit_user', $user_id ) )
           		return false;
-
-          	update_usermeta( $user_id, 'birthday', $_POST['fi_birthday'] );
+          	$this->fincrowd_save_extra_profile_fields( $user_id );
           }
+
+          //All new fields for fincrowd
+          function fincrowd_save_extra_profile_fields( $user_id ) {
+
+            if(isset($_POST['fi_birthday'])){
+              //TODO check for admin part ?
+              update_user_meta( $user_id, 'birthday', $_POST['fi_birthday'] );
+            }
+
+          }
+
+
 
         // register a new user
         function wpneo_registration_function() {
@@ -77,6 +88,7 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 do_action('wpneo_before_user_registration_action');
 
                 $username = $password = $email = $website = $first_name = $last_name = $nickname = $bio = '';
+                $birthday = '';
                 // sanitize user form input
                 $username   =   sanitize_user($_POST['username']);
                 $password   =   sanitize_text_field($_POST['password']);
@@ -84,8 +96,10 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 $website    =   sanitize_url($_POST['website']);
                 $first_name =   sanitize_text_field($_POST['fname']);
                 $last_name  =   sanitize_text_field($_POST['lname']);
-                $nickname   =   sanitize_text_field($_POST['nickname']);
-                $bio        =   implode( "\n", array_map( 'sanitize_text_field', explode( "\n", $_POST['bio'])));
+                //$nickname   =   sanitize_text_field($_POST['nickname']);
+                //$bio        =   implode( "\n", array_map( 'sanitize_text_field', explode( "\n", $_POST['bio'])));
+                //fincrowd
+                $birthday   = sanitize_text_field($_POST['fi_birthday']);
 
                 $this->wpneo_registration_validation(
                     $username ,
@@ -95,7 +109,8 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                     $first_name ,
                     $last_name ,
                     $nickname ,
-                    $bio
+                    $bio,
+                    $birthday
                 );
                 $this->wpneo_complete_registration( $username, $password, $email, $website, $first_name, $last_name, $nickname, $bio );
             }else{
@@ -123,7 +138,8 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 //On success
                 if ( ! is_wp_error( $user_id ) ) {
                     do_action( 'wpneo_crowdfunding_after_user_registration', $user_id );
-                    $redirect = esc_url(wpneo_post('current_page'));
+                    $redirect = esc_url(wpneo_post('current_page'));//TODO fincrowd redirect Dashboard
+
                     die(json_encode(array('success'=> 1, 'message' => __('Registration complete.', 'wp-crowdfunding'), 'redirect' => $redirect )));
                 } else {
                     $errors = '';
@@ -145,7 +161,7 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             }
         }
 
-        function wpneo_registration_validation( $username, $password, $email, $website, $first_name, $last_name, $nickname, $bio )  {
+        function wpneo_registration_validation( $username, $password, $email, $website, $first_name, $last_name, $nickname, $bio, $birthday )  {
             global $reg_errors;
             $reg_errors = new WP_Error;
 
@@ -181,6 +197,12 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                     $reg_errors->add('website', __('Website is not a valid URL','wp-crowdfunding'));
                 }
             }
+
+            //Fincrowd
+            if ( ! (DateTime::createFromFormat('d/m/Y', $birthday)) !== FALSE)  {
+                $reg_errors->add('birthday_invalid', __('Date de naissance non valide','wp-crowdfunding'));
+            }
+
 
         }
 
