@@ -98,13 +98,42 @@ function wpneo_registration_shortcode() {
                         'autocomplete'  => 'off',
                     ),
                     array(
+                        'id'            => 'category',
+                        'label'         => __('Secteurs d\'intérêt', 'wp-crowdfunding'),
+                        'type'          => 'category',
+                        'placeholder'   => __('Secteurs', 'wp-crowdfunding'),
+                        'class'         => '',
+                        'warpclass'     => '',
+                        'autocomplete'  => 'off',
+                    ),
+                    array(
                         'id'            => 'website',
                         'label'         => __( "Website" , "wp-crowdfunding" ),
                         'type'          => 'text',
                         'placeholder'   => __('Enter Website', 'wp-crowdfunding'),
                         'value'         => '',
                         'class'         => '',
-                        'warpclass'     => 'wpneo-second-half',
+                        'warpclass'     => '',
+                        'autocomplete'  => 'off',
+                    ),
+                    array(
+                        'id'            => 'fi_newsletter',
+                        'label'         => __( "Recevoir Newsletter" , "wp-crowdfunding" ),
+                        'type'          => 'checkbox',
+                        'placeholder'   => __('', 'wp-crowdfunding'),
+                        'value'         => '',
+                        'class'         => '',
+                        'warpclass'     => '',
+                        'autocomplete'  => 'off',
+                    ),
+                    array(
+                        'id'            => 'conditions',
+                        'label'         => __( "J'accepte les conditions générales (TOdO PDF)" , "wp-crowdfunding" ),
+                        'type'          => 'checkbox',
+                        'placeholder'   => __('', 'wp-crowdfunding'),
+                        'value'         => '',
+                        'class'         => '',
+                        'warpclass'     => '',
                         'autocomplete'  => 'off',
                     ),
                     /*
@@ -151,6 +180,7 @@ function wpneo_registration_shortcode() {
                         case 'submit':
                           echo '<input type="submit" id="'.$item['id'].'"  class="'.$item['class'].'" name="'.$item['id'].'" />';
                             break;
+                            //fincrowd
                         case 'physical':
                             echo '<input type="radio" id="fi_reg_physical_person"  class="'.$item['class'].'" name="'.$item['id'].'" value="physical" checked />'.__('Personne Physique', 'wp-crowdfunding');
                             echo '</br>';
@@ -158,7 +188,17 @@ function wpneo_registration_shortcode() {
                             break;
                         case 'birthday':
                           echo '<input type="text" id="fi_birthday" autocomplete="'.$item['autocomplete'].'" class="'.$item['class'].'" name="fi_birthday" placeholder="'.$item['placeholder'].'">';
-
+                            break;
+                        case 'category':
+                            $all_cat = get_terms('product_cat',array( 'hide_empty' => false ) );
+                            foreach ($all_cat as $value) {
+                              //check if the category belongs to the product
+                                $selected = "";//($value->name inArray($category)) ? 'checked':'';//TO prefill at some point ? not sure
+                                echo '<input type="checkbox" name="fi_category[]" value="'.$value->slug.'" '.$selected.'>'.$value->name.'<br>';
+                            }
+                            break;
+                        case 'checkbox':
+                          echo '<input type="checkbox" id="'.$item['id'].'" autocomplete="'.$item['autocomplete'].'" class="'.$item['class'].'" name="'.$item['id'].'" placeholder="'.$item['placeholder'].'">';
                             break;
                         case 'shortcode':
                           echo do_shortcode($item['shortcode']);

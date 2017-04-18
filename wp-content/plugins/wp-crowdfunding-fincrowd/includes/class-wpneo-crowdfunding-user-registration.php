@@ -43,8 +43,9 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
         }
 
         //fincrowd
-        function fincrowd_extra_profile_fields( $user ) { ?>
-            //WARNING Keep consistant with registration.php
+        function fincrowd_extra_profile_fields( $user ) {
+          //WARNING Keep consistant with registration.php
+          ?>
           	<h3>Fincrowd</h3>
 
           	<table class="form-table">
@@ -55,7 +56,7 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
           			</td>
           		</tr>
               <tr>
-                <th><label for="type_person">Personne Physique ou morale</label></th>
+                <th><label>Personne Physique ou morale</label></th>
                 <td>
                   <input type="radio" id="fi_reg_physical_person"   name="fi_reg_type_person" value="physical" <?php if(get_the_author_meta( 'physical_person', $user->ID )){echo " checked ";} ?> />
                   <?php echo __('Personne Physique', 'wp-crowdfunding');?>
@@ -64,7 +65,32 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                   <?php echo __('Personne Morale', 'wp-crowdfunding');?>
                 </td>
               </tr>
+              <tr>
+                <th><label>Secteurs d'intérêts</label></th>
+                <td>
+                  <?php
+                  $all_cat = get_terms('product_cat',array( 'hide_empty' => false ) );
+                  $cat_user = explode(";",get_the_author_meta( 'fi_category', $user->ID ));
+                  foreach ($all_cat as $value) {
+                    //check if the category belongs to the product
 
+                      if(in_array($value->slug, $cat_user) ){
+                        $selected = "checked";
+                      } else {
+                        $selected = "";
+                      }
+                      echo '<input type="checkbox" name="fi_category[]" value="'.$value->slug.'" '.$selected.'>'.$value->name.'<br>';
+                  }
+
+                   ?>
+                </td>
+              </tr>
+              <tr>
+                <th><label>Abonné à la Newsletter</label></th>
+                <td>
+                  <input type="checkbox" id="fi_newsletter"   name="fi_newsletter"  <?php if(get_the_author_meta( 'fi_newsletter', $user->ID )){echo " checked ";} ?> />
+                </td>
+              </tr>
           	</table>
           <?php
           }
@@ -90,6 +116,17 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
               update_user_meta( $user_id, 'birthday', $_POST['fi_birthday'] );
             }
 
+            if( $_POST['fi_category'] ){
+              $category = $_POST['fi_category'];
+              update_user_meta( $user_id, 'fi_category', implode(";",$category) );
+              //TODO link category to user
+            }
+
+            if(isset($_POST['fi_newsletter'])){
+              update_user_meta( $user_id, 'fi_newsletter', true );
+            } else {
+              update_user_meta( $user_id, 'fi_newsletter', false );
+            }
           }
 
 
@@ -104,6 +141,7 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
 
                 $username = $password = $password2 = $email = $website = $first_name = $last_name = $nickname = $bio = '';
                 $birthday = '';
+                $conditions   = false ;
                 // sanitize user form input
                 //$username   =   sanitize_user($_POST['username']);
                 $password   =   sanitize_text_field($_POST['password']);
@@ -117,6 +155,10 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 $birthday   = sanitize_text_field($_POST['fi_birthday']);
                 $username   =   $email;
                 $password2   =   sanitize_text_field($_POST['password2']);
+                if(isset($_POST['conditions'])){
+                    $conditions   =   true;
+                }
+
 
                 $this->wpneo_registration_validation(
                     $username ,
@@ -128,7 +170,8 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                     $last_name ,
                     $nickname ,
                     $bio,
-                    $birthday
+                    $birthday,
+                    $conditions
                 );
                 $this->wpneo_complete_registration( $username, $password, $email, $website, $first_name, $last_name, $nickname, $bio );
             }else{
@@ -179,7 +222,7 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             }
         }
 
-        function wpneo_registration_validation( $username, $password,$password2, $email, $website, $first_name, $last_name, $nickname, $bio, $birthday )  {
+        function wpneo_registration_validation( $username, $password,$password2, $email, $website, $first_name, $last_name, $nickname, $bio, $birthday,$conditions )  {
             global $reg_errors;
             $reg_errors = new WP_Error;
 
@@ -223,6 +266,10 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
 
             if ( $password != $password2 ) {
                 $reg_errors->add('password', __('Deux mots de passe différents','wp-crowdfunding'));
+            }
+
+            if ( ! $conditions ) {
+                $reg_errors->add('conditions', __('Vous devez accepter les conditions générales','wp-crowdfunding'));
             }
 
         }
