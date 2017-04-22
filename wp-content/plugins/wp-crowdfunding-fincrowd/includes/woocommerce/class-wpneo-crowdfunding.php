@@ -41,6 +41,8 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             add_filter( 'woocommerce_checkout_fields' ,                     array($this, 'wpneo_fi_checkout_page_changes'));
             add_action( 'woocommerce_checkout_order_review',                array($this, 'wpneo_fi_checkout_page_interest_table') );
 
+            add_action( 'show_user_profile', array($this, 'wpneo_fi_additional_profile_fields')  );
+            add_action( 'edit_user_profile', array($this, 'wpneo_fi_additional_profile_fields') );
 
             add_filter( 'woocommerce_locate_template', 'woo_adon_plugin_template', 1, 3 );
                function woo_adon_plugin_template( $template, $template_name, $template_path ) {
@@ -913,12 +915,48 @@ if (! class_exists('Wpneo_Crowdfunding')) {
 
         /**
          * Fincrowd
-         * Add interest table
          */
+         /*
         function wpneo_fi_checkout_page_interest_table() {
           //load tab template
             wpneo_crowdfunding_load_template('include/fincrowd/interest_tab');
         }
+
+        function wpneo_fi_additional_profile_fields($user) {
+          $months 	= array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
+          $default	= array( 'day' => 1, 'month' => 'Jnuary', 'year' => 1950, );
+          $birth_date = wp_parse_args( get_the_author_meta( 'birth_date', $user->ID ), $default );
+
+          ?>
+          <h3>Extra profile information</h3>
+
+          <table class="form-table">
+         	 <tr>
+         		 <th><label for="birth-date-day">Birth date</label></th>
+         		 <td>
+         			 <select id="birth-date-day" name="birth_date[day]"><?php
+         				 for ( $i = 1; $i <= 31; $i++ ) {
+         					 printf( '<option value="%1$s" %2$s>%1$s</option>', $i, selected( $birth_date['day'], $i, false ) );
+         				 }
+         			 ?></select>
+         			 <select id="birth-date-month" name="birth_date[month]"><?php
+         				 foreach ( $months as $month ) {
+         					 printf( '<option value="%1$s" %2$s>%1$s</option>', $month, selected( $birth_date['month'], $month, false ) );
+         				 }
+         			 ?></select>
+         			 <select id="birth-date-year" name="birth_date[year]"><?php
+         				 for ( $i = 1950; $i <= 2015; $i++ ) {
+         					 printf( '<option value="%1$s" %2$s>%1$s</option>', $i, selected( $birth_date['year'], $i, false ) );
+         				 }
+         			 ?></select>
+         		 </td>
+         	 </tr>
+          </table>
+          <?php
+        }
+
+
+*/
 
     } //End class bracket
 } //End if class exists
