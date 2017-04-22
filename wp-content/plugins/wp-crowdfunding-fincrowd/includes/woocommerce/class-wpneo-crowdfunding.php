@@ -45,6 +45,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             add_action( 'edit_user_profile', array($this, 'wpneo_fi_additional_profile_fields') );
 
             add_action( 'woocommerce_new_order',                            array($this, 'wpneo_fi_save_interest_type'));
+            add_action('woocommerce_process_product_meta',                  array($this, 'wpneo_interest_type_field_save'));
 
             add_filter( 'woocommerce_locate_template', 'woo_adon_plugin_template', 1, 3 );
                function woo_adon_plugin_template( $template, $template_name, $template_path ) {
@@ -903,6 +904,16 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             $wpneo_fi_interest_insurance = WC()->session->get('wpneo_fi_interest_insurance');//Doesn't work
             update_post_meta($order_id, 'wpneo_fi_interest_insurance', $wpneo_fi_interest_insurance);
         }
+        /**
+         * Fincrowd
+         * At validation save the options of the product
+         */
+        public function wpneo_interest_type_field_save($order_id){
+            $wpneo_fi_interest_insurance    = $_POST['wpneo_fi_interest_insurance'];
+            update_post_meta($order_id, 'wpneo_fi_interest_insurance', $wpneo_fi_interest_insurance);
+        }
+
+
         /**
          * Fincrowd
          * Accept Donation without validation

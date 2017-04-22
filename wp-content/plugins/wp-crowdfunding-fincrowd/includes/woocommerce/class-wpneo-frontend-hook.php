@@ -143,8 +143,10 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
 
         public function campaignValid(){
             global $post;
-            $campaign_end_method = get_post_meta($post->ID, 'wpneo_campaign_end_method' , true);
-
+            //$campaign_end_method = get_post_meta($post->ID, 'wpneo_campaign_end_method' , true);
+            //Fincrowd, always this method to end campaign
+            $campaign_end_method = 'target_goal_and_date';
+            
             switch ($campaign_end_method){
 
                 case 'target_goal':
