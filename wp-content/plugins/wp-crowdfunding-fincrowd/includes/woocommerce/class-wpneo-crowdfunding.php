@@ -47,35 +47,42 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             add_action( 'woocommerce_new_order',                            array($this, 'wpneo_fi_save_interest_type'));
             add_action('woocommerce_process_product_meta',                  array($this, 'wpneo_interest_type_field_save'));
 
-            add_filter( 'woocommerce_locate_template', 'woo_adon_plugin_template', 1, 3 );
-               function woo_adon_plugin_template( $template, $template_name, $template_path ) {
-                 global $woocommerce;
-                 $_template = $template;
-                 if ( ! $template_path )
-                    $template_path = $woocommerce->template_url;
+            add_action( 'woocommerce_after_order_notes', array($this,'fi_interest_insurance_field'), 10, 1 );
+            //add_action('woocommerce_checkout_process', 'my_custom_checkout_field_process');
 
-                 $plugin_path  = untrailingslashit( plugin_dir_path( __FILE__ ) )  . '/wpneotemplate/woocommerce/basic/';
-
-                // Look within passed path within the theme - this is priority
-                $template = locate_template(
-                array(
-                  $template_path . $template_name,
-                  $template_name
-                )
-               );
-
-               if( ! $template && file_exists( $plugin_path . $template_name ) )
-                $template = $plugin_path . $template_name;
-
-               if ( ! $template )
-                $template = $_template;
-
-               return $template;
-            }
+            add_action( 'woocommerce_checkout_update_order_meta', array($this,'fi_interest_insurance_field_update_order_meta') );
+            add_action( 'woocommerce_admin_order_data_after_billing_address', array($this,'fi_interest_insurance_field_display_admin_order_meta'), 10, 1 );
 
 
+
+            //add_filter( 'woocommerce_locate_template', 'woo_adon_plugin_template', 1, 3 );//TODO doesn't work
+            //    function woo_adon_plugin_template( $template, $template_name, $template_path ) {
+            //      global $woocommerce;
+            //      $_template = $template;
+            //      if ( ! $template_path )
+            //         $template_path = $woocommerce->template_url;
+            //
+            //      $plugin_path  = untrailingslashit( plugin_dir_path( __FILE__ ) )  . '/wpneotemplate/woocommerce/basic/';
+            //
+            //     // Look within passed path within the theme - this is priority
+            //     $template = locate_template(
+            //     array(
+            //       $template_path . $template_name,
+            //       $template_name
+            //     )
+            //    );
+            //
+            //    if( ! $template && file_exists( $plugin_path . $template_name ) )
+            //     $template = $plugin_path . $template_name;
+            //
+            //    if ( ! $template )
+            //     $template = $_template;
+            //
+            //    return $template;
+            // }
 
         }
+
 
         /**
          * @include()
@@ -914,6 +921,32 @@ if (! class_exists('Wpneo_Crowdfunding')) {
         }
 
 
+                function fi_interest_insurance_field_display_admin_order_meta($order){
+                    echo '<p><strong>'.__('Garantie').':</strong> ' . get_post_meta( $order->id, 'wpneo_fi_interest_insurance', true ) . '</p>';
+                }
+
+                function fi_interest_insurance_field_update_order_meta( $order_id ) {
+                    if ( ! empty( $_POST['wpneo_fi_interest_insurance'] ) ) {
+                        update_post_meta( $order_id, 'wpneo_fi_interest_insurance', sanitize_text_field( $_POST['wpneo_fi_interest_insurance'] ) );
+                    }
+                }
+
+                function fi_interest_insurance_field( $checkout ) {
+
+                    echo '<div id="wpneo_fi_interest_insurance"><h2>' . __('Assurance') . '</h2>';
+
+                    woocommerce_form_field( 'wpneo_fi_interest_insurance', array(
+                        'type'          => 'checkbox',
+                        'class'         => array('interest-insurance-checkbox form-row-wide'),
+                        'label'         => __('Utilisez la garantie ?'),
+                        'placeholder'   => __('Enter something'),
+                        ), $checkout->get_value( 'wpneo_fi_interest_insurance' ));
+
+                    echo '</div>';
+
+                    //TODO interest table ?
+                    wpneo_crowdfunding_load_template('include/fincrowd/interest_tab');
+                }
         /**
          * Fincrowd
          * Accept Donation without validation

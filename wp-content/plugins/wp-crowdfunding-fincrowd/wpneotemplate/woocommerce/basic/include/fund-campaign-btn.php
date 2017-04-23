@@ -38,8 +38,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
             <form enctype="multipart/form-data" method="post" class="cart">
                 <?php do_action('before_wpneo_donate_field'); ?>
-                Voulez-vous profiter de la garantie (taux réduit) ?
-                <input type="checkbox" name="wpneo_fi_interest_insurance" value="false"><br>
+                <!--Voulez-vous profiter de la garantie (taux réduit) ?
+                <input type="checkbox" name="wpneo_fi_interest_insurance" value="false"><br>-->
                 <input type="number" min="0" placeholder="<?php echo  get_woocommerce_currency_symbol().' '.$recomanded_price; ?>" name="wpneo_donate_amount_field" class="input-text amount wpneo_donate_amount_field text" value="<?php echo $recomanded_price; ?>" data-min-price="<?php echo $min_price ?>" data-max-price="<?php echo $max_price ?>" >
                 <?php do_action('after_wpneo_donate_field'); ?>
                 <input type="hidden" value="<?php echo esc_attr($product->id); ?>" name="add-to-cart">
