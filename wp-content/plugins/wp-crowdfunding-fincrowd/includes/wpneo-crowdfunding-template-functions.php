@@ -235,15 +235,16 @@ if ( ! function_exists( 'wpneo_crowdfunding_campaign_single_fund_this_campaign_b
 
 if (! function_exists('wpneo_crowdfunding_campaign_single_love_this')) {
     function wpneo_crowdfunding_campaign_single_love_this() {
-        global $post;
-        if (is_product()){
-            if( function_exists('get_product') ){
-                $product = wc_get_product( $post->ID );
-                if( $product->is_type( 'crowdfunding' ) ){
-                    wpneo_crowdfunding_load_template('include/love_campaign');
-                }
-            }
-        }
+      //fincrowd
+        // global $post;
+        // if (is_product()){
+        //     if( function_exists('get_product') ){
+        //         $product = wc_get_product( $post->ID );
+        //         if( $product->is_type( 'crowdfunding' ) ){
+        //             wpneo_crowdfunding_load_template('include/love_campaign');
+        //         }
+        //     }
+        // }
     }
 }
 
