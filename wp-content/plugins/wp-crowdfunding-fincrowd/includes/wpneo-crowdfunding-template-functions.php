@@ -319,7 +319,8 @@ if ( ! function_exists( 'wpneo_crowdfunding_campaign_baker_list_tab' ) ) {
 }
 if ( ! function_exists( 'wpneo_crowdfunding_campaign_creator_info' ) ) {
     function wpneo_crowdfunding_campaign_creator_info() {
-        wpneo_crowdfunding_load_template('include/creator-info');
+        //Fincrowd hide create-info(bio)
+        //wpneo_crowdfunding_load_template('include/creator-info');
     }
 }
 if ( ! function_exists('wpneo_crowdfunding_author_all_campaigns')) {
