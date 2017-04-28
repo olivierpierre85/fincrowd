@@ -6,7 +6,7 @@ global $post;
 
 the_content();
 
-/*
+
 ?>
 <div class="tab-campaign-story-left">
     <h2><?php _e('Campaign Story', 'wp-crowdfunding') ?></h2>
@@ -16,5 +16,3 @@ the_content();
     <?php do_action('wpneo_campaign_story_right_sidebar'); ?>
 	<div style="clear: both"></div>
 </div>
-
-<?php */ ?>

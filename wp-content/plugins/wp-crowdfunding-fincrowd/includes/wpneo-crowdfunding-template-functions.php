@@ -183,7 +183,8 @@ if ( ! function_exists( 'wpneo_crowdfunding_campaign_single_left_div_end' ) ) {
 
 if ( ! function_exists( 'wpneo_crowdfunding_campaign_single_tab' ) ) {
     function wpneo_crowdfunding_campaign_single_tab() {
-        wpneo_crowdfunding_load_template('include/campaign-tab');
+        //Fincrowd
+        //wpneo_crowdfunding_load_template('include/campaign-tab');
     }
 }
 
@@ -260,14 +261,15 @@ if ( ! function_exists( 'wpneo_crowdfunding_default_single_campaign_tabs' ) ) {
             );
         }
 
-        $saved_campaign_update = get_post_meta($post->ID, 'wpneo_campaign_updates', true);
-        if ( count(json_decode($saved_campaign_update, true)) > 0) {
-            $tabs['update'] = array(
-                    'title'     => __('Updates', 'wp-crowdfunding'),
-                    'priority'  => 10,
-                    'callback'  => 'wpneo_crowdfunding_campaign_update_tab'
-            );
-        }
+      //fincrowd
+        // $saved_campaign_update = get_post_meta($post->ID, 'wpneo_campaign_updates', true);
+        // if ( count(json_decode($saved_campaign_update, true)) > 0) {
+        //     $tabs['update'] = array(
+        //             'title'     => __('Updates', 'wp-crowdfunding'),
+        //             'priority'  => 10,
+        //             'callback'  => 'wpneo_crowdfunding_campaign_update_tab'
+        //     );
+        // }
 
         $wpneo_show_contributor_table = get_post_meta($post->ID, 'wpneo_show_contributor_table', true);
         if($wpneo_show_contributor_table == '1') {
@@ -281,14 +283,15 @@ if ( ! function_exists( 'wpneo_crowdfunding_default_single_campaign_tabs' ) ) {
             }
         }
 
+        //fincrowd
         // Reviews tab - shows comments
-        if ( comments_open() ) {
-            $tabs['reviews'] = array(
-                    'title'    => sprintf( __( 'Reviews (%d)', 'wp-crowdfunding' ), $product->get_review_count() ),
-                    'priority' => 30,
-                    'callback' => 'comments_template'
-            );
-        }
+        // if ( comments_open() ) {
+        //     $tabs['reviews'] = array(
+        //             'title'    => sprintf( __( 'Reviews (%d)', 'wp-crowdfunding' ), $product->get_review_count() ),
+        //             'priority' => 30,
+        //             'callback' => 'comments_template'
+        //     );
+        // }
 
         return $tabs;
     }
@@ -296,19 +299,22 @@ if ( ! function_exists( 'wpneo_crowdfunding_default_single_campaign_tabs' ) ) {
 
 if ( ! function_exists( 'wpneo_crowdfunding_campaign_story_tab' ) ) {
     function wpneo_crowdfunding_campaign_story_tab() {
-        wpneo_crowdfunding_load_template('include/tabs/story-tab');
+      //Fincrowd
+        //wpneo_crowdfunding_load_template('include/tabs/story-tab');
     }
 }
 
 if ( ! function_exists( 'wpneo_crowdfunding_campaign_rewards_tab' ) ) {
     function wpneo_crowdfunding_campaign_rewards_tab() {
+      //Fincrowd
         //wpneo_crowdfunding_load_template('include/tabs/rewards-tab');
     }
 }
 
 if ( ! function_exists( 'wpneo_crowdfunding_campaign_update_tab' ) ) {
     function wpneo_crowdfunding_campaign_update_tab() {
-        wpneo_crowdfunding_load_template('include/tabs/update-tab');
+      //Fincrowd
+        //wpneo_crowdfunding_load_template('include/tabs/update-tab');
     }
 }
 
