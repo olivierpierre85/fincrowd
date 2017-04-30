@@ -40,11 +40,14 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             add_action( 'personal_options_update', array($this,'fincrowd_save_extra_profile_fields_check') );
             add_action( 'edit_user_profile_update', array($this,'fincrowd_save_extra_profile_fields_check') );
             add_action( 'wpneo_crowdfunding_after_user_registration',array($this,'fincrowd_save_extra_profile_fields') ) ;
+
+            //save extra fields in dashboard update ?
+            add_action( 'wpneo_crowdfunding_after_save_dashboard',array($this,'fincrowd_save_extra_profile_fields') ) ;
         }
 
         //fincrowd
         function fincrowd_extra_profile_fields( $user ) {
-          //WARNING Keep consistant with registration.php
+          //WARNING Keep consistant with registration.php && Dashboard.php
           ?>
           	<h3>Fincrowd</h3>
 
@@ -120,6 +123,8 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
               $category = $_POST['fi_category'];
               update_user_meta( $user_id, 'fi_category', implode(";",$category) );
               //TODO link category to user
+            } else {
+              update_user_meta( $user_id, 'fi_category', '' );
             }
 
             if(isset($_POST['fi_newsletter'])){

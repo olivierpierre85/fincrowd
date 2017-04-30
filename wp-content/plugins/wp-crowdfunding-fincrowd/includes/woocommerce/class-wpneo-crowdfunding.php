@@ -933,7 +933,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
 
                 function fi_interest_insurance_field( $checkout ) {
 
-                    echo '<div id="wpneo_fi_interest_insurance"><h2>' . __('Assurance') . '</h2>';
+                    echo '<div id="wpneo_fi_interest_insurance"><h3>' . __('Intérêts') . '</h3>';
 
                     woocommerce_form_field( 'wpneo_fi_interest_insurance', array(
                         'type'          => 'checkbox',
@@ -976,7 +976,9 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             //wpneo_crowdfunding_load_template('include/fincrowd/interest_tab');
         }
 
+
         function wpneo_fi_additional_profile_fields($user) {
+          /*
           $months 	= array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
           $default	= array( 'day' => 1, 'month' => 'Jnuary', 'year' => 1950, );
           $birth_date = wp_parse_args( get_the_author_meta( 'birth_date', $user->ID ), $default );
@@ -1007,6 +1009,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
          	 </tr>
           </table>
           <?php
+          */
         }
 
 

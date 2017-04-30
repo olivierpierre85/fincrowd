@@ -11,9 +11,14 @@ $interest                 = get_post_meta( $cart[key($cart)]['product_id'], 'wpn
 $interest_insurance      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate_insurance', true );
 $duration      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_duration', true );
 
+$total_interest = ($total * $interest) /100;
+$total_interest_insurance = ($total * $interest_insurance) /100;
+
 ?>
 <div class="fi-interest-tab">
-  <h2><?php echo __('Tableau d\'intérêts') ;?></h2>
+  <h4 class="fi-interest-row"><?php echo __('Intérêts total (sans garantie)').': '.$total_interest;    ?></h4>
+  <h4 class="fi-interest-insurance-row"><?php echo __('Intérêts total (avec garantie)').': '.$total_interest_insurance;    ?></h4>
+  <h4><?php echo __('Tableau de remboursement') ;?></h4>
 <table id="fi-interest-table">
   <tr>
     <th>Mois</th>

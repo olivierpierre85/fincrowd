@@ -452,7 +452,7 @@ jQuery(document).ready(function($){
 
     //Interest table created add line ??TODO not working
       // Hide with insurance at first
-    $('.fi-interest-row').hide();
+    $('.fi-interest-insurance-row').hide();
 
     $('#wpneo_fi_interest_insurance[name="wpneo_fi_interest_insurance"]').change(function(){
       if(this.checked){
