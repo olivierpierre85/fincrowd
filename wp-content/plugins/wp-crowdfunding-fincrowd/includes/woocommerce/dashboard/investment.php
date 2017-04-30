@@ -28,9 +28,9 @@ $html .= '<div class="wpneo-content">';
 		    	$id_array = implode( ', ', $id_array );
 		    	global $wpdb;
 				$prefix = $wpdb->prefix;
-				$query = "SELECT order_id FROM {$wpdb->prefix}woocommerce_order_items oi 
-						LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta woim 
-						ON woim.order_item_id = oi.order_item_id 
+				$query = "SELECT order_id FROM {$wpdb->prefix}woocommerce_order_items oi
+						LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta woim
+						ON woim.order_item_id = oi.order_item_id
 						WHERE woim.meta_key='_product_id' AND woim.meta_value IN ( {$id_array} )";
 				$order_ids = $wpdb->get_col( $query );
 		    }
@@ -39,11 +39,12 @@ $html .= '<div class="wpneo-content">';
 		$page_numb = max( 1, get_query_var('paged') );
 
 		$my_orders_columns = apply_filters( 'woocommerce_my_account_my_orders_columns', array(
-			'order-number'  => __( 'Order', 'wp-crowdfunding' ),
+			//'order-number'  => __( 'Order', 'wp-crowdfunding' ),
 			'order-date'    => __( 'Date', 'wp-crowdfunding' ),
-			'order-status'  => __( 'Status', 'wp-crowdfunding' ),
+			//'order-status'  => __( 'Status', 'wp-crowdfunding' ),
 			'order-total'   => __( 'Total', 'wp-crowdfunding' ),
-			'order-actions' => '&nbsp;',
+			//'order-actions' => '&nbsp;',
+      'campaign'   => __( 'Campagne', 'wp-crowdfunding' ),
 		) );
 
 		$customer_orders = get_posts( apply_filters( 'woocommerce_my_account_my_orders_query', array(
@@ -64,7 +65,7 @@ $html .= '<div class="wpneo-content">';
 				$html .='<thead>';
 					$html .='<tr>';
 						foreach ( $my_orders_columns as $column_id => $column_name ) :
-							$html .='<th class="'.esc_attr( $column_id ).'">#<span class="nobr">'.esc_html( $column_name ).'</span></th>';
+							$html .='<th class="'.esc_attr( $column_id ).'"><span class="nobr">'.esc_html( $column_name ).'</span></th>';
 						endforeach;
 					$html .='</tr>';
 				$html .='</thead>';
@@ -73,7 +74,7 @@ $html .= '<div class="wpneo-content">';
 					foreach ( $customer_orders as $customer_order ) :
 						$order      = wc_get_order( $customer_order );
 						$item_count = $order->get_item_count();
-						
+
 						$html .='<tr class="order">';
 							foreach ( $my_orders_columns as $column_id => $column_name ) :
 								$html .='<td class="'.esc_attr( $column_id ).'" data-title="'.esc_attr( $column_name ).'">';
@@ -84,7 +85,14 @@ $html .= '<div class="wpneo-content">';
 										$html .='<a href="'.esc_url( $order->get_view_order_url() ).'">';
 											$html .= _x( '#', 'hash before order number', 'wp-crowdfunding' ) . $order->get_order_number().'
 										</a>';
-
+                  //Fincrowd Campaign Name + ?link
+                  elseif ( 'campaign' === $column_id ) :
+                    //find campaing(product) for order
+                    $campaign = array_values($order->get_items())[0];
+                    //TODO Fincrowd link to campaign !!!
+										//$html .='<a href="'.esc_url( $order->get_view_order_url() ).'">';
+											$html .= $campaign['name'];
+										//</a>';
 									elseif ( 'order-date' === $column_id ) :
 										$html .='<time datetime="'.date( 'Y-m-d', strtotime( $order->order_date ) ).'" title="'.esc_attr( strtotime( $order->order_date ) ).'">'.date_i18n( get_option( "date_format" ), strtotime( $order->order_date ) ).'</time>';
 
@@ -92,10 +100,10 @@ $html .= '<div class="wpneo-content">';
 										$html .= wc_get_order_status_name( $order->get_status() );
 
 									elseif ( 'order-total' === $column_id ) :
-										$html .= sprintf( _n( '%s for %s item', '%s for %s items', $item_count, 'wp-crowdfunding' ), $order->get_formatted_order_total(), $item_count );
-
+										//$html .= sprintf( _n( '%s for %s item', '%s for %s items', $item_count, 'wp-crowdfunding' ), $order->get_formatted_order_total(), $item_count );
+                    $html .= $order->get_formatted_order_total() ;
 									elseif ( 'order-actions' === $column_id ) :
-										
+
 											$actions = array(
 												'pay'    => array(
 													'url'  => $order->get_checkout_payment_url(),
@@ -124,13 +132,14 @@ $html .= '<div class="wpneo-content">';
 													$html .='<a href="' . esc_url( $action['url'] ) . '" class="button ' . sanitize_html_class( $key ) . '">' . esc_html( $action['name'] ) . '</a>';
 												}
 											}
-										
+
 									endif;
 								$html .='</td>';
 							endforeach;
 						$html .='</tr>';
 					endforeach;
 				$html .='</tbody>';
+        /*
 				$html .='<tfoot>';
 					$html .='<tr>';
 						foreach ( $my_orders_columns as $column_id => $column_name ) :
@@ -138,6 +147,7 @@ $html .= '<div class="wpneo-content">';
 						endforeach;
 					$html .='</tr>';
 				$html .='</tfoot>';
+        */
 			$html .='</table>';
 		else:
 			$html .= "<p>".__( 'Sorry, No Backed Campaigns Data Found.','wp-crowdfunding' )."</p>";
