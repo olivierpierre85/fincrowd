@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     global $post, $woocommerce, $product;
     $currency = '$';
     if ($product->product_type == 'crowdfunding') {
+      if ( is_user_logged_in() ) {
         if (WPNEOCF()->campaignValid()) {
             $recomanded_price = get_post_meta($product->id, 'wpneo_funding_recommended_price', true);
             //$min_price = get_post_meta($product->id, 'wpneo_funding_minimum_price', true);
@@ -50,6 +51,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         } else {
             _e('This campaigns is over.','wp-crowdfunding');
         }
+      } else {
+          _e('Vous devez vous connecter pour investir dans ce projet.','wp-crowdfunding');//TODO add link to registration
+      }
     }
 
     ?>
