@@ -21,6 +21,8 @@ if ( ! defined( 'ABSPATH' ) ) {
             if(! get_the_author_meta( 'physical_person', get_current_user_id() )){
               $min_price = 5000;// TODO global var
               $max_price = 0;
+
+              //TODO Si personne physique, elle doit être autorisée (pour le projet ?) ou 150 premier = servi
             }
             //Fincrowd TODO $max price is the remainder of the campaing asking ?
 
