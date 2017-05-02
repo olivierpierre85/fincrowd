@@ -963,8 +963,31 @@ if (! class_exists('Wpneo_Crowdfunding')) {
          * Modify fields of checkout
          */
         function wpneo_fi_checkout_page_changes($fields){
-          //unset($fields['billing']);//If we don't want to display billing information
-          return $fields;
+          unset($fields['billing']['billing_first_name']);
+
+          unset($fields['billing']['billing_last_name']);
+          unset($fields['billing']['billing_company']);
+          unset($fields['billing']['billing_address_1']);
+          unset($fields['billing']['billing_address_2']);
+          unset($fields['billing']['billing_city']);
+
+
+          unset($fields['billing']['billing_postcode']);
+          unset($fields['billing']['billing_country']);
+          unset($fields['billing']['billing_state']);
+          unset($fields['billing']['billing_phone']);
+
+
+          //unset($fields['order']['order_comments']);
+          //unset($fields['order']);
+          /* unset($fields['billing']['billing_address_2']);
+          unset($fields['billing']['billing_postcode']);
+          unset($fields['billing']['billing_company']);
+          unset($fields['billing']['billing_last_name']);
+          unset($fields['billing']['billing_email']);
+          unset($fields['billing']['billing_city']);
+          */
+                    return $fields;
         }
 
         /**
