@@ -47,7 +47,8 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             add_action( 'woocommerce_new_order',                            array($this, 'wpneo_fi_save_interest_type'));
             add_action('woocommerce_process_product_meta',                  array($this, 'wpneo_interest_type_field_save'));
 
-            add_action( 'woocommerce_after_order_notes', array($this,'fi_interest_insurance_field'), 10, 1 );
+            //add_action( 'woocommerce_after_order_notes', array($this,'fi_interest_insurance_field'), 10, 1 );
+            add_action( 'woocommerce_before_checkout_form', array($this,'fi_interest_insurance_field'), 10, 1 );
             //add_action('woocommerce_checkout_process', 'my_custom_checkout_field_process');
 
             add_action( 'woocommerce_checkout_update_order_meta', array($this,'fi_interest_insurance_field_update_order_meta') );
@@ -920,33 +921,66 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             update_post_meta($order_id, 'wpneo_fi_interest_insurance', $wpneo_fi_interest_insurance);
         }
 
+        function fi_interest_insurance_field_display_admin_order_meta($order){
+            echo '<p><strong>'.__('Garantie').':</strong> ' . get_post_meta( $order->id, 'wpneo_fi_interest_insurance', true ) . '</p>';
+        }
 
-                function fi_interest_insurance_field_display_admin_order_meta($order){
-                    echo '<p><strong>'.__('Garantie').':</strong> ' . get_post_meta( $order->id, 'wpneo_fi_interest_insurance', true ) . '</p>';
-                }
+        function fi_interest_insurance_field_update_order_meta( $order_id ) {
+            if ( ! empty( $_POST['wpneo_fi_interest_insurance'] ) ) {
+                update_post_meta( $order_id, 'wpneo_fi_interest_insurance', sanitize_text_field( $_POST['wpneo_fi_interest_insurance'] ) );
+            }
+        }
 
-                function fi_interest_insurance_field_update_order_meta( $order_id ) {
-                    if ( ! empty( $_POST['wpneo_fi_interest_insurance'] ) ) {
-                        update_post_meta( $order_id, 'wpneo_fi_interest_insurance', sanitize_text_field( $_POST['wpneo_fi_interest_insurance'] ) );
-                    }
-                }
+        function fi_interest_insurance_field( $checkout ) {
+            $total = WC()->cart->total;
+            $cart = WC()->cart->get_cart();
 
-                function fi_interest_insurance_field( $checkout ) {
+            //$product = new WC_Product( $cart[key($cart)]['product_id']);//take first product (Normally always One and only one)
+            $interest                 = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate', true );
+            $interest_insurance      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate_insurance', true );
+            $duration      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_duration', true );
 
-                    echo '<div id="wpneo_fi_interest_insurance"><h3>' . __('Intérêts') . '</h3>';
+            $total_interest = ($total * $interest) /100;
+            $total_interest_insurance = ($total * $interest_insurance) /100;
 
-                    woocommerce_form_field( 'wpneo_fi_interest_insurance', array(
-                        'type'          => 'checkbox',
-                        'class'         => array('interest-insurance-checkbox form-row-wide'),
-                        'label'         => __('Utilisez la garantie ?'),
-                        'placeholder'   => __('Enter something'),
-                        ), $checkout->get_value( 'wpneo_fi_interest_insurance' ));
+            echo '<div id="wpneo_fi_interest_insurance"><h3>' . __('Intérêts') . '</h3>';
 
-                    echo '</div>';
+            echo '<div>' .__('Pour un prêt de ').$total.__(' euros, vous gagnez à terme :').'</div>';
+            echo '<div>'.__('Sans la garantie)').': '.$total_interest.' Euros</div>';
+            echo '<div>'.__('Avec la garantie)').': '.$total_interest_insurance.' Euros</div>';
 
-                    //TODO interest table ?
-                    wpneo_crowdfunding_load_template('include/fincrowd/interest_tab');
-                }
+            woocommerce_form_field( 'wpneo_fi_interest_insurance', array(
+                'type'          => 'checkbox',
+                'class'         => array('interest-insurance-checkbox form-row-wide'),
+                'label'         => __('Utilisez la garantie ?'),
+                'placeholder'   => __('Enter something'),
+                ), $checkout->get_value( 'wpneo_fi_interest_insurance' ));
+
+            echo '</div>';
+
+            echo '<div class="fi-interest-tab">';
+            echo '<h4>'.__('Tableau de remboursement').'</h4>';
+
+            echo '<table id="fi-interest-table"><tr><th>Mois</th><th>Capital</th><th>Intérêts</th></tr>';
+
+              for($i = 0 ; $i < $duration && $i < 4; $i++ ) {
+                echo '<tr class="fi-interest-row">';
+                echo '<td>mois '.$i.'</td>';
+                echo '<td>Todo capital</td>';
+                echo '<td>'.$interest.'</td>';
+                echo '</tr>';
+              }
+
+              for($i = 0 ; $i < $duration && $i < 4; $i++ ) {
+                echo '<tr class="fi-interest-insurance-row">';
+                echo '<td>mois '.$i.'</td>';
+                echo '<td>Todo capital</td>';
+                echo '<td>'.$interest_insurance.'</td>';
+                echo '</tr>';
+              }
+
+            echo '</table>';
+        }
         /**
          * Fincrowd
          * Accept Donation without validation

@@ -33,7 +33,6 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 ?>
 
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
-test 2 checkout
 	<?php if ( sizeof( $checkout->checkout_fields ) > 0 ) : ?>
 
 		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
