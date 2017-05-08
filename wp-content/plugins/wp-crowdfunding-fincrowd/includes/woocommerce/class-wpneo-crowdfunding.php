@@ -980,6 +980,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
               }
 
             echo '</table>';
+
         }
         /**
          * Fincrowd
