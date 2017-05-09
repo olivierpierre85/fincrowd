@@ -54,7 +54,8 @@ $html .= '<div class="wpneo-content">';
 			'meta_key'    => '_customer_user',
 			'meta_value'  => get_current_user_id(),
 			'post_type'   => wc_get_order_types( 'view-orders' ),
-			'post_status' => array_keys( wc_get_order_statuses() )
+      'post_status' => ['wc-completed'], // fincrowd
+			//'post_status' => array_keys( wc_get_order_statuses() )
 		) ) );
 
 
@@ -87,19 +88,19 @@ $html .= '<div class="wpneo-content">';
 										</a>';
                   //Fincrowd Campaign Name + ?link
                   elseif ( 'campaign' === $column_id ) :
-                    //find campaing(product) for order
                     $campaign = array_values($order->get_items())[0];
-                    //TODO Fincrowd link to campaign !!!
-										//$html .='<a href="'.esc_url( $order->get_view_order_url() ).'">';
-											$html .= $campaign['name'];
-										//</a>';
+										$html .='<a href="'.esc_url( get_permalink($campaign['product_id'] ) ).'">';
+										$html .= $campaign['name'];
+										$html .='</a>';
                   elseif ( 'order-cancel' === $column_id ) :
                     //TODO 15 days in Var somewhere
                     $cancelLimit = 5;
                     if((time()-(60*60*24*$cancelLimit)) < strtotime($order->order_date)){
-                      $html .='<a href="'.esc_url( $order->cancel_order() ).'">';
-                      $html .= "esdf";
-                      $html .='<a>';
+                      //$html .=  '<input type="button" value="Submit" onclick="wpneo_fi_cancel_order('.$order->id.')">';
+                      $html .= '<a href="javascript:;" id="wpneo_fi_cancel_order" data-order-id="'.$order->id.'">Retirer l\'offre</a>';
+                      //$html .= '<a href="">';
+                      //$html .= 'Annuler votre offre';
+                      //$html .= '<a>';
                     }
                     $html .= ' ';//Must end if otherwise error ?
 									elseif ( 'order-date' === $column_id ) :
@@ -168,7 +169,8 @@ $html .= '<div class="wpneo-content">';
 			'meta_key'    => '_customer_user',
 			'meta_value'  => get_current_user_id(),
 			'post_type'   => wc_get_order_types( 'view-orders' ),
-			'post_status' => array_keys( wc_get_order_statuses() )
+      'post_status' => ['wc-completed'], // fincrowd
+			//'post_status' => array_keys( wc_get_order_statuses() )
 		) ) );
 
 		$max_page = 1;

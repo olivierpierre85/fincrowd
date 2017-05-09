@@ -36,9 +36,30 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
             add_action( 'wp_ajax_wpneo_contact_form',        array($this, 'wpneo_contact_form_save'));
             add_action( 'wp_ajax_wpneo_password_form',       array($this, 'wpneo_password_form_save'));
             add_action( 'wp_ajax_wpneo_update_status_save',  array($this, 'wpneo_update_status_save'));
+
+            //Fincrowd
+            add_action( 'wp_ajax_wpneo_fi_cancel_order',      array($this, 'wpneo_fi_cancel_order'));
+
         }
+        //Fincrowd
+        // Delete of Order by client
+        public function wpneo_fi_cancel_order() {
+          global $woocommerce;
+          $redirect = get_permalink(get_option('wpneo_crowdfunding_dashboard_page_id')).'?page_type=backed_campaigns';
 
+          $order_id        = sanitize_text_field($_POST['order_id']);
 
+          //Use this if not delete but cancel
+          $order = new WC_Order($order_id);
+          $result = $order->update_status('Cancelled', '');
+          //$result = wc_delete_order_item( $order_id );
+
+          if ($result){
+              die(json_encode(array('success'=> 1, 'message' => __('Successfully updated', 'wp-crowdfunding'), 'redirect' => $redirect)));
+          }else{
+              die(json_encode(array('success'=> 0, 'message' => __('Error updating, please try again', 'wp-crowdfunding'), 'redirect' => $redirect)));
+          }
+        }
 
         // General Form Action for Dashboard
         public function wpneo_dashboard_form_save() {
