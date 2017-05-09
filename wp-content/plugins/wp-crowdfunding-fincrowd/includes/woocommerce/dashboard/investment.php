@@ -43,8 +43,8 @@ $html .= '<div class="wpneo-content">';
 			'order-date'    => __( 'Date', 'wp-crowdfunding' ),
 			//'order-status'  => __( 'Status', 'wp-crowdfunding' ),
 			'order-total'   => __( 'Total', 'wp-crowdfunding' ),
-			//'order-actions' => '&nbsp;',
       'campaign'   => __( 'Campagne', 'wp-crowdfunding' ),
+			'order-cancel' => '&nbsp;',
 		) );
 
 		$customer_orders = get_posts( apply_filters( 'woocommerce_my_account_my_orders_query', array(
@@ -93,6 +93,15 @@ $html .= '<div class="wpneo-content">';
 										//$html .='<a href="'.esc_url( $order->get_view_order_url() ).'">';
 											$html .= $campaign['name'];
 										//</a>';
+                  elseif ( 'order-cancel' === $column_id ) :
+                    //TODO 15 days in Var somewhere
+                    $cancelLimit = 5;
+                    if((time()-(60*60*24*$cancelLimit)) < strtotime($order->order_date)){
+                      $html .='<a href="'.esc_url( $order->cancel_order() ).'">';
+                      $html .= "esdf";
+                      $html .='<a>';
+                    }
+                    $html .= ' ';//Must end if otherwise error ?
 									elseif ( 'order-date' === $column_id ) :
 										$html .='<time datetime="'.date( 'Y-m-d', strtotime( $order->order_date ) ).'" title="'.esc_attr( strtotime( $order->order_date ) ).'">'.date_i18n( get_option( "date_format" ), strtotime( $order->order_date ) ).'</time>';
 
