@@ -930,7 +930,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                 update_post_meta( $order_id, 'wpneo_fi_interest_insurance', sanitize_text_field( $_POST['wpneo_fi_interest_insurance'] ) );
             }
         }
-
+        //Show a table of interests
         function fi_interest_insurance_field( $checkout ) {
             $total = WC()->cart->total;
             $cart = WC()->cart->get_cart();
@@ -939,15 +939,17 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             $interest                 = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate', true );
             $interest_insurance      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate_insurance', true );
             $duration      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_duration', true );
+            $insurance = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_insurance', true );
 
             $total_interest = ($total * $interest) /100;
             $total_interest_insurance = ($total * $interest_insurance) /100;
 
             echo '<div id="wpneo_fi_interest_insurance"><h3>' . __('Intérêts') . '</h3>';
+            if($insurance == 'yes'){
+              echo '<div>' .__('Pour un prêt de ').'<b>'.$total.'</b>'.__(' euros, vous gagnez à terme :').'</div>';
+              echo '<div>'.__('Sans la garantie').': '.$total_interest.' Euros</div>';
+              echo '<div>'.__('Avec la garantie').': '.$total_interest_insurance.' Euros</div>';
 
-            echo '<div>' .__('Pour un prêt de ').'<b>'.$total.'</b>'.__(' euros, vous gagnez à terme :').'</div>';
-            echo '<div>'.__('Sans la garantie)').': '.$total_interest.' Euros</div>';
-            echo '<div>'.__('Avec la garantie)').': '.$total_interest_insurance.' Euros</div>';
 
             woocommerce_form_field( 'wpneo_fi_interest_insurance', array(
                 'type'          => 'checkbox',
@@ -956,12 +958,15 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                 'placeholder'   => __('Enter something'),
                 ), $checkout->get_value( 'wpneo_fi_interest_insurance' ));
 
-            echo '</div>';
+            } else {
+              echo '<div>' .__('Pour un prêt de ').'<b>'.$total.'</b>'.__(' euros, vous gagnez à terme : ').$total_interest.' Euros</div>';
+            }
 
+            echo '</div>';
             echo '<div class="fi-interest-tab">';
             echo '<h4>'.__('Tableau de remboursement').'</h4>';
 
-            echo '<table id="fi-interest-table"><tr><th>Mois</th><th>Capital</th><th>Intérêts</th></tr>';
+            echo '<table id="fi-interest-table"><tr><th>Mois</th><th>Capital</th><th>' . __('Intérêts') . '</th></tr>';
 
               for($i = 0 ; $i < $duration && $i < 4; $i++ ) {
                 echo '<tr class="fi-interest-row">';
@@ -1005,7 +1010,6 @@ if (! class_exists('Wpneo_Crowdfunding')) {
           unset($fields['billing']['billing_address_1']);
           unset($fields['billing']['billing_address_2']);
           unset($fields['billing']['billing_city']);
-
 
           unset($fields['billing']['billing_postcode']);
           unset($fields['billing']['billing_country']);
