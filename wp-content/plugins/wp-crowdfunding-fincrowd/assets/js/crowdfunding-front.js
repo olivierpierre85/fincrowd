@@ -465,7 +465,6 @@ jQuery(document).ready(function($){
     });
 
     // Dashboard Data Save
-
       $(document).on('click', '#wpneo_fi_cancel_order', function () {
         var order_id = $(this).data('order-id');
         console.log(order_id);
@@ -485,10 +484,29 @@ jQuery(document).ready(function($){
             });
     });
 
+    //compute interests
     $('input[name="wpneo_donate_amount_field"]').on('change', function(){
-        var total_benefits = "500";
+        //TODO compute interest
+        var campaign_id = $(this).data('campaign-id');
+        $.ajax(
+            {
+                async: false,
+                url : ajax_object.ajax_url,
+                type: "POST",
+                data: {'action': 'wpneo_fi_compute_interest', 'campaign_id': campaign_id, 'total': $(this).val() },
+                success:function(data, textStatus, jqXHR) {
+                    //wpneo_crowdfunding_modal(data);
+                    //return_data = data;
+                    $('#wpneo-fi-total-interest').html(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    //wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
+                    //TODO fincrowd error management
+                }
+            });
 
-        
+
+
     });
 
 });

@@ -932,18 +932,6 @@ if (! class_exists('Wpneo_Crowdfunding')) {
         }
 
 
-        //Return monthly payment
-        function calcMonthPayment( $amt , $i, $term ) {
-          $int = $i/1200;
-          $int1 = 1+$int;
-          $r1 = pow($int1, $term);
-
-          $pmt = $amt*($int*$r1)/($r1-1);
-
-          return $pmt;
-        }
-
-
         //Show a table of interests
         function fi_interest_insurance_field( $checkout ) {
             $total = WC()->cart->total;
@@ -955,12 +943,11 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             $duration      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_duration', true );
             $insurance = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_insurance', true );
 
-            //$total_interest           = ($total * $interest) / 100;
-            $monthly_payment            = $this->calcMonthPayment( $total, $interest, $duration );
-            $monthly_payment_insurance  = $this->calcMonthPayment( $total, $interest_insurance, $duration );
+            $monthly_payment            = wpneo_fi_compute_monthly_payment( $total, $interest, $duration );
+            $monthly_payment_insurance  = wpneo_fi_compute_monthly_payment( $total, $interest_insurance, $duration );
 
-            $total_interest           = ($duration * $monthly_payment  ) - $total;
-            $total_interest_insurance = ($duration * $monthly_payment_insurance  ) - $total;
+            $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
+            $total_interest_insurance = round(($duration * $monthly_payment_insurance  ) - $total,2);
 
 
             echo '<div id="wpneo_fi_interest_insurance"><h3>' . __('Intérêts') . '</h3>';
