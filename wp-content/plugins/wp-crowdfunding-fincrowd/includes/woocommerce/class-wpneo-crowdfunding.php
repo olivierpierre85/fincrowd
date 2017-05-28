@@ -930,6 +930,20 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                 update_post_meta( $order_id, 'wpneo_fi_interest_insurance', sanitize_text_field( $_POST['wpneo_fi_interest_insurance'] ) );
             }
         }
+
+
+        //Return monthly payment
+        function calcMonthPayment( $amt , $i, $term ) {
+          $int = $i/1200;
+          $int1 = 1+$int;
+          $r1 = pow($int1, $term);
+
+          $pmt = $amt*($int*$r1)/($r1-1);
+
+          return $pmt;
+        }
+
+
         //Show a table of interests
         function fi_interest_insurance_field( $checkout ) {
             $total = WC()->cart->total;
@@ -941,8 +955,13 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             $duration      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_duration', true );
             $insurance = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_insurance', true );
 
-            $total_interest = ($total * $interest) /100;
-            $total_interest_insurance = ($total * $interest_insurance) /100;
+            //$total_interest           = ($total * $interest) / 100;
+            $monthly_payment            = $this->calcMonthPayment( $total, $interest, $duration );
+            $monthly_payment_insurance  = $this->calcMonthPayment( $total, $interest_insurance, $duration );
+
+            $total_interest           = ($duration * $monthly_payment  ) - $total;
+            $total_interest_insurance = ($duration * $monthly_payment_insurance  ) - $total;
+
 
             echo '<div id="wpneo_fi_interest_insurance"><h3>' . __('Intérêts') . '</h3>';
             if($insurance == 'yes'){
@@ -966,21 +985,21 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             echo '<div class="fi-interest-tab">';
             echo '<h4>'.__('Tableau de remboursement').'</h4>';
 
-            echo '<table id="fi-interest-table"><tr><th>Mois</th><th>Capital</th><th>' . __('Intérêts') . '</th></tr>';
+            echo '<table id="fi-interest-table"><tr><th>Mois</th><th>Capital</th><th>' . __('Remboursement par mois') . '</th></tr>';
 
-              for($i = 0 ; $i < $duration && $i < 4; $i++ ) {
+              for($i = 0 ; $i < $duration; $i++ ) {
                 echo '<tr class="fi-interest-row">';
                 echo '<td>mois '.$i.'</td>';
                 echo '<td>Todo capital</td>';
-                echo '<td>'.$interest.'</td>';
+                echo '<td>'.$monthly_payment.'</td>';
                 echo '</tr>';
               }
 
-              for($i = 0 ; $i < $duration && $i < 4; $i++ ) {
+              for($i = 0 ; $i < $duration; $i++ ) {
                 echo '<tr class="fi-interest-insurance-row">';
                 echo '<td>mois '.$i.'</td>';
                 echo '<td>Todo capital</td>';
-                echo '<td>'.$interest_insurance.'</td>';
+                echo '<td>'.$monthly_payment_insurance.'</td>';
                 echo '</tr>';
               }
 

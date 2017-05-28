@@ -485,4 +485,10 @@ jQuery(document).ready(function($){
             });
     });
 
+    $('input[name="wpneo_donate_amount_field"]').on('change', function(){
+        var total_benefits = "500";
+
+        
+    });
+
 });
