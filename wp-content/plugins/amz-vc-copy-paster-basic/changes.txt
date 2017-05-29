@@ -1,0 +1,159 @@
+Reverse Engineering vc
+-----------------------
+
+* getView () -> this is where vc create view form give model
+
+
+
+Reverse Eng vc toolkit
+----------------------
+
+* g - unescape something , may be shortocode
+* b - escape something , may be shortocode.
+
+* O - doing all export related functions
+	* D - get Export encode and unescape and display in textarea
+
+* F - doing all save & load related function 
+* x,y,k,S,C,I,J -> check vcsl_save_load_mode, Switch Copy/Paste, hide all icons etc
+* M
+
+
+
+Ideas need to done
+------------------
+
+* Add settings in near vc logo
+	- Show or Hide icons
+	- Display number of item in clipboard
+	  - update the count if user copy and copy+
+	  - clear clipboard option.
+
+	- remove to remove copied item individually 
+	- Export
+	- Import
+	- save and load
+	- clear clipboard
+
+* Save all copied elements as template
+
+My own logic for pasting shortcode
+----------------------------------
+
+* while pasting we must do the following
+
+	- only add paste button on container shortcode
+	- for extra security check container shortocde otherwise simply alert('this is not a container you can only paste on container element such as vc_row'), 
+	  eg: row, column, tab, accordion etc ) 
+
+	 - then check it's equal to clipboard shortcode then overwrite its params otherwise omit this container and only paste child
+
+	- while pasting check container can hold the current shortcode eg: vc_row_inner should not contain vc_row as child
+	- if parent is vc_row(_inner) then you must set column(s) accoroding to the clipboard obj only if vc_column(_inner) clipboard column 
+	  is greater than current column otherwise append/prepend on first column
+
+	- if clipboard items is vc_column/vc_row and pasting element is vc_row_inner/vc_column_inner then try to merge only existing params eg: css_editor
+
+	Technical aspect
+	------------------
+
+	- what should i do when pasting? create shortcode (& set params) from saved local.storage, if paste selected, then paste from selected items.
+	- while creating shortcode set parent id correctly. ex: pasting item is row , if you creating extra column set row id as columns parent id.
+	- also set order correctly if prepending or appending
+
+
+My own logic for copying shortcode
+----------------------------------
+
+Technical aspect
+------------------
+
+- simply get sc_name and param for parent and child and saved it to localstorage.
+
+----------
+
+* if Copying element is a container and copy all of its child item
+* what are think we should copy
+	- we should copy as json as follows (Not sure this is correct logic, lets first create a shortcode with parent and child)
+
+	for each shortocde
+	------------------
+	[
+		row:{
+			sc_name: vc_row,
+			id: vc_guid,
+			params: json_stringfy params,
+			parent_id: false,
+			order: 0
+		},
+		column:{
+			sc_name: vc_column,
+			id: vc_guid,
+			params: json_stringfy params,
+			parent_id: row_id,
+			order: 1
+		},
+		column:{
+			sc_name: vc_column, (2)
+			id: vc_guid,
+			params: json_stringfy params,
+			parent_id: row_id,
+			order: 2
+		},
+		text:{
+			sc_name: vc_column_text,
+			id: vc_guid,
+			params: json_stringfy params,
+			parent_id: vc_column(2)_id,
+			order: 3
+		}
+	]
+
+	==============
+	single element
+	==============
+	vc_column_text: {
+		params: json_stringfy all params,
+		content: content
+	}
+
+
+	/*  
+		- check if shortcode == vc row
+			then
+				check if current paste button is in vc_row
+				then
+					- ( check copied row id != current vc_row ) then add shortcode's param to current button vc_row
+					- check (copied) shortcode vc_row's column's > current button vc_row 
+					then
+						- create extra column (for example copied row has 4 column and current pasting row have 2 then create 2 more column and column width according to copied row)
+						- transfer column params as well
+						- paste child and params
+					else 
+						- paste child and params on appropriate columns
+			else if shortcode == vc column
+				then
+					check if current paste button is in vc_column
+					then
+						- ( check copied vc_column id != current vc_column ) then add shortcode's param to current button vc_column
+						- paste child and params
+					else
+						check is shortcode is continer element
+							then 
+							- get its child and child of child and append it
+							- (only add allowed shortcodes) by checking parent as and while rendering child check for child_as
+							- check vc_row, vc_column (also remove vc_row_inner and vc_column_inner if it have parent only or child only)
+
+				create row and column (all columns)
+					-start appending childs
+
+	*/
+	
+	// parent shortocode name is not vc_row and column 
+	// then check is_container or content_element 
+	// then get parent as and child as
+	// ----
+	// ----
+	// ----
+
+	//check shortocode name if it is not vc_row and currently click button also not row then create vc_row and vc_column

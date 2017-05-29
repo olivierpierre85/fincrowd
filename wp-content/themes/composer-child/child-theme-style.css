@@ -1,0 +1,80 @@
+/*
+* Add child theme CSS Rules
+*/
+
+.wpneo-campaign-summary-inner {
+	line-height: 1.5;
+}
+
+.wpneo-fund-modal-btn {
+	margin-left: 0.5em;
+}
+
+.wpneo_donate_button {
+	border: 2px solid #fff;
+	padding: 0 10px;
+    color: #fff;
+    border-radius: 4px;
+    display: inline-block;
+    background-color: #3c72b7;
+    height: 42px;
+}
+
+.wpneo_donate_button:hover {
+	border: 2px solid #3c72b7;
+	background-color: #fff;
+	color: #3c72b7;
+}
+
+input[type="button"].wpneo-image-upload {
+	border: 2px solid #3c72b7;
+	display: inline-block;
+	background-color: #3c72b7;
+	height: 50px;
+	text-decoration: none;
+    padding: 9px 20px;
+    font-weight: 300;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 4px;
+    float: left;
+}
+
+input[type="submit"].wpneo-submit-campaign {
+	border: 2px solid #3c72b7;
+	display: inline-block;
+	background-color: #3c72b7;
+	height: 50px;
+	text-decoration: none;
+    padding: 9px 20px;
+    font-weight: 300;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+input[type="submit"].wpneo-submit-campaign:hover {
+	background-color: #fff;
+	color: #3c73b7;
+}
+
+.status-publish p, .wpneo-listing-content p {
+	margin-bottom: 0px !important;
+}
+
+.wpneo-listing-content p {
+	padding: 0 20px;
+}
+
+a, .color, .base-color, .icon-list .pix-icon.color, .top-details a:hover, #lang-list a:hover, #lang-list a.active, .dark .search-btn:hover, .btn.color, .btn.color:hover, .btn.btn-simple:hover, .btn.btn-solid.btn-hover-outline.color:hover, .pix_icon_box:hover .icon100.color.bg-none, .pix_icon_box:hover .icon100.square-front.color, .pix_icon_box:hover .small-circle .icon, .pix_icon_box:hover .small-circle.color .icon, .pix_icon_box a.btn:hover, .pix_icon_box:hover .icon100, .process .text, .process .background .text:hover .process-style, .pix_tabs.wpb_content_element .wpb_tour_tabs_wrapper .wpb_tabs_nav li a:hover, .staff-img .staff-icons a:hover, .staff-content a:hover, .full-width-icon.style3 .social-icons a, #filters.dropdown li a:hover, .single-portfolio-details .port-share-btn a:hover, .portfolio-hover .portfolio-icon.liked, .testimonial .star-icon.color, .blog .timeline a .entry-content.pix-blog-link:hover .icon-box, .blog .normal .pix-blog-link .link-text, .comment-form .form-submit #submit, .tweet-icon, .tweets.style3 .tweet-content a, #headerWidget.col3 .tab-widget #recentcomments li a, #pageFooterCon.col3 .tab-widget #recentcomments li a, #headerWidget.col4 .tab-widget #recentcomments li a, #pageFooterCon.col4 .tab-widget #recentcomments li a, .single-staff .staff-email a, .post .title a:hover, .post .link a:hover, .post .category a:hover, .blog .timeline .entry-content.pix-blog-link:hover .link-text, .pix-blog-link .link-text, .blog .masonry a .entry-content.pix-blog-link:hover .icon-box, .authorDetails .authorName a:hover, .comment-list .fn a:hover, .comment-list a:hover, .subNavigation a:hover, .widget li a:hover, .widget.popularpost li a:hover, .widget.recentpost li a:hover, .tab-widget #recentcomments li a, #headerWidget .widget li a:hover, #pageFooterCon .widget li a:hover, .menu-light .main-nav #lang-list a.active, .pix-cart .price-mini, .pix-cart .pix-woo-price, .pix-cart .total .amount, .pix-cart .widget_shopping_cart_content .button:hover, .woocommerce .star-rating:before, .woocommerce-page .star-rating:before, .woocommerce .star-rating span:before, .woocommerce-page .star-rating span:before, .woo-products .staff-img-con:hover .onsale, .woo-products .staff-img-con:hover .price, .woo-product-item .title a:hover, .woocommerce-tabs .stars a.active, .woo-product-item .add_to_cart_button:before, .woo-product-item .add_to_cart_button span, .product_list_widget li a:hover, .product_list_widget .quantity, .widget_shopping_cart_content .button, .price_slider_amount .price_label .from, .price_slider_amount .price_label .to, .shop_table .product-name a:hover, .shop_table .button.checkout-button, .summary .woocommerce-review-link:hover, .summary .single_add_to_cart_button, .product_meta span a:hover, .woocommerce-tabs .stars .star-1:hover:after, .woocommerce-tabs .stars .star-1.active:after, .woocommerce-tabs .stars .star-2:hover:after, .woocommerce-tabs .stars .star-2.active:after, .woocommerce-tabs .stars .star-3:hover:after, .woocommerce-tabs .stars .star-3.active:after, .woocommerce-tabs .stars .star-4:hover:after, .woocommerce-tabs .stars .star-4.active:after, .woocommerce-tabs .stars .star-5:hover:after, .woocommerce-tabs .stars .star-5.active:after, .cart-collaterals h2 .shipping-calculator-button:hover, .light .portfolio-hover .portfolio-icon.liked .pix-heart-2, .btn.btn-simple.white:hover, .search-results .blog-container .author-name a, .main-side-left .main-nav-left.main-nav li a:hover, .main-side-left .main-nav-left.main-nav li a.current, .main-side-left .main-nav-left.main-nav .menu li.menu-item-has-children a:hover:after, .main-side-left .main-nav-left.main-nav .menu li.menu-item-has-children > a.current:after, .main-side-left.sub-menu-dark .main-nav .sub-menu .menu-item a.current, .main-side-left.dark.sub-menu-dark .main-nav .sub-menu .menu-item a.current, .pix-submenu .sub-menu li:hover > a, .dark .main-nav li:hover > a, .dark .main-nav .sub-menu li:hover > a, .stuck.sticky-light .main-nav li:hover > a, .stuck.sticky-light .main-nav .sub-menu li:hover > a, .sub-menu-dark .main-nav .sub-menu .menu-item .menu-item:hover > a, .dark.sub-menu-dark .main-nav .sub-menu .menu-item .menu-item:hover > a, .menu-light .menu-wrap .main-nav .menu > li.current-menu-item > a, .menu-light .menu-wrap .main-nav .menu > li.current-menu-ancestor > a, .menu-light .menu-wrap .main-nav .menu > li:hover > a, .mobile-menu-nav li a:hover, .mobile-menu-nav .menu-item-has-children > .pix-dropdown-arrow:hover:after, .mobile-menu-nav.menu-dark .menu-item-has-children > .pix-dropdown-arrow:hover:after, .mobile-menu-nav .current-menu-item > a, .mobile-menu-nav .current-menu-parent > a, .mobile-menu-nav .current-menu-ancestor > a, .mobile-menu-nav .sub-menu .current-menu-item > a, .mobile-menu-nav.menu-dark .current-menu-item > a, .mobile-menu-nav.menu-dark .current-menu-parent > a, .mobile-menu-nav.menu-dark .current-menu-ancestor > a, .mobile-menu-nav.menu-dark .sub-menu .current-menu-item > a, .mobile-menu-nav.menu-dark li a:hover, .sub-menu-dark .main-nav .sub-menu .menu-item:hover > a, .dark.sub-menu-dark .main-nav .sub-menu .menu-item:hover > a, .blog-post-content a, .breadcrumb li a:hover, .move-up a:hover, .pix-recent-blog-posts h3 a:hover, .popup-icon.style1 .video-popup-icon, .light .tweet-content a, .light .process .text .process-style, .btn.btn-hover-outline.btn-hover-color:hover, .stuck.sticky-light .main-nav > ul > .current-menu-item > a, .stuck.sticky-light .main-nav > ul > li.current-menu-parent > a, .main-nav .current-menu-item > a, .main-nav > ul > .current-menu-ancestor > a, .dark .main-nav .current-menu-item > a, .main-nav li:hover > a, .pix-megamenu .sub-menu li .sub-menu li:hover a, .overlay .main-nav > .menu > li.current-menu-item > a, .header-con .overlay .social-icons a:hover, .transparent-header .dark .header-con:not(.stuck) .main-nav > ul > li.current-menu-item > a, .main-side-left.dark .main-nav-left.main-nav > ul > li.current-menu-item > a, .main-side-left.dark .main-nav-left.main-nav > ul > li.current-menu-parent > a, .main-side-left.dark .main-nav-left.main-nav > ul > li.current-menu-ancestor > a, .button, input[type="submit"], .blog .post .category a, .blog .post .post-title a:hover, .widget #recentcomments a:hover, .list .pixicon-icon.color, .main-side-left .main-nav-left.main-nav li.current-menu-item > a, .main-side-left.dark .main-nav-left.main-nav li ul li a:hover, .composer-header-dark #sub-header .breadcrumb li a:hover, .grid-block-category a, .grid-blog-block .meta-info .post-format-icon i {
+	color: #3c72b7;
+}
+
+#wpneofrontenddata .wpneo-fields input[type="number"], #wpneofrontenddata .wpneo-fields input[type="text"], #wpneofrontenddata .wpneo-fields input[type="email"], #wpneofrontenddata .wpneo-fields textarea, #wpneofrontenddata .wpneo-fields select {
+    border: 3px solid rgba(60, 114, 183, 0.3);
+    border-radius: 4px;
+}
+
+.wpneo-listing-content .woocommerce {
+	display: none;
+}

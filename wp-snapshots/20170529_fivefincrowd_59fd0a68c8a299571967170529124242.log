@@ -1,0 +1,75 @@
+********************************************************************************
+DUPLICATOR-LITE PACKAGE-LOG: 2017-05-29 12:43:13
+NOTICE: Do NOT post to public sites or forums 
+********************************************************************************
+VERSION:	1.2.8
+WORDPRESS:	4.7.3
+PHP INFO:	7.1.1 | SAPI: apache2handler
+SERVER:		Apache/2.2.31 (Unix) mod_wsgi/3.5 Python/2.7.13 PHP/7.1.1 mod_ssl/2.2.31 OpenSSL/1.0.2j DAV/2 mod_fastcgi/2.4.6 mod_perl/2.0.9 Perl/v5.24.0 
+PHP TIME LIMIT: (0) no time limit imposed 
+PHP MAX MEMORY: 2048M (128M default) 
+MEMORY STACK: 12MB 
+
+********************************************************************************
+DATABASE:
+********************************************************************************
+BUILD MODE:   PHP(query limit - 100)
+MYSQLTIMEOUT: 5000
+MYSQLDUMP:    Not Supported 
+TABLES: total:32 | filtered:0 | create:32 
+FILTERED: [] 
+SQL CREATED: 20170529_fivefincrowd_59fd0a68c8a299571967170529124242_database.sql 
+SQL FILE SIZE: 915.7KB (937675) 
+SQL FILE TIME: 2017-05-29 12:43:13 
+SQL RUNTIME: 0.12 sec. 
+
+******************************************************************************** 
+ARCHIVE (ZIP): 
+******************************************************************************** 
+ARCHIVE DIR:  /Applications/MAMP/htdocs/fincrowd 
+ARCHIVE FILE: 20170529_fivefincrowd_59fd0a68c8a299571967170529124242_archive.zip 
+FILTERS: *OFF* 
+DIRS: not set 
+EXTS:  not set 
+---------------------------------------- 
+COMPRESSING 
+SIZE:	162.41MB 
+STATS:	Dirs 1,091 | Files 8,113 
+SQL ADDED: 20170529_fivefincrowd_59fd0a68c8a299571967170529124242_database.sql 
+ZipArchive Object
+(
+    [status] => 0
+    [statusSys] => 0
+    [numFiles] => 9204
+    [filename] => /Applications/MAMP/htdocs/fincrowd/wp-snapshots/tmp/20170529_fivefincrowd_59fd0a68c8a299571967170529124242_archive.zip
+    [comment] => 
+)
+ 
+COMPRESSION RESULT: '1' 
+COMPRESSED SIZE: 89.13MB 
+ARCHIVE RUNTIME: 48.68 sec. 
+MEMORY STACK: 16MB 
+
+******************************************************************************** 
+MAKE INSTALLER: 
+******************************************************************************** 
+Build Start 
+Build Finished 
+Preping for use 
+Template parsed with new data 
+Complete [/Applications/MAMP/htdocs/fincrowd/wp-snapshots/tmp/20170529_fivefincrowd_59fd0a68c8a299571967170529124242_installer.php] 
+Added to archive 
+
+******************************************************************************** 
+INTEGRITY CHECKS: 
+******************************************************************************** 
+SQL File: 915.7KB 
+Installer File: 425.3KB 
+Archive File: 89.13MB  
+
+********************************************************************************
+RECORD ID:[1]
+TOTAL PROCESS RUNTIME: 50.89 sec.
+PEAK PHP MEMORY USED: 16MB
+DONE PROCESSING => 20170529_fivefincrowd 2017-05-29 12:44:03
+ 
