@@ -1,0 +1,3757 @@
+# Copyright (C) 2015 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: _s 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
+"POT-Creation-Date: 2016-09-06 16:10+0530\n"
+"PO-Revision-Date: 2016-09-06 16:11+0530\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.1\n"
+"X-Poedit-KeywordsList: _n;_e;_x;__;esc_html__;esc_html_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:8
+msgid "Page Not Found"
+msgstr ""
+
+#: 404.php:9
+msgid ""
+"Sorry, but the page you were looking for can't be found. Please inform us "
+"about this error."
+msgstr ""
+
+#: comments.php:6 comments.php:27
+msgid "Comments"
+msgstr ""
+
+#: comments.php:7
+msgid "Leave a Comment"
+msgstr ""
+
+#: comments.php:8
+msgid "Add Comment"
+msgstr ""
+
+#: comments.php:17
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: comments.php:28
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:220
+#: framework/theme-options/admin/functions/functions.options.php:416
+#: framework/theme-options/admin/functions/functions.options.php:428
+#: framework/theme-options/admin/functions/functions.options.php:451
+#: framework/theme-options/admin/functions/functions.options.php:694
+#: framework/theme-options/admin/functions/functions.options.php:705
+#: framework/theme-options/admin/functions/functions.options.php:798
+#: framework/theme-options/admin/functions/functions.options.php:1021
+#: framework/theme-options/admin/functions/functions.options.php:1927
+#: framework/theme-options/admin/functions/functions.options.php:2040
+#: framework/theme-options/admin/functions/functions.options.php:2174
+#: framework/theme-options/admin/functions/functions.options.php:2185
+#: framework/theme-options/admin/functions/functions.options.php:2376
+msgid "No"
+msgstr ""
+
+#: comments.php:28
+msgid "One"
+msgstr ""
+
+#: comments.php:45
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:65
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: comments.php:66
+msgid "Cancel Reply"
+msgstr ""
+
+#: comments.php:70
+msgid "Comment"
+msgstr ""
+
+#: comments.php:82
+msgid "Name "
+msgstr ""
+
+#: comments.php:87
+#: framework/theme-options/admin/functions/functions.options.php:284
+#: framework/theme-options/admin/functions/functions.options.php:932
+#: framework/theme-options/admin/functions/functions.options.php:958
+#: framework/theme-options/admin/functions/functions.options.php:1958
+msgid "Email"
+msgstr ""
+
+#: comments.php:93
+msgid "Website :"
+msgstr ""
+
+#: footer.php:61
+#: framework/theme-options/admin/functions/functions.options.php:997
+#: framework/theme-options/admin/functions/functions.options.php:1964
+#: framework/theme-options/admin/functions/functions.options.php:1979
+msgid "Copyright Text"
+msgstr ""
+
+#: footer.php:65 header.php:267
+#: framework/theme-options/admin/functions/functions.options.php:924
+#: framework/theme-options/admin/functions/functions.options.php:1956
+#: templates/headers/header-4.php:30 templates/headers/header-full-nav.php:29
+#: templates/headers/header-main.php:29 templates/headers/header-stack.php:56
+msgid "Menu"
+msgstr ""
+
+#: footer.php:87 framework/helpers/header-helpers.php:261
+msgid "All Rights Reserved."
+msgstr ""
+
+#: functions.php:38
+msgid "The Main Menu"
+msgstr ""
+
+#: functions.php:39
+msgid "Left Main Menu"
+msgstr ""
+
+#: functions.php:40
+msgid "Right Main Menu"
+msgstr ""
+
+#: functions.php:41
+msgid "Top Header Nav"
+msgstr ""
+
+#: functions.php:42
+msgid "Footer Nav"
+msgstr ""
+
+#: functions.php:43
+msgid "Left Side Nav"
+msgstr ""
+
+#: functions.php:44
+msgid "Right Side Nav"
+msgstr ""
+
+#: functions.php:45
+msgid "404 Nav"
+msgstr ""
+
+#: functions.php:215
+msgid "Primary Sidebar"
+msgstr ""
+
+#: functions.php:216
+msgid "The primary sidebar this will be the default sidebar for pages."
+msgstr ""
+
+#: functions.php:225
+msgid "Blog Sidebar"
+msgstr ""
+
+#: functions.php:226
+msgid ""
+"This is default sidebar for Blog, catergories, Archives and single posts "
+"pages."
+msgstr ""
+
+#: functions.php:235
+msgid "Footer Widgets"
+msgstr ""
+
+#: functions.php:236
+msgid "Add Widgets to display in footer."
+msgstr ""
+
+#: functions.php:246 framework/helpers/helpers.php:429
+#: framework/helpers/helpers.php:645
+#: framework/theme-options/admin/functions/functions.options.php:1864
+msgid "Shop"
+msgstr ""
+
+#: functions.php:247
+msgid "Add Widgets to display in Shop Page."
+msgstr ""
+
+#: single.php:226
+msgid "Categories"
+msgstr ""
+
+#: single.php:259
+msgid "Related Posts"
+msgstr ""
+
+#: blog/post-error.php:3
+msgid "Oops, Post Not Found!"
+msgstr ""
+
+#: blog/post-error.php:6
+msgid "Uh Oh. Something is missing. Try double checking things."
+msgstr ""
+
+#: blog/includes/blog-entrycontent.php:16
+msgid "Continue Reading..."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:334
+msgid "Install Required Plugins"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:335
+msgid "Install Plugins"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:337
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:339
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:340
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:392
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:393
+#: framework/class-tgm-plugin-activation.php:912
+#: framework/class-tgm-plugin-activation.php:2618
+#: framework/class-tgm-plugin-activation.php:3665
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:394
+#: framework/class-tgm-plugin-activation.php:3244
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:395
+#: framework/class-tgm-plugin-activation.php:3037
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:397
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:399
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:401
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:402
+msgid "Dismiss this notice"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:403
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:608
+msgid "Update Required"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:1019
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:1019
+#: framework/class-tgm-plugin-activation.php:1022
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:1022
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2067
+#, php-format
+msgid "TGMPA v%s"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2358
+msgid "Required"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2361
+msgid "Recommended"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2377
+msgid "WordPress Repository"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2380
+msgid "External Source"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2383
+msgid "Pre-Packaged"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2400
+msgid "Not Installed"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2404
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2406
+msgid "Active"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2412
+msgid "Required Update not Available"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2415
+msgid "Requires Update"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2418
+msgid "Update recommended"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2427
+#, php-format
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2477
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2481
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2485
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2567
+msgid "unknown"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2575
+msgid "Installed version:"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2583
+msgid "Minimum required version:"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2595
+msgid "Available version:"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2618
+msgid "No plugins to install, update or activate."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2632
+msgid "Plugin"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2633
+msgid "Source"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2634
+msgid "Type"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2638
+msgid "Version"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2639
+msgid "Status"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2688
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2693
+#, php-format
+msgid "Update %2$s"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2699
+#, php-format
+msgid "Activate %2$s"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2769
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2802
+msgid "Install"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2808
+msgid "Update"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2811
+msgid "Activate"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2842
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2844
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2885
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2887
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:2993
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3019
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3243
+msgid "Plugin activation failed."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3583
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3586
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3588
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3592
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3594
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3594
+#: framework/class-tgm-plugin-activation.php:3602
+msgid "Show Details"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3594
+#: framework/class-tgm-plugin-activation.php:3602
+msgid "Hide Details"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3595
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3597
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3600
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3602
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3603
+msgid "All installations have been completed."
+msgstr ""
+
+#: framework/class-tgm-plugin-activation.php:3605
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: framework/tgm-config.php:64
+msgid "Composer Core Plugins"
+msgstr ""
+
+#: framework/tgm-config.php:75
+msgid "Visual Composer"
+msgstr ""
+
+#: framework/tgm-config.php:86
+msgid "Ultimate VC Addons"
+msgstr ""
+
+#: framework/tgm-config.php:97
+msgid "Revolution Slider"
+msgstr ""
+
+#: framework/tgm-config.php:108
+msgid "Contact Form 7"
+msgstr ""
+
+#: framework/tgm-config.php:115
+msgid "Woocommerce"
+msgstr ""
+
+#: framework/admin/admin.php:13
+msgid "Demo Title"
+msgstr ""
+
+#: framework/admin/admin.php:14
+msgid "No Results found!"
+msgstr ""
+
+#: framework/admin/admin.php:17
+msgid "Insert Shortcode"
+msgstr ""
+
+#: framework/editor/shortcodes/dropcaps.php:8
+msgid "Dropcaps Style"
+msgstr ""
+
+#: framework/editor/shortcodes/dropcaps.php:9
+msgid "Choose the style you want"
+msgstr ""
+
+#: framework/editor/shortcodes/dropcaps.php:17
+msgid "Dropcaps Text"
+msgstr ""
+
+#: framework/editor/shortcodes/dropcaps.php:18
+msgid "Enter the dropcaps text"
+msgstr ""
+
+#: framework/editor/shortcodes/emphasis.php:7
+msgid "Emphasis Text"
+msgstr ""
+
+#: framework/editor/shortcodes/emphasis.php:8
+msgid "Enter the Emphasis Content"
+msgstr ""
+
+#: framework/editor/shortcodes/emphasis.php:15
+msgid "Animation"
+msgstr ""
+
+#: framework/editor/shortcodes/emphasis.php:16
+msgid "Do you like to animate this element?"
+msgstr ""
+
+#: framework/editor/shortcodes/emphasis.php:24
+#: framework/theme-options/admin/functions/functions.options.php:1299
+#: framework/theme-options/admin/functions/functions.options.php:1571
+#: framework/theme-options/admin/functions/functions.options.php:1717
+msgid "Animation Transition"
+msgstr ""
+
+#: framework/editor/shortcodes/emphasis.php:25
+msgid "Choose Animation Transition"
+msgstr ""
+
+#: framework/editor/shortcodes/emphasis.php:33
+msgid "Animation Duration"
+msgstr ""
+
+#: framework/editor/shortcodes/emphasis.php:34
+#: framework/theme-options/admin/functions/functions.options.php:1309
+#: framework/theme-options/admin/functions/functions.options.php:1581
+#: framework/theme-options/admin/functions/functions.options.php:1727
+msgid "Enter the Duration (Ex: 500ms or 1s)"
+msgstr ""
+
+#: framework/editor/shortcodes/emphasis.php:41
+msgid "Animation Delay"
+msgstr ""
+
+#: framework/editor/shortcodes/emphasis.php:42
+msgid "Enter the Delay (Ex: 100ms or 1s)"
+msgstr ""
+
+#: framework/editor/shortcodes/quote.php:7
+msgid "Author Name (Optional)"
+msgstr ""
+
+#: framework/editor/shortcodes/quote.php:8
+msgid "Enter the author name"
+msgstr ""
+
+#: framework/editor/shortcodes/quote.php:15
+msgid "Content"
+msgstr ""
+
+#: framework/editor/shortcodes/quote.php:16
+msgid "Enter the  blockquote content"
+msgstr ""
+
+#: framework/editor/shortcodes/quote.php:24
+#: framework/editor/shortcodes/tooltip.php:15
+msgid "Alignment"
+msgstr ""
+
+#: framework/editor/shortcodes/quote.php:25
+msgid "BlockQuote alignment left or right"
+msgstr ""
+
+#: framework/editor/shortcodes/tooltip.php:7
+msgid "Tooltip Text"
+msgstr ""
+
+#: framework/editor/shortcodes/tooltip.php:8
+msgid "Enter the tooltip text"
+msgstr ""
+
+#: framework/editor/shortcodes/tooltip.php:16
+msgid "Choose the alignment you want"
+msgstr ""
+
+#: framework/editor/shortcodes/tooltip.php:24
+msgid "Tooltip URL"
+msgstr ""
+
+#: framework/editor/shortcodes/tooltip.php:25
+msgid "Enter the Tooltip URL"
+msgstr ""
+
+#: framework/editor/shortcodes/tooltip.php:32
+msgid "Tooltip Content"
+msgstr ""
+
+#: framework/editor/shortcodes/tooltip.php:33
+msgid "Enter the tooltip content"
+msgstr ""
+
+#: framework/extras/extras.php:174
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: framework/extras/composer-like-me/like-me.php:17
+msgid "You already liked this!"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:99
+#, php-format
+msgid "%s (Invalid)"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:103
+#, php-format
+msgid "%s (Pending)"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:116
+msgid "sub item"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:148
+#: framework/helpers/blog-helpers.php:150
+msgid "Edit"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:157
+msgid "URL"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:164
+msgid "Navigation Label"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:170
+msgid "Title Attribute"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:177
+msgid "Open link in a new tab"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:182
+msgid "CSS Classes (optional)"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:188
+msgid "Link Relationship (XFN)"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:194
+msgid "Description"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:196
+msgid ""
+"The description will be displayed in the menu if the current theme supports "
+"it."
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:206
+msgid "Insert Menu Icon"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:210
+#: framework/vc_templates/extend_vc/extend_vc.php:86
+msgid "Insert Icon"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:211
+msgid "Remove Icon"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:217
+msgid "Mega Menu"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:220
+#: framework/theme-options/admin/functions/functions.options.php:415
+#: framework/theme-options/admin/functions/functions.options.php:427
+#: framework/theme-options/admin/functions/functions.options.php:450
+#: framework/theme-options/admin/functions/functions.options.php:693
+#: framework/theme-options/admin/functions/functions.options.php:704
+#: framework/theme-options/admin/functions/functions.options.php:797
+#: framework/theme-options/admin/functions/functions.options.php:1020
+#: framework/theme-options/admin/functions/functions.options.php:1926
+#: framework/theme-options/admin/functions/functions.options.php:2039
+#: framework/theme-options/admin/functions/functions.options.php:2173
+#: framework/theme-options/admin/functions/functions.options.php:2184
+#: framework/theme-options/admin/functions/functions.options.php:2375
+msgid "Yes"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:229
+msgid "Mega Menu Columns"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:236
+msgid "2"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:239
+msgid "3"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:242
+msgid "4"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:245
+msgid "5"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:248
+msgid "6"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:257
+msgid "Mega Menu Position"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:260
+#: framework/vc_templates/extend_vc/extend_vc.php:64
+#: framework/vc_templates/extend_vc/extend_vc.php:76
+msgid "Left"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:260
+#: framework/vc_templates/extend_vc/extend_vc.php:65
+#: framework/vc_templates/extend_vc/extend_vc.php:77
+msgid "Right"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:270
+msgid "Hide Title (only hide if mega menu enabled)"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:273
+#: framework/theme-options/admin/functions/functions.options.php:486
+#: framework/theme-options/admin/functions/functions.options.php:498
+#: framework/theme-options/admin/functions/functions.options.php:642
+#: framework/theme-options/admin/functions/functions.options.php:1216
+#: framework/theme-options/admin/functions/functions.options.php:1227
+#: framework/theme-options/admin/functions/functions.options.php:1238
+#: framework/theme-options/admin/functions/functions.options.php:1335
+#: framework/theme-options/admin/functions/functions.options.php:1346
+#: framework/theme-options/admin/functions/functions.options.php:1357
+#: framework/theme-options/admin/functions/functions.options.php:1368
+#: framework/theme-options/admin/functions/functions.options.php:1415
+#: framework/theme-options/admin/functions/functions.options.php:1426
+#: framework/theme-options/admin/functions/functions.options.php:1437
+#: framework/theme-options/admin/functions/functions.options.php:1448
+#: framework/theme-options/admin/functions/functions.options.php:1460
+#: framework/theme-options/admin/functions/functions.options.php:1607
+#: framework/theme-options/admin/functions/functions.options.php:1618
+#: framework/theme-options/admin/functions/functions.options.php:1629
+#: framework/theme-options/admin/functions/functions.options.php:1640
+#: framework/theme-options/admin/functions/functions.options.php:1753
+#: framework/theme-options/admin/functions/functions.options.php:1764
+#: framework/theme-options/admin/functions/functions.options.php:1775
+#: framework/theme-options/admin/functions/functions.options.php:1786
+#: framework/theme-options/admin/functions/functions.options.php:1837
+#: framework/theme-options/admin/functions/functions.options.php:1848
+#: framework/theme-options/admin/functions/functions.options.php:1938
+#: framework/theme-options/admin/functions/functions.options.php:1991
+msgid "Show"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:273
+#: framework/theme-options/admin/functions/functions.options.php:487
+#: framework/theme-options/admin/functions/functions.options.php:499
+#: framework/theme-options/admin/functions/functions.options.php:643
+#: framework/theme-options/admin/functions/functions.options.php:1217
+#: framework/theme-options/admin/functions/functions.options.php:1228
+#: framework/theme-options/admin/functions/functions.options.php:1239
+#: framework/theme-options/admin/functions/functions.options.php:1336
+#: framework/theme-options/admin/functions/functions.options.php:1347
+#: framework/theme-options/admin/functions/functions.options.php:1358
+#: framework/theme-options/admin/functions/functions.options.php:1369
+#: framework/theme-options/admin/functions/functions.options.php:1416
+#: framework/theme-options/admin/functions/functions.options.php:1427
+#: framework/theme-options/admin/functions/functions.options.php:1438
+#: framework/theme-options/admin/functions/functions.options.php:1449
+#: framework/theme-options/admin/functions/functions.options.php:1461
+#: framework/theme-options/admin/functions/functions.options.php:1608
+#: framework/theme-options/admin/functions/functions.options.php:1619
+#: framework/theme-options/admin/functions/functions.options.php:1630
+#: framework/theme-options/admin/functions/functions.options.php:1641
+#: framework/theme-options/admin/functions/functions.options.php:1754
+#: framework/theme-options/admin/functions/functions.options.php:1765
+#: framework/theme-options/admin/functions/functions.options.php:1776
+#: framework/theme-options/admin/functions/functions.options.php:1787
+#: framework/theme-options/admin/functions/functions.options.php:1838
+#: framework/theme-options/admin/functions/functions.options.php:1849
+#: framework/theme-options/admin/functions/functions.options.php:1939
+#: framework/theme-options/admin/functions/functions.options.php:1992
+msgid "Hide"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:281
+msgid "Insert Background Image"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:285
+msgid "Insert Images"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:296
+msgid "Move"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:297
+msgid "Up one"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:298
+msgid "Down one"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:301
+msgid "To the top"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:308
+#, php-format
+msgid "Original: %s"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:321
+msgid "Remove"
+msgstr ""
+
+#: framework/extras/composer-menu-extend/composer_edit_custom_walker.php:322
+msgid "Cancel"
+msgstr ""
+
+#: framework/extras/composer-sidebars/composer-sidebars.php:12
+msgid "Custom Widget Area"
+msgstr ""
+
+#: framework/helpers/blog-helpers.php:120
+#: framework/helpers/header-helpers.php:187
+#: framework/theme-options/admin/functions/functions.options.php:925
+#: framework/theme-options/admin/functions/functions.options.php:1957
+msgid "Search"
+msgstr ""
+
+#: framework/helpers/blog-helpers.php:144
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: framework/helpers/blog-helpers.php:152
+msgid "F jS, Y"
+msgstr ""
+
+#: framework/helpers/helpers.php:45 framework/helpers/helpers.php:184
+msgid "on"
+msgstr ""
+
+#: framework/helpers/helpers.php:265
+msgid "Filter By:"
+msgstr ""
+
+#: framework/helpers/helpers.php:274 framework/helpers/helpers.php:605
+#: framework/theme-options/admin/functions/functions.options.php:1245
+msgid "Blog"
+msgstr ""
+
+#: framework/helpers/helpers.php:299
+msgid "Home"
+msgstr ""
+
+#: framework/helpers/helpers.php:416
+msgid "Posts Tag: "
+msgstr ""
+
+#: framework/helpers/helpers.php:422
+msgid "Posted By: "
+msgstr ""
+
+#: framework/helpers/helpers.php:426
+msgid "Error 404"
+msgstr ""
+
+#: framework/helpers/helpers.php:436
+msgid " - Page"
+msgstr ""
+
+#: framework/helpers/helpers.php:496
+msgid "translated"
+msgstr ""
+
+#: framework/helpers/helpers.php:498
+msgid "not-translated"
+msgstr ""
+
+#: framework/helpers/helpers.php:531
+msgid "Not Translated"
+msgstr ""
+
+#: framework/helpers/helpers.php:609 framework/helpers/helpers.php:633
+msgid "Posts Categorized:"
+msgstr ""
+
+#: framework/helpers/helpers.php:613
+msgid "Posts Tagged:"
+msgstr ""
+
+#: framework/helpers/helpers.php:620
+msgid "Posts By:"
+msgstr ""
+
+#: framework/helpers/helpers.php:625
+msgid "Daily Archives:"
+msgstr ""
+
+#: framework/helpers/helpers.php:629
+msgid "Monthly Archives:"
+msgstr ""
+
+#: framework/helpers/helpers.php:637
+msgid "Search Result: "
+msgstr ""
+
+#: framework/helpers/helpers.php:641
+msgid "404 Error"
+msgstr ""
+
+#: framework/helpers/helpers.php:669
+msgid "Please active sidebar widget or disable it from theme option."
+msgstr ""
+
+#: framework/helpers/woo-helpers.php:13 framework/helpers/woo-helpers.php:95
+msgid "View your shopping cart"
+msgstr ""
+
+#: framework/theme-options/admin/classes/class.options_machine.php:514
+msgid ""
+"Please wait, Don't reload this page. It will take some time to complete "
+"depends on your internet connection! Once done, You will be notified."
+msgstr ""
+
+#: framework/theme-options/admin/classes/class.options_machine.php:515
+msgid "Demo Data Successfully imported!"
+msgstr ""
+
+#: framework/theme-options/admin/classes/class.options_machine.php:516
+msgid ""
+"Data not Imported, Please reload the page and try again. <br><br> "
+"<strong>Note:</strong>If you continously receive error message then please "
+"try to set file permission to cmod 777 (for both demo and demo.xml in "
+"\"demo_data/demo.xml\"). If it still doesn't work, please upload demo xml "
+"using wordpress importer. Demo xml file should be available in theme package"
+msgstr ""
+
+#: framework/theme-options/admin/classes/class.options_machine.php:691
+msgid "Last Backup : "
+msgstr ""
+
+#: framework/theme-options/admin/front-end/options.php:4
+msgid "Options Updated"
+msgstr ""
+
+#: framework/theme-options/admin/front-end/options.php:8
+#: framework/theme-options/admin/front-end/options.php:81
+msgid "Options Reset"
+msgstr ""
+
+#: framework/theme-options/admin/front-end/options.php:12
+msgid "Error! Not Saved"
+msgstr ""
+
+#: framework/theme-options/admin/front-end/options.php:31
+msgid "Warning- This options panel will not work properly without javascript!"
+msgstr ""
+
+#: framework/theme-options/admin/front-end/options.php:37
+msgid "Expand"
+msgstr ""
+
+#: framework/theme-options/admin/front-end/options.php:38
+msgid "Switch View"
+msgstr ""
+
+#: framework/theme-options/admin/front-end/options.php:49
+#: framework/theme-options/admin/front-end/options.php:80
+msgid "Save All Changes"
+msgstr ""
+
+#: framework/theme-options/admin/front-end/options.php:71
+msgid "No Result Found!"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.mediauploader.php:124
+msgid "Gallery"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.mediauploader.php:124
+msgid "Previously Uploaded"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:26
+#: framework/theme-options/admin/functions/functions.options.php:80
+#: framework/vc_templates/extend_vc/extend_vc.php:98
+msgid "Style1"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:27
+#: framework/theme-options/admin/functions/functions.options.php:81
+#: framework/vc_templates/extend_vc/extend_vc.php:99
+msgid "Style2"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:28
+#: framework/theme-options/admin/functions/functions.options.php:82
+#: framework/vc_templates/extend_vc/extend_vc.php:100
+msgid "Style3"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:29
+#: framework/theme-options/admin/functions/functions.options.php:83
+#: framework/vc_templates/extend_vc/extend_vc.php:101
+msgid "Style4"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:30
+#: framework/theme-options/admin/functions/functions.options.php:84
+msgid "Style5"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:31
+#: framework/theme-options/admin/functions/functions.options.php:85
+msgid "Style6"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:32
+msgid "Style7"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:33
+msgid "Style8"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:34
+msgid "Style9"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:35
+msgid "Style10"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:40
+#: framework/theme-options/admin/functions/functions.options.php:66
+msgid "Fade In"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:41
+#: framework/theme-options/admin/functions/functions.options.php:67
+msgid "Fade In Up"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:42
+#: framework/theme-options/admin/functions/functions.options.php:68
+msgid "Fade In Down"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:43
+#: framework/theme-options/admin/functions/functions.options.php:69
+msgid "Fade In Left"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:44
+#: framework/theme-options/admin/functions/functions.options.php:70
+msgid "Fade In Right"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:45
+#: framework/theme-options/admin/functions/functions.options.php:71
+msgid "Zoom In"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:46
+#: framework/theme-options/admin/functions/functions.options.php:72
+msgid "Zoom In Up"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:47
+#: framework/theme-options/admin/functions/functions.options.php:73
+msgid "Zoom In Down"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:48
+#: framework/theme-options/admin/functions/functions.options.php:74
+msgid "Zoom In Left"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:49
+#: framework/theme-options/admin/functions/functions.options.php:75
+msgid "Zoom In Right"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:52
+msgid "Fade Out"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:53
+msgid "Fade Out Up"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:54
+msgid "Fade Out Down"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:55
+msgid "Fade Out Left"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:56
+msgid "Fade Out Right"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:57
+msgid "Zoom Out"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:58
+msgid "Zoom Out Up"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:59
+msgid "Zoom Out Down"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:60
+msgid "Zoom Out Left"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:61
+msgid "Zoom Out Right"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:90
+msgid "Left Sidebar"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:91
+msgid "Right Sidebar"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:92
+msgid "Full Width"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:95
+msgid "Masonry"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:96
+msgid "Grid"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:97
+#: framework/theme-options/admin/functions/functions.options.php:716
+msgid "Normal"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:101
+msgid "flash"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:102
+msgid "bounce"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:103
+msgid "shake"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:104
+msgid "tada"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:105
+msgid "swing"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:106
+msgid "wobble"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:107
+msgid "pulse"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:108
+msgid "flip"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:109
+msgid "flipInX"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:110
+msgid "flipInY"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:111
+msgid "fadeIn"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:112
+msgid "fadeInUp"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:113
+msgid "fadeInDown"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:114
+msgid "fadeInLeft"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:115
+msgid "fadeInRight"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:116
+msgid "fadeInUpBig"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:117
+msgid "fadeInDownBig"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:118
+msgid "fadeInLeftBig"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:119
+msgid "fadeInRightBig"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:120
+msgid "slideInDown"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:121
+msgid "slideInLeft"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:122
+msgid "slideInRight"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:123
+msgid "bounceIn"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:124
+msgid "bounceInUp"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:125
+msgid "bounceInDown"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:126
+msgid "bounceInLeft"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:127
+msgid "bounceInRight"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:128
+msgid "rotateIn"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:129
+msgid "rotateInDownLeft"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:130
+msgid "rotateInDownRight"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:131
+msgid "rotateInUpLeft"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:132
+msgid "rotateInUpRight"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:133
+msgid "lightSpeedIn"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:134
+msgid "hinge"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:135
+msgid "rollIn"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:139
+msgid "Date"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:140
+msgid "Title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:141
+msgid "Random"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:144
+msgid "Ascending"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:145
+msgid "Descending"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:148
+#: framework/theme-options/admin/functions/functions.options.php:522
+msgid "Small"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:149
+#: framework/theme-options/admin/functions/functions.options.php:523
+msgid "Medium"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:150
+#: framework/theme-options/admin/functions/functions.options.php:524
+msgid "Large"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:153
+msgid "Default Background Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:154
+msgid "Background Image"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:155
+msgid "Custom Background Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:161
+#: framework/theme-options/admin/functions/functions.options.php:169
+msgid "Post"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:162
+#: framework/theme-options/admin/functions/functions.options.php:170
+msgid "Page"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:163
+#: woocommerce/cart/cart.php:35 woocommerce/cart/cart.php:77
+msgid "Product"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:164
+#: framework/theme-options/admin/functions/functions.options.php:171
+msgid "Portfolio"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:216
+msgid "Fixed"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:217
+msgid "Scroll"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:220
+msgid "Auto"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:221
+msgid "Cover"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:222
+msgid "Contain"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:225
+msgid "Repeat"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:226
+msgid "Repeat-x"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:227
+msgid "Repeat-Y"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:228
+msgid "No Repeat"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:239
+msgid "Three"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:240
+msgid "Four"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:273
+#: framework/theme-options/admin/functions/functions.options.php:941
+msgid "Top Header"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:279
+msgid "Email and Phone Number in Top left"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:279
+msgid ""
+"Enter the value to display email and phone, Leave it empty if you don't want "
+"display"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:285
+msgid "Please Enter Email address."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:290
+#: framework/theme-options/admin/functions/functions.options.php:933
+#: framework/theme-options/admin/functions/functions.options.php:959
+#: framework/theme-options/admin/functions/functions.options.php:992
+#: framework/theme-options/admin/functions/functions.options.php:1959
+msgid "Telephone"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:291
+msgid "Please Enter Telephone Number."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:296
+msgid "Top Header Text"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:297
+msgid "Please Enter Text Here."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:304
+msgid "Social Networking Icons"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:304
+msgid ""
+"Enter the url to display social networking icons you want, Leave it empty if "
+"you don't want display"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:308
+msgid "Facebook URL"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:309
+msgid "Please Enter Facebook URL, This will display in header."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:314
+msgid "Twitter"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:315
+msgid "Please Enter Twitter Username, This will display in header."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:320
+msgid "Google Plus URL"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:321
+msgid "Please Enter Google Plus URL, This will display in header."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:326
+msgid "LinkedIn URL"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:327
+msgid "Enter your full linkedIn URL, This will display in header."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:332
+msgid "Dribble URL"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:333
+msgid "Enter your full dribble URL, This will display in header."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:338
+msgid "Instagram URL"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:339
+msgid "Enter your full instagram URL, This will display in header."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:345
+msgid "Flickr URL"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:346
+msgid "Enter your full flickr URL, This will display in header."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:351
+msgid "Pinterest URL"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:352
+msgid "Enter your full Pinterest URL, This will display in header."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:357
+msgid "Tumblr URL"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:358
+msgid "Enter your full Tumblr URL, This will display in header."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:363
+msgid "RSS URL"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:364
+msgid "Enter your full rss URL, This will display in header."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:370
+msgid "Header Options"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:374
+msgid "Header Layout Style."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:375
+msgid ""
+"Choose Header Layout. Boxed = max header width is 1200px; Wide = header "
+"covers the viewport."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:379
+#: framework/theme-options/admin/functions/functions.options.php:818
+msgid "Wide"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:380
+#: framework/theme-options/admin/functions/functions.options.php:819
+msgid "Boxed"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:385
+msgid "Main Layout"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:392
+msgid "Header Hover Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:399
+msgid "Header Background Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:400
+msgid ""
+"Select header background style. Dark = White Text and Black Background; "
+"Light = Black Text and White Background."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:404
+#: framework/theme-options/admin/functions/functions.options.php:474
+#: framework/theme-options/admin/functions/functions.options.php:630
+#: framework/theme-options/admin/functions/functions.options.php:671
+#: framework/theme-options/admin/functions/functions.options.php:682
+#: framework/theme-options/admin/functions/functions.options.php:1973
+msgid "Dark"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:405
+#: framework/theme-options/admin/functions/functions.options.php:475
+#: framework/theme-options/admin/functions/functions.options.php:631
+#: framework/theme-options/admin/functions/functions.options.php:672
+#: framework/theme-options/admin/functions/functions.options.php:683
+#: framework/theme-options/admin/functions/functions.options.php:1974
+msgid "Light"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:410
+msgid "Show Header border?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:411
+msgid "Show/Hide Header border"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:421
+msgid "Enable Fixed ( Transparent Header )"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:422
+msgid "Do you like to enable fixed transparent header?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:433
+msgid "Choose Percentage of fixed Header Transparency"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:434
+msgid "How much transparency you want to apply for fixed header"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:444
+msgid "Show Top Header?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:445
+msgid "Choose 'Yes' to enable top header."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:456
+msgid "Top Header Position"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:457
+msgid "Choose top header position."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:462
+#: framework/vc_templates/extend_vc/extend_vc.php:75
+msgid "Top"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:463
+#: framework/vc_templates/extend_vc/extend_vc.php:78
+msgid "Bottom"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:468
+msgid "Top Header Background Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:469
+msgid ""
+"Select Top Header Background Style. Dark = White Text and Black Background; "
+"Light = Black Text and White Background."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:480
+msgid "Show/Hide Title Bar"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:481
+msgid "Do you want to display title bar?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:492
+msgid "Show/Hide breadcrumbs"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:493
+msgid "Do you want to display breadcrumbs?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:504
+msgid "Title Bar Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:505
+msgid "Select title bar style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:510
+#: framework/vc_templates/extend_vc/extend_vc.php:9
+#: framework/vc_templates/extend_vc/extend_vc.php:20
+#: framework/vc_templates/extend_vc/extend_vc.php:36
+#: framework/vc_templates/extend_vc/extend_vc.php:52
+msgid "Default"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:511
+msgid "Custom"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:516
+msgid "Title Bar Size"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:517
+msgid "Select title bar size"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:529
+msgid "Title bar background color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:530
+msgid "It applies title bar background color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:537
+msgid "Upload Title bar background image"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:538
+msgid "It applies title bar background image."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:546
+msgid "Title Bar overlay"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:547
+msgid "Background Overlay Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:552
+msgid "Gradient"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:553
+msgid "Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:558
+msgid "Title bar overlay color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:559
+#: framework/theme-options/admin/functions/functions.options.php:567
+#: framework/theme-options/admin/functions/functions.options.php:575
+#: framework/theme-options/admin/functions/functions.options.php:583
+msgid "It applies title bar background overlay color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:566
+msgid "Overlay Gradient Top Value"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:574
+msgid "Overlay Gradient Middle Value"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:582
+msgid "Overlay Gradient Bottom Value"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:590
+msgid "Overlay Gradient Opacity"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:591
+msgid "Type the alpha value. Eg: 0.1 to 1.0"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:598
+msgid "Title bar text color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:599
+msgid "It applies title bar text color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:606
+#: framework/theme-options/admin/functions/functions.options.php:1381
+#: framework/theme-options/admin/functions/functions.options.php:1653
+#: framework/theme-options/admin/functions/functions.options.php:1799
+#: framework/theme-options/admin/functions/functions.options.php:1854
+#: framework/theme-options/admin/functions/functions.options.php:1906
+msgid "Body background color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:607
+#: framework/theme-options/admin/functions/functions.options.php:1382
+#: framework/theme-options/admin/functions/functions.options.php:1654
+#: framework/theme-options/admin/functions/functions.options.php:1800
+#: framework/theme-options/admin/functions/functions.options.php:1855
+#: framework/theme-options/admin/functions/functions.options.php:1907
+msgid "It applies body background color for blog page"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:613
+msgid "Sticky Header"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:614
+msgid "Enable or disable Sticky Header from here"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:618
+#: framework/theme-options/admin/functions/functions.options.php:897
+#: framework/theme-options/admin/functions/functions.options.php:1294
+#: framework/theme-options/admin/functions/functions.options.php:1566
+#: framework/theme-options/admin/functions/functions.options.php:1712
+msgid "Disable"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:619
+#: framework/theme-options/admin/functions/functions.options.php:896
+#: framework/theme-options/admin/functions/functions.options.php:1293
+#: framework/theme-options/admin/functions/functions.options.php:1565
+#: framework/theme-options/admin/functions/functions.options.php:1711
+msgid "Enable"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:620
+msgid "Show On Scroll Up"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:625
+msgid "Sticky Header Background"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:626
+msgid "Select Sticky Background Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:636
+msgid "Show/Hide Header Widget"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:637
+msgid "Do you want to display the header widget?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:648
+msgid "Header Widget Columns"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:649
+msgid "Choose the header widget columns"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:657
+#: framework/theme-options/admin/functions/functions.options.php:1271
+#: framework/theme-options/admin/functions/functions.options.php:1394
+#: framework/theme-options/admin/functions/functions.options.php:1543
+#: framework/theme-options/admin/functions/functions.options.php:1689
+#: framework/theme-options/admin/functions/functions.options.php:1876
+#: framework/theme-options/admin/functions/functions.options.php:1944
+msgid "Choose the Registered Sidebar"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:658
+#: framework/theme-options/admin/functions/functions.options.php:1272
+#: framework/theme-options/admin/functions/functions.options.php:1395
+#: framework/theme-options/admin/functions/functions.options.php:1544
+#: framework/theme-options/admin/functions/functions.options.php:1690
+#: framework/theme-options/admin/functions/functions.options.php:1877
+#: framework/theme-options/admin/functions/functions.options.php:1945
+msgid "Please choose the sidebar you have created"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:666
+msgid "Main Menu Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:667
+msgid "Select main menu style."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:677
+msgid "DropDown Menu Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:678
+msgid "Select dropdown menu style."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:688
+msgid "Show Mobile Menu Dropdown"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:689
+msgid "Choose Yes to show sub menus (as dropdown) in mobile menu."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:699
+msgid "Show/Hide Language Selector"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:700
+msgid "Do you want to display language selector?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:710
+msgid "WPML Language Selector Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:711
+msgid "Choose Language Selector Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:717
+msgid "Dropdown"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:721
+msgid "WPML Language Display Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:722
+msgid "Choose Language Display Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:727
+msgid "Language Code"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:728
+msgid "Language Name"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:729
+msgid "Flag"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:730
+msgid "Flag With Name"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:735
+msgid "General"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:740
+msgid "Welcome to the composer WordPress Responsive Theme."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:740
+msgid "Adjust the options here and change the theme like you want"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:744
+msgid "Upload Logo"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:745
+msgid "Upload a custom logo. Height should be within 116px."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:752
+msgid "Upload Retina Logo"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:753
+msgid ""
+"Upload a retina logo. width and should be double size (width X 2 & height X "
+"2) of above (original) logo."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:760
+msgid "Upload White Logo"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:761
+msgid "Upload a custom white logo. Height should be within 80px."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:768
+msgid "Upload Retina White Logo"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:769
+msgid ""
+"Upload a retina white logo. width and should be double size (width X 2 & "
+"height X 2) of above (original) logo."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:776
+msgid "Fav Icon"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:777
+msgid ""
+"Upload a 16px x 16px Png/Gif image that will represent your website's "
+"favicon."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:784
+msgid "Apple Touch Icon"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:785
+msgid ""
+"Size: 57x57 for older iPhones, 72x72 for iPads, 114x114 for iPhone4's retina "
+"display (IMHO, just go ahead and use the biggest one). Transparency is not "
+"recommended (iOS will put a black BG behind the icon)"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:792
+msgid "Enable Preloader"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:793
+msgid "Do you want to like to enable preloader?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:803
+msgid "Preloader Animation In"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:804
+msgid "Choose a loading animation"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:812
+msgid "Wide &amp; Boxed &amp; Frame Layout"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:813
+msgid ""
+"Choose Header Layout. Boxed = max header width is 1200px; Wide = header "
+"covers the viewport. Frame = White space around the edges."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:820
+msgid "Frame"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:824
+msgid "Main Wrap"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:825
+msgid "Adjust Main wrap width"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:835
+msgid "Content Wrap"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:836
+msgid "Adjust Content wrap width"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:846
+msgid "Responsive"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:847
+msgid "Please choose responsive."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:851
+#: framework/theme-options/admin/functions/functions.options.php:862
+msgid "ON"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:852
+#: framework/theme-options/admin/functions/functions.options.php:863
+msgid "OFF"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:857
+msgid "Show Flyin Sidebar"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:858
+msgid "Do you want to show flyin sidebar?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:868
+msgid "Choose the Flyin Sidebar"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:869
+msgid "Please choose the flyin sidebar you have created"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:877
+msgid "Search Text"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:878
+msgid "Please Enter Search Text Here."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:884
+msgid "Portfolio Slug"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:885
+msgid "Please Enter the slug for Portfolio"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:891
+msgid "Show Go to Top Button"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:892
+msgid "Show/Hide Go to Top Button in the page"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:902
+msgid "Custom CSS"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:903
+msgid "Type your custom CSS rules."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:909
+msgid "Header Builder"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:915
+msgid "Grey Header Area."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:915
+msgid ""
+"This is the setting for grey Header Area which can be displayed above or "
+"below Main Header depends on header settings"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:926
+#: framework/theme-options/admin/functions/functions.options.php:965
+#: framework/theme-options/admin/functions/functions.options.php:991
+msgid "Woocommerce cart"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:927
+#: framework/theme-options/admin/functions/functions.options.php:963
+#: framework/theme-options/admin/functions/functions.options.php:989
+msgid "WMPL Language Selector"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:928
+msgid "Custom Text"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:937
+#: framework/theme-options/admin/functions/functions.options.php:953
+#: framework/theme-options/admin/functions/functions.options.php:987
+#: framework/theme-options/admin/functions/functions.options.php:996
+#: framework/theme-options/admin/functions/functions.options.php:1963
+msgid "Social Icons"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:942
+msgid "Choose what you want to display on Left / Right Side of Top Header Area"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:954
+#: framework/theme-options/admin/functions/functions.options.php:988
+msgid "Search Form"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:964
+#: framework/theme-options/admin/functions/functions.options.php:990
+msgid "Search Icon"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:971
+msgid "Main Header."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:971
+msgid ""
+"This is the setting for Main Header Header layout Can be change in header "
+"settings"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:975
+msgid "Main Header"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:976
+msgid "Choose what you want to display in Main Header Left / Right Side"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1001
+msgid "Side Header Widget"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1002
+msgid "Choose what you want to display in side header widget"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1010
+msgid "Header Styling Options."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1010
+msgid ""
+"This is the setting for Main Header. Header layout Can be change in header "
+"settings"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1014
+msgid "Custom Header Styles"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1015
+#: framework/theme-options/admin/functions/functions.options.php:2169
+msgid ""
+"Do you like to use Custom Styles, Please enable it and choose the Background "
+"color, Primary color, Selection text color, selection background color, link "
+"hover color. If it's disabled, the default style will apply and custom "
+"styles are won't apply."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1028
+msgid "Top Info bar Styling Options."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1034
+msgid "Top Header Background Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1035
+#: framework/theme-options/admin/functions/functions.options.php:1043
+#: framework/theme-options/admin/functions/functions.options.php:1051
+#: framework/theme-options/admin/functions/functions.options.php:1059
+#: framework/theme-options/admin/functions/functions.options.php:1084
+#: framework/theme-options/admin/functions/functions.options.php:1092
+#: framework/theme-options/admin/functions/functions.options.php:1100
+#: framework/theme-options/admin/functions/functions.options.php:1108
+#: framework/theme-options/admin/functions/functions.options.php:1116
+#: framework/theme-options/admin/functions/functions.options.php:1124
+#: framework/theme-options/admin/functions/functions.options.php:1132
+#: framework/theme-options/admin/functions/functions.options.php:1140
+#: framework/theme-options/admin/functions/functions.options.php:1148
+#: framework/theme-options/admin/functions/functions.options.php:1156
+#: framework/theme-options/admin/functions/functions.options.php:1164
+#: framework/theme-options/admin/functions/functions.options.php:2275
+msgid "This is the header link color for the theme."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1042
+msgid "Top Header Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1050
+msgid "Top Header Link Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1058
+msgid "Top Header Link Hover Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1068
+msgid "Main Header Styling Options"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1068
+msgid "Leave the fields to empty to apply defaults"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1074
+msgid "Main Header Height"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1075
+msgid "Type the height in px. Eg: 100px. Leave it to empty to apply default"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1083
+msgid "Header Background Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1091
+msgid "Header Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1099
+msgid "Header Link Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1107
+msgid "Header Link Hover Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1115
+msgid "Menu Background Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1123
+msgid "Menu Link Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1131
+msgid "Menu Link Hover Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1139
+msgid "Sub Menu Background Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1147
+msgid "Sub Menu Border Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1155
+msgid "Sub Menu Link Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1163
+msgid "Sub Menu Link Hover Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1172
+msgid "Single Portfolio"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1176
+msgid "Project Detail Title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1177
+msgid "Type the project detail title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1183
+msgid "Client Title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1184
+msgid "Type the Client title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1190
+msgid "Skill Title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1191
+msgid "Type the Skill title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1197
+msgid "Task Title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1198
+msgid "Type the Task title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1204
+msgid "Launch Button Text"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1205
+msgid "Type the Launch button text"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1211
+msgid "Show/Hide Like button"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1212
+msgid "Do you want to display Like button?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1222
+msgid "Show/Hide Share option"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1223
+msgid "Do you want to display Share option?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1233
+msgid "Show/Hide Next and Previous arrow"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1234
+msgid "Do you want to display Next and Previous arrow?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1249
+msgid "Blog Title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1250
+msgid "Type the blog title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1256
+#: framework/theme-options/admin/functions/functions.options.php:1528
+#: framework/theme-options/admin/functions/functions.options.php:1674
+msgid "Slider Shortcode"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1257
+#: framework/theme-options/admin/functions/functions.options.php:1529
+#: framework/theme-options/admin/functions/functions.options.php:1675
+msgid "Type the slider shortcode to display slider. Eg: [revslider demo]"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1263
+#: framework/theme-options/admin/functions/functions.options.php:1535
+#: framework/theme-options/admin/functions/functions.options.php:1681
+msgid "Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1264
+#: framework/theme-options/admin/functions/functions.options.php:1536
+#: framework/theme-options/admin/functions/functions.options.php:1682
+msgid "Select the style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1279
+#: framework/theme-options/admin/functions/functions.options.php:1551
+#: framework/theme-options/admin/functions/functions.options.php:1697
+#: framework/theme-options/admin/functions/functions.options.php:1884
+msgid "Sidebar Position"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1280
+#: framework/theme-options/admin/functions/functions.options.php:1552
+#: framework/theme-options/admin/functions/functions.options.php:1698
+#: framework/theme-options/admin/functions/functions.options.php:1885
+msgid "Choose blog sidebar position, it applies blog page only."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1287
+#: framework/theme-options/admin/functions/functions.options.php:1559
+#: framework/theme-options/admin/functions/functions.options.php:1705
+msgid "Enable/Disable Animation"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1288
+#: framework/theme-options/admin/functions/functions.options.php:1560
+#: framework/theme-options/admin/functions/functions.options.php:1706
+msgid "Do you want to animate?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1300
+#: framework/theme-options/admin/functions/functions.options.php:1572
+#: framework/theme-options/admin/functions/functions.options.php:1718
+msgid "Choose animation transition"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1308
+#: framework/theme-options/admin/functions/functions.options.php:1580
+#: framework/theme-options/admin/functions/functions.options.php:1726
+msgid "Transition Duration"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1316
+#: framework/theme-options/admin/functions/functions.options.php:1588
+#: framework/theme-options/admin/functions/functions.options.php:1734
+msgid "Title Limit"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1317
+msgid "Type the no. of letters you want to display for the post title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1323
+#: framework/theme-options/admin/functions/functions.options.php:1595
+#: framework/theme-options/admin/functions/functions.options.php:1741
+msgid "Content Limit"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1324
+msgid "Type the no. of words you want to display for the content"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1330
+#: framework/theme-options/admin/functions/functions.options.php:1602
+#: framework/theme-options/admin/functions/functions.options.php:1748
+msgid "Show/Hide Category in meta"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1331
+#: framework/theme-options/admin/functions/functions.options.php:1603
+#: framework/theme-options/admin/functions/functions.options.php:1749
+msgid "Do you want to display category meta?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1341
+#: framework/theme-options/admin/functions/functions.options.php:1432
+#: framework/theme-options/admin/functions/functions.options.php:1613
+#: framework/theme-options/admin/functions/functions.options.php:1759
+msgid "Show/Hide Like meta"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1342
+#: framework/theme-options/admin/functions/functions.options.php:1433
+#: framework/theme-options/admin/functions/functions.options.php:1614
+#: framework/theme-options/admin/functions/functions.options.php:1760
+msgid "Do you want to display like meta"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1352
+#: framework/theme-options/admin/functions/functions.options.php:1624
+#: framework/theme-options/admin/functions/functions.options.php:1770
+msgid "Show/Hide Comment meta"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1353
+#: framework/theme-options/admin/functions/functions.options.php:1625
+#: framework/theme-options/admin/functions/functions.options.php:1771
+msgid "Do you want to display comments meta?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1363
+#: framework/theme-options/admin/functions/functions.options.php:1635
+#: framework/theme-options/admin/functions/functions.options.php:1781
+msgid "Show/Hide Single post link"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1364
+#: framework/theme-options/admin/functions/functions.options.php:1636
+#: framework/theme-options/admin/functions/functions.options.php:1782
+msgid "Do you want to display single post link?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1374
+#: framework/theme-options/admin/functions/functions.options.php:1646
+#: framework/theme-options/admin/functions/functions.options.php:1792
+msgid "Type the single post link text"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1375
+#: framework/theme-options/admin/functions/functions.options.php:1647
+#: framework/theme-options/admin/functions/functions.options.php:1793
+msgid "Type the single post link text here"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1390
+msgid "Single Blog"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1402
+msgid "Single Post Sidebar Position"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1403
+msgid "Choose single blog sidebar position, it applies blog page only."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1410
+msgid "Show/Hide category"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1411
+msgid "Do you want to display category"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1421
+msgid "Show/Hide Date meta"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1422
+msgid "Do you want to display date meta"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1443
+msgid "Show/Hide comment meta"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1444
+msgid "Do you want to display comment meta"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1454
+msgid "Show/Hide Related Posts Section"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1455
+msgid "Do you want to display related post section"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1466
+msgid "Related Post Title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1467
+msgid "Type the relatted post section title here"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1475
+msgid "Number of Related Post"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1476
+msgid "Enter the integer value to display related post"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1483
+msgid "Order By"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1484
+msgid "Choose the order by selection "
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1492
+msgid "Sorting Order"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1493
+msgid "Choose the sorting order"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1501
+msgid "Comment Section Title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1502
+msgid "Type the comment section title here"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1508
+msgid "Comment form Title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1509
+msgid "Type the comment form title here"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1515
+msgid "Comment form button text"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1516
+msgid "Type the comment form button text here"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1524
+msgid "Archives"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1589
+#: framework/theme-options/admin/functions/functions.options.php:1735
+msgid "Type the numerical value for the post title"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1596
+#: framework/theme-options/admin/functions/functions.options.php:1742
+msgid "Type the numerical value for the content"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1662
+msgid "Search Page"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1666
+msgid "Search Exclude"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1667
+msgid "Exclude Search result here"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1807
+msgid "Error Page"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1811
+msgid "Upload 404 Image"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1812
+msgid "Upload a custom 404 image. Height should be more than 1360px."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1818
+#: framework/theme-options/admin/functions/functions.options.php:1825
+msgid "404 Error text"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1819
+msgid "Enter the 404 error text here"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1826
+msgid "Enter the 404 error description here"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1832
+msgid "Show/Hide 404 menu"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1833
+msgid "Do you want to display the 404 menu?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1843
+msgid "Show/Hide 404 Search"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1844
+msgid "Do you want to display the Search?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1869
+msgid "Number of Products"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1870
+msgid "How many products you want to display per page?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1892
+msgid "Product width"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1893
+msgid "Type the width of the products"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1899
+msgid "Product height"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1900
+msgid "Type the height of the products"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1917
+msgid "Footer Options"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1921
+msgid "Choose Fixed Footer?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1922
+msgid "Do you want Footer Fixed?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1932
+msgid "Show/Hide Footer Widget"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1933
+msgid "Do you want to display the footer widget?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1968
+msgid "Footer Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1969
+msgid "Select footer style."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1980
+msgid "Type Copyright Text"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1985
+msgid "Show/Hide Small footer"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1986
+#: framework/theme-options/admin/functions/functions.options.php:1998
+msgid "Do you want to display the small footer?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:1997
+msgid "Copyright Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2004
+msgid "Left and Right Side"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2005
+msgid "Centered"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2025
+msgid "Copyright elements"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2026
+msgid "Choose what you want to display on Footer Area"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2033
+msgid "Choose Footer Custom Style"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2034
+msgid "Do you want to customize the footer appearance?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2045
+msgid "Footer Widget Title Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2046
+msgid "This is the footer widget title color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2053
+msgid "Footer Text Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2054
+msgid "This is the footer text color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2061
+msgid "Footer Link Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2062
+msgid "This is the footer link color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2069
+msgid "Footer Link Hover Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2070
+msgid "This is the footer link hover color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2078
+msgid "Footer Background Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2079
+msgid "This is the footer background color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2086
+msgid "Choose Footer Pattern"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2087
+msgid "Select the footer pattern it affects only footer widget area section"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2095
+msgid "Upload Footer Background"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2096
+msgid "Upload a custom footer background. Height should be more than 1360px."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2105
+#: framework/theme-options/admin/functions/functions.options.php:2214
+msgid "Background Attachment"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2106
+#: framework/theme-options/admin/functions/functions.options.php:2215
+msgid "Choose the footer background image attachment"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2114
+#: framework/theme-options/admin/functions/functions.options.php:2223
+msgid "Background Size"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2115
+#: framework/theme-options/admin/functions/functions.options.php:2224
+msgid "Choose the footer background image size"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2123
+#: framework/theme-options/admin/functions/functions.options.php:2232
+msgid "Background Repeat"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2124
+#: framework/theme-options/admin/functions/functions.options.php:2233
+msgid "Choose the footer background image repeat option"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2132
+msgid "Copyright Background Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2133
+msgid "This is the copyright background color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2140
+msgid "Copyright Text Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2141
+msgid "This is the copyright text color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2148
+msgid "Copyright Link Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2149
+msgid "This is the copyright link color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2156
+msgid "Copyright Link Hover Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2157
+msgid "This is the copyright link hover color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2165
+msgid "Styling Options"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2168
+msgid "Custom Styles"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2179
+msgid "Customize Body Background"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2180
+msgid "Do you want to customize the body backgound?"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2190
+msgid "Body Background Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2191
+msgid "Pick a background color for the theme (default: #fff)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2198
+msgid "Choose Body Pattern"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2206
+msgid "Upload Body Background Image"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2207
+msgid "Upload a body background image"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2241
+msgid "Primary Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2242
+msgid ""
+"This is the primary color for the theme.(its applied for most of the items "
+"in the theme such as button, link etc.."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2247
+msgid "Selection Text Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2248
+msgid "This is the text color when selecting the text."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2253
+msgid "Selection Text Background Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2254
+msgid "This is the text background color when selecting the text."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2260
+msgid "Header Widget Title Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2261
+msgid "This is the header widget title color for the theme."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2267
+msgid "Header Widget Text Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2268
+msgid "This is the header text color for the theme."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2274
+msgid "Header Widget Link Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2281
+msgid "Header Widget Link Hover Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2282
+msgid "This is the header widget link hover color for the theme."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2288
+msgid "Highlight Color"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2289
+msgid "This is the highlight color for the theme."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2296
+msgid "Typography"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2299
+msgid "Body Fonts"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2300
+msgid ""
+"Choose google webfont and Fallback fonts (incase google webfonts not loaded, "
+"fallback websafe fonts will apply). This font will for body texts"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2316
+msgid "Primary Fonts"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2317
+msgid ""
+"Choose google webfont and Fallback fonts (incase google webfonts not loaded, "
+"fallback websafe fonts will apply). This font will apply for Headings, main "
+"menu, Titles etc. To take full contorl turn on advance font settings from "
+"below and enjoy!"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2330
+msgid "Content Fonts"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2331
+msgid ""
+"Choose google webfont and Fallback fonts (incase google webfonts not loaded, "
+"fallback websafe fonts will apply). This font will apply for most of the "
+"sections in the theme including paragraph, lists, blockquote, testimonial, "
+"sub menu etc. To take full contorl turn on advance font settings from below "
+"and enjoy!"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2348
+msgid "Latin"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2349
+msgid "Cyrillic Extended (cyrillic-ext) "
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2350
+msgid "Greek Extended (greek-ext)"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2351
+msgid "Greek (greek)"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2352
+msgid "Vietnamese (vietnamese)"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2353
+msgid "Latin Extended (latin-ext)"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2354
+msgid "Cyrillic (cyrillic)"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2357
+msgid "Choose the character sets you want:"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2358
+msgid ""
+"If you choose only the languages that you need, you'll help prevent slowness "
+"on your webpage."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2366
+msgid "Advance Typography"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2369
+msgid "Advance Font Setting"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2370
+msgid ""
+"Do you like to Enable Advance Font Settings? By enabling this you can choose "
+"font each and every possible section. choose less number of fonts, it will "
+"to help prevent slowness on your webpage."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2381
+msgid "H1 Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2382
+msgid ""
+"This font will apply for h1 tag blog and pages. (This will not apply in "
+"Title Shortcode). Choose google webfont and Fallback fonts (incase google "
+"webfonts not loaded, fallback websafe fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2399
+msgid "H2 Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2400
+#: framework/theme-options/admin/functions/functions.options.php:2418
+#: framework/theme-options/admin/functions/functions.options.php:2436
+#: framework/theme-options/admin/functions/functions.options.php:2454
+#: framework/theme-options/admin/functions/functions.options.php:2472
+msgid ""
+"This font will apply for h2 tag blog and pages. (This will not apply in "
+"Title Shortcode). Choose google webfont and Fallback fonts (incase google "
+"webfonts not loaded, fallback websafe fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2417
+msgid "H3 Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2435
+msgid "H4 Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2453
+msgid "H5 Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2471
+msgid "H6 Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2489
+msgid "List Item Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2490
+msgid ""
+"This font will apply for li tag.Choose google webfont and Fallback fonts "
+"(incase google webfonts not loaded, fallback websafe fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2507
+msgid "Link Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2508
+msgid ""
+"This font will apply for link tag.Choose google webfont and Fallback fonts "
+"(incase google webfonts not loaded, fallback websafe fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2525
+msgid "Logo Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2526
+msgid ""
+"This font will apply for Text Logo.Choose google webfont and Fallback fonts "
+"(incase google webfonts not loaded, fallback websafe fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2543
+msgid "BlockQuote Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2544
+msgid ""
+"This font will apply for blockquote tag.Choose google webfont and Fallback "
+"fonts (incase google webfonts not loaded, fallback websafe fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2561
+msgid "Main Menu Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2562
+msgid ""
+"This font will apply for Main Menu Style.Choose google webfont and Fallback "
+"fonts (incase google webfonts not loaded, fallback websafe fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2579
+msgid "Sub Menu Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2580
+msgid ""
+"This font will apply for Sub Menu Style.Choose google webfont and Fallback "
+"fonts (incase google webfonts not loaded, fallback websafe fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2597
+msgid "Mega Menu Title Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2598
+msgid ""
+"This font will apply for Mega Menu Title Style.Choose google webfont and "
+"Fallback fonts (incase google webfonts not loaded, fallback websafe fonts "
+"will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2615
+msgid "Title Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2616
+msgid ""
+"This font will apply for Title Style.Choose google webfont and Fallback "
+"fonts (incase google webfonts not loaded, fallback websafe fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2634
+msgid "Button Small Font Size"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2635
+#: framework/theme-options/admin/functions/functions.options.php:2664
+msgid "Choose the button large text font size"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2645
+msgid "Button Medium Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2646
+msgid ""
+"This font will apply for Button Style.Choose google webfont and Fallback "
+"fonts (incase google webfonts not loaded, fallback websafe fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2663
+msgid "Button Large Font Size"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2673
+msgid "Process Title Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2674
+msgid ""
+"This font will apply for Process Title Style.Choose google webfont and "
+"Fallback fonts (incase google webfonts not loaded, fallback websafe fonts "
+"will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2691
+msgid "Process Content Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2692
+msgid ""
+"This font will apply for Process Content Style.Choose google webfont and "
+"Fallback fonts (incase google webfonts not loaded, fallback websafe fonts "
+"will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2709
+msgid "Skill Percentage Text Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2710
+msgid ""
+"This font will apply for Percentage Text Style.Choose google webfont and "
+"Fallback fonts (incase google webfonts not loaded, fallback websafe fonts "
+"will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2727
+msgid "Skill Percentage Outside Title Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2728
+msgid ""
+"This font will apply for Percentage Outside Title Style.Choose google "
+"webfont and Fallback fonts (incase google webfonts not loaded, fallback "
+"websafe fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2745
+msgid "Textfield Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2746
+msgid ""
+"This font will apply for Textfield Style.Choose google webfont and Fallback "
+"fonts (incase google webfonts not loaded, fallback websafe fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2763
+msgid "Portfolio Filter Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2764
+msgid ""
+"This font will apply for Portfolio Filter Style.Choose google webfont and "
+"Fallback fonts (incase google webfonts not loaded, fallback websafe fonts "
+"will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2780
+msgid "Pricing Table Title Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2781
+msgid ""
+"This font will apply for Pricing Table Title Style.Choose google webfont and "
+"Fallback fonts (incase google webfonts not loaded, fallback websafe fonts "
+"will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2798
+msgid "Pricing Table Price Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2799
+msgid ""
+"This font will apply for Pricing Table Price Style.Choose google webfont and "
+"Fallback fonts (incase google webfonts not loaded, fallback websafe fonts "
+"will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2816
+msgid "Pricing Table Currency Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2817
+msgid ""
+"This font will apply for Pricing Table Currency Style.Choose google webfont "
+"and Fallback fonts (incase google webfonts not loaded, fallback websafe "
+"fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2834
+msgid "Pricing Table Price Period Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2835
+msgid ""
+"This font will apply for Pricing Table Price Period Style.Choose google "
+"webfont and Fallback fonts (incase google webfonts not loaded, fallback "
+"websafe fonts will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2852
+msgid "Widget Title Font"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2853
+msgid ""
+"This font will apply for Widget Title Style.Choose google webfont and "
+"Fallback fonts (incase google webfonts not loaded, fallback websafe fonts "
+"will apply)."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2871
+msgid "Backup Options"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2876
+msgid "Backup and Restore Options"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2877
+msgid ""
+"You can use the two buttons below to backup your current options, and then "
+"restore it back at a later time. This is useful if you want to experiment on "
+"the options but would like to keep the old settings in case you need it back."
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2883
+msgid "Transfer Theme Options Data"
+msgstr ""
+
+#: framework/theme-options/admin/functions/functions.options.php:2884
+msgid ""
+"You can tranfer the saved options data between different installs by copying "
+"the text inside the text box. To import data from another install, replace "
+"the data in the text box with the one from another install and click 'Import "
+"Options'."
+msgstr ""
+
+#: framework/vc_templates/vc_tabs.php:83
+msgid "Previous slide"
+msgstr ""
+
+#: framework/vc_templates/vc_tabs.php:83
+msgid "Next slide"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:7
+msgid "Text Color"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:10
+msgid "White"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:11
+msgid ""
+"Choose the font color you want to apply. <br> Alternatively you can choose "
+"your own color at the top of this section"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:18
+msgid "Number of Columns"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:21
+msgid "2 Columns"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:22
+msgid "3 Columns"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:23
+msgid "4 Columns"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:24
+msgid "5 Columns"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:34
+msgid "Accordion Style"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:37
+msgid "Style 2"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:38
+msgid "Style 3"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:39
+msgid "Style 4"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:50
+msgid "Tabs Style"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:53
+msgid "Default Background"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:54
+msgid "Background Color"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:55
+msgid "Color Highlight"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:62
+msgid "Tabs Alignment"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:66
+msgid "Center"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:73
+msgid "Tabs Nav View"
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:89
+msgid "Insert an icon for tab."
+msgstr ""
+
+#: framework/vc_templates/extend_vc/extend_vc.php:96
+msgid "Progress Bar Style"
+msgstr ""
+
+#: framework/widgets/recent-post.php:9
+msgid "Display Recent Posts"
+msgstr ""
+
+#: framework/widgets/recent-post.php:10
+msgid "Composer:: Recent Post"
+msgstr ""
+
+#: framework/widgets/recent-post.php:30 framework/widgets/recent-post.php:110
+msgid "Recent Posts"
+msgstr ""
+
+#: framework/widgets/recent-post.php:115
+msgid "Title:"
+msgstr ""
+
+#: framework/widgets/recent-post.php:118
+msgid "Number of posts to show:"
+msgstr ""
+
+#: framework/widgets/recent-post.php:122
+msgid "Display post date?"
+msgstr ""
+
+#: framework/widgets/recent-post.php:125
+msgid "Display post image?"
+msgstr ""
+
+#: templates/headers/header-drawer.php:57
+msgid "Please activate some Widgets Or disable it from theme option"
+msgstr ""
+
+#: templates/headers/header-drawer.php:63
+msgid "Open"
+msgstr ""
+
+#: templates/headers/header-full-nav.php:59
+#: templates/headers/header-main.php:36 templates/headers/header-stack.php:75
+msgid "Flyin Sidebar"
+msgstr ""
+
+#: templates/portfolio/layout-full_width.php:67
+#: templates/portfolio/layout-two_column.php:133
+msgid "You already liked!"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:27
+msgid "Cart Totals"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:32 woocommerce/cart/cart-totals.php:33
+#: woocommerce/cart/mini-cart.php:108
+msgid "Subtotal"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:54 woocommerce/cart/cart-totals.php:55
+msgid "Shipping"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:70
+#, php-format
+msgid "estimated for %s"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:91 woocommerce/cart/cart-totals.php:92
+#: woocommerce/cart/cart.php:38 woocommerce/cart/cart.php:118
+msgid "Total"
+msgstr ""
+
+#: woocommerce/cart/cart.php:36 woocommerce/cart/cart.php:95
+msgid "Price"
+msgstr ""
+
+#: woocommerce/cart/cart.php:37 woocommerce/cart/cart.php:101
+msgid "Quantity"
+msgstr ""
+
+#: woocommerce/cart/cart.php:58 woocommerce/cart/mini-cart.php:54
+#: woocommerce/cart/mini-cart.php:78
+msgid "Remove this item"
+msgstr ""
+
+#: woocommerce/cart/cart.php:90
+msgid "Available on backorder"
+msgstr ""
+
+#: woocommerce/cart/cart.php:136
+msgid "Coupon"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:100
+msgid "No products in the cart."
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:113
+msgid "Edit Cart"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:114
+msgid "Checkout"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:28
+msgid "You must be logged in to checkout."
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:53
+msgid "Your order"
+msgstr ""
+
+#: woocommerce/checkout/payment.php:35
+msgid ""
+"Sorry, it seems that there are no available payment methods for your state. "
+"Please contact us if you require assistance or wish to make alternate "
+"arrangements."
+msgstr ""
+
+#: woocommerce/checkout/payment.php:35
+msgid "Please fill in your details above to see available payment methods."
+msgstr ""
+
+#: woocommerce/checkout/payment.php:42
+msgid ""
+"Since your browser does not support JavaScript, or it is disabled, please "
+"ensure you click the <em>Update Totals</em> button before placing your "
+"order. You may be charged more than the amount stated above if you fail to "
+"do so."
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:30
+msgid "First name"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:34
+msgid "Last name"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:40
+msgid "Email address"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:45
+msgid "Password Change"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:48
+msgid "Current Password (leave blank to leave unchanged)"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:52
+msgid "New Password (leave blank to leave unchanged)"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-account.php:56
+msgid "Confirm New Password"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-address.php:23
+msgid "Billing Address"
+msgstr ""
+
+#: woocommerce/myaccount/form-edit-address.php:23
+msgid "Shipping Address"
+msgstr ""
+
+#: woocommerce/single-product/tabs/additional-information.php:25
+msgid "Additional Information"
+msgstr ""
+
+#: woocommerce/single-product/tabs/description.php:25
+msgid "Product Description"
+msgstr ""
