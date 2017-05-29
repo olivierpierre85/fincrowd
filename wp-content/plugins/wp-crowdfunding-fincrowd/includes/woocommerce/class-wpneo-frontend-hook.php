@@ -146,7 +146,7 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
             //$campaign_end_method = get_post_meta($post->ID, 'wpneo_campaign_end_method' , true);
             //Fincrowd, always this method to end campaign
             $campaign_end_method = 'target_goal_and_date';
-            
+
             switch ($campaign_end_method){
 
                 case 'target_goal':
@@ -227,6 +227,15 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
             return $funding_goal = get_post_meta( $campaign_id, '_nf_funding_goal', true );
         }
 
+        /**
+         * @param $campaign_id
+         * @return mixed
+         * FINCROWD
+         * Get Remaining Amount
+         */
+        public function getRemainingAmount($campaign_id){
+            return $remaining_amount = ( get_post_meta( $campaign_id, '_nf_funding_goal', true ) - $this->totalFundRaisedByCampaign($campaign_id) ) ;
+        }
         /**
          * @param $campaign_id
          * @return int|string

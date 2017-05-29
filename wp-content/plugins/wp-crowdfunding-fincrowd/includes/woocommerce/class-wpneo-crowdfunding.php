@@ -47,9 +47,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             add_action( 'woocommerce_new_order',                            array($this, 'wpneo_fi_save_interest_type'));
             add_action('woocommerce_process_product_meta',                  array($this, 'wpneo_interest_type_field_save'));
 
-            //add_action( 'woocommerce_after_order_notes', array($this,'fi_interest_insurance_field'), 10, 1 );
             add_action( 'woocommerce_before_checkout_form', array($this,'fi_interest_insurance_field'), 10, 1 );
-            //add_action('woocommerce_checkout_process', 'my_custom_checkout_field_process');
 
             add_action( 'woocommerce_checkout_update_order_meta', array($this,'fi_interest_insurance_field_update_order_meta') );
             add_action( 'woocommerce_admin_order_data_after_billing_address', array($this,'fi_interest_insurance_field_display_admin_order_meta'), 10, 1 );

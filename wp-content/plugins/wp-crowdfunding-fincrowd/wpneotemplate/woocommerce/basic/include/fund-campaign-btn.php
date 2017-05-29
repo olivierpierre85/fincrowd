@@ -11,20 +11,32 @@ if ( ! defined( 'ABSPATH' ) ) {
       if ( is_user_logged_in() ) {
         if (WPNEOCF()->campaignValid()) {
             $recomanded_price = get_post_meta($product->id, 'wpneo_funding_recommended_price', true);
-            //$min_price = get_post_meta($product->id, 'wpneo_funding_minimum_price', true);
-            //$max_price = get_post_meta($product->id, 'wpneo_funding_maximum_price', true);
+
+
+
 
             //Fincrowd
-            //if society, min is 5000
-            $min_price = 500;// TODO global var
-            $max_price = 5000;
             if(! get_the_author_meta( 'physical_person', get_current_user_id() )){
-              $min_price = 5000;// TODO global var
-              $max_price = 0;
+              $min_price = get_option('wpneo_fi_company_min_funding');
+              $max_price = get_option('wpneo_fi_company_max_funding');
 
+            } else {
               //TODO Si personne physique, elle doit être autorisée (pour le projet ?) ou 150 premier = servi
+              $min_price = get_option('wpneo_fi_person_min_funding');
+              $max_price = get_option('wpneo_fi_person_max_funding');
             }
-            //Fincrowd TODO $max price is the remainder of the campaing asking ?
+
+            //Get the max amount from the campaign
+            $remaining_amount = WPNEOCF()->getRemainingAmount($product->id);
+
+            //Fincrowd $max price is the remainder of the campaing asking ?
+            if($max_price > $remaining_amount || $max_price == 0 ){
+              $max_price = $remaining_amount;
+            }
+
+            if($min_price > $remaining_amount ){
+              $min_price = $remaining_amount;
+            }
 
             if(function_exists( 'get_woocommerce_currency_symbol' )){
                 $currency = get_woocommerce_currency_symbol();

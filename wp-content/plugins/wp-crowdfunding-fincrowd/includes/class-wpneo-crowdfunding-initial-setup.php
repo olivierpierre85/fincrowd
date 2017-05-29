@@ -28,6 +28,14 @@ if (! class_exists('Wpneo_Crowdfunding_Initial_Setup')) {
          * Some task during plugin activate
          */
         public static function initial_plugin_setup(){
+
+          //Fincrowd Settings
+          update_option( 'wpneo_fi_person_min_funding',   '500');
+          update_option( 'wpneo_fi_person_max_funding',   '5000');
+          update_option( 'wpneo_fi_company_min_funding',   '5000');
+          update_option( 'wpneo_fi_company_max_funding',   '0' );
+
+          
             //Check is plugin used before or not
             if (get_option('wpneo_crowdfunding_is_used'))
                 return false;
@@ -48,8 +56,6 @@ if (! class_exists('Wpneo_Crowdfunding_Initial_Setup')) {
             update_option( 'wpneo_single_page_reward_design',   '1'); //Single page rewards
             update_option( 'hide_cf_campaign_from_shop_page',    'false'); //Hide campaign form shop page initial value
             update_option( 'wpneo_crowdfunding_add_to_cart_redirect', 'checkout_page'); // Redirect Add to cart
-
-
 
             //WooCommerce Settings
             update_option( 'wpneo_single_page_id', 'true'); // Redirect Add to cart
