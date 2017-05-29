@@ -93,11 +93,14 @@ $html .= '<div class="wpneo-content">';
 										$html .= $campaign['name'];
 										$html .='</a>';
                   elseif ( 'order-cancel' === $column_id ) :
-                    //TODO 15 days in Var somewhere
-                    $cancelLimit = 5;
+                    //Fincrowd 15 days in Var somewhere
+                    $cancelLimit = get_option('wpneo_fi_cancellation_limit');
+                    if($cancelLimit == null){
+                      $cancelLimit = 15;
+                    }
                     if((time()-(60*60*24*$cancelLimit)) < strtotime($order->order_date)){
                       //$html .=  '<input type="button" value="Submit" onclick="wpneo_fi_cancel_order('.$order->id.')">';
-                      $html .= '<a href="javascript:;" id="wpneo_fi_cancel_order" data-order-id="'.$order->id.'">Retirer l\'offre</a>';
+                      $html .= '<a href="javascript:;" id="wpneo_fi_cancel_order" data-order-id="'.$order->id.'">'.__( 'Retirer l\'offre', 'wp-crowdfunding' ).'</a>';
                       //$html .= '<a href="">';
                       //$html .= 'Annuler votre offre';
                       //$html .= '<a>';

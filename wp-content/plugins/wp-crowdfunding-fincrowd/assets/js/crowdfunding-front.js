@@ -504,9 +504,11 @@ jQuery(document).ready(function($){
                     //TODO fincrowd error management
                 }
             });
+    });
 
-
-
+    // Dashboard Validate campaign
+    $(document).on('click', '#wpneo_fi_validate_campaign', function () {
+      alert('Validate Campaign TODO set param to true');
     });
 
 });
