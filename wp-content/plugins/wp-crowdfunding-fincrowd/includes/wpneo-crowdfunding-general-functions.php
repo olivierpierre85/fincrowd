@@ -47,7 +47,7 @@ if (! function_exists('wpneo_crowdfunding_update_option_checkbox')){
 if (! function_exists('wpneo_crowdfunding_update_post_meta_text')){
     function wpneo_crowdfunding_update_post_meta_text($post_id, $meta_name = '', $meta_value = null){
         //if (!empty($meta_value)) {
-            update_post_meta( $post_id, $meta_name, $meta_value);
+            return update_post_meta( $post_id, $meta_name, $meta_value);
         //}
     }
 }
