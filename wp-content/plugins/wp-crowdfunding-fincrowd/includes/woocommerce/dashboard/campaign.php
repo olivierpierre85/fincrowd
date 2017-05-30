@@ -5,6 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $page_numb = max( 1, get_query_var('paged') );
 $posts_per_page = get_option( 'posts_per_page',10 );
+
+//Fincrowd TODO if admin see all
 $args = array(
             'post_type' 		=> 'product',
             'post_status'		=> array('publish', 'draft'),
@@ -51,6 +53,11 @@ $html .= '<div class="wpneo-content">';
                             if ($page_id != '') {
                                 $operation_btn .= '<span><a href="' . get_permalink($page_id) . '?action=edit&postid=' . get_the_ID() . '">' . __("Edit", "wp-crowdfunding") . '</a></span>';
                                 $operation_btn .= '<span><a href="?page_type=update&postid=' . get_the_ID() . '">'.__("Update", "wp-crowdfunding").'</a></span>';
+                                //Fincrowd TODO btn Validate end of Campaig
+                                //IF admin, if campaign date up OR goal Reached ? Or all the time ?
+                                if(! get_post_meta(get_the_ID(), 'wpneo_fi_campaign_validated', true)){
+                                  $operation_btn .= '<span><a href="javascript:;" id="wpneo_fi_validate_campaign" data-campaign-id="'.get_the_ID().'">'.__( 'Validez la fin de la campagne', 'wp-crowdfunding' ).'</a></span>';
+                                }
                             }
                         }
                         $operation_btn .= '</div>';

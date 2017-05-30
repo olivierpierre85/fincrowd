@@ -999,7 +999,14 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             //Launch the validation of this donation directly after
             global $woocommerce;
             $order = new WC_Order($order_id);
-            $order->update_status('completed', '');
+
+            //FINCROWD TODO recheck that the total is not reach in the case where two persons make an offer that reach the total at the same time.
+            if(true){
+              $order->update_status('completed', '');
+            } else {
+              //Delete order, send error message to client 
+            }
+
         }
 
         /**
