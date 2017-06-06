@@ -941,8 +941,8 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             $duration      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_duration', true );
             $insurance = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_insurance', true );
 
-            $monthly_payment            = wpneo_fi_compute_monthly_payment( $total, $interest, $duration );
-            $monthly_payment_insurance  = wpneo_fi_compute_monthly_payment( $total, $interest_insurance, $duration );
+            $monthly_payment            = round(wpneo_fi_compute_monthly_payment( $total, $interest, $duration ),2);
+            $monthly_payment_insurance  = round(wpneo_fi_compute_monthly_payment( $total, $interest_insurance, $duration ),2);
 
             $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
             $total_interest_insurance = round(($duration * $monthly_payment_insurance  ) - $total,2);
@@ -970,23 +970,44 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             echo '<div class="fi-interest-tab">';
             echo '<h4>'.__('Tableau de remboursement').'</h4>';
 
-            echo '<table id="fi-interest-table"><tr><th>Mois</th><th>Capital</th><th>' . __('Remboursement par mois') . '</th></tr>';
+            echo '<table id="fi-interest-table"><tr><th>'
+            . __('Mois') . '</th><th>'
+            . __('Capital remboursé') . '</th><th>'
+            . __('Intérêts') . '</th><th>'
+            . __('Remboursement par mois') . '</th></tr>';
 
-              for($i = 0 ; $i < $duration; $i++ ) {
-                echo '<tr class="fi-interest-row">';
-                echo '<td>mois '.$i.'</td>';
-                echo '<td>Todo capital</td>';
-                echo '<td>'.$monthly_payment.'</td>';
-                echo '</tr>';
-              }
+            $monthly_interest_rate  = $interest / 12 / 100;
+            $total_left_to_pay    = $total;
+            for($i = 0 ; $i < $duration; $i++ ) {
+              $interest_by_month = round($total_left_to_pay * $monthly_interest_rate,2);
+              $capital_by_month = round($monthly_payment - $interest_by_month,2);
 
-              for($i = 0 ; $i < $duration; $i++ ) {
-                echo '<tr class="fi-interest-insurance-row">';
-                echo '<td>mois '.$i.'</td>';
-                echo '<td>Todo capital</td>';
-                echo '<td>'.$monthly_payment_insurance.'</td>';
-                echo '</tr>';
-              }
+              echo '<tr class="fi-interest-row">';
+              echo '<td>'.__('Mois ').$i.'</td>';
+              echo '<td>'.$capital_by_month.'</td>';
+              echo '<td>'.$interest_by_month.'</td>';
+              echo '<td>'.$monthly_payment.'</td>';
+              echo '</tr>';
+
+              $total_left_to_pay = $total_left_to_pay - $monthly_payment;
+            }
+
+            //WITH insurance
+            $monthly_interest_rate_insurance  = $interest_insurance / 12 / 100;
+            $total_left_to_pay    = $total;
+            for($i = 0 ; $i < $duration; $i++ ) {
+              $interest_by_month = round($total_left_to_pay * $monthly_interest_rate_insurance,2);
+              $capital_by_month = round($monthly_payment - $interest_by_month,2);
+
+              echo '<tr class="fi-interest-insurance-row">';
+              echo '<td>'.__('Mois ').$i.'</td>';
+              echo '<td>'.$capital_by_month.'</td>';
+              echo '<td>'.$interest_by_month.'</td>';
+              echo '<td>'.$monthly_payment_insurance.'</td>';
+              echo '</tr>';
+
+              $total_left_to_pay = $total_left_to_pay - $monthly_payment;
+            }
 
             echo '</table>';
 
@@ -1004,7 +1025,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             if(true){
               $order->update_status('completed', '');
             } else {
-              //Delete order, send error message to client 
+              //Delete order, send error message to client
             }
 
         }
