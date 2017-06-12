@@ -355,6 +355,20 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                     )
             );
 
+            echo '<div class="options_group"></div>';
+            //for each registered user a checkbox (users as subscribers)
+            $user_query = new WP_User_Query( array( 'role' => 'Subscriber' ) );
+
+            // User Loop
+            if ( ! empty( $user_query->results ) ) {
+            	foreach ( $user_query->results as $user ) {
+                echo '<p><input type="checkbox" name="wpneo_fi_users_list[]" value="' . $user->ID . '" /> ' . $user->display_name . '</p>';
+            	}
+            } else {
+            	echo 'No users found.';
+            }
+
+
 /*
             $options = array();
             if (get_option('wpneo_show_target_goal') == 'true'){
