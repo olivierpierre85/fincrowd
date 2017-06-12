@@ -359,7 +359,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             echo '<div class="options_group"></div>';
             //for each registered user a checkbox (users as subscribers)
             $user_query = new WP_User_Query( array( 'role' => 'Subscriber' ) );
-$i =  0 / 0;
+
             // User Loop
             if ( ! empty( $user_query->results ) ) {
               $selected_users = explode(';', get_post_meta( $post->ID, 'wpneo_fi_users_list', true ));
