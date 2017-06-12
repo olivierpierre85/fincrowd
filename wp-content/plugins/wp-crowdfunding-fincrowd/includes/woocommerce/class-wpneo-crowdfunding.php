@@ -605,12 +605,12 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             }
 
             // _nf_location
-            $_nf_location = sanitize_text_field( $_POST['_nf_location'] );
-            wpneo_crowdfunding_update_post_meta_text($post_id, '_nf_location', $_nf_location);
+            //$_nf_location = sanitize_text_field( $_POST['_nf_location'] );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, '_nf_location', $_nf_location);
 
             // wpneo_funding_video
-            $wpneo_funding_video = sanitize_text_field( $_POST['wpneo_funding_video'] );
-            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_video', $wpneo_funding_video);
+            //$wpneo_funding_video = sanitize_text_field( $_POST['wpneo_funding_video'] );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_video', $wpneo_funding_video);
 
             // _nf_duration_start
             $_nf_duration_start = sanitize_text_field( $_POST['_nf_duration_start'] );
@@ -630,32 +630,32 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_minimum_price', $wpneo_funding_minimum_price);
 
             // wpneo_funding_maximum_price
-            $wpneo_funding_maximum_price = intval( sanitize_text_field($_POST['wpneo_funding_maximum_price']) );
-            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_maximum_price', $wpneo_funding_maximum_price);
+            //$wpneo_funding_maximum_price = intval( sanitize_text_field($_POST['wpneo_funding_maximum_price']) );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_maximum_price', $wpneo_funding_maximum_price);
 
             // wpneo_funding_recommended_price
-            $wpneo_funding_recommended_price = intval( sanitize_text_field($_POST['wpneo_funding_recommended_price']) );
-            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_recommended_price', $wpneo_funding_recommended_price);
+            //$wpneo_funding_recommended_price = intval( sanitize_text_field($_POST['wpneo_funding_recommended_price']) );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_recommended_price', $wpneo_funding_recommended_price);
 
             // wpneo_campaign_end_method
-            $wpneo_campaign_end_method = sanitize_text_field( $_POST['wpneo_campaign_end_method'] );
-            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_campaign_end_method', $wpneo_campaign_end_method);
+            //$wpneo_campaign_end_method = sanitize_text_field( $_POST['wpneo_campaign_end_method'] );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_campaign_end_method', $wpneo_campaign_end_method);
 
             // wpneo_show_contributor_table
-            $wpneo_show_contributor_table = sanitize_text_field( $_POST['wpneo_show_contributor_table'] );
-            wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_show_contributor_table', $wpneo_show_contributor_table);
+            //$wpneo_show_contributor_table = sanitize_text_field( $_POST['wpneo_show_contributor_table'] );
+            //wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_show_contributor_table', $wpneo_show_contributor_table);
 
             // wpneo_mark_contributors_as_anonymous
-            $wpneo_mark_contributors_as_anonymous = sanitize_text_field( $_POST['wpneo_mark_contributors_as_anonymous'] );
-            wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_mark_contributors_as_anonymous', $wpneo_mark_contributors_as_anonymous);
+            //$wpneo_mark_contributors_as_anonymous = sanitize_text_field( $_POST['wpneo_mark_contributors_as_anonymous'] );
+            //wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_mark_contributors_as_anonymous', $wpneo_mark_contributors_as_anonymous);
 
             // wpneo_campaigner_paypal_id
-            $wpneo_campaigner_paypal_id = sanitize_text_field( $_POST['wpneo_campaigner_paypal_id'] );
-            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_campaigner_paypal_id', $wpneo_campaigner_paypal_id);
+            //$wpneo_campaigner_paypal_id = sanitize_text_field( $_POST['wpneo_campaigner_paypal_id'] );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_campaigner_paypal_id', $wpneo_campaigner_paypal_id);
 
             // wpneo_country
-            $wpneo_country = sanitize_text_field( $_POST['wpneo_country'] );
-            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_country', $wpneo_country);
+            //$wpneo_country = sanitize_text_field( $_POST['wpneo_country'] );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_country', $wpneo_country);
 
             //Fincrowd new fields
             //wpneo_fi_risk_class
@@ -689,7 +689,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             $wpneo_fi_website = sanitize_text_field( $_POST['wpneo_fi_website'] );
             wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_fi_website', $wpneo_fi_website);
 
-            $wpneo_fi_users_list = sanitize_text_field( $_POST['wpneo_fi_users_list'] );
+            $wpneo_fi_users_list = $_POST['wpneo_fi_users_list'];
             update_post_meta( $post_id, 'wpneo_fi_users_list', implode(";",$wpneo_fi_users_list) );
 
         }
