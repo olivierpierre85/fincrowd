@@ -10,10 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     if ($product->product_type == 'crowdfunding') {
       if ( is_user_logged_in() ) {
         if (WPNEOCF()->campaignValid()) {
+
+          if(WPNEOCF()->userHasRights()){
             $recomanded_price = get_post_meta($product->id, 'wpneo_funding_recommended_price', true);
-
-
-
 
             //Fincrowd
             if(! get_the_author_meta( 'physical_person', get_current_user_id() )){
@@ -69,6 +68,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
             <?php
+          } else {
+              _e('You are not allowed to participate to this campaign.','wp-crowdfunding');
+          }
         } else {
             _e('This campaigns is over.','wp-crowdfunding');
         }

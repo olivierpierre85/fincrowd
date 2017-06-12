@@ -357,9 +357,12 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             );
 
             echo '<div class="options_group"></div>';
+            echo '<h3>'.__( 'Liste des utilisateurs autorisés', 'wp-crowdfunding' ).'</h3>';
+            echo '<button type="button" id="wpneo_fi_select_users">'.__( 'Séléctionner les 150 premiers', 'wp-crowdfunding' ).'</button><br>';
+            //echo __( 'Total Sélectionnés : ', 'wp-crowdfunding' ).'<span id= "wpneo_fi_total_select_users">TODO</span>';
             //for each registered user a checkbox (users as subscribers)
-            $user_query = new WP_User_Query( array( 'role' => 'Subscriber' ) );
-
+            $user_query = new WP_User_Query( array( 'role' => 'Subscriber','meta_query' => array( array('key' => 'physical_person','value' => true,  'compare' => '=')   ) ));
+            //TODO Sort, put the ones where the interests matches the project category first
             // User Loop
             if ( ! empty( $user_query->results ) ) {
               $selected_users = explode(';', get_post_meta( $post->ID, 'wpneo_fi_users_list', true ));
@@ -372,7 +375,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                 echo '<p><input type="checkbox" name="wpneo_fi_users_list[]" value="' . $user->ID . '" ' . $checked . '/> ' . $user->display_name . '</p>';
             	}
             } else {
-            	echo 'No users found.';
+            	echo __( 'Pas d\'utilisateurs', 'wp-crowdfunding' );
             }
 
 
