@@ -155,6 +155,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
         function wpneo_add_meta_info(){
 
             global $woocommerce;
+            global $post;
 
             echo '<div class="options_group show_if_neo_crowdfunding_options">';
 /*
@@ -358,11 +359,17 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             echo '<div class="options_group"></div>';
             //for each registered user a checkbox (users as subscribers)
             $user_query = new WP_User_Query( array( 'role' => 'Subscriber' ) );
-
+$i =  0 / 0;
             // User Loop
             if ( ! empty( $user_query->results ) ) {
+              $selected_users = explode(';', get_post_meta( $post->ID, 'wpneo_fi_users_list', true ));
             	foreach ( $user_query->results as $user ) {
-                echo '<p><input type="checkbox" name="wpneo_fi_users_list[]" value="' . $user->ID . '" /> ' . $user->display_name . '</p>';
+                if(in_array ($user->ID,$selected_users)){
+                  $checked = 'checked';
+                } else {
+                  $checked = '';
+                }
+                echo '<p><input type="checkbox" name="wpneo_fi_users_list[]" value="' . $user->ID . '" ' . $checked . '/> ' . $user->display_name . '</p>';
             	}
             } else {
             	echo 'No users found.';
@@ -681,6 +688,9 @@ if (! class_exists('Wpneo_Crowdfunding')) {
 
             $wpneo_fi_website = sanitize_text_field( $_POST['wpneo_fi_website'] );
             wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_fi_website', $wpneo_fi_website);
+
+            $wpneo_fi_users_list = sanitize_text_field( $_POST['wpneo_fi_users_list'] );
+            update_post_meta( $post_id, 'wpneo_fi_users_list', implode(";",$wpneo_fi_users_list) );
 
         }
 
