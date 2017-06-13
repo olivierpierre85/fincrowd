@@ -3,6 +3,19 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+//FINCROWD - Return monthly payment
+if (! function_exists('wpneo_fi_compute_monthly_payment')){
+  function wpneo_fi_compute_monthly_payment( $amt , $i, $term ) {
+    $int = $i/1200;
+    $int1 = 1+$int;
+    $r1 = pow($int1, $term);
+
+    $pmt = $amt*($int*$r1)/($r1-1);
+
+    return $pmt;
+  }
+}
+
 if (! function_exists('wpneo_post')){
     function wpneo_post($post_item){
         if (!empty($_POST[$post_item])) {

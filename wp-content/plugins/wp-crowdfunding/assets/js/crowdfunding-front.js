@@ -434,6 +434,91 @@ jQuery(document).ready(function($){
         $(this).find('.reward_description').slideToggle();
     });
 
+    //start Fincrowd js front end
+    $('#fi_reg_physical_person,#fi_reg_society').on('click',function(e) {
+      if(e.target.id == 'fi_reg_physical_person'){
+        //show birthday
+        $('.fi_reg_birthday').show();
+      } else {
+        //hide
+        $('.fi_reg_birthday').hide();
+      }
 
+    });
+
+    //Interest table created add line ??TODO not working
+      // Hide with insurance at first
+    $('.fi-interest-insurance-row').hide();
+
+    $('#wpneo_fi_interest_insurance[name="wpneo_fi_interest_insurance"]').change(function(){
+      if(this.checked){
+        $('.fi-interest-row').hide();
+        $('.fi-interest-insurance-row').show();
+      } else {
+        $('.fi-interest-row').show();
+        $('.fi-interest-insurance-row').hide();
+      }
+    });
+
+    // Dashboard Data Save
+      $(document).on('click', '#wpneo_fi_cancel_order', function () {
+        var order_id = $(this).data('order-id');
+        console.log(order_id);
+        $.ajax(
+            {
+                async: false,
+                url : ajax_object.ajax_url,
+                type: "POST",
+                data: {'action': 'wpneo_fi_cancel_order', 'order_id': order_id},
+                success:function(data, textStatus, jqXHR) {
+                    wpneo_crowdfunding_modal(data);
+                    return_data = data;
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
+                }
+            });
+    });
+
+    //compute interests
+    $('input[name="wpneo_donate_amount_field"]').on('change', function(){
+        var campaign_id = $(this).data('campaign-id');
+        $.ajax(
+            {
+                async: false,
+                url : ajax_object.ajax_url,
+                type: "POST",
+                data: {'action': 'wpneo_fi_compute_interest', 'campaign_id': campaign_id, 'total': $(this).val() },
+                success:function(data, textStatus, jqXHR) {
+                    //wpneo_crowdfunding_modal(data);
+                    //return_data = data;
+                    $('#wpneo-fi-total-interest').html(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    //wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
+                    //TODO fincrowd error management
+                }
+            });
+    });
+
+    // Dashboard Validate campaign
+    $(document).on('click', '#wpneo_fi_validate_campaign', function () {
+      var campaign_id = $(this).data('campaign-id');
+      $.ajax(
+          {
+              async: false,
+              url : ajax_object.ajax_url,
+              type: "POST",
+              data: {'action': 'wpneo_fi_validate_campaign', 'campaign_id': campaign_id },
+              success:function(data, textStatus, jqXHR) {
+                  wpneo_crowdfunding_modal(data);
+                  return_data = data;
+              },
+              error: function(jqXHR, textStatus, errorThrown){
+                  wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
+              }
+          });
+    });
+    //end fincrowd
 
 });

@@ -30,10 +30,10 @@ if( is_array( $id_array ) ){
         global $wpdb;
         $prefix = $wpdb->prefix;
 
-        $query = "SELECT order_id 
-						FROM {$wpdb->prefix}woocommerce_order_items oi 
-						LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta woim 
-						ON woim.order_item_id = oi.order_item_id 
+        $query = "SELECT order_id
+						FROM {$wpdb->prefix}woocommerce_order_items oi
+						LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta woim
+						ON woim.order_item_id = oi.order_item_id
 						WHERE woim.meta_key='_product_id' AND woim.meta_value IN ( {$id_array} )";
         $order_ids = $wpdb->get_col( $query );
         if(is_array($order_ids)){
@@ -94,7 +94,15 @@ if ( $customer_orders ) :
             elseif ( 'order-number' === $column_id ) :
 
                 $html .= _x( '#', 'hash before order number', 'wp-crowdfunding' ) . $order->get_order_number();
-
+                //start fincrowd
+            elseif ( 'campaign' === $column_id ) :
+              //find campaing(product) for order
+              $campaign = array_values($order->get_items())[0];
+              //TODO Fincrowd link to campaign !!!
+              //$html .='<a href="'.esc_url( $order->get_view_order_url() ).'">';
+                $html .= $campaign['name'];
+              //</a>';
+              //end fincrowd
             elseif ( 'order-view' === $column_id ) :
                 $html .= '<a class="label-info" href="'.$order->get_view_order_url().'">'.__("View","wp-crowdfunding").'</a>';
 
@@ -105,8 +113,9 @@ if ( $customer_orders ) :
                 $html .= wc_get_order_status_name( $order->get_status() );
 
             elseif ( 'order-total' === $column_id ) :
-                $html .= sprintf( _n( '%s for %s item', '%s for %s items', $item_count, 'wp-crowdfunding' ), $order->get_formatted_order_total(), $item_count );
-
+              //$html .= sprintf( _n( '%s for %s item', '%s for %s items', $item_count, 'wp-crowdfunding' ), $order->get_formatted_order_total(), $item_count );
+              //Fincrowd
+              $html .= $order->get_formatted_order_total();
 
             elseif ( 'order-rewards' === $column_id ) :
                 /**

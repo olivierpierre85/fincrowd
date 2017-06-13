@@ -5,21 +5,40 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $page_numb = max( 1, get_query_var('paged') );
 $posts_per_page = get_option( 'posts_per_page',10 );
-$args = array(
-    'post_type' 		=> 'product',
-    'post_status'		=> array('publish', 'draft'),
-    'author'    		=> get_current_user_id(),
-    'tax_query' 		=> array(
-        array(
-            'taxonomy' => 'product_type',
-            'field'    => 'slug',
-            'terms'    => 'crowdfunding',
-        ),
-    ),
-    'posts_per_page'    => $posts_per_page,
-    'paged'             => $page_numb
-);
 
+//start Fincrowd TODO better admin check
+if (current_user_can('campaign_form_submit')) {
+  $args = array(
+      'post_type' 		=> 'product',
+      'post_status'		=> array('publish', 'draft'),
+      'author'    		=> get_current_user_id(),
+      'tax_query' 		=> array(
+          array(
+              'taxonomy' => 'product_type',
+              'field'    => 'slug',
+              'terms'    => 'crowdfunding',
+          ),
+      ),
+      'posts_per_page'    => $posts_per_page,
+      'paged'             => $page_numb
+  );
+} else {
+  $args = array(
+              'post_type' 		=> 'product',
+              'post_status'		=> array('publish', 'draft'),
+              'author'    		=> get_current_user_id(),
+              'tax_query' 		=> array(
+                  array(
+                      'taxonomy' => 'product_type',
+                      'field'    => 'slug',
+                      'terms'    => 'crowdfunding',
+                  ),
+              ),
+              'posts_per_page'    => $posts_per_page,
+              'paged'             => $page_numb
+      );
+}
+//end fincrowd
 $current_page = get_permalink();
 
 $html .= '<div class="wpneo-content">';
@@ -50,13 +69,24 @@ if ( $the_query->have_posts() ) :
                 $operation_btn .= '<span><a href="' . get_permalink() . '">'. __("View", "wp-crowdfunding") .'</a></span>';
                 $page_id = get_option('wpneo_form_page_id');
                 if ($page_id != '') {
-
-                    $permalink_edit     = add_query_arg( array( 'action' => 'edit', 'postid' => get_the_ID() ) , get_permalink($page_id) );
-                    $permalink_update   = add_query_arg( array( 'page_type' => 'update', 'postid' => get_the_ID() ) , $current_page );
-
-                    $operation_btn .= '<span><a href="' . $permalink_edit . '">' . __("Edit", "wp-crowdfunding") . '</a></span>';
-                    $operation_btn .= '<span><a href="'.$permalink_update.'">'.__("Update", "wp-crowdfunding").'</a></span>';
+                // start findcrowd replace
+                     $permalink_edit     = add_query_arg( array( 'action' => 'edit', 'postid' => get_the_ID() ) , get_permalink($page_id) );
+                     $permalink_update   = add_query_arg( array( 'page_type' => 'update', 'postid' => get_the_ID() ) , $current_page );
+                //
+                //     $operation_btn .= '<span><a href="' . $permalink_edit . '">' . __("Edit", "wp-crowdfunding") . '</a></span>';
+                //     $operation_btn .= '<span><a href="'.$permalink_update.'">'.__("Update", "wp-crowdfunding").'</a></span>';
+                // }
+                //$operation_btn .= '<span><a href="' . get_permalink($page_id) . '?action=edit&postid=' . get_the_ID() . '">' . __("Edit", "wp-crowdfunding") . '</a></span>';
+                //$operation_btn .= '<span><a href="?page_type=update&postid=' . get_the_ID() . '">'.__("Update", "wp-crowdfunding").'</a></span>';
+                //Fincrowd TODO btn Validate end of Campaig
+                if (current_user_can('campaign_form_submit')) {
+                  //if campaign date up OR goal Reached ? Or all the time ?
+                  if(! get_post_meta(get_the_ID(), 'wpneo_fi_campaign_validated', true)){
+                    $operation_btn .= '<span><a href="javascript:;" id="wpneo_fi_validate_campaign" data-campaign-id="'.get_the_ID().'">'.__( 'Validez la fin de la campagne', 'wp-crowdfunding' ).'</a></span>';
+                  }
                 }
+              }
+                //end fincrowd
             }
             $operation_btn .= '</div>';
             echo $operation_btn;

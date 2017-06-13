@@ -48,8 +48,9 @@ if (! class_exists('WPNEO_Frontend_Campaign_Submit_Form')) {
             $title = $description = $category = $tag = $image_id = $video = $start_date = '';
             $end_date = $min_price = $max_price = $recommended_price = $type = '';
             $contributor_table = $contributor_show = $country = $location = $video = '';
-
-
+            //start Fincrowd
+            $contact_person = $company_number = $phone_number = $website = '';
+            //end Fincrowd
             if ( empty($_POST['wpneo-form-title'])){
                 die(json_encode(array('success'=> 0, 'message' => __('Title required', 'wp-crowdfunding'))));
             }
@@ -65,29 +66,58 @@ if (! class_exists('WPNEO_Frontend_Campaign_Submit_Form')) {
             if ( empty($_POST['wpneo_terms_agree'])){
                 die(json_encode(array('success'=> 0, 'message' => __('Please check terms condition', 'wp-crowdfunding'))));
             }
-
+            //fincrowd replace
+            // if( $_POST['wpneo-form-title'] ){               $title = sanitize_text_field($_POST['wpneo-form-title']); }
+            // if( $_POST['wpneo-form-description'] ){         $description = $_POST['wpneo-form-description']; }
+            // if( $_POST['wpneo-form-short-description'] ){   $short_description = $_POST['wpneo-form-short-description']; }
+            // if( $_POST['wpneo-form-category'] ){            $category = sanitize_text_field($_POST['wpneo-form-category']); }
+            // if( $_POST['wpneo-form-tag'] ){                 $tag = sanitize_text_field($_POST['wpneo-form-tag']); }
+            // if( $_POST['wpneo-form-image-id'] ){            $image_id = sanitize_text_field($_POST['wpneo-form-image-id']); }
+            // if( $_POST['wpneo-form-video'] ){               $video = sanitize_text_field($_POST['wpneo-form-video']); }
+            // if( $_POST['wpneo-form-start-date'] ){          $start_date = sanitize_text_field($_POST['wpneo-form-start-date']); }
+            // if( $_POST['wpneo-form-end-date'] ){            $end_date = sanitize_text_field($_POST['wpneo-form-end-date']); }
+            //
+            // if( $_POST['wpneo-form-min-price'] ){           $min_price = intval(sanitize_text_field($_POST['wpneo-form-min-price'])); }
+            // if( $_POST['wpneo-form-max-price'] ){           $max_price = intval(sanitize_text_field($_POST['wpneo-form-max-price'])); }
+            // if( $_POST['wpneo-form-recommended-price'] ){   $recommended_price = intval(sanitize_text_field($_POST['wpneo-form-recommended-price'])); }
+            // if( $_POST['wpneo-form-funding-goal'] ){        $funding_goal = intval(sanitize_text_field($_POST['wpneo-form-funding-goal'])); }
+            //
+            // if( $_POST['wpneo-form-type'] ){                $type = sanitize_text_field($_POST['wpneo-form-type']); }
+            // if( $_POST['wpneo-form-contributor-table'] ){   $contributor_table = sanitize_text_field($_POST['wpneo-form-contributor-table']); }
+            // if( $_POST['wpneo-form-contributor-show'] ){    $contributor_show 	= sanitize_text_field($_POST['wpneo-form-contributor-show']); }
+            // if( $_POST['wpneo-form-paypal'] ){              $paypal = sanitize_text_field($_POST['wpneo-form-paypal']); }
+            // if( $_POST['wpneo-form-country'] ){             $country = sanitize_text_field($_POST['wpneo-form-country']); }
+            // if( $_POST['wpneo-form-location'] ){            $location = sanitize_text_field($_POST['wpneo-form-location']); }
+            //Fincrowd add if mandatory fields here
             if( $_POST['wpneo-form-title'] ){               $title = sanitize_text_field($_POST['wpneo-form-title']); }
             if( $_POST['wpneo-form-description'] ){         $description = $_POST['wpneo-form-description']; }
             if( $_POST['wpneo-form-short-description'] ){   $short_description = $_POST['wpneo-form-short-description']; }
-            if( $_POST['wpneo-form-category'] ){            $category = sanitize_text_field($_POST['wpneo-form-category']); }
-            if( $_POST['wpneo-form-tag'] ){                 $tag = sanitize_text_field($_POST['wpneo-form-tag']); }
+            if( $_POST['wpneo-form-category'] ){              $category = $_POST['wpneo-form-category'];
+            }
+            //if( $_POST['wpneo-form-tag'] ){                 $tag = sanitize_text_field($_POST['wpneo-form-tag']); }
             if( $_POST['wpneo-form-image-id'] ){            $image_id = sanitize_text_field($_POST['wpneo-form-image-id']); }
-            if( $_POST['wpneo-form-video'] ){               $video = sanitize_text_field($_POST['wpneo-form-video']); }
+            //if( $_POST['wpneo-form-video'] ){               $video = sanitize_text_field($_POST['wpneo-form-video']); }
             if( $_POST['wpneo-form-start-date'] ){          $start_date = sanitize_text_field($_POST['wpneo-form-start-date']); }
             if( $_POST['wpneo-form-end-date'] ){            $end_date = sanitize_text_field($_POST['wpneo-form-end-date']); }
 
             if( $_POST['wpneo-form-min-price'] ){           $min_price = intval(sanitize_text_field($_POST['wpneo-form-min-price'])); }
-            if( $_POST['wpneo-form-max-price'] ){           $max_price = intval(sanitize_text_field($_POST['wpneo-form-max-price'])); }
-            if( $_POST['wpneo-form-recommended-price'] ){   $recommended_price = intval(sanitize_text_field($_POST['wpneo-form-recommended-price'])); }
+            //if( $_POST['wpneo-form-max-price'] ){           $max_price = intval(sanitize_text_field($_POST['wpneo-form-max-price'])); }
+            //if( $_POST['wpneo-form-recommended-price'] ){   $recommended_price = intval(sanitize_text_field($_POST['wpneo-form-recommended-price'])); }
             if( $_POST['wpneo-form-funding-goal'] ){        $funding_goal = intval(sanitize_text_field($_POST['wpneo-form-funding-goal'])); }
 
-            if( $_POST['wpneo-form-type'] ){                $type = sanitize_text_field($_POST['wpneo-form-type']); }
-            if( $_POST['wpneo-form-contributor-table'] ){   $contributor_table = sanitize_text_field($_POST['wpneo-form-contributor-table']); }
-            if( $_POST['wpneo-form-contributor-show'] ){    $contributor_show 	= sanitize_text_field($_POST['wpneo-form-contributor-show']); }
-            if( $_POST['wpneo-form-paypal'] ){              $paypal = sanitize_text_field($_POST['wpneo-form-paypal']); }
-            if( $_POST['wpneo-form-country'] ){             $country = sanitize_text_field($_POST['wpneo-form-country']); }
-            if( $_POST['wpneo-form-location'] ){            $location = sanitize_text_field($_POST['wpneo-form-location']); }
+            //if( $_POST['wpneo-form-type'] ){                $type = sanitize_text_field($_POST['wpneo-form-type']); }
+            //if( $_POST['wpneo-form-contributor-table'] ){   $contributor_table = sanitize_text_field($_POST['wpneo-form-contributor-table']); }
+            //if( $_POST['wpneo-form-contributor-show'] ){    $contributor_show 	= sanitize_text_field($_POST['wpneo-form-contributor-show']); }
+            //if( $_POST['wpneo-form-paypal'] ){              $paypal = sanitize_text_field($_POST['wpneo-form-paypal']); }
+            //if( $_POST['wpneo-form-country'] ){             $country = sanitize_text_field($_POST['wpneo-form-country']); }
+            //if( $_POST['wpneo-form-location'] ){            $location = sanitize_text_field($_POST['wpneo-form-location']); }
 
+            //Fincrowd new fields
+            if( $_POST['wpneo-form-contact_person'] ){                $contact_person = sanitize_text_field($_POST['wpneo-form-contact_person']); }
+            if( $_POST['wpneo-form-company-number'] ){                $company_number = sanitize_text_field($_POST['wpneo-form-company-number']); }
+            if( $_POST['wpneo-form-phone-number'] ){                  $phone_number = sanitize_text_field($_POST['wpneo-form-phone-number']); }
+            if( $_POST['wpneo-form-website'] ){                       $website = sanitize_text_field($_POST['wpneo-form-website']); }
+            //end change fincrowd
             $user_id = get_current_user_id();
             $my_post = array(
                 'post_type'		=>'product',
@@ -141,10 +171,15 @@ if (! class_exists('WPNEO_Frontend_Campaign_Submit_Form')) {
                 update_post_meta($post_id, 'wpneo_campaign_end_method', esc_attr($type));
                 update_post_meta($post_id, 'wpneo_show_contributor_table', esc_attr($contributor_table));
                 update_post_meta($post_id, 'wpneo_mark_contributors_as_anonymous', esc_attr($contributor_show));
-                update_post_meta($post_id, 'wpneo_campaigner_paypal_id', esc_attr($paypal));
+                //fincrowd update_post_meta($post_id, 'wpneo_campaigner_paypal_id', esc_attr($paypal));
                 update_post_meta($post_id, 'wpneo_country', esc_attr($country));
                 update_post_meta($post_id, '_nf_location', esc_html($location));
-
+                //start Fincrowd new fields
+                update_post_meta($post_id, 'wpneo_fi_contact_person', esc_attr($contact_person));
+                update_post_meta($post_id, 'wpneo_fi_company_number', esc_attr($company_number));
+                update_post_meta($post_id, 'wpneo_fi_phone_number', esc_attr($phone_number));
+                update_post_meta($post_id, 'wpneo_fi_website', esc_attr($website));
+                //end Fincrowd
                 //Saved repeatable rewards
                 if (!empty($_POST['wpneo_rewards_pladge_amount'])) {
                     $wpneo_rewards_pladge_amount    = $_POST['wpneo_rewards_pladge_amount'];

@@ -131,8 +131,9 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
 
         public function campaignValid(){
             global $post;
-            $campaign_end_method = get_post_meta($post->ID, 'wpneo_campaign_end_method' , true);
-
+            //start replace fincrowd
+            //$campaign_end_method = get_post_meta($post->ID, 'wpneo_campaign_end_method' , true);
+            $campaign_end_method = 'target_goal_and_date';
             switch ($campaign_end_method){
 
                 case 'target_goal':
@@ -170,6 +171,22 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
             }
         }
 
+        //fincrowd, check if the user is a company or has rights !
+        public function userHasRights(){
+            global $post;
+
+            if(get_the_author_meta( 'physical_person', get_current_user_id() )){
+              $selected_users = explode(';', get_post_meta( $post->ID, 'wpneo_fi_users_list', true ));
+              if( $selected_users != null && in_array(get_current_user_id(),$selected_users)){
+                return true;
+              } else {
+                return false;
+              }
+            } else {
+              return true;
+            }
+        }
+
         /**
          * @param $campaign_id
          * @return mixed
@@ -185,17 +202,17 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
                 $campaign_id = $post->ID;
             }
 
-            $query ="SELECT 
-                        SUM(ltoim.meta_value) as total_sales_amount 
-                    FROM 
-                        {$wpdb->prefix}woocommerce_order_itemmeta woim 
-			        LEFT JOIN 
-                        {$wpdb->prefix}woocommerce_order_items oi ON woim.order_item_id = oi.order_item_id 
-			        LEFT JOIN 
-                        {$wpdb->prefix}posts wpposts ON order_id = wpposts.ID 
-			        LEFT JOIN 
-                        {$wpdb->prefix}woocommerce_order_itemmeta ltoim ON ltoim.order_item_id = oi.order_item_id AND ltoim.meta_key = '_line_total' 
-			        WHERE 
+            $query ="SELECT
+                        SUM(ltoim.meta_value) as total_sales_amount
+                    FROM
+                        {$wpdb->prefix}woocommerce_order_itemmeta woim
+			        LEFT JOIN
+                        {$wpdb->prefix}woocommerce_order_items oi ON woim.order_item_id = oi.order_item_id
+			        LEFT JOIN
+                        {$wpdb->prefix}posts wpposts ON order_id = wpposts.ID
+			        LEFT JOIN
+                        {$wpdb->prefix}woocommerce_order_itemmeta ltoim ON ltoim.order_item_id = oi.order_item_id AND ltoim.meta_key = '_line_total'
+			        WHERE
                         woim.meta_key = '_product_id' AND woim.meta_value = %d AND wpposts.post_status = 'wc-completed';";
 
             $wp_sql = $wpdb->get_row($wpdb->prepare( $query, $campaign_id ));
@@ -213,6 +230,16 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
             return $funding_goal = get_post_meta( $campaign_id, '_nf_funding_goal', true );
         }
 
+        /**
+         * @param $campaign_id
+         * @return mixed
+         * FINCROWD
+         * Get Remaining Amount
+         */
+        public function getRemainingAmount($campaign_id){
+            return $remaining_amount = ( get_post_meta( $campaign_id, '_nf_funding_goal', true ) - $this->totalFundRaisedByCampaign($campaign_id) ) ;
+        }
+        
         /**
          * @param $campaign_id
          * @return int|string
@@ -338,15 +365,15 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
             $prefix = $wpdb->prefix;
             $post_id = $post->ID;
 
-            $query ="SELECT 
-                        order_id 
-                    FROM 
-                        {$wpdb->prefix}woocommerce_order_itemmeta woim 
-			        LEFT JOIN 
-                        {$wpdb->prefix}woocommerce_order_items oi ON woim.order_item_id = oi.order_item_id 
-			        WHERE 
+            $query ="SELECT
+                        order_id
+                    FROM
+                        {$wpdb->prefix}woocommerce_order_itemmeta woim
+			        LEFT JOIN
+                        {$wpdb->prefix}woocommerce_order_items oi ON woim.order_item_id = oi.order_item_id
+			        WHERE
                         meta_key = '_product_id' AND meta_value = %d
-			        GROUP BY 
+			        GROUP BY
                         order_id ORDER BY order_id DESC ;";
             $order_ids = $wpdb->get_col( $wpdb->prepare( $query, $post_id ) );
 

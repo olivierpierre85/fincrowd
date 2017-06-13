@@ -36,8 +36,72 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
             add_action( 'wp_ajax_wpneo_contact_form',        array($this, 'wpneo_contact_form_save'));
             add_action( 'wp_ajax_wpneo_password_form',       array($this, 'wpneo_password_form_save'));
             add_action( 'wp_ajax_wpneo_update_status_save',  array($this, 'wpneo_update_status_save'));
+            //start Fincrowd add actions frontend dashboard
+            add_action( 'wp_ajax_wpneo_fi_cancel_order',          array($this, 'wpneo_fi_cancel_order'));
+            add_action( 'wp_ajax_wpneo_fi_compute_interest',      array($this, 'wpneo_fi_compute_interest'));
+            add_action( 'wp_ajax_wpneo_fi_validate_campaign',      array($this, 'wpneo_fi_validate_campaign'));
+            //end fincrowd
+
+        }
+        //start Fincrowd add functions frontend dashboard
+        //Validate campaign
+        public function wpneo_fi_validate_campaign() {
+          //TODO fincrowd admin check ?
+          $campaign_id        = sanitize_text_field($_POST['campaign_id']);
+          $result = wpneo_crowdfunding_update_post_meta_text($campaign_id, 'wpneo_fi_campaign_validated', true);
+          if ($result){
+            //FINCROWD ALL THE Things to do to update
+          }
+          if ($result){
+            //FINCROWD TODO refresh page
+              die(json_encode(array('success'=> 1, 'message' => __('Campagne validée', 'wp-crowdfunding'))));
+          }else{
+              die(json_encode(array('success'=> 0, 'message' => __('Error updating, please try again', 'wp-crowdfunding'))));
+          }
+
         }
 
+        //compute interest frontend
+        public function wpneo_fi_compute_interest() {
+          $campaign_id        = sanitize_text_field($_POST['campaign_id']);
+          $total       = sanitize_text_field($_POST['total']);
+
+          //$product = new WC_Product( $cart[key($cart)]['product_id']);//take first product (Normally always One and only one)
+          $interest                 = get_post_meta( $campaign_id, 'wpneo_fi_interest_rate', true );
+          $interest_insurance      = get_post_meta( $campaign_id, 'wpneo_fi_interest_rate_insurance', true );
+          $duration      = get_post_meta( $campaign_id, 'wpneo_fi_loan_duration', true );
+          $insurance = get_post_meta( $campaign_id, 'wpneo_fi_loan_insurance', true );
+
+          $monthly_payment            = wpneo_fi_compute_monthly_payment( $total, $interest, $duration );
+          $monthly_payment_insurance  = wpneo_fi_compute_monthly_payment( $total, $interest_insurance, $duration );
+
+          $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
+          $total_interest_insurance = round(($duration * $monthly_payment_insurance  ) - $total,2);
+
+          //TODO error handling
+          die(__('Intérêts totaux :'.$total_interest.' ( '.$total_interest_insurance.' avec la garantie)', 'wp-crowdfunding'));
+          //die(json_encode(array('success'=> 1, 'message' => __('Itest', 'wp-crowdfunding'), 'redirect' => $redirect)));
+        }
+
+        // Delete of Order by client
+        public function wpneo_fi_cancel_order() {
+          global $woocommerce;
+          $redirect = get_permalink(get_option('wpneo_crowdfunding_dashboard_page_id')).'?page_type=backed_campaigns';
+
+          $order_id        = sanitize_text_field($_POST['order_id']);
+
+          //Use this if not delete but cancel
+          $order = new WC_Order($order_id);
+          $result = $order->update_status('Cancelled', '');
+          //$result = wc_delete_order_item( $order_id );
+
+          if ($result){
+              die(json_encode(array('success'=> 1, 'message' => __('Successfully updated', 'wp-crowdfunding'), 'redirect' => $redirect)));
+          }else{
+              die(json_encode(array('success'=> 0, 'message' => __('Error updating, please try again', 'wp-crowdfunding'), 'redirect' => $redirect)));
+          }
+        }
+        //end fincrowd
 
 
         // General Form Action for Dashboard

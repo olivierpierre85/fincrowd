@@ -18,6 +18,38 @@ function wpneo_registration_shortcode() {
                 <input type="hidden" name="_wpnonce" value="<?php echo $nonce; ?>">
                 <?php
                 $wpneo_user_regisration_meta_array = array(
+                  //start fincrowd
+                  array(
+                      'id'            => 'fi_reg_type_person',
+                      'label'         => __( "Personne Physique ou Morale" , "wp-crowdfunding" ),
+                      'type'          => 'physical',
+                      'placeholder'   => __('Personne Physique ou Morale', 'wp-crowdfunding'),
+                      'value'         => '',
+                      'class'         => '',
+                      'warpclass'     => '',
+                      'autocomplete'  => 'off',
+                  ),
+                  array(
+                      'id'            => 'fi_reg_birthday',
+                      'label'         => __( "Date de Naissance" , "wp-crowdfunding" ),
+                      'type'          => 'birthday',
+                      'placeholder'   => __('jj/mm/aaaa', 'wp-crowdfunding'),
+                      'value'         => '',
+                      'class'         => '',
+                      'warpclass'     => 'fi_reg_birthday',
+                      'autocomplete'  => 'off',
+                  ),
+                  array(
+                      'id'            => 'email',
+                      'label'         => __( "Email *" , "wp-crowdfunding" ),
+                      'type'          => 'text',
+                      'placeholder'   => __('Enter Email', 'wp-crowdfunding'),
+                      'value'         => '',
+                      'warpclass'     => '',
+                      'class'         => 'required',
+                      'autocomplete'  => 'off',
+                  ),
+                  /*
                     array(
                         'id'            => 'fname',
                         'label'         => __( "First Name" , "wp-crowdfunding" ),
@@ -37,7 +69,7 @@ function wpneo_registration_shortcode() {
                         'class'         => '',
                         'warpclass'     => 'wpneo-second-half',
                         'autocomplete'  => 'off',
-                    ),
+                    ),*/ /*
                     array(
                         'id'            => 'username',
                         'label'         => __( "Username *" , "wp-crowdfunding" ),
@@ -47,24 +79,32 @@ function wpneo_registration_shortcode() {
                         'class'         => 'required',
                         'warpclass'     => '',
                         'autocomplete'  => 'off',
-                    ),
+                    ),*/
                     array(
                         'id'            => 'password',
                         'label'         => __('Password *', 'wp-crowdfunding'),
                         'type'          => 'password',
                         'placeholder'   => __('Enter Password', 'wp-crowdfunding'),
                         'class'         => 'required',
-                        'warpclass'     => '',
+                        'warpclass'     => 'wpneo-first-half',
                         'autocomplete'  => 'off',
                     ),
                     array(
-                        'id'            => 'email',
-                        'label'         => __( "Email *" , "wp-crowdfunding" ),
-                        'type'          => 'text',
-                        'placeholder'   => __('Enter Email', 'wp-crowdfunding'),
-                        'value'         => '',
-                        'warpclass'     => 'wpneo-first-half',
+                        'id'            => 'password2',
+                        'label'         => __('Password *', 'wp-crowdfunding'),
+                        'type'          => 'password',
+                        'placeholder'   => __('Répéter mot de passe', 'wp-crowdfunding'),
                         'class'         => 'required',
+                        'warpclass'     => 'wpneo-second-half',
+                        'autocomplete'  => 'off',
+                    ),
+                    array(
+                        'id'            => 'category',
+                        'label'         => __('Secteurs d\'intérêt', 'wp-crowdfunding'),
+                        'type'          => 'category',
+                        'placeholder'   => __('Secteurs', 'wp-crowdfunding'),
+                        'class'         => '',
+                        'warpclass'     => '',
                         'autocomplete'  => 'off',
                     ),
                     array(
@@ -74,9 +114,30 @@ function wpneo_registration_shortcode() {
                         'placeholder'   => __('Enter Website', 'wp-crowdfunding'),
                         'value'         => '',
                         'class'         => '',
-                        'warpclass'     => 'wpneo-second-half',
+                        'warpclass'     => '',
                         'autocomplete'  => 'off',
                     ),
+                    array(
+                        'id'            => 'fi_newsletter',
+                        'label'         => __( "Recevoir Newsletter" , "wp-crowdfunding" ),
+                        'type'          => 'checkbox',
+                        'placeholder'   => __('', 'wp-crowdfunding'),
+                        'value'         => '',
+                        'class'         => '',
+                        'warpclass'     => '',
+                        'autocomplete'  => 'off',
+                    ),
+                    array(
+                        'id'            => 'conditions',
+                        'label'         => __( "J'accepte les conditions générales (TOdO PDF)" , "wp-crowdfunding" ),
+                        'type'          => 'checkbox',
+                        'placeholder'   => __('', 'wp-crowdfunding'),
+                        'value'         => '',
+                        'class'         => '',
+                        'warpclass'     => '',
+                        'autocomplete'  => 'off',
+                    ),
+                    /*
                     array(
                         'id'            => 'nickname',
                         'label'         => __( "Nickname" , "wp-crowdfunding" ),
@@ -97,6 +158,8 @@ function wpneo_registration_shortcode() {
                         'warpclass'     => '',
                         'autocomplete'  => 'off',
                     )
+                    */
+                    //endfincrowd
                 );
 
                 $wpneo_user_regisration_meta = apply_filters('wpneo_user_registration_fields',$wpneo_user_regisration_meta_array);
@@ -119,6 +182,27 @@ function wpneo_registration_shortcode() {
                         case 'submit':
                           echo '<input type="submit" id="'.$item['id'].'"  class="'.$item['class'].'" name="'.$item['id'].'" />';
                             break;
+                            //start fincrowd
+                        case 'physical':
+                            echo '<input type="radio" id="fi_reg_physical_person"  class="'.$item['class'].'" name="'.$item['id'].'" value="physical" checked />'.__('Personne Physique', 'wp-crowdfunding');
+                            echo '</br>';
+                            echo '<input type="radio" id="fi_reg_society"  class="'.$item['class'].'" name="'.$item['id'].'" value="society" />'.__('Personne Morale', 'wp-crowdfunding');
+                            break;
+                        case 'birthday':
+                          echo '<input type="text" id="fi_birthday" autocomplete="'.$item['autocomplete'].'" class="'.$item['class'].'" name="fi_birthday" placeholder="'.$item['placeholder'].'">';
+                            break;
+                        case 'category':
+                            $all_cat = get_terms('product_cat',array( 'hide_empty' => false ) );
+                            foreach ($all_cat as $value) {
+                              //check if the category belongs to the product
+                                $selected = "";//($value->name inArray($category)) ? 'checked':'';//TO prefill at some point ? not sure
+                                echo '<input type="checkbox" name="fi_category[]" value="'.$value->slug.'" '.$selected.'>'.$value->name.'<br>';
+                            }
+                            break;
+                        case 'checkbox':
+                          echo '<input type="checkbox" id="'.$item['id'].'" autocomplete="'.$item['autocomplete'].'" class="'.$item['class'].'" name="'.$item['id'].'" placeholder="'.$item['placeholder'].'">';
+                            break;
+                            //end fincrowd
                         case 'shortcode':
                           echo do_shortcode($item['shortcode']);
                             break;

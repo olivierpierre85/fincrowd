@@ -20,16 +20,17 @@ function wpneo_shortcode_croudfunding_dashboard( $attr ){
                     'tab_name' => __('Dashboard','wp-crowdfunding'),
                     'load_form_file' => WPNEO_CROWDFUNDING_DIR_PATH.'includes/woocommerce/dashboard/dashboard.php'
                 ),
-            'profile' 	=>
-                array(
-                    'tab_name' => __('Profile','wp-crowdfunding'),
-                    'load_form_file' => WPNEO_CROWDFUNDING_DIR_PATH.'includes/woocommerce/dashboard/profile.php'
-                ),
-            'contact' 	=>
-                array(
-                    'tab_name' => __('Contact','wp-crowdfunding'),
-                    'load_form_file' => WPNEO_CROWDFUNDING_DIR_PATH.'includes/woocommerce/dashboard/contact.php'
-                ),
+                //fincrowd
+              // 'profile' 	=>
+              //     array(
+              //         'tab_name' => __('Profile','wp-crowdfunding'),
+              //         'load_form_file' => WPNEO_CROWDFUNDING_DIR_PATH.'includes/woocommerce/dashboard/profile.php'
+              //     ),
+              // 'contact' 	=>
+              //     array(
+              //         'tab_name' => __('Contact','wp-crowdfunding'),
+              //         'load_form_file' => WPNEO_CROWDFUNDING_DIR_PATH.'includes/woocommerce/dashboard/contact.php'
+              //     ),
             'campaign'  =>
                 array(
                     'tab_name' => __('My Campaigns','wp-crowdfunding'),
@@ -45,21 +46,23 @@ function wpneo_shortcode_croudfunding_dashboard( $attr ){
                     'tab_name' => __('Pledges Received','wp-crowdfunding'),
                     'load_form_file' => WPNEO_CROWDFUNDING_DIR_PATH.'includes/woocommerce/dashboard/order.php'
                 ),
-            'bookmark'   =>
-                array(
-                    'tab_name' => __('Bookmarks','wp-crowdfunding'),
-                    'load_form_file' => WPNEO_CROWDFUNDING_DIR_PATH.'includes/woocommerce/dashboard/bookmark.php'
-                ),
+                //fincrowd
+            // 'bookmark'   =>
+            //     array(
+            //         'tab_name' => __('Bookmarks','wp-crowdfunding'),
+            //         'load_form_file' => WPNEO_CROWDFUNDING_DIR_PATH.'includes/woocommerce/dashboard/bookmark.php'
+            //     ),
             'password'   =>
                 array(
                     'tab_name' => __('Password','wp-crowdfunding'),
                     'load_form_file' => WPNEO_CROWDFUNDING_DIR_PATH.'includes/woocommerce/dashboard/password.php'
                 ),
-            'rewards'   =>
-                array(
-                    'tab_name' => __('Rewards','wp-crowdfunding'),
-                    'load_form_file' => WPNEO_CROWDFUNDING_DIR_PATH.'includes/woocommerce/dashboard/rewards.php'
-                ),
+                //fincrowd
+            // 'rewards'   =>
+            //     array(
+            //         'tab_name' => __('Rewards','wp-crowdfunding'),
+            //         'load_form_file' => WPNEO_CROWDFUNDING_DIR_PATH.'includes/woocommerce/dashboard/rewards.php'
+            //     ),
         ));
 
         $html .= '<div class="wpneo-wrapper">';

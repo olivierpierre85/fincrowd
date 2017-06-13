@@ -28,9 +28,9 @@ if( is_array( $id_array ) ){
         $id_array = implode( ', ', $id_array );
         global $wpdb;
         $prefix = $wpdb->prefix;
-        $query = "SELECT order_id FROM {$wpdb->prefix}woocommerce_order_items oi 
-						LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta woim 
-						ON woim.order_item_id = oi.order_item_id 
+        $query = "SELECT order_id FROM {$wpdb->prefix}woocommerce_order_items oi
+						LEFT JOIN {$wpdb->prefix}woocommerce_order_itemmeta woim
+						ON woim.order_item_id = oi.order_item_id
 						WHERE woim.meta_key='_product_id' AND woim.meta_value IN ( {$id_array} )";
         $order_ids = $wpdb->get_col( $query );
     }
@@ -53,7 +53,8 @@ $customer_orders = get_posts( apply_filters( 'woocommerce_my_account_my_orders_q
     'meta_key'    => '_customer_user',
     'meta_value'  => get_current_user_id(),
     'post_type'   => wc_get_order_types( 'view-orders' ),
-    'post_status' => array_keys( wc_get_order_statuses() )
+    'post_status' => ['wc-completed'], // fincrowd
+    //'post_status' => array_keys( wc_get_order_statuses() )
 ) ) );
 
 if ( $customer_orders ) :
@@ -84,7 +85,27 @@ if ( $customer_orders ) :
                 $html .='<a href="'.esc_url( $order->get_view_order_url() ).'">';
                 $html .= _x( '#', 'hash before order number', 'wp-crowdfunding' ) . $order->get_order_number().'
 										</a>';
-
+            //start Fincrowd Campaign Name + ?link
+            elseif ( 'campaign' === $column_id ) :
+              $campaign = array_values($order->get_items())[0];
+							$html .='<a href="'.esc_url( get_permalink($campaign['product_id'] ) ).'">';
+							$html .= $campaign['name'];
+							$html .='</a>';
+            elseif ( 'order-cancel' === $column_id ) :
+              //Fincrowd 15 days in Var somewhere
+              $cancelLimit = get_option('wpneo_fi_cancellation_limit');
+              if($cancelLimit == null){
+                $cancelLimit = 15;
+              }
+              if((time()-(60*60*24*$cancelLimit)) < strtotime($order->order_date)){
+                //$html .=  '<input type="button" value="Submit" onclick="wpneo_fi_cancel_order('.$order->id.')">';
+                $html .= '<a href="javascript:;" id="wpneo_fi_cancel_order" data-order-id="'.$order->id.'">'.__( 'Retirer l\'offre', 'wp-crowdfunding' ).'</a>';
+                //$html .= '<a href="">';
+                //$html .= 'Annuler votre offre';
+                //$html .= '<a>';
+              }
+              $html .= ' ';//Must end if otherwise error ?
+            //end fincrowd
             elseif ( 'order-date' === $column_id ) :
                 $html .='<time datetime="'.date( 'Y-m-d', strtotime( $order_date['date'] ) ).'" title="'.esc_attr( strtotime( $order_date['date'] ) ).'">'.date_i18n( get_option( "date_format" ), strtotime( $order_date['date'] ) ).'</time>';
 
@@ -143,7 +164,8 @@ $customer_order_all = get_posts( apply_filters( 'woocommerce_my_account_my_order
     'meta_key'    => '_customer_user',
     'meta_value'  => get_current_user_id(),
     'post_type'   => wc_get_order_types( 'view-orders' ),
-    'post_status' => array_keys( wc_get_order_statuses() )
+    'post_status' => ['wc-completed'], // fincrowd
+    //'post_status' => array_keys( wc_get_order_statuses() )
 ) ) );
 
 $max_page = 1;

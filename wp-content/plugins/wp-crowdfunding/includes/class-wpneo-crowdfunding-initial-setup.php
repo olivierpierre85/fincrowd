@@ -28,6 +28,14 @@ if (! class_exists('Wpneo_Crowdfunding_Initial_Setup')) {
          * Some task during plugin activate
          */
         public static function initial_plugin_setup(){
+          //start Fincrowd activation Settings
+          update_option( 'wpneo_fi_person_min_funding',   '500');
+          update_option( 'wpneo_fi_person_max_funding',   '5000');
+          update_option( 'wpneo_fi_company_min_funding',   '5000');
+          update_option( 'wpneo_fi_company_max_funding',   '0' );
+          update_option( 'wpneo_fi_cancellation_limit',   '15' );//nb of days after the pledge where a user is allowed to cancel
+          //end Fincrowd
+
             //Check is plugin used before or not
             if (get_option('wpneo_crowdfunding_is_used'))
                 return false;
