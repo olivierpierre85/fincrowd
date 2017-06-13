@@ -250,25 +250,26 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             }
         }
 
-        function wpneo_registration_validation( $username, $password, $email, $website, $first_name, $last_name, $nickname, $bio )  {
+        //Fincrowd 
+        function wpneo_registration_validation( $username, $password,$password2, $email, $website, $first_name, $last_name, $nickname, $bio, $birthday,$conditions )  {
             global $reg_errors;
             $reg_errors = new WP_Error;
 
             if ( empty( $username ) || empty( $password ) || empty( $email ) ) {
                 $reg_errors->add('field', __('Required form field is missing','wp-crowdfunding'));
             }
-
+/* fincrowd
             if ( strlen( $username ) < 4 ) {
                 $reg_errors->add('username_length', __('Username too short. At least 4 characters is required','wp-crowdfunding'));
             }
-
+*/
             if ( username_exists( $username ) )
                 $reg_errors->add('user_name', __('Sorry, that username already exists!','wp-crowdfunding'));
-
+/* fincrowd
             if ( !validate_username( $username ) ) {
                 $reg_errors->add('username_invalid', __('Sorry, the username you entered is not valid','wp-crowdfunding'));
             }
-
+*/
             if ( strlen( $password ) < 6 ) {
                 $reg_errors->add('password', __('Password length must be greater than 6','wp-crowdfunding'));
             }
