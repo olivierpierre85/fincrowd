@@ -48,7 +48,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
         }
 
         public function initial_plugin_setup(){
-            // Email Notification After New User Registration 
+            // Email Notification After New User Registration
             add_option('wpneo_new_user_email_subject', 'Congratulation [user_name]');
             add_option('wpneo_user_registration_email_template', "Congratulation [user_name], \n Email from [site_title]" );
             // Email notification after new backed
@@ -73,14 +73,14 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $username       = get_option( 'wpneo_smtp_username' );
                 $password       = get_option( 'wpneo_smtp_password' );
                 $encription     = get_option( 'wpneo_smtp_encription' );
-                
+
                 $phpmailer->Mailer      = 'smtp';
                 $phpmailer->From        = $form_email;
                 $phpmailer->FromName    = $form_text;
                 $phpmailer->SMTPSecure  = $encription;
                 $phpmailer->Host        = $host;
                 $phpmailer->Port        = $port;
-                    
+
                 // If usrname option is not blank we have to use authentication
                 if ($username != '') {
                     $phpmailer->SMTPAuth = true;
@@ -217,7 +217,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $user           = get_userdata($user_id);
                 $dislay_name    = $user->display_name;
                 if( 'true' == get_option( "wpneo_enable_new_user_registration_email_user" ) ){
-                    $email[]        = $user->user_email;    
+                    $email[]        = $user->user_email;
                 }
                 if( 'true' == get_option( "wpneo_enable_new_user_registration_email_admin" ) ){
                     $admin_email    = get_option( 'admin_email' );
@@ -266,7 +266,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     $author         = get_userdata($product->post->post_author);
                     $dislay_name    = $author->display_name;
                     if( 'true' == get_option( "wpneo_enable_new_backed_email_user" ) ){
-                        $email[]    = $author->user_email;    
+                        $email[]    = $author->user_email;
                     }
                     if( 'true' == get_option( "wpneo_enable_new_backed_email_admin" ) ){
                         $admin_email= get_option( 'admin_email' );
@@ -284,7 +284,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                     //Send email now using wp_email();
                     if(!empty( $email )){
-                        wp_mail( $email, $subject, $email_str, $headers );
+                        wp_mail( $email, $subject, $email_str, $headers );//TODO head : Content-Type: text/html ; empty array atatchment
                     }
                 }
             }
@@ -300,7 +300,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 if ( "product" != $post_type ){ return; }
                 if ( wp_is_post_revision( $post_id ) ){ return; }
                 if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ){ return; }
-                
+
                 $email          = array();
                 $product        = wc_get_product( $post_id );
             	$author         = get_userdata( $product->post->post_author );
@@ -327,7 +327,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 }
             }
         }
-        
+
 
         // Campaign Published Campaign Author
         public function wpneo_campaign_published_process( $ID, $post ) {
@@ -341,7 +341,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $author         = get_userdata( $product->post->post_author );
                 $dislay_name    = $author->display_name;
                 if( 'true' == get_option( "wpneo_enable_accept_campaign_email_user" ) ){
-                    $email[]    = $author->user_email;    
+                    $email[]    = $author->user_email;
                 }
                 if( 'true' == get_option( "wpneo_enable_accept_campaign_email_admin" ) ){
                     $admin_email= get_option( 'admin_email' );
