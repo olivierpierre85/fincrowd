@@ -273,8 +273,11 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                         $email[]    = $admin_email;
                     }
 
+                    //fincrowd$email[]    = 'test@test.com';
+
                     $total_amount   = get_woocommerce_currency_symbol() . $order->get_total();
                     $campaign_title  = $product->post->post_title;
+                    //fincrowd$campaign_title  = "test";
                     $shortcode      = array('[user_name]', '[site_title]', '[total_amount]', '[campaign_title]');
                     $replace_str    = array($dislay_name, get_option('blogname'), $total_amount, $campaign_title);
                     $str            = wp_unslash(get_option('wpneo_backer_email_template'));

@@ -263,10 +263,10 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                 if ($product->get_type() === 'crowdfunding') {
                     $email          = array();
-                    //start fincrowd
-                    $author         = get_userdata($product->post->post_author);
-                    //$post = $product->get_post();
-                    //$author         = get_userdata($post->post_author);
+                    // //start fincrowd
+                    //$author         = get_userdata($product->post->post_author);
+                    $post_author_id = get_post_field( 'post_author', $product_id );
+                    $author         = get_userdata($post_author_id);
                     //end fincrowd
                     $dislay_name    = $author->display_name;
                     if( 'true' == get_option( "wpneo_enable_new_backed_email_user" ) ){
@@ -278,7 +278,10 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     }
 
                     $total_amount   = get_woocommerce_currency_symbol() . $order->get_total();
-                    $campaign_title  = $product->post->post_title;
+                    //start fincrowd
+                    //$campaign_title  = $product->post->post_title;
+                    $campaign_title  = get_post_field( 'post_title', $product_id );
+                    //end fincrowd
                     $shortcode      = array('[user_name]', '[site_title]', '[total_amount]', '[campaign_title]');
                     $replace_str    = array($dislay_name, get_option('blogname'), $total_amount, $campaign_title);
                     $str            = get_option('wpneo_backer_email_template');
@@ -307,7 +310,11 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                 $email          = array();
                 $product        = wc_get_product( $post_id );
-            	$author         = get_userdata( $product->post->post_author );
+                // //start fincrowd
+                //$author         = get_userdata($product->post->post_author);
+                $post_author_id = get_post_field( 'post_author', $post_id  );
+                $author         = get_userdata($post_author_id);
+                //end fincrowd
                 $dislay_name    = $author->display_name;
                 if( 'true' == get_option( "wpneo_enable_new_campaign_email_user" ) ){
                     $email[]    = $author->user_email;
@@ -317,7 +324,10 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     $email[]    = $admin_email;
                 }
 
-                $campaign_title  = $product->post->post_title;
+                //start fincrowd
+                //$campaign_title  = $product->post->post_title;
+                $campaign_title  = get_post_field( 'post_title', $post_id  );
+                //end fincrowd
                 $shortcode      = array( '[user_name]', '[campaign_title]' );
                 $replace_str    = array( $dislay_name, $campaign_title );
                 $str            = wp_unslash( get_option( 'wpneo_campaign_email_template' ) );
@@ -336,13 +346,17 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
         // Campaign Published Campaign Author
         public function wpneo_campaign_published_process( $ID, $post ) {
             if ( get_option( 'wpneo_enable_accept_campaign_email' ) == 'true' ) {
-                $post_id = $post->ID;
-
+                //fincrowd$post_id = $post->ID;
+                $post_id = $post->get_id();
                 $product = wc_get_product( $post_id );
                 if (!$product->is_type('crowdfunding')){ return; }
 
                 $email          = array();
-                $author         = get_userdata( $product->post->post_author );
+                // //start fincrowd
+                //$author         = get_userdata($product->post->post_author);
+                $post_author_id = get_post_field( 'post_author', $post_id );
+                $author         = get_userdata($post_author_id);
+                //end fincrowd
                 $dislay_name    = $author->display_name;
                 if( 'true' == get_option( "wpneo_enable_accept_campaign_email_user" ) ){
                     $email[]    = $author->user_email;
@@ -352,7 +366,10 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     $email[]    = $admin_email;
                 }
 
-                $campaign_title  = $product->post->post_title;
+                //start fincrowd
+                //$campaign_title  = $product->post->post_title;
+                $campaign_title  = get_post_field( 'post_title', $post_id );
+                //end fincrowd
                 $shortcode      = array( '[user_name]', '[campaign_title]' );
                 $replace_str    = array( $dislay_name, $campaign_title );
                 $str            = wp_unslash( get_option( 'wpneo_accept_campaign_email_template' ) );
