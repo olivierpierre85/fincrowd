@@ -475,12 +475,12 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
               global $wpdb;
 
-              $product        = wc_get_product($product_id);
+              $product        = wc_get_product($campaign_id);
 
               if ($product->product_type === 'crowdfunding') {
                   $email          = array();
                   //$author         = get_userdata($product->post->post_author);
-                  $post_author_id = get_post_field( 'post_author', $product_id );
+                  $post_author_id = get_post_field( 'post_author', $campaign_id );
                   $author         = get_userdata($post_author_id);
 
                   if( 'true' == get_option( "wpneo_enable_validate_campaign_email_user" ) ){
