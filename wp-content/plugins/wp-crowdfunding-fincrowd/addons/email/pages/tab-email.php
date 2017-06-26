@@ -334,7 +334,7 @@ $arr =  array(
         'type'      => 'hidden',
         'value'     => 'true',
     ),
-    //start fincrowd emails cancel
+    //---------------------------------------- start fincrowd emails
     //------------------------------ Email Cancel Campaign -------------------------------
     // #Email notification after submit cancel
     array(
@@ -387,8 +387,59 @@ $arr =  array(
         'value'     => '',
         'label'     => __('Cancel Campaign Email Template','wp-crowdfunding'),
         'desc'      => __('Below are shortcode list for variable text.( [user_name], [campaign_title] )','wp-crowdfunding'),
+    ),//------------------------------ Email validate Campaign -------------------------------
+    // #Email notification after submit validate
+    array(
+        'type'      => 'seperator',
+        'label'     => '',
+        'desc'      => __('Email Notification after validate Campaign','wp-crowdfunding'),
+        'top_line'  => 'true',
     ),
-    //end fincrowd
+
+    // #Email Notification After validate Campaign
+    array(
+        'id'        => 'wpneo_enable_validate_campaign_email',
+        'type'      => 'checkbox',
+        'value'     => 'true',
+        'label'     => __('Email Notification After validate Campaign','wp-crowdfunding'),
+        'desc'      => __('Enable email notification after validate campaign.','wp-crowdfunding'),
+    ),
+
+    // #Email Notification After validate Campaign
+    array(
+        'id'        => 'wpneo_enable_validate_campaign_email_admin',
+        'type'      => 'checkbox',
+        'value'     => 'true',
+        'label'     => __('Email to','wp-crowdfunding'),
+        'desc'      => __('Admin','wp-crowdfunding'),
+    ),
+
+    // #Email Notification After validate Campaign
+    array(
+        'id'        => 'wpneo_enable_validate_campaign_email_user',
+        'type'      => 'checkbox',
+        'value'     => 'true',
+        'label'     => __('','wp-crowdfunding'),
+        'desc'      => __('User','wp-crowdfunding'),
+    ),
+
+    // #validate Campaign Email Subject
+    array(
+        'id'        => 'wpneo_validate_campaign_email_subject',
+        'type'      => 'text',
+        'value'     => '',
+        'label'     => __('validate Campaign Email Subject','wp-crowdfunding'),
+        'desc'      => __('Subject line for validate campaign email.','wp-crowdfunding'),
+    ),    
+    // #validate Campaign Email Template
+    array(
+        'id'        => 'wpneo_validate_campaign_email_template',
+        'type'      => 'textarea',
+        'value'     => '',
+        'label'     => __('validate Campaign Email Template','wp-crowdfunding'),
+        'desc'      => __('Below are shortcode list for variable text.( [user_name], [campaign_title] )','wp-crowdfunding'),
+    ),
+    //------------------------------------------- end fincrowd
 
     // #Save Function
     array(

@@ -48,6 +48,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
             //start fincrowd mails
             add_action('wpneo_fi_after_cancel_order', array($this,'wpneo_fi_send_email_cancel_order'));
+            add_action('wpneo_fi_after_validate_campaign', array($this,'wpneo_fi_send_email_validate_campaign'));
             //endfincrowd
 
         }
@@ -155,6 +156,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $wpneo_enable_accept_campaign_email_user = sanitize_text_field( wpneo_post('wpneo_enable_accept_campaign_email_user') );
                 wpneo_crowdfunding_update_option_checkbox( 'wpneo_enable_accept_campaign_email_user', $wpneo_enable_accept_campaign_email_user );
                 //Start fincrowd
+                //Cancel pledge tot campaign
                 $wpneo_enable_cancel_campaign_email = sanitize_text_field( wpneo_post('wpneo_enable_cancel_campaign_email') );
                 wpneo_crowdfunding_update_option_checkbox( 'wpneo_enable_cancel_campaign_email', $wpneo_enable_cancel_campaign_email );
 
@@ -163,6 +165,15 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                 $wpneo_enable_cancel_campaign_email_user = sanitize_text_field( wpneo_post('wpneo_enable_cancel_campaign_email_user') );
                 wpneo_crowdfunding_update_option_checkbox( 'wpneo_enable_cancel_campaign_email_user', $wpneo_enable_cancel_campaign_email_user );
+                //Validate campaign after goal reached
+                $wpneo_enable_validate_campaign_email = sanitize_text_field( wpneo_post('wpneo_enable_validate_campaign_email') );
+                wpneo_crowdfunding_update_option_checkbox( 'wpneo_enable_validate_campaign_email', $wpneo_enable_validate_campaign_email );
+
+                $wpneo_enable_validate_campaign_email_admin = sanitize_text_field( wpneo_post('wpneo_enable_validate_campaign_email_admin') );
+                wpneo_crowdfunding_update_option_checkbox( 'wpneo_enable_validate_campaign_email_admin', $wpneo_enable_validate_campaign_email_admin );
+
+                $wpneo_enable_validate_campaign_email_user = sanitize_text_field( wpneo_post('wpneo_enable_validate_campaign_email_user') );
+                wpneo_crowdfunding_update_option_checkbox( 'wpneo_enable_validate_campaign_email_user', $wpneo_enable_validate_campaign_email_user );
                 //end fincrowd
 
                 //Text, TextBox
@@ -179,11 +190,18 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 wpneo_crowdfunding_update_option_text( 'wpneo_accept_campaign_email_template', $wpneo_accept_campaign_email_template );
 
                 //start fincrowd save email template
+                //cancel pledge to campaign
                 $wpneo_cancel_campaign_email_subject = sanitize_text_field(wpneo_post('wpneo_cancel_campaign_email_subject'));
                 wpneo_crowdfunding_update_option_text( 'wpneo_cancel_campaign_email_subject', $wpneo_cancel_campaign_email_subject );
 
                 $wpneo_cancel_campaign_email_template = sanitize_text_field(wpneo_post('wpneo_cancel_campaign_email_template'));
                 wpneo_crowdfunding_update_option_text( 'wpneo_cancel_campaign_email_template', $wpneo_cancel_campaign_email_template );
+                //Validate campaign
+                $wpneo_validate_campaign_email_subject = sanitize_text_field(wpneo_post('wpneo_validate_campaign_email_subject'));
+                wpneo_crowdfunding_update_option_text( 'wpneo_validate_campaign_email_subject', $wpneo_validate_campaign_email_subject );
+
+                $wpneo_validate_campaign_email_template = sanitize_text_field(wpneo_post('wpneo_validate_campaign_email_template'));
+                wpneo_crowdfunding_update_option_text( 'wpneo_validate_campaign_email_template', $wpneo_validate_campaign_email_template );
                 //end fincrowd
 
                 $wpneo_smtp_form_email = sanitize_text_field(wpneo_post('wpneo_smtp_form_email'));
@@ -445,6 +463,53 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     }
                 }
             }
+        }
+
+        /**
+         * @param $campaign_id
+         * FINCROWD FCT
+         * Send Email after validate campaign
+         */
+        function wpneo_fi_send_email_validate_campaign($campaign_id){
+          if ( get_option( 'wpneo_enable_validate_campaign_email' ) == 'true' ) {
+
+              global $wpdb;
+
+              $product        = wc_get_product($product_id);
+
+              if ($product->product_type === 'crowdfunding') {
+                  $email          = array();
+                  //$author         = get_userdata($product->post->post_author);
+                  $post_author_id = get_post_field( 'post_author', $product_id );
+                  $author         = get_userdata($post_author_id);
+
+                  if( 'true' == get_option( "wpneo_enable_validate_campaign_email_user" ) ){
+                      $email[]    = $author->user_email;
+                  }
+                  if( 'true' == get_option( "wpneo_enable_validate_campaign_email_admin" ) ){
+                      $admin_email= get_option( 'admin_email' );
+                      $email[]    = $admin_email;
+                  }
+                  //start fincrowd get logged in user Adress TOO !
+                  $current_user = wp_get_current_user();
+                  $email[]    = $current_user->user_email;
+                  //end fincrowd
+
+                  $campaign_title  = $product->post->post_title;
+                  $shortcode      = array( '[user_name]', '[campaign_title]' );
+                  $replace_str    = array( $dislay_name, $campaign_title );
+                  $str            = wp_unslash( get_option( 'wpneo_validate_campaign_email_template' ) );
+                  $email_str      = str_replace( $shortcode, $replace_str, $str );
+                  $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_validate_campaign_email_subject' ) );
+                  $headers        = array('Content-Type: text/html; charset=UTF-8'); // Set Headers content type to HTML
+
+                  //Send email now using wp_email();
+                  if(!empty( $email )){
+                      wp_mail( $email, $subject, $email_str.'validate TODO', $headers );
+                  }
+              }
+          }
+
         }
 
 

@@ -50,10 +50,13 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
           $result = wpneo_crowdfunding_update_post_meta_text($campaign_id, 'wpneo_fi_campaign_validated', true);
           if ($result){
             //FINCROWD ALL THE Things to do to update
+
+            //Send mails
+            do_action('wpneo_fi_after_validate_campaign',$campaign_id );
           }
           if ($result){
             //FINCROWD TODO refresh page
-              die(json_encode(array('success'=> 1, 'message' => __('Campagne validée', 'wp-crowdfunding'))));
+              die(json_encode(array('success'=> 1, 'message' => __('Campagne validée !', 'wp-crowdfunding'))));
           }else{
               die(json_encode(array('success'=> 0, 'message' => __('Error updating, please try again', 'wp-crowdfunding'))));
           }
@@ -94,7 +97,7 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
           $result = $order->update_status('Cancelled', '');
           //$result = wc_delete_order_item( $order_id );
 
-          //TODO mail to cancel
+          //mail to cancel
           do_action('wpneo_fi_after_cancel_order',$order_id);
 
           if ($result){
