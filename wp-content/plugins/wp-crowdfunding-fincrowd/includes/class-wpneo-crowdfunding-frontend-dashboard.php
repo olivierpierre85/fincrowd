@@ -40,9 +40,26 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
             //Fincrowd
             add_action( 'wp_ajax_wpneo_fi_cancel_order',          array($this, 'wpneo_fi_cancel_order'));
             add_action( 'wp_ajax_wpneo_fi_compute_interest',      array($this, 'wpneo_fi_compute_interest'));
-
+            add_action( 'wp_ajax_wpneo_fi_validate_campaign',      array($this, 'wpneo_fi_validate_campaign'));
         }
         //Fincrowd
+        //Validate campaign
+        public function wpneo_fi_validate_campaign() {
+          //TODO fincrowd admin check ?
+          $campaign_id        = sanitize_text_field($_POST['campaign_id']);
+          $result = wpneo_crowdfunding_update_post_meta_text($campaign_id, 'wpneo_fi_campaign_validated', true);
+          if ($result){
+            //FINCROWD ALL THE Things to do to update
+          }
+          if ($result){
+            //FINCROWD TODO refresh page
+              die(json_encode(array('success'=> 1, 'message' => __('Campagne validée', 'wp-crowdfunding'))));
+          }else{
+              die(json_encode(array('success'=> 0, 'message' => __('Error updating, please try again', 'wp-crowdfunding'))));
+          }
+
+        }
+
         //compute interest frontend
         public function wpneo_fi_compute_interest() {
           $campaign_id        = sanitize_text_field($_POST['campaign_id']);
@@ -60,6 +77,7 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
           $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
           $total_interest_insurance = round(($duration * $monthly_payment_insurance  ) - $total,2);
 
+          //TODO error handling
           die(__('Intérêts totaux :'.$total_interest.' ( '.$total_interest_insurance.' avec la garantie)', 'wp-crowdfunding'));
           //die(json_encode(array('success'=> 1, 'message' => __('Itest', 'wp-crowdfunding'), 'redirect' => $redirect)));
         }
@@ -75,6 +93,9 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
           $order = new WC_Order($order_id);
           $result = $order->update_status('Cancelled', '');
           //$result = wc_delete_order_item( $order_id );
+
+          //TODO mail to cancel
+          do_action('wpneo_fi_after_cancel_order',$order_id);
 
           if ($result){
               die(json_encode(array('success'=> 1, 'message' => __('Successfully updated', 'wp-crowdfunding'), 'redirect' => $redirect)));

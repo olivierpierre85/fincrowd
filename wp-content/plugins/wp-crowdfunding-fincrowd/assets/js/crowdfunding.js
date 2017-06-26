@@ -90,7 +90,7 @@ jQuery(document).ready(function($){
 	$('body').on('click','.wpneo-image-upload-btn',function(e) {
         e.preventDefault();
         var that = $(this);
-        var image = wp.media({ 
+        var image = wp.media({
             title: 'Upload Image',
             multiple: false
         }).open()
@@ -126,4 +126,20 @@ jQuery(document).ready(function($){
 			}
 		});
 	});
+
+	//users fincrowd
+	//Selectionner 150 users for a campaign
+	$(document).on('click', '#wpneo_fi_select_users', function () {
+		$('input[name^=wpneo_fi_users_list]').slice(0,150).attr('checked','checked');
+	});
+// Impossible de sélectionner + de 150
+	$(document).on('click', 'input[name^=wpneo_fi_users_list]:checked', function () {
+			var total = $( "input[name^=wpneo_fi_users_list]:checked" ).length;
+			if(total > 150){
+				alert('Vous ne pouvez pas ajouter plus de 150 participants par projet !');
+				this.checked = false;
+		}
+	});
+
+
 });

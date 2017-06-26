@@ -184,6 +184,23 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
             }
         }
 
+        //fincrowd, check if the user is a company or has rights !
+        public function userHasRights(){
+            global $post;
+
+            if(get_the_author_meta( 'physical_person', get_current_user_id() )){
+              $selected_users = explode(';', get_post_meta( $post->ID, 'wpneo_fi_users_list', true ));
+              if( $selected_users != null && in_array(get_current_user_id(),$selected_users)){
+                return true;
+              } else {
+                return false;
+              }
+            } else {
+              return true;
+            }
+
+        }
+
         /**
          * @param $campaign_id
          * @return mixed

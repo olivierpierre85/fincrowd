@@ -155,6 +155,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
         function wpneo_add_meta_info(){
 
             global $woocommerce;
+            global $post;
 
             echo '<div class="options_group show_if_neo_crowdfunding_options">';
 /*
@@ -354,6 +355,29 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                     'class'         => 'wc_input_price'
                     )
             );
+
+            echo '<div class="options_group"></div>';
+            echo '<h3>'.__( 'Liste des utilisateurs autorisés', 'wp-crowdfunding' ).'</h3>';
+            echo '<button type="button" id="wpneo_fi_select_users">'.__( 'Séléctionner les 150 premiers', 'wp-crowdfunding' ).'</button><br>';
+            //echo __( 'Total Sélectionnés : ', 'wp-crowdfunding' ).'<span id= "wpneo_fi_total_select_users">TODO</span>';
+            //for each registered user a checkbox (users as subscribers)
+            $user_query = new WP_User_Query( array( 'role' => 'Subscriber','meta_query' => array( array('key' => 'physical_person','value' => true,  'compare' => '=')   ) ));
+            //TODO Sort, put the ones where the interests matches the project category first
+            // User Loop
+            if ( ! empty( $user_query->results ) ) {
+              $selected_users = explode(';', get_post_meta( $post->ID, 'wpneo_fi_users_list', true ));
+            	foreach ( $user_query->results as $user ) {
+                if(in_array ($user->ID,$selected_users)){
+                  $checked = 'checked';
+                } else {
+                  $checked = '';
+                }
+                echo '<p><input type="checkbox" name="wpneo_fi_users_list[]" value="' . $user->ID . '" ' . $checked . '/> ' . $user->display_name . '</p>';
+            	}
+            } else {
+            	echo __( 'Pas d\'utilisateurs', 'wp-crowdfunding' );
+            }
+
 
 /*
             $options = array();
@@ -584,12 +608,12 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             }
 
             // _nf_location
-            $_nf_location = sanitize_text_field( $_POST['_nf_location'] );
-            wpneo_crowdfunding_update_post_meta_text($post_id, '_nf_location', $_nf_location);
+            //$_nf_location = sanitize_text_field( $_POST['_nf_location'] );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, '_nf_location', $_nf_location);
 
             // wpneo_funding_video
-            $wpneo_funding_video = sanitize_text_field( $_POST['wpneo_funding_video'] );
-            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_video', $wpneo_funding_video);
+            //$wpneo_funding_video = sanitize_text_field( $_POST['wpneo_funding_video'] );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_video', $wpneo_funding_video);
 
             // _nf_duration_start
             $_nf_duration_start = sanitize_text_field( $_POST['_nf_duration_start'] );
@@ -609,32 +633,32 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_minimum_price', $wpneo_funding_minimum_price);
 
             // wpneo_funding_maximum_price
-            $wpneo_funding_maximum_price = intval( sanitize_text_field($_POST['wpneo_funding_maximum_price']) );
-            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_maximum_price', $wpneo_funding_maximum_price);
+            //$wpneo_funding_maximum_price = intval( sanitize_text_field($_POST['wpneo_funding_maximum_price']) );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_maximum_price', $wpneo_funding_maximum_price);
 
             // wpneo_funding_recommended_price
-            $wpneo_funding_recommended_price = intval( sanitize_text_field($_POST['wpneo_funding_recommended_price']) );
-            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_recommended_price', $wpneo_funding_recommended_price);
+            //$wpneo_funding_recommended_price = intval( sanitize_text_field($_POST['wpneo_funding_recommended_price']) );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_recommended_price', $wpneo_funding_recommended_price);
 
             // wpneo_campaign_end_method
-            $wpneo_campaign_end_method = sanitize_text_field( $_POST['wpneo_campaign_end_method'] );
-            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_campaign_end_method', $wpneo_campaign_end_method);
+            //$wpneo_campaign_end_method = sanitize_text_field( $_POST['wpneo_campaign_end_method'] );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_campaign_end_method', $wpneo_campaign_end_method);
 
             // wpneo_show_contributor_table
-            $wpneo_show_contributor_table = sanitize_text_field( $_POST['wpneo_show_contributor_table'] );
-            wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_show_contributor_table', $wpneo_show_contributor_table);
+            //$wpneo_show_contributor_table = sanitize_text_field( $_POST['wpneo_show_contributor_table'] );
+            //wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_show_contributor_table', $wpneo_show_contributor_table);
 
             // wpneo_mark_contributors_as_anonymous
-            $wpneo_mark_contributors_as_anonymous = sanitize_text_field( $_POST['wpneo_mark_contributors_as_anonymous'] );
-            wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_mark_contributors_as_anonymous', $wpneo_mark_contributors_as_anonymous);
+            //$wpneo_mark_contributors_as_anonymous = sanitize_text_field( $_POST['wpneo_mark_contributors_as_anonymous'] );
+            //wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_mark_contributors_as_anonymous', $wpneo_mark_contributors_as_anonymous);
 
             // wpneo_campaigner_paypal_id
-            $wpneo_campaigner_paypal_id = sanitize_text_field( $_POST['wpneo_campaigner_paypal_id'] );
-            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_campaigner_paypal_id', $wpneo_campaigner_paypal_id);
+            //$wpneo_campaigner_paypal_id = sanitize_text_field( $_POST['wpneo_campaigner_paypal_id'] );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_campaigner_paypal_id', $wpneo_campaigner_paypal_id);
 
             // wpneo_country
-            $wpneo_country = sanitize_text_field( $_POST['wpneo_country'] );
-            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_country', $wpneo_country);
+            //$wpneo_country = sanitize_text_field( $_POST['wpneo_country'] );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_country', $wpneo_country);
 
             //Fincrowd new fields
             //wpneo_fi_risk_class
@@ -667,6 +691,9 @@ if (! class_exists('Wpneo_Crowdfunding')) {
 
             $wpneo_fi_website = sanitize_text_field( $_POST['wpneo_fi_website'] );
             wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_fi_website', $wpneo_fi_website);
+
+            $wpneo_fi_users_list = $_POST['wpneo_fi_users_list'];
+            update_post_meta( $post_id, 'wpneo_fi_users_list', implode(";",$wpneo_fi_users_list) );
 
         }
 
@@ -941,8 +968,8 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             $duration      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_duration', true );
             $insurance = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_insurance', true );
 
-            $monthly_payment            = wpneo_fi_compute_monthly_payment( $total, $interest, $duration );
-            $monthly_payment_insurance  = wpneo_fi_compute_monthly_payment( $total, $interest_insurance, $duration );
+            $monthly_payment            = round(wpneo_fi_compute_monthly_payment( $total, $interest, $duration ),2);
+            $monthly_payment_insurance  = round(wpneo_fi_compute_monthly_payment( $total, $interest_insurance, $duration ),2);
 
             $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
             $total_interest_insurance = round(($duration * $monthly_payment_insurance  ) - $total,2);
@@ -970,23 +997,44 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             echo '<div class="fi-interest-tab">';
             echo '<h4>'.__('Tableau de remboursement').'</h4>';
 
-            echo '<table id="fi-interest-table"><tr><th>Mois</th><th>Capital</th><th>' . __('Remboursement par mois') . '</th></tr>';
+            echo '<table id="fi-interest-table"><tr><th>'
+            . __('Mois') . '</th><th>'
+            . __('Capital remboursé') . '</th><th>'
+            . __('Intérêts') . '</th><th>'
+            . __('Remboursement par mois') . '</th></tr>';
 
-              for($i = 0 ; $i < $duration; $i++ ) {
-                echo '<tr class="fi-interest-row">';
-                echo '<td>mois '.$i.'</td>';
-                echo '<td>Todo capital</td>';
-                echo '<td>'.$monthly_payment.'</td>';
-                echo '</tr>';
-              }
+            $monthly_interest_rate  = $interest / 12 / 100;
+            $total_left_to_pay    = $total;
+            for($i = 0 ; $i < $duration; $i++ ) {
+              $interest_by_month = round($total_left_to_pay * $monthly_interest_rate,2);
+              $capital_by_month = round($monthly_payment - $interest_by_month,2);
 
-              for($i = 0 ; $i < $duration; $i++ ) {
-                echo '<tr class="fi-interest-insurance-row">';
-                echo '<td>mois '.$i.'</td>';
-                echo '<td>Todo capital</td>';
-                echo '<td>'.$monthly_payment_insurance.'</td>';
-                echo '</tr>';
-              }
+              echo '<tr class="fi-interest-row">';
+              echo '<td>'.__('Mois ').$i.'</td>';
+              echo '<td>'.$capital_by_month.'</td>';
+              echo '<td>'.$interest_by_month.'</td>';
+              echo '<td>'.$monthly_payment.'</td>';
+              echo '</tr>';
+
+              $total_left_to_pay = $total_left_to_pay - $monthly_payment;
+            }
+
+            //WITH insurance
+            $monthly_interest_rate_insurance  = $interest_insurance / 12 / 100;
+            $total_left_to_pay    = $total;
+            for($i = 0 ; $i < $duration; $i++ ) {
+              $interest_by_month = round($total_left_to_pay * $monthly_interest_rate_insurance,2);
+              $capital_by_month = round($monthly_payment - $interest_by_month,2);
+
+              echo '<tr class="fi-interest-insurance-row">';
+              echo '<td>'.__('Mois ').$i.'</td>';
+              echo '<td>'.$capital_by_month.'</td>';
+              echo '<td>'.$interest_by_month.'</td>';
+              echo '<td>'.$monthly_payment_insurance.'</td>';
+              echo '</tr>';
+
+              $total_left_to_pay = $total_left_to_pay - $monthly_payment;
+            }
 
             echo '</table>';
 
@@ -999,7 +1047,14 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             //Launch the validation of this donation directly after
             global $woocommerce;
             $order = new WC_Order($order_id);
-            $order->update_status('completed', '');
+
+            //FINCROWD TODO recheck that the total is not reach in the case where two persons make an offer that reach the total at the same time.
+            if(true){
+              $order->update_status('completed', '');
+            } else {
+              //Delete order, send error message to client
+            }
+
         }
 
         /**

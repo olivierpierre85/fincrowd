@@ -34,7 +34,7 @@ jQuery(document).ready(function($){
     // POST Insert
     $('#wpneofrontenddata').submit(WpneoAjaxSubmitFrontend);
     function WpneoAjaxSubmitFrontend(){
-        tinyMCE.triggerSave();
+        //tinyMCE.triggerSave();//fincrowd no more tiny mce
         var wpneofrontenddata = $(this).serialize();
         $.ajax({
             type:"POST",
@@ -486,7 +486,6 @@ jQuery(document).ready(function($){
 
     //compute interests
     $('input[name="wpneo_donate_amount_field"]').on('change', function(){
-        //TODO compute interest
         var campaign_id = $(this).data('campaign-id');
         $.ajax(
             {
@@ -504,9 +503,25 @@ jQuery(document).ready(function($){
                     //TODO fincrowd error management
                 }
             });
+    });
 
-
-
+    // Dashboard Validate campaign
+    $(document).on('click', '#wpneo_fi_validate_campaign', function () {
+      var campaign_id = $(this).data('campaign-id');
+      $.ajax(
+          {
+              async: false,
+              url : ajax_object.ajax_url,
+              type: "POST",
+              data: {'action': 'wpneo_fi_validate_campaign', 'campaign_id': campaign_id },
+              success:function(data, textStatus, jqXHR) {
+                  wpneo_crowdfunding_modal(data);
+                  return_data = data;
+              },
+              error: function(jqXHR, textStatus, errorThrown){
+                  wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
+              }
+          });
     });
 
 });

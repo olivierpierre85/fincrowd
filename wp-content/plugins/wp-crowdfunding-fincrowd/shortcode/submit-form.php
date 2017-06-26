@@ -93,12 +93,13 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
                 return $html;
             }
 
-            if (is_user_logged_in()){
-                if (!current_user_can('campaign_form_submit')) {
-                    $html .= '<div class="woocommerce-info">'.__("You Do not have permission to submit form.","wp-crowdfunding").'</div>';
-                    return $html;
-                }
-            }
+            //if (is_user_logged_in()){
+                //fincrowd anyone can post campaign_form_submit
+                //if (!current_user_can('campaign_form_submit')) {
+                //    $html .= '<div class="woocommerce-info">'.__("You Do not have permission to submit form.","wp-crowdfunding").'</div>';
+                //    return $html;
+                //}
+            //}
 
 
             $html .= '<form type="post" action="" id="wpneofrontenddata">';
@@ -118,9 +119,10 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $html .= '<div class="wpneo-single">';
             $html .= '<div class="wpneo-name">'.__( "Description de la société" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
-            ob_start();
-            wp_editor( $description, 'wpneo-form-description' );
-            $html .= ob_get_clean();
+            // ob_start();
+            // wp_editor( $description, 'wpneo-form-description' );
+            // $html .= ob_get_clean();
+            $html .= '<textarea rows="4" cols="50" name="wpneo-form-description" value="'.$description.'"></textarea>';
             $html .= '<small>'.__("Put the campaign description here","wp-crowdfunding").'</small>';
             $html .= '</div>';
             $html .= '</div>';
@@ -130,9 +132,10 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $html .= '<div class="wpneo-single">';
             $html .= '<div class="wpneo-name">'.__( "Motivation" , "wp-crowdfunding" ).'</div>';
             $html .= '<div class="wpneo-fields">';
-            ob_start();
-            wp_editor( $short_description, 'wpneo-form-short-description', array('editor_height'=>200) );
-            $html .= ob_get_clean();
+            // ob_start();
+            // wp_editor( $short_description, 'wpneo-form-short-description', array('editor_height'=>200) );
+            // $html .= ob_get_clean();
+            $html .= '<textarea rows="4" cols="50" name="wpneo-form-short-description" value="'.$short_description.'"></textarea>';
             $html .= '<small>'.__("Motivation de la demande de fond","wp-crowdfunding").'</small>';
             $html .= '</div>';
             $html .= '</div>';

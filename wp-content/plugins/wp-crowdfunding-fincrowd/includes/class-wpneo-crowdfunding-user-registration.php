@@ -204,7 +204,7 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 //On success
                 if ( ! is_wp_error( $user_id ) ) {
                     do_action( 'wpneo_crowdfunding_after_user_registration', $user_id );
-                    $redirect = esc_url(wpneo_post('current_page'));//TODO fincrowd redirect Dashboard
+                    $redirect = get_permalink(get_option('wpneo_crowdfunding_dashboard_page_id'));//TODO autologin ?fincrowd redirect Dashboard
 
                     die(json_encode(array('success'=> 1, 'message' => __('Registration complete.', 'wp-crowdfunding'), 'redirect' => $redirect )));
                 } else {
