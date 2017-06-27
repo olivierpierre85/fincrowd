@@ -430,13 +430,21 @@ $arr =  array(
         'value'     => '',
         'label'     => __('validate Campaign Email Subject','wp-crowdfunding'),
         'desc'      => __('Subject line for validate campaign email.','wp-crowdfunding'),
-    ),    
+    ),
     // #validate Campaign Email Template
     array(
         'id'        => 'wpneo_validate_campaign_email_template',
         'type'      => 'textarea',
         'value'     => '',
-        'label'     => __('validate Campaign Email Template','wp-crowdfunding'),
+        'label'     => __('validate Campaign Email Template for creator','wp-crowdfunding'),
+        'desc'      => __('Below are shortcode list for variable text.( [user_name], [campaign_title] )','wp-crowdfunding'),
+    ),
+    // #validate Campaign Email Template
+    array(
+        'id'        => 'wpneo_validate_campaign_client_email_template',
+        'type'      => 'textarea',
+        'value'     => '',
+        'label'     => __('validate Campaign Email Template for client','wp-crowdfunding'),
         'desc'      => __('Below are shortcode list for variable text.( [user_name], [campaign_title] )','wp-crowdfunding'),
     ),
     //------------------------------------------- end fincrowd

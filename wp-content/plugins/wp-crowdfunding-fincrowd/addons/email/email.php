@@ -202,6 +202,9 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                 $wpneo_validate_campaign_email_template = sanitize_text_field(wpneo_post('wpneo_validate_campaign_email_template'));
                 wpneo_crowdfunding_update_option_text( 'wpneo_validate_campaign_email_template', $wpneo_validate_campaign_email_template );
+
+                $wpneo_validate_campaign_client_email_template = sanitize_text_field(wpneo_post('wpneo_validate_campaign_client_email_template'));
+                wpneo_crowdfunding_update_option_text( 'wpneo_validate_campaign_client_email_template', $wpneo_validate_campaign_client_email_template );
                 //end fincrowd
 
                 $wpneo_smtp_form_email = sanitize_text_field(wpneo_post('wpneo_smtp_form_email'));
@@ -436,6 +439,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     //$author         = get_userdata($product->post->post_author);
                     $post_author_id = get_post_field( 'post_author', $product_id );
                     $author         = get_userdata($post_author_id);
+                    $dislay_name    = $author->display_name;
 
                     if( 'true' == get_option( "wpneo_enable_cancel_campaign_email_user" ) ){
                         $email[]    = $author->user_email;
@@ -478,34 +482,73 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
               $product        = wc_get_product($campaign_id);
 
               if ($product->product_type === 'crowdfunding') {
-                  $email          = array();
+                  $email_creator    = array();
+                  $email_client    = array();
+
                   //$author         = get_userdata($product->post->post_author);
                   $post_author_id = get_post_field( 'post_author', $campaign_id );
                   $author         = get_userdata($post_author_id);
-
+                  $dislay_name    = $author->display_name;
                   if( 'true' == get_option( "wpneo_enable_validate_campaign_email_user" ) ){
-                      $email[]    = $author->user_email;
+                      $email_creator[]    = $author->user_email;
                   }
                   if( 'true' == get_option( "wpneo_enable_validate_campaign_email_admin" ) ){
                       $admin_email= get_option( 'admin_email' );
-                      $email[]    = $admin_email;
+                      $email_creator[]    = $admin_email;
+                      $email_client[]     = $admin_email;
                   }
-                  //start fincrowd get logged in user Adress TOO !
-                  $current_user = wp_get_current_user();
-                  $email[]    = $current_user->user_email;
-                  //end fincrowd
+
+                  //TODO get ALL USER who have invested in the campaign
+                  //first get all order for the campaign
+                  $post_id = $campaign_id;
+                  $order_statuses = array_map( 'esc_sql', (array) get_option( 'wpcl_order_status_select', array('wc-completed') ) );
+                  $order_statuses_string = "'" . implode( "', '", $order_statuses ) . "'";
+                  $post_id = array_map( 'esc_sql', (array) $post_id );
+                  $post_string = "'" . implode( "', '", $post_id ) . "'";
+
+                  $item_sales = $wpdb->get_results( $wpdb->prepare(
+              			"SELECT o.ID as order_id, oi.order_item_id FROM
+              			{$wpdb->prefix}woocommerce_order_itemmeta oim
+              			INNER JOIN {$wpdb->prefix}woocommerce_order_items oi
+              			ON oim.order_item_id = oi.order_item_id
+              			INNER JOIN $wpdb->posts o
+              			ON oi.order_id = o.ID
+              			WHERE oim.meta_key = %s
+              			AND oim.meta_value IN ( $post_string )
+              			AND o.post_status IN ( $order_statuses_string )
+              			AND o.post_type NOT IN ('shop_order_refund')
+              			ORDER BY o.ID DESC",
+              			'_product_id'
+              		));
+                  //Then get the author of the pledges
+                  foreach ($item_sales as $item) {
+                    $order          = new WC_Order($item->order_id);
+                    $user = $order->get_user();
+                    $email_client[]    = $user->user_email;
+                  }
+                  $email_client = array_unique($email_client);
+
 
                   $campaign_title  = $product->post->post_title;
                   $shortcode      = array( '[user_name]', '[campaign_title]' );
                   $replace_str    = array( $dislay_name, $campaign_title );
-                  $str            = wp_unslash( get_option( 'wpneo_validate_campaign_email_template' ) );
-                  $email_str      = str_replace( $shortcode, $replace_str, $str );
+                  //Mail for creator, and mail for clients
+                  $str_creator            = wp_unslash( get_option( 'wpneo_validate_campaign_email_template' ) );
+                  $email_str_creator      = str_replace( $shortcode, $replace_str, $str_creator  );
+
+                  $str_client            = wp_unslash( get_option( 'wpneo_validate_campaign_client_email_template' ) );
+                  $email_str_client      = str_replace( $shortcode, $replace_str, $str_client  );
+
                   $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_validate_campaign_email_subject' ) );
                   $headers        = array('Content-Type: text/html; charset=UTF-8'); // Set Headers content type to HTML
 
                   //Send email now using wp_email();
-                  if(!empty( $email )){
-                      wp_mail( $email, $subject, $email_str.'validate TODO', $headers );
+                  if(!empty( $email_client )){
+                      wp_mail( $email_client,  $subject, $email_str_client .'client', $headers );
+                  }
+
+                  if(!empty( $email_creator )){
+                      wp_mail( $email_creator, $subject, $email_str_creator .'creator', $headers );
                   }
               }
           }
