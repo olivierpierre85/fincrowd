@@ -58,10 +58,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                 <?php do_action('after_wpneo_donate_field'); ?>
                 <input type="hidden" value="<?php echo esc_attr($product->id); ?>" name="add-to-cart">
-                <button type="submit" class="<?php echo apply_filters('add_to_donate_button_class', 'wpneo_donate_button'); ?>"><?php _e('Back This Campaign', 'wp-crowdfunding'); ?>
+                <button disabled id="wpneo-fi-donate-button" type="submit" class="<?php echo apply_filters('add_to_donate_button_class', 'wpneo_donate_button'); ?>"><?php _e('Back This Campaign', 'wp-crowdfunding'); ?>
                 </button>
 
-                <div id="wpneo-fi-total-interest"  ></div>
+                <div id="wpneo-fi-total-interest" class="wpneo-fi-total-interest" ></div>
             </form>
 
 

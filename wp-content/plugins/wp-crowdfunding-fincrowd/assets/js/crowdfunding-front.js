@@ -300,22 +300,28 @@ jQuery(document).ready(function($){
     });
 
 
-    $('input[name="wpneo_donate_amount_field"]').on('blur change paste', function(){
+    //$('input[name="wpneo_donate_amount_field"]').on('blur change paste', function(){
+    $('input[name="wpneo_donate_amount_field"]').on('keyup', function(){
         var input_price = $(this).val();
         var min_price = $(this).data('min-price');
         var max_price = $(this).data('max-price');
         if (input_price < min_price){
             if(min_price){
-                $(this).val( min_price );
+                //$(this).val( min_price );
                 $('.wpneo-tooltip-min').css({'visibility': 'visible'});
+                $('#wpneo-fi-donate-button').prop("disabled",true);
             }
         }else if (max_price < input_price){
             if(max_price){
-                $(this).val( max_price );
+                //$(this).val( max_price );
                 $('.wpneo-tooltip-max').css({'visibility': 'visible'});
+                $('#wpneo-fi-donate-button').prop("disabled",true);
             }
         }else{
-            $('.wpneo-tooltip-min,.wpneo-tooltip-max').css({'visibility': 'hidden'});
+            $('.wpneo-tooltip-min,.wpneo-tooltip-max').delay( 500 ).css({'visibility': 'hidden'});
+            $('#wpneo-fi-donate-button').prop("disabled",false);
+            //Si montant ok, pré-calcul des intérêts
+
         }
     });
 
@@ -485,34 +491,34 @@ jQuery(document).ready(function($){
     });
 
     //compute interests
-    var isComputingInterest = null;
-    $('input[name="wpneo_donate_amount_field"]').on('keyup', function(){
-        var campaign_id = $(this).data('campaign-id');
-        $('html, body').css("cursor", "wait");
-        if( isComputingInterest != null ) {
-                isComputingInterest.abort();
-                isComputingInterest = null;
-        }
-        isComputingInterest = $.ajax(
-            {
-                async: true,
-                url : ajax_object.ajax_url,
-                type: "POST",
-                data: {'action': 'wpneo_fi_compute_interest', 'campaign_id': campaign_id, 'total': $(this).val() },
-                success:function(data, textStatus, jqXHR) {
-                    //wpneo_crowdfunding_modal(data);
-                    //return_data = data;
-                    $('#wpneo-fi-total-interest').html(data);
-                    $('html, body').css("cursor", "auto");
-                    isComputingInterest = null;
-                },
-                error: function(jqXHR, textStatus, errorThrown){
-                    //wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
-                    //TODO fincrowd error management
-                    $('html, body').css("cursor", "auto");
-                }
-            });
-    });
+    // var isComputingInterest = null;
+    // $('input[name="wpneo_donate_amount_field"]').on('keyup', function(){
+    //     var campaign_id = $(this).data('campaign-id');
+    //     $('html, body').css("cursor", "wait");
+    //     if( isComputingInterest != null ) {
+    //             isComputingInterest.abort();
+    //             isComputingInterest = null;
+    //     }
+    //     isComputingInterest = $.ajax(
+    //         {
+    //             async: true,
+    //             url : ajax_object.ajax_url,
+    //             type: "POST",
+    //             data: {'action': 'wpneo_fi_compute_interest', 'campaign_id': campaign_id, 'total': $(this).val() },
+    //             success:function(data, textStatus, jqXHR) {
+    //                 //wpneo_crowdfunding_modal(data);
+    //                 //return_data = data;
+    //                 $('#wpneo-fi-total-interest').html(data);
+    //                 $('html, body').css("cursor", "auto");
+    //                 isComputingInterest = null;
+    //             },
+    //             error: function(jqXHR, textStatus, errorThrown){
+    //                 //wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
+    //                 //TODO fincrowd error management
+    //                 $('html, body').css("cursor", "auto");
+    //             }
+    //         });
+    // });
 
     // Dashboard Validate campaign
     $(document).on('click', '#wpneo_fi_validate_campaign', function () {
