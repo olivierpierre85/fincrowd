@@ -300,7 +300,7 @@ jQuery(document).ready(function($){
     });
 
 
-    //$('input[name="wpneo_donate_amount_field"]').on('blur change paste', function(){
+    var currentRequest = null;
     $('input[name="wpneo_donate_amount_field"]').on('keyup', function(){
         var input_price = $(this).val();
         var min_price = $(this).data('min-price');
@@ -321,6 +321,35 @@ jQuery(document).ready(function($){
             $('.wpneo-tooltip-min,.wpneo-tooltip-max').delay( 500 ).css({'visibility': 'hidden'});
             $('#wpneo-fi-donate-button').prop("disabled",false);
             //Si montant ok, pré-calcul des intérêts
+            $('#wpneo-fi-total-interest').html('');
+            $('.wpneofiloader').show();
+            var campaign_id = $(this).data('campaign-id');
+            currentRequest = $.ajax(
+                      {
+                          async: true,
+                          url : ajax_object.ajax_url,
+                          beforeSend : function()    {
+                              if(currentRequest != null) {
+                                  currentRequest.abort();
+                              }
+                          },
+                          type: "POST",
+                          data: {'action': 'wpneo_fi_compute_interest', 'campaign_id': campaign_id, 'total': $(this).val() },
+                          success:function(data, textStatus, jqXHR) {
+                              //wpneo_crowdfunding_modal(data);
+                              //return_data = data;
+                              $('.wpneofiloader').hide();
+                              $('#wpneo-fi-total-interest').html(data);
+                              isComputingInterest = null;
+
+                          },
+                          error: function(jqXHR, textStatus, errorThrown){
+                            //$('.wpneofiloader').hide();
+                            //todoHIDE IF NOT ABORT
+                              //wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
+                              //TODO fincrowd error management
+                          }
+                      });
 
         }
     });

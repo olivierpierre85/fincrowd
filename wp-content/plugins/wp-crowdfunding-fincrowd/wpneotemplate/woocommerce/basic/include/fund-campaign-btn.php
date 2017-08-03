@@ -60,7 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <input type="hidden" value="<?php echo esc_attr($product->id); ?>" name="add-to-cart">
                 <button disabled id="wpneo-fi-donate-button" type="submit" class="<?php echo apply_filters('add_to_donate_button_class', 'wpneo_donate_button'); ?>"><?php _e('Back This Campaign', 'wp-crowdfunding'); ?>
                 </button>
-
+                <div class="wpneofiloader" hidden></div>
                 <div id="wpneo-fi-total-interest" class="wpneo-fi-total-interest" ></div>
             </form>
 
