@@ -49,6 +49,8 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
             //start fincrowd mails
             add_action('wpneo_fi_after_cancel_order', array($this,'wpneo_fi_send_email_cancel_order'));
             add_action('wpneo_fi_after_validate_campaign', array($this,'wpneo_fi_send_email_validate_campaign'));
+
+            add_action('wpneo_fi_check_campaign_reach_end', array($this,'wpneo_fi_check_if_campaign_reach_end'));
             //endfincrowd
 
         }
@@ -469,6 +471,48 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
             }
         }
 
+        function wpneo_fi_check_if_campaign_reach_end(){
+          $headers        = array('Content-Type: text/html; charset=UTF-8'); // Set Headers content type to HTML
+
+          //Un mail pour jour les campagnes dont la date limite a été dépassée et pas encore validées
+          $args = array(
+                      'post_type' 		=> 'product',
+                      'post_status'		=> array('publish', 'draft'),
+                      //'author'    		=> get_current_user_id(),
+                      'tax_query' 		=> array(
+                          array(
+                              'taxonomy' => 'product_type',
+                              'field'    => 'slug',
+                              'terms'    => 'crowdfunding',
+                          ),
+                      ),
+                      'posts_per_page'    => $posts_per_page,
+                      'paged'             => $page_numb
+              );
+
+            $the_query = new WP_Query( $args );
+            if ( $the_query->have_posts() ){
+                global $post;
+                $i = 1;
+                while ( $the_query->have_posts() ) {
+                  $the_query->the_post();
+                    ob_start();
+                    if (WPNEOCF()->dateRemaining() == 0 ) {
+                      if( ! get_post_meta(get_the_ID(), 'wpneo_fi_campaign_validated', true)){
+                        //TODO get admin mail !
+
+                        //TODO Message de rappel fin de la date du projet
+
+                        wp_mail( 'test@cron.Com', 'tetscron', 'test', $headers );
+                      }
+                      //TODO gestion cancelled
+                    }
+                    ob_get_clean();
+                }
+                wp_reset_postdata();
+              }
+        }
+
         /**
          * @param $campaign_id
          * FINCROWD FCT
@@ -498,7 +542,6 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                       $email_client[]     = $admin_email;
                   }
 
-                  //TODO get ALL USER who have invested in the campaign
                   //first get all order for the campaign
                   $post_id = $campaign_id;
                   $order_statuses = array_map( 'esc_sql', (array) get_option( 'wpcl_order_status_select', array('wc-completed') ) );

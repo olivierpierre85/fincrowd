@@ -141,6 +141,16 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
             }
         }
 
+        public function campaignEndReached(){
+          global $post;
+          if ($this->dateRemaining()){
+              return true;
+          }else{
+              return false;
+          }
+
+        }
+
         public function campaignValid(){
             global $post;
             //$campaign_end_method = get_post_meta($post->ID, 'wpneo_campaign_end_method' , true);
