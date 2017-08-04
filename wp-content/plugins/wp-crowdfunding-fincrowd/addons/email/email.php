@@ -385,8 +385,12 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
         // Campaign Published Campaign Author
         public function wpneo_campaign_published_process( $ID, $post ) {
-            if ( get_option( 'wpneo_enable_accept_campaign_email' ) == 'true' ) {
+          ///TODO ne pas envoyer de mails si la campagne à déjà été envoyée
+          //$a = O/O;
+            if ( ! get_post_meta(get_the_ID(), 'wpneo_fi_campaign_published', true) && get_option( 'wpneo_enable_accept_campaign_email' ) == 'true' ) {
+
                 $post_id = $post->ID;
+                wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_fi_campaign_published', true);
 
                 $product = wc_get_product( $post_id );
                 if (!$product->is_type('crowdfunding')){ return; }
