@@ -141,15 +141,6 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
             }
         }
 
-        public function campaignEndReached(){
-          global $post;
-          if ($this->dateRemaining()){
-              return true;
-          }else{
-              return false;
-          }
-
-        }
 
         public function campaignValid(){
             global $post;

@@ -77,7 +77,10 @@ $html .= '<div class="wpneo-content">';
                                   if(! get_post_meta(get_the_ID(), 'wpneo_fi_campaign_validated', true)){
                                     $operation_btn .= '<span><a href="javascript:;" id="wpneo_fi_validate_campaign" data-campaign-id="'.get_the_ID().'">'.__( 'Validez la fin de la campagne', 'wp-crowdfunding' ).'</a></span>';
                                   }
-                              }
+                                  if(WPNEOCF()->dateRemaining()){
+                                    $operation_btn .= '<span><a href="javascript:;" id="wpneo_fi_cancel_campaign" data-campaign-id="'.get_the_ID().'">'.__( 'Annuler la campagne', 'wp-crowdfunding' ).'</a></span>';
+                                  }
+                                }
                               }
                         }
                         $operation_btn .= '</div>';

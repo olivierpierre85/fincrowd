@@ -82,7 +82,7 @@ jQuery(document).ready(function($){
         if (data.success == 1){
             $('.wpneo-modal-wrapper #wpneo_crowdfunding_modal_message').html(data.message);
             $('.wpneo-modal-wrapper').css({'display': 'block'});
-            $("#wpneofrontenddata")[0].reset();
+            //$("#wpneofrontenddata")[0].reset();
             return true;
         }else {
             $('.wpneo-modal-wrapper #wpneo_crowdfunding_modal_message').html(data.message);
@@ -561,6 +561,27 @@ jQuery(document).ready(function($){
               success:function(data, textStatus, jqXHR) {
                   wpneo_crowdfunding_modal(data);
                   return_data = data;
+                  location.reload();
+              },
+              error: function(jqXHR, textStatus, errorThrown){
+                  wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
+              }
+          });
+    });
+
+    // Dashboard cancel campaign
+    $(document).on('click', '#wpneo_fi_cancel_campaign', function () {
+      var campaign_id = $(this).data('campaign-id');
+      $.ajax(
+          {
+              async: false,
+              url : ajax_object.ajax_url,
+              type: "POST",
+              data: {'action': 'wpneo_fi_cancel_campaign', 'campaign_id': campaign_id },
+              success:function(data, textStatus, jqXHR) {
+                  wpneo_crowdfunding_modal(data);
+                  return_data = data;
+                  location.reload();
               },
               error: function(jqXHR, textStatus, errorThrown){
                   wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})

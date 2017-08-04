@@ -41,6 +41,7 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
             add_action( 'wp_ajax_wpneo_fi_cancel_order',          array($this, 'wpneo_fi_cancel_order'));
             add_action( 'wp_ajax_wpneo_fi_compute_interest',      array($this, 'wpneo_fi_compute_interest'));
             add_action( 'wp_ajax_wpneo_fi_validate_campaign',      array($this, 'wpneo_fi_validate_campaign'));
+            add_action( 'wp_ajax_wpneo_fi_cancel_campaign',      array($this, 'wpneo_fi_cancel_campaign'));
         }
         //Fincrowd
         //Validate campaign
@@ -55,12 +56,30 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
             do_action('wpneo_fi_after_validate_campaign',$campaign_id );
           }
           if ($result){
-            //FINCROWD TODO refresh page
+            //FINCROWD
               die(json_encode(array('success'=> 1, 'message' => __('Campagne validée !', 'wp-crowdfunding'))));
           }else{
               die(json_encode(array('success'=> 0, 'message' => __('Error updating, please try again', 'wp-crowdfunding'))));
           }
+        }
 
+        public function wpneo_fi_cancel_campaign() {
+          //TODO fincrowd admin check ?
+          $campaign_id        = sanitize_text_field($_POST['campaign_id']);
+          //$result = wpneo_crowdfunding_update_post_meta_text($campaign_id, 'wpneo_fi_campaign_canceled', true);
+          $post = array( 'ID' => $campaign_id, 'post_status' => 'draft' );
+          $result = wp_update_post($post);
+          if ($result){
+
+            //Send mails
+            do_action('wpneo_fi_after_cancel_campaign',$campaign_id );
+          }
+          if ($result){
+            //FINCROWD
+              die(json_encode(array('success'=> 1, 'message' => __('Campagne annulée.', 'wp-crowdfunding'))));
+          }else{
+              die(json_encode(array('success'=> 0, 'message' => __('Error updating, please try again', 'wp-crowdfunding'))));
+          }
         }
 
         //compute interest frontend
