@@ -17,6 +17,7 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 	<?php wp_head(); ?>
+	<p><?php wp_loginout(); ?></p>
 </head>
 
 <?php
@@ -123,7 +124,6 @@
 ?>
 
 	<body <?php body_class(); ?>>
-		
 		<?php 
 			/* Preloader */
 			composer_preloader();	
@@ -349,6 +349,7 @@
 			endif; //Blank template check ?>
 
 		<div id="main-wrapper" class="clearfix" >
+	
 			<?php
 			$composer_page_slug =  get_page_template_slug(); 	
 

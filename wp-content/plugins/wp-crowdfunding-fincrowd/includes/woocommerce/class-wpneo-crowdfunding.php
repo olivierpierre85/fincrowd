@@ -52,7 +52,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             add_action( 'woocommerce_checkout_update_order_meta', array($this,'fi_interest_insurance_field_update_order_meta') );
             add_action( 'woocommerce_admin_order_data_after_billing_address', array($this,'fi_interest_insurance_field_display_admin_order_meta'), 10, 1 );
 
-
+            add_action( 'woocommerce_review_order_before_submit', array($this,'wpneo_fi_add_iban'), 10, 1 );
 
             //add_filter( 'woocommerce_locate_template', 'woo_adon_plugin_template', 1, 3 );//TODO doesn't work
             //    function woo_adon_plugin_template( $template, $template_name, $template_path ) {
@@ -1095,6 +1095,11 @@ if (! class_exists('Wpneo_Crowdfunding')) {
         function wpneo_fi_checkout_page_interest_table() {
           //load tab template
             //wpneo_crowdfunding_load_template('include/fincrowd/interest_tab');
+        }
+
+        function wpneo_fi_add_iban() {
+          //load tab template
+            echo '<div class="fi-iban">Numéro IBAN : BE62 5100 0754 7061</div>';
         }
 
 

@@ -599,8 +599,8 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                   }
               }
           }
-
         }
+
 
 
     }

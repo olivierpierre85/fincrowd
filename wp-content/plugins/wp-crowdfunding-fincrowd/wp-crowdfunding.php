@@ -77,6 +77,8 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	require_once WPNEO_CROWDFUNDING_DIR_PATH.'includes/class-wpneo-crowdfunding-base.php';
 	require_once WPNEO_CROWDFUNDING_DIR_PATH.'includes/woocommerce/class-wpneo-crowdfunding.php';
 	require_once WPNEO_CROWDFUNDING_DIR_PATH.'includes/class-wpneo-crowdfunding-frontend-dashboard.php';
+	//Fincrowd
+	require_once WPNEO_CROWDFUNDING_DIR_PATH.'includes/class-wpneo-crowdfunding-fi-pdf-files.php';
 	Wpneo_Crowdfunding();
 }else{
 	add_action('admin_notices', array('Wpneo_Crowdfunding_Initial_Setup', 'no_vendor_notice'));

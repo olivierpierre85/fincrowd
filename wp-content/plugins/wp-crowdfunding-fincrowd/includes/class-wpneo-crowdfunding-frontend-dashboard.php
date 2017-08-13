@@ -51,7 +51,8 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
           $result = wpneo_crowdfunding_update_post_meta_text($campaign_id, 'wpneo_fi_campaign_validated', true);
           if ($result){
             //FINCROWD ALL THE Things to do to update
-
+            //Generate PDFs
+            do_action('wpneo_fi_pdf_validate_campaign',$campaign_id );
             //Send mails
             do_action('wpneo_fi_after_validate_campaign',$campaign_id );
           }
