@@ -75,6 +75,16 @@ $html .= '<div class="wpneo-content">';
           $html .= '</div>';
         }
 
+        //Numéro de compte IBAN
+        $html .= '<div class="wpneo-single">';
+            $html .= '<div class="wpneo-name float-left">';
+                $html .= '<p>'.__( "Numéro de compte IBAN:" , "wp-crowdfunding" ).'</p>';
+            $html .= '</div>';
+            $html .= '<div class="wpneo-fields float-right">';
+                $html .= '<input type="text" name="fi_iban" id="fi_iban" value="'.esc_attr( get_the_author_meta( 'fi_iban', $current_user->ID ) ).'" disabled/>';
+            $html .= '</div>';
+        $html .= '</div>';
+
         //Fincrowd - Centre d'intérets
         $all_cat = get_terms('product_cat',array( 'hide_empty' => false ) );
         $cat_user = explode(";",get_the_author_meta( 'fi_category', $current_user->ID ));

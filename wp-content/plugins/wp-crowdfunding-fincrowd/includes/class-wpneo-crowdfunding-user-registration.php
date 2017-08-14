@@ -68,7 +68,12 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                   <input type="text" name="fi_birthday" id="fi_birthday" value="<?php echo esc_attr( get_the_author_meta( 'birthday', $user->ID ) ); ?>" class="regular-text" /><br />
                 </td>
               </tr>
-
+              <tr>
+                <th><label for="fi_iban">Date de Naissance (PP)</label></th>
+                <td>
+                  <input type="text" name="fi_iban" id="fi_iban" value="<?php echo esc_attr( get_the_author_meta( 'fi_iban', $user->ID ) ); ?>" class="regular-text" /><br />
+                </td>
+              </tr>
 
 
 
@@ -123,15 +128,11 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
               update_user_meta( $user_id, 'birthday', $_POST['fi_birthday'] );
             }
 
-            if(isset($_POST['fi_birthday'])){
+            if(isset($_POST['fi_iban'])){
               //TODO check for admin part ?
-              update_user_meta( $user_id, 'birthday', $_POST['fi_birthday'] );
+              update_user_meta( $user_id, 'fi_iban', $_POST['fi_iban'] );
             }
 
-            if(isset($_POST['fi_birthday'])){
-              //TODO check for admin part ?
-              update_user_meta( $user_id, 'birthday', $_POST['fi_birthday'] );
-            }
 
             if( $_POST['fi_category'] ){
               $category = $_POST['fi_category'];
@@ -174,6 +175,7 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 $birthday   = sanitize_text_field($_POST['fi_birthday']);
                 $username   =   $email;
                 $password2   =   sanitize_text_field($_POST['password2']);
+                $iban   =   sanitize_text_field($_POST['fi_iban']);
                 if(isset($_POST['conditions'])){
                     $conditions   =   true;
                 }
@@ -190,7 +192,8 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                     $nickname ,
                     $bio,
                     $birthday,
-                    $conditions
+                    $conditions,
+                    $iban
                 );
                 $this->wpneo_complete_registration( $username, $password, $email, $website, $first_name, $last_name, $nickname, $bio );
             }else{
@@ -240,8 +243,40 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 die(json_encode(array('success'=> 0, 'message' => $errors )));
             }
         }
+        //Fincrowd
+        function checkIBAN($iban)
+        {
+            $iban = strtolower(str_replace(' ','',$iban));
+            $Countries = array('al'=>28,'ad'=>24,'at'=>20,'az'=>28,'bh'=>22,'be'=>16,'ba'=>20,'br'=>29,'bg'=>22,'cr'=>21,'hr'=>21,'cy'=>28,'cz'=>24,'dk'=>18,'do'=>28,'ee'=>20,'fo'=>18,'fi'=>18,'fr'=>27,'ge'=>22,'de'=>22,'gi'=>23,'gr'=>27,'gl'=>18,'gt'=>28,'hu'=>28,'is'=>26,'ie'=>22,'il'=>23,'it'=>27,'jo'=>30,'kz'=>20,'kw'=>30,'lv'=>21,'lb'=>28,'li'=>21,'lt'=>20,'lu'=>20,'mk'=>19,'mt'=>31,'mr'=>27,'mu'=>30,'mc'=>27,'md'=>24,'me'=>22,'nl'=>18,'no'=>15,'pk'=>24,'ps'=>29,'pl'=>28,'pt'=>25,'qa'=>29,'ro'=>24,'sm'=>27,'sa'=>24,'rs'=>22,'sk'=>24,'si'=>19,'es'=>24,'se'=>24,'ch'=>21,'tn'=>24,'tr'=>26,'ae'=>23,'gb'=>22,'vg'=>24);
+            $Chars = array('a'=>10,'b'=>11,'c'=>12,'d'=>13,'e'=>14,'f'=>15,'g'=>16,'h'=>17,'i'=>18,'j'=>19,'k'=>20,'l'=>21,'m'=>22,'n'=>23,'o'=>24,'p'=>25,'q'=>26,'r'=>27,'s'=>28,'t'=>29,'u'=>30,'v'=>31,'w'=>32,'x'=>33,'y'=>34,'z'=>35);
 
-        function wpneo_registration_validation( $username, $password,$password2, $email, $website, $first_name, $last_name, $nickname, $bio, $birthday,$conditions )  {
+            if(strlen($iban) == $Countries[substr($iban,0,2)]){
+
+                $MovedChar = substr($iban, 4).substr($iban,0,4);
+                $MovedCharArray = str_split($MovedChar);
+                $NewString = "";
+
+                foreach($MovedCharArray AS $key => $value){
+                    if(!is_numeric($MovedCharArray[$key])){
+                        $MovedCharArray[$key] = $Chars[$MovedCharArray[$key]];
+                    }
+                    $NewString .= $MovedCharArray[$key];
+                }
+
+                if(bcmod($NewString, '97') == 1)
+                {
+                    return TRUE;
+                }
+                else{
+                    return FALSE;
+                }
+            }
+            else{
+                return FALSE;
+            }
+        }
+
+        function wpneo_registration_validation( $username, $password,$password2, $email, $website, $first_name, $last_name, $nickname, $bio, $birthday,$conditions,$iban )  {
             global $reg_errors;
             $reg_errors = new WP_Error;
 
@@ -289,6 +324,11 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
 
             if ( ! $conditions ) {
                 $reg_errors->add('conditions', __('Vous devez accepter les conditions générales','wp-crowdfunding'));
+            }
+
+            //TODO iban validation
+            if($this->checkIBAN($iban)){
+                $reg_errors->add('iban', __('Le numéro de compte n\'a pas un format correct IBAN','wp-crowdfunding'));
             }
 
         }

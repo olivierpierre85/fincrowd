@@ -474,14 +474,21 @@ jQuery(document).ready(function($){
     });
 
     //Fincrowd
+    //Personne phyisque par défaut
+    $('.fi_reg_pp').show();
+    $('.fi_reg_pm').hide();
     //Modify set a fields depending on type selected
     $('#fi_reg_physical_person,#fi_reg_society').on('click',function(e) {
       if(e.target.id == 'fi_reg_physical_person'){
-        //show birthday
-        $('.fi_reg_birthday').show();
+        //show pp fields
+        $('.fi_reg_pp').show();
+        $('.fi_reg_pm').hide();
       } else {
         //hide
-        $('.fi_reg_birthday').hide();
+        $('.fi_reg_pp').hide();
+        $('.fi_reg_pm').show();
+        //$('.lname').attr("placeholder", "Type a Location").val("").focus().blur();
+
       }
 
     });

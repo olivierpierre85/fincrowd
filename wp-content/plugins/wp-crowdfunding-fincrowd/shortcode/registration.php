@@ -29,13 +29,85 @@ function wpneo_registration_shortcode() {
                       'autocomplete'  => 'off',
                   ),
                   array(
+                      'id'            => 'fi_company_responsible_status',
+                      'label'         => __( "Qualification de la personne responsable" , "wp-crowdfunding" ),
+                      'type'          => 'select',
+                      'placeholder'   => __('Entrez la qualification de la personne responsable', 'wp-crowdfunding'),
+                      'value'         => '',
+                      'warpclass'     => 'fi_reg_pm',
+                      'class'         => '',
+                      'autocomplete'  => 'off',
+                      'choices'       => [__( "Directeur" , "wp-crowdfunding" ),__( "Gérant" , "wp-crowdfunding" ),__( "Autre" , "wp-crowdfunding" ),__( "Admin" , "wp-crowdfunding" )]
+                  ),
+                  array(
+                      'id'            => 'fname',
+                      'label'         => __( "First Name" , "wp-crowdfunding" ),
+                      'type'          => 'text',
+                      'placeholder'   => __('Enter First Name', 'wp-crowdfunding'),
+                      'value'         => '',
+                      'class'         => '',
+                      'warpclass'     => 'wpneo-first-half',
+                      'autocomplete'  => 'off',
+                  ),
+                  array(
+                      'id'            => 'lname',
+                      'label'         => __( "Last Name" , "wp-crowdfunding" ),
+                      'type'          => 'text',
+                      'placeholder'   => __('Enter Last Name', 'wp-crowdfunding'),
+                      'value'         => '',
+                      'class'         => '',
+                      'warpclass'     => 'wpneo-second-half',
+                      'autocomplete'  => 'off',
+                  ),
+                  array(
                       'id'            => 'fi_reg_birthday',
                       'label'         => __( "Date de Naissance" , "wp-crowdfunding" ),
                       'type'          => 'birthday',
                       'placeholder'   => __('jj/mm/aaaa', 'wp-crowdfunding'),
                       'value'         => '',
                       'class'         => '',
-                      'warpclass'     => 'fi_reg_birthday',
+                      'warpclass'     => 'fi_reg_pp',
+                      'autocomplete'  => 'off',
+                  ),
+                  array(
+                      'id'            => 'fi_company_name',
+                      'label'         => __( "Nom de la société" , "wp-crowdfunding" ),
+                      'type'          => 'text',
+                      'placeholder'   => __('Entrez le nom de la société', 'wp-crowdfunding'),
+                      'value'         => '',
+                      'warpclass'     => 'fi_reg_pm',
+                      'class'         => '',
+                      'autocomplete'  => 'off',
+                  ),
+                  array(
+                      'id'            => 'fi_company_status',
+                      'label'         => __( "Status de la société" , "wp-crowdfunding" ),
+                      'type'          => 'select',
+                      'placeholder'   => __('Entrez le status de la société', 'wp-crowdfunding'),
+                      'value'         => '',
+                      'warpclass'     => 'fi_reg_pm',
+                      'class'         => '',
+                      'autocomplete'  => 'off',
+                      'choices'       => [__( "SPRL" , "wp-crowdfunding" ),__( "SA" , "wp-crowdfunding" ),__( "SCRL" , "wp-crowdfunding" )]
+                  ),
+                  array(
+                      'id'            => 'fi_company_number',
+                      'label'         => __( "Numéro BCE de la société" , "wp-crowdfunding" ),
+                      'type'          => 'text',
+                      'placeholder'   => __('Entrez le numéro BCE de la société', 'wp-crowdfunding'),
+                      'value'         => '',
+                      'warpclass'     => 'fi_reg_pm',
+                      'class'         => '',
+                      'autocomplete'  => 'off',
+                  ),
+                  array(
+                      'id'            => 'fi_user_address',
+                      'label'         => __( "Adresse" , "wp-crowdfunding" ),
+                      'type'          => 'textarea',
+                      'placeholder'   => __('Entrez l\'adresse', 'wp-crowdfunding'),
+                      'value'         => '',
+                      'class'         => '',
+                      'warpclass'     => 'wpneo-first-half',
                       'autocomplete'  => 'off',
                   ),
                   array(
@@ -48,27 +120,7 @@ function wpneo_registration_shortcode() {
                       'class'         => 'required',
                       'autocomplete'  => 'off',
                   ),
-
-                    array(
-                        'id'            => 'fname',
-                        'label'         => __( "First Name" , "wp-crowdfunding" ),
-                        'type'          => 'text',
-                        'placeholder'   => __('Enter First Name', 'wp-crowdfunding'),
-                        'value'         => '',
-                        'class'         => '',
-                        'warpclass'     => 'wpneo-first-half',
-                        'autocomplete'  => 'off',
-                    ),
-                    array(
-                        'id'            => 'lname',
-                        'label'         => __( "Last Name" , "wp-crowdfunding" ),
-                        'type'          => 'text',
-                        'placeholder'   => __('Enter Last Name', 'wp-crowdfunding'),
-                        'value'         => '',
-                        'class'         => '',
-                        'warpclass'     => 'wpneo-second-half',
-                        'autocomplete'  => 'off',
-                    ), /*
+ /*
                     array(
                         'id'            => 'username',
                         'label'         => __( "Username *" , "wp-crowdfunding" ),
@@ -111,6 +163,16 @@ function wpneo_registration_shortcode() {
                         'label'         => __( "Website" , "wp-crowdfunding" ),
                         'type'          => 'text',
                         'placeholder'   => __('Enter Website', 'wp-crowdfunding'),
+                        'value'         => '',
+                        'class'         => '',
+                        'warpclass'     => '',
+                        'autocomplete'  => 'off',
+                    ),
+                    array(
+                        'id'            => 'fi_iban',
+                        'label'         => __( "Numéro de compte (IBAN)" , "wp-crowdfunding" ),
+                        'type'          => 'text',
+                        'placeholder'   => __('Entrez votre numéro de compte IBAN', 'wp-crowdfunding'),
                         'value'         => '',
                         'class'         => '',
                         'warpclass'     => '',
@@ -200,6 +262,13 @@ function wpneo_registration_shortcode() {
                         case 'checkbox':
                           echo '<input type="checkbox" id="'.$item['id'].'" autocomplete="'.$item['autocomplete'].'" class="'.$item['class'].'" name="'.$item['id'].'" placeholder="'.$item['placeholder'].'">';
                             break;
+                        case 'select':
+                          echo '<select id="'.$item['id'].'" autocomplete="'.$item['autocomplete'].'" class="'.$item['class'].'" name="'.$item['id'].'">';
+                          foreach ($item['choices'] as $choice) {
+                            echo '<option value="'.$choice.'">'.$choice.'</option>';
+                          }
+                          echo '</select>';
+                          break;
                         case 'shortcode':
                           echo do_shortcode($item['shortcode']);
                             break;
