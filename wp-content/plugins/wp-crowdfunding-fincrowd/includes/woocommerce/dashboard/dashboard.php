@@ -30,7 +30,7 @@ $html .= '<div class="wpneo-content">';
                 $html .= '<input type="email" name="email" value="'.$current_user->user_email.'" disabled>';
             $html .= '</div>';
         $html .= '</div>';
-/*
+
         // First Name
         $html .= '<div class="wpneo-single">';
             $html .= '<div class="wpneo-name float-left">';
@@ -50,7 +50,7 @@ $html .= '<div class="wpneo-content">';
                 $html .= '<input type="text" name="lastname" value="'.$current_user->user_lastname.'" disabled>';
             $html .= '</div>';
         $html .= '</div>';
-*/
+
 
         // Website
         $html .= '<div class="wpneo-single">';

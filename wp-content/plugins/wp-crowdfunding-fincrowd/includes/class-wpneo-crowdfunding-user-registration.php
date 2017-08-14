@@ -52,12 +52,6 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
           	<h3>Fincrowd</h3>
 
           	<table class="form-table">
-          		<tr>
-          			<th><label for="fi_birthday">Date de Naissance</label></th>
-          			<td>
-          				<input type="text" name="fi_birthday" id="fi_birthday" value="<?php echo esc_attr( get_the_author_meta( 'birthday', $user->ID ) ); ?>" class="regular-text" /><br />
-          			</td>
-          		</tr>
               <tr>
                 <th><label>Personne Physique ou morale</label></th>
                 <td>
@@ -68,6 +62,16 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                   <?php echo __('Personne Morale', 'wp-crowdfunding');?>
                 </td>
               </tr>
+              <tr>
+                <th><label for="fi_birthday">Date de Naissance (PP)</label></th>
+                <td>
+                  <input type="text" name="fi_birthday" id="fi_birthday" value="<?php echo esc_attr( get_the_author_meta( 'birthday', $user->ID ) ); ?>" class="regular-text" /><br />
+                </td>
+              </tr>
+
+
+
+
               <tr>
                 <th><label>Secteurs d'intérêts</label></th>
                 <td>
@@ -112,6 +116,16 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
               update_user_meta( $user_id, 'physical_person', false);
             } else {
               update_user_meta( $user_id, 'physical_person', true );
+            }
+
+            if(isset($_POST['fi_birthday'])){
+              //TODO check for admin part ?
+              update_user_meta( $user_id, 'birthday', $_POST['fi_birthday'] );
+            }
+
+            if(isset($_POST['fi_birthday'])){
+              //TODO check for admin part ?
+              update_user_meta( $user_id, 'birthday', $_POST['fi_birthday'] );
             }
 
             if(isset($_POST['fi_birthday'])){

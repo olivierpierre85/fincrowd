@@ -48,7 +48,7 @@ function wpneo_registration_shortcode() {
                       'class'         => 'required',
                       'autocomplete'  => 'off',
                   ),
-                  /*
+
                     array(
                         'id'            => 'fname',
                         'label'         => __( "First Name" , "wp-crowdfunding" ),
@@ -68,7 +68,7 @@ function wpneo_registration_shortcode() {
                         'class'         => '',
                         'warpclass'     => 'wpneo-second-half',
                         'autocomplete'  => 'off',
-                    ),*/ /*
+                    ), /*
                     array(
                         'id'            => 'username',
                         'label'         => __( "Username *" , "wp-crowdfunding" ),

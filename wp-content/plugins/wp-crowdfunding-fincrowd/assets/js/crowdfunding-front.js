@@ -474,6 +474,7 @@ jQuery(document).ready(function($){
     });
 
     //Fincrowd
+    //Modify set a fields depending on type selected
     $('#fi_reg_physical_person,#fi_reg_society').on('click',function(e) {
       if(e.target.id == 'fi_reg_physical_person'){
         //show birthday
