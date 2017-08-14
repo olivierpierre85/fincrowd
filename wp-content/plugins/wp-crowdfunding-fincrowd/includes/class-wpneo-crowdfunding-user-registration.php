@@ -69,12 +69,51 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 </td>
               </tr>
               <tr>
-                <th><label for="fi_iban">Date de Naissance (PP)</label></th>
+                <th><label for="fi_iban">IBAN (PM)</label></th>
                 <td>
                   <input type="text" name="fi_iban" id="fi_iban" value="<?php echo esc_attr( get_the_author_meta( 'fi_iban', $user->ID ) ); ?>" class="regular-text" /><br />
                 </td>
               </tr>
+              //adresse
+              <tr>
+                <th><label for="fi_user_address">fi_user_address</label></th>
+                <td>
+                  <input type="text" name="fi_user_address" id="fi_user_address" value="<?php echo esc_attr( get_the_author_meta( 'fi_user_address', $user->ID ) ); ?>" class="regular-text" /><br />
+                </td>
+              </tr>
 
+              //nom société
+              <tr>
+                <th><label for="fi_company_name">fi_company_name(PM)</label></th>
+                <td>
+                  <input type="text" name="fi_company_name" id="fi_company_name" value="<?php echo esc_attr( get_the_author_meta( 'fi_company_name', $user->ID ) ); ?>" class="regular-text" /><br />
+                </td>
+              </tr>
+
+              //Status societe
+              <tr>
+                <th><label for="fi_company_status">fi_company_status (PM)</label></th>
+                <td>
+                  <input type="text" name="fi_company_status" id="fi_company_status" value="<?php echo esc_attr( get_the_author_meta( 'fi_company_status', $user->ID ) ); ?>" class="regular-text" /><br />
+                </td>
+              </tr>
+
+              //status responsable
+              <tr>
+                <th><label for="fi_company_responsible_status">fi_company_responsible_status(PM)</label></th>
+                <td>
+                  <input type="text" name="fi_company_responsible_status" id="fi_company_responsible_status" value="<?php echo esc_attr( get_the_author_meta( 'fi_company_responsible_status', $user->ID ) ); ?>" class="regular-text" /><br />
+                </td>
+              </tr>
+
+
+              //num bce
+              <tr>
+                <th><label for="fi_company_number">fi_company_number (PM)</label></th>
+                <td>
+                  <input type="text" name="fi_company_number" id="fi_company_number" value="<?php echo esc_attr( get_the_author_meta( 'fi_company_number', $user->ID ) ); ?>" class="regular-text" /><br />
+                </td>
+              </tr>
 
 
               <tr>
@@ -129,10 +168,32 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             }
 
             if(isset($_POST['fi_iban'])){
-              //TODO check for admin part ?
               update_user_meta( $user_id, 'fi_iban', $_POST['fi_iban'] );
             }
 
+            //adresse
+            if(isset($_POST['fi_user_address'])){
+              update_user_meta( $user_id, 'fi_user_address', $_POST['fi_user_address'] );
+            }
+            //nom société
+            if(isset($_POST['fi_company_name'])){
+              update_user_meta( $user_id, '', $_POST['fi_company_name'] );
+            }
+
+            //Status societe
+            if(isset($_POST['fi_company_status'])){
+              update_user_meta( $user_id, 'fi_company_status', $_POST['fi_company_status'] );
+            }
+
+            //status responsable
+            if(isset($_POST['fi_company_responsible_status'])){
+              update_user_meta( $user_id, 'fi_company_responsible_status', $_POST['fi_company_responsible_status'] );
+            }
+
+            //num bce
+            if(isset($_POST['fi_company_number'])){
+              update_user_meta( $user_id, 'fi_company_number', $_POST['fi_company_number'] );
+            }
 
             if( $_POST['fi_category'] ){
               $category = $_POST['fi_category'];
