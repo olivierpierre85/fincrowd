@@ -74,42 +74,45 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                   <input type="text" name="fi_iban" id="fi_iban" value="<?php echo esc_attr( get_the_author_meta( 'fi_iban', $user->ID ) ); ?>" class="regular-text" /><br />
                 </td>
               </tr>
-              //adresse
               <tr>
-                <th><label for="fi_user_address">fi_user_address</label></th>
+                <th><label for="fi_user_address">Adresse</label></th>
                 <td>
-                  <input type="text" name="fi_user_address" id="fi_user_address" value="<?php echo esc_attr( get_the_author_meta( 'fi_user_address', $user->ID ) ); ?>" class="regular-text" /><br />
+                  <textarea name="fi_user_address" id="fi_user_address" class="regular-text" /><?php echo esc_attr( get_the_author_meta( 'fi_user_address', $user->ID ) ); ?></textarea><br />
                 </td>
               </tr>
-
-              //nom société
               <tr>
-                <th><label for="fi_company_name">fi_company_name(PM)</label></th>
+                <th><label for="fi_company_name">Nom de la société (PM)</label></th>
                 <td>
                   <input type="text" name="fi_company_name" id="fi_company_name" value="<?php echo esc_attr( get_the_author_meta( 'fi_company_name', $user->ID ) ); ?>" class="regular-text" /><br />
                 </td>
               </tr>
-
-              //Status societe
               <tr>
-                <th><label for="fi_company_status">fi_company_status (PM)</label></th>
+                <th><label for="fi_company_status">Status de la société (PM)</label></th>
                 <td>
-                  <input type="text" name="fi_company_status" id="fi_company_status" value="<?php echo esc_attr( get_the_author_meta( 'fi_company_status', $user->ID ) ); ?>" class="regular-text" /><br />
+                  <select name="fi_company_status" id="fi_company_status" >
+                  <?php
+                  $all_cat = ['SPRL','SA','SCRL'];
+                  foreach ($all_cat as $value) {
+                    //check if the category belongs to the product
+                      if(get_the_author_meta( 'fi_company_status', $user->ID ) == $value) {
+                        $selected = " selected";
+                      } else {
+                        $selected = "";
+                      }
+                      echo '<option value="'.$value.'" '.$selected.'>'.$value.'</option>';
+                  }
+                  ?>
+                  </select>
                 </td>
               </tr>
-
-              //status responsable
               <tr>
-                <th><label for="fi_company_responsible_status">fi_company_responsible_status(PM)</label></th>
+                <th><label for="fi_company_responsible_status">Status du responsable de la société(PM)</label></th>
                 <td>
                   <input type="text" name="fi_company_responsible_status" id="fi_company_responsible_status" value="<?php echo esc_attr( get_the_author_meta( 'fi_company_responsible_status', $user->ID ) ); ?>" class="regular-text" /><br />
                 </td>
               </tr>
-
-
-              //num bce
               <tr>
-                <th><label for="fi_company_number">fi_company_number (PM)</label></th>
+                <th><label for="fi_company_number">Numéro BCE de la société (PM)</label></th>
                 <td>
                   <input type="text" name="fi_company_number" id="fi_company_number" value="<?php echo esc_attr( get_the_author_meta( 'fi_company_number', $user->ID ) ); ?>" class="regular-text" /><br />
                 </td>
@@ -177,7 +180,7 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             }
             //nom société
             if(isset($_POST['fi_company_name'])){
-              update_user_meta( $user_id, '', $_POST['fi_company_name'] );
+              update_user_meta( $user_id, 'fi_company_name', $_POST['fi_company_name'] );
             }
 
             //Status societe

@@ -28,17 +28,27 @@ function wpneo_registration_shortcode() {
                       'warpclass'     => '',
                       'autocomplete'  => 'off',
                   ),
-                  array(
-                      'id'            => 'fi_company_responsible_status',
-                      'label'         => __( "Qualification de la personne responsable" , "wp-crowdfunding" ),
-                      'type'          => 'select',
-                      'placeholder'   => __('Entrez la qualification de la personne responsable', 'wp-crowdfunding'),
-                      'value'         => '',
-                      'warpclass'     => 'fi_reg_pm',
-                      'class'         => '',
-                      'autocomplete'  => 'off',
-                      'choices'       => [__( "Directeur" , "wp-crowdfunding" ),__( "Gérant" , "wp-crowdfunding" ),__( "Autre" , "wp-crowdfunding" ),__( "Admin" , "wp-crowdfunding" )]
-                  ),
+                  // array(
+                  //     'id'            => 'fi_company_responsible_status',
+                  //     'label'         => __( "Qualification de la personne responsable" , "wp-crowdfunding" ),
+                  //     'type'          => 'select',
+                  //     'placeholder'   => __('Entrez la qualification de la personne responsable', 'wp-crowdfunding'),
+                  //     'value'         => '',
+                  //     'warpclass'     => 'fi_reg_pm',
+                  //     'class'         => '',
+                  //     'autocomplete'  => 'off',
+                  //     'choices'       => [__( "Directeur" , "wp-crowdfunding" ),__( "Gérant" , "wp-crowdfunding" ),__( "Autre" , "wp-crowdfunding" ),__( "Admin" , "wp-crowdfunding" )]
+                  // ),
+                    array(
+                       'id'            => 'fi_company_responsible_status',
+                       'label'         => __( "Qualification de la personne responsable" , "wp-crowdfunding" ),
+                       'type'          => 'text',
+                       'placeholder'   => __('Entrez la qualification de la personne responsable (Directeur,Gérant, Admin, Autre (précisez))', 'wp-crowdfunding'),
+                       'value'         => '',
+                       'warpclass'     => 'fi_reg_pm',
+                       'class'         => '',
+                       'autocomplete'  => 'off',
+                   ),
                   array(
                       'id'            => 'fname',
                       'label'         => __( "First Name" , "wp-crowdfunding" ),

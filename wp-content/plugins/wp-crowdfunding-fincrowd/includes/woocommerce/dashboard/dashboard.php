@@ -10,6 +10,31 @@ $html .= '<div class="wpneo-content">';
 
     $html .= '<form id="wpneo-dashboard-form" action="" method="" class="wpneo-form">';
 
+
+
+        // type
+        $html .= '<div class="wpneo-single">';
+            $html .= '<div class="wpneo-name float-left">';
+                $html .= '<p>'.__( "Personne physique ou autre:" , "wp-crowdfunding" ).'</p>';
+            $html .= '</div>';
+            $html .= '<div class="wpneo-fields float-right">';
+
+            if(get_the_author_meta( 'physical_person', $current_user->ID )){
+              $checkedPhysical = " checked ";
+              $checkedSociety = " ";
+            } else {
+              $checkedSociety = " checked ";
+              $checkedPhysical = " ";
+            }
+            $html .= '<input type="radio" id="fi_reg_physical_person"  name="fi_reg_type_person" value="physical"'.$checkedPhysical.' disabled />';
+            $html .= __('Personne Physique', 'wp-crowdfunding');
+            $html .= '<br/>';
+            $html .= '<input type="radio" id="fi_reg_society"   name="fi_reg_type_person" value="society"'.$checkedSociety.' disabled />';
+            $html .= __('Personne Morale', 'wp-crowdfunding');
+
+            $html .= '</div>';
+        $html .= '</div>';
+
         // User Name
         $html .= '<div class="wpneo-single">';
             $html .= '<div class="wpneo-name float-left">';
@@ -62,9 +87,10 @@ $html .= '<div class="wpneo-content">';
             $html .= '</div>';
         $html .= '</div>';
 
-        //Fincrowd - Birthday
-        //TODO condition if pers Physique !!!
+
         if(get_the_author_meta( 'physical_person', $current_user->ID )){
+        //si personne physique
+          //Fincrowd - Birthday
           $html .= '<div class="wpneo-single">';
               $html .= '<div class="wpneo-name float-left">';
                   $html .= '<p>'.__( "Date de Naissance:" , "wp-crowdfunding" ).'</p>';
@@ -81,7 +107,7 @@ $html .= '<div class="wpneo-content">';
           //Status responsable
           $html .= '<div class="wpneo-single">';
               $html .= '<div class="wpneo-name float-left">';
-                  $html .= '<p>'.__( "fi_company_responsible_status:" , "wp-crowdfunding" ).'</p>';
+                  $html .= '<p>'.__( "Status du Responsable" , "wp-crowdfunding" ).'</p>';
               $html .= '</div>';
               $html .= '<div class="wpneo-fields float-right">';
                   $html .= '<input type="text" name="fi_company_responsible_status" id="fi_company_responsible_status" value="'.esc_attr( get_the_author_meta( 'fi_company_responsible_status', $current_user->ID ) ).'" disabled/>';
@@ -90,33 +116,50 @@ $html .= '<div class="wpneo-content">';
           //nom société
           $html .= '<div class="wpneo-single">';
               $html .= '<div class="wpneo-name float-left">';
-                  $html .= '<p>'.__( "fi_company_name:" , "wp-crowdfunding" ).'</p>';
+                  $html .= '<p>'.__( "Nom de la société" , "wp-crowdfunding" ).'</p>';
               $html .= '</div>';
               $html .= '<div class="wpneo-fields float-right">';
                   $html .= '<input type="text" name="fi_company_name" id="fi_company_name" value="'.esc_attr( get_the_author_meta( 'fi_company_name', $current_user->ID ) ).'" disabled/>';
               $html .= '</div>';
           $html .= '</div>';
           //status société
+          // $html .= '<div class="wpneo-single">';
+          //     $html .= '<div class="wpneo-name float-left">';
+          //         $html .= '<p>'.__( "Status de la société" , "wp-crowdfunding" ).'</p>';
+          //     $html .= '</div>';
+          //     $html .= '<div class="wpneo-fields float-right">';
+          //         $html .= '<input type="text" name="fi_company_status" id="fi_company_status" value="'.esc_attr( get_the_author_meta( 'fi_company_status', $current_user->ID ) ).'" disabled/>';
+          //     $html .= '</div>';
+          // $html .= '</div>';
+          $all_cat = ['SPRL','SA','SCRL'];
           $html .= '<div class="wpneo-single">';
               $html .= '<div class="wpneo-name float-left">';
-                  $html .= '<p>'.__( "fi_company_status:" , "wp-crowdfunding" ).'</p>';
+                  $html .= '<p>'.__( "Status de la société:" , "wp-crowdfunding" ).'</p>';
               $html .= '</div>';
               $html .= '<div class="wpneo-fields float-right">';
-                  $html .= '<input type="text" name="fi_company_status" id="fi_company_status" value="'.esc_attr( get_the_author_meta( 'fi_company_status', $current_user->ID ) ).'" disabled/>';
+              $html .= '<select name="fi_company_status" id="fi_company_status" disabled>';
+              foreach ($all_cat as $value) {
+                //check if the category belongs to the product
+                  if(get_the_author_meta( 'fi_company_status', $current_user->ID ) == $value) {
+                    $selected = " selected";
+                  } else {
+                    $selected = "";
+                  }
+                  $html .= '<option value="'.$value.'" '.$selected.'>'.$value.'</option>';
+              }
+
+              $html .= '</select>';
               $html .= '</div>';
           $html .= '</div>';
           //numéro société
           $html .= '<div class="wpneo-single">';
               $html .= '<div class="wpneo-name float-left">';
-                  $html .= '<p>'.__( "fi_company_number:" , "wp-crowdfunding" ).'</p>';
+                  $html .= '<p>'.__( "Numéro BCE de la société" , "wp-crowdfunding" ).'</p>';
               $html .= '</div>';
               $html .= '<div class="wpneo-fields float-right">';
                   $html .= '<input type="text" name="fi_company_number" id="fi_company_number" value="'.esc_attr( get_the_author_meta( 'fi_company_number', $current_user->ID ) ).'" disabled/>';
               $html .= '</div>';
           $html .= '</div>';
-
-
-
 
         }
 
@@ -133,10 +176,11 @@ $html .= '<div class="wpneo-content">';
         //adresse
         $html .= '<div class="wpneo-single">';
             $html .= '<div class="wpneo-name float-left">';
-                $html .= '<p>'.__( "fi_user_address:" , "wp-crowdfunding" ).'</p>';
+                $html .= '<p>'.__( "Adresse:" , "wp-crowdfunding" ).'</p>';
             $html .= '</div>';
             $html .= '<div class="wpneo-fields float-right">';
-                $html .= '<input type="text" name="fi_user_address" id="fi_user_address" value="'.esc_attr( get_the_author_meta( 'fi_user_address', $current_user->ID ) ).'" disabled/>';
+                //$html .= '<input type="text" name="fi_user_address" id="fi_user_address" value="'.esc_attr( get_the_author_meta( 'fi_user_address', $current_user->ID ) ).'" disabled/>';
+                $html .= '<textarea name="fi_user_address" id="fi_user_address" disabled/>'.esc_attr( get_the_author_meta( 'fi_user_address', $current_user->ID ) ).'</textarea>';
             $html .= '</div>';
         $html .= '</div>';
 
