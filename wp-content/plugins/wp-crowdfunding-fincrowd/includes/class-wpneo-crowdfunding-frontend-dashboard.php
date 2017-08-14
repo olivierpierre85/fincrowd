@@ -139,16 +139,16 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
 
             $id             = get_current_user_id();
             $email          = ( $_POST['email'] ) ? sanitize_email($_POST['email']) : "";
-            //$firstname      = ( $_POST['firstname'] ) ? sanitize_text_field($_POST['firstname']) : "";
-            //$lastname       = ( $_POST['lastname'] ) ? sanitize_text_field($_POST['lastname']) : "";
+            $firstname      = ( $_POST['firstname'] ) ? sanitize_text_field($_POST['firstname']) : "";
+            $lastname       = ( $_POST['lastname'] ) ? sanitize_text_field($_POST['lastname']) : "";
             $website        = ( $_POST['website'] ) ? sanitize_url($_POST['website']) : "";
             //$description    = ( $_POST['description'] ) ? sanitize_text_field($_POST['description'] ): "";
 
             $userdata = array(
                 'ID'                => $id,
                 'user_email'        => $email,
-                //'first_name'        => $firstname,
-                //'last_name'         => $lastname,
+                'first_name'        => $firstname,
+                'last_name'         => $lastname,
                 'user_url'          => $website,
                 //'description'       => $description,
             );
