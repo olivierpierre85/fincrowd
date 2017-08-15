@@ -146,7 +146,7 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
             global $post;
             //$campaign_end_method = get_post_meta($post->ID, 'wpneo_campaign_end_method' , true);
             //Fincrowd, always this method to end campaign
-            $campaign_end_method = 'target_goal_and_date';
+            $campaign_end_method = 'fincrowd';
 
             switch ($campaign_end_method){
 
@@ -171,6 +171,13 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
                         return true;
                     }
                     if ( $this->dateRemaining()) {
+                        return true;
+                    }
+                    return false;
+                    break;
+
+                case 'fincrowd':
+                    if ( ! $this->is_reach_target_goal() && $this->dateRemaining() ) {
                         return true;
                     }
                     return false;
