@@ -89,19 +89,27 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
           $total       = sanitize_text_field($_POST['total']);
 
           //$product = new WC_Product( $cart[key($cart)]['product_id']);//take first product (Normally always One and only one)
-          $interest                 = get_post_meta( $campaign_id, 'wpneo_fi_interest_rate', true );
-          $interest_insurance      = get_post_meta( $campaign_id, 'wpneo_fi_interest_rate_insurance', true );
+
+
           $duration      = get_post_meta( $campaign_id, 'wpneo_fi_loan_duration', true );
-          $insurance = get_post_meta( $campaign_id, 'wpneo_fi_loan_insurance', true );
 
+          $interest                 = get_post_meta( $campaign_id, 'wpneo_fi_interest_rate', true );
           $monthly_payment            = wpneo_fi_compute_monthly_payment( $total, $interest, $duration );
-          $monthly_payment_insurance  = wpneo_fi_compute_monthly_payment( $total, $interest_insurance, $duration );
-
           $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
-          $total_interest_insurance = round(($duration * $monthly_payment_insurance  ) - $total,2);
+
+          $insurance = get_post_meta( $campaign_id, 'wpneo_fi_loan_insurance', true );
+          if($insurance == "true"){
+            $interest_insurance      = get_post_meta( $campaign_id, 'wpneo_fi_interest_rate_insurance', true );
+            $monthly_payment_insurance  = wpneo_fi_compute_monthly_payment( $total, $interest_insurance, $duration );
+            $total_interest_insurance = round(($duration * $monthly_payment_insurance  ) - $total,2);
+
+            die(__('Intérêts totaux :'.$total_interest.' ( '.$total_interest_insurance.' avec la garantie)', 'wp-crowdfunding'));
+          } else {
+            die(__('Intérêts totaux :'.$total_interest, 'wp-crowdfunding'));
+          }
+
 
           //TODO error handling
-          die(__('Intérêts totaux :'.$total_interest.' ( '.$total_interest_insurance.' avec la garantie)', 'wp-crowdfunding'));
           //die(json_encode(array('success'=> 1, 'message' => __('Itest', 'wp-crowdfunding'), 'redirect' => $redirect)));
         }
 
