@@ -202,19 +202,19 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                   )
             );
 
-            woocommerce_wp_text_input(
-                array(
-                  'id'            => 'wpneo_fi_interest_rate_insurance',
-                  'label'         => __( 'Intérêts avec garantie', 'wp-crowdfunding' ),
-                  'placeholder'   => __( 'Intérêts %', 'wp-crowdfunding' ),
-                  'description'   => __( 'Intérêts %', 'wp-crowdfunding' ),
-                  'type'              => 'number',
-                  'custom_attributes' => array(
-              				'step' 	=> 'any',
-              				'min'	=> '0'
-              			)
-                  )
-            );
+            // woocommerce_wp_text_input(
+            //     array(
+            //       'id'            => 'wpneo_fi_interest_rate_insurance',
+            //       'label'         => __( 'Intérêts avec garantie', 'wp-crowdfunding' ),
+            //       'placeholder'   => __( 'Intérêts %', 'wp-crowdfunding' ),
+            //       'description'   => __( 'Intérêts %', 'wp-crowdfunding' ),
+            //       'type'              => 'number',
+            //       'custom_attributes' => array(
+            //   				'step' 	=> 'any',
+            //   				'min'	=> '0'
+            //   			)
+            //       )
+            // );
 
             woocommerce_wp_text_input(
                 array(
@@ -225,14 +225,14 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                   )
             );
 
-            woocommerce_wp_checkbox(
-                array(
-                  'id'            => 'wpneo_fi_loan_insurance',
-                  'label'         => __( 'Assurance crédit', 'wp-crowdfunding' ),
-                  'placeholder'   => __( 'Assurance crédit', 'wp-crowdfunding' ),
-                  'description'   => __( 'Assurance crédit', 'wp-crowdfunding' )
-                  )
-            );
+            // woocommerce_wp_checkbox(
+            //     array(
+            //       'id'            => 'wpneo_fi_loan_insurance',
+            //       'label'         => __( 'Assurance crédit', 'wp-crowdfunding' ),
+            //       'placeholder'   => __( 'Assurance crédit', 'wp-crowdfunding' ),
+            //       'description'   => __( 'Assurance crédit', 'wp-crowdfunding' )
+            //       )
+            // );
 
 
             woocommerce_wp_text_input(
@@ -1098,8 +1098,9 @@ if (! class_exists('Wpneo_Crowdfunding')) {
         }
 
         function wpneo_fi_add_iban() {
-          //load tab template
-            echo '<div class="fi-iban">Numéro IBAN : BE62 5100 0754 7061</div>';
+          $cart = WC()->cart->get_cart();
+          $iban = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_account_number', true );
+          echo '<div class="fi-iban">Numéro IBAN : '.$iban.'<div>';
         }
 
 
