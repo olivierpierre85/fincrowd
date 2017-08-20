@@ -59,8 +59,13 @@ if ( ! function_exists('wpneo_crowdfunding_get_author_name_by_login')){
  */
 if ( ! function_exists('wpneo_crowdfunding_get_campaigns_location')){
     function wpneo_crowdfunding_get_campaigns_location(){
+      //TODO OLPI new field adress for campaign
         global $post;
+        $product = wc_get_product( $post->ID );
+        $author = get_userdata( $product->post->post_author );
+        $location = get_the_author_meta( 'fi_user_address', $author->ID );
 
+        /*
         $wpneo_country = get_post_meta($post->ID, 'wpneo_country', true);
         $location = get_post_meta($post->ID, '_nf_location', true);
 
@@ -75,6 +80,7 @@ if ( ! function_exists('wpneo_crowdfunding_get_campaigns_location')){
                 $location = $location . ', ' . $country_name;
             }
         }
+        */
         return $location;
     }
 }

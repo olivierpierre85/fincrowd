@@ -10,12 +10,12 @@ add_action( 'wpneo_crowdfunding_after_feature_img', 'wpneo_crowdfunding_campaign
  *  Mathieu, ici se trouve l'ordre des champs pour l'affichage global d'un projet
  */
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_campaign_title');
-add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_campaign_author');
+//add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_campaign_author');
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_risk_class'); //Fincrowd
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_interest_rate'); //Fincrowd
-add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_interest_rate_insurance'); //Fincrowd
+//add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_interest_rate_insurance'); //Fincrowd
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_loan_duration'); //Fincrowd
-add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_loan_insurance'); //Fincrowd
+//add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_loan_insurance'); //Fincrowd
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_company_number'); //Fincrowd
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_contact_person'); //Fincrowd
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_phone_number'); //Fincrowd
@@ -26,7 +26,7 @@ add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_c
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_campaign_single_loop_item_fund_raised_percent');
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_campaign_single_fund_this_campaign_btn');
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_campaign_location');
-add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_campaign_creator_info', 12);
+//add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_campaign_creator_info', 12);
 
 
 /**
@@ -49,7 +49,7 @@ function wpneo_crowdfunding_singlepage_custom(){
             add_action('woocommerce_single_product_summary', 'wpneo_crowdfunding_campaign_single_loop_item_fund_raised_percent', 20);
             add_action('woocommerce_single_product_summary', 'wpneo_crowdfunding_campaign_single_fund_this_campaign_btn', 20);
             add_action('woocommerce_single_product_summary', 'wpneo_crowdfunding_template_campaign_location', 20);
-            add_action('woocommerce_single_product_summary', 'wpneo_crowdfunding_campaign_creator_info', 20);
+            //add_action('woocommerce_single_product_summary', 'wpneo_crowdfunding_campaign_creator_info', 20);
 
             add_filter('woocommerce_single_product_image_html', 'wpneo_crowdfunding_overwrite_product_feature_image', 20);
         }
@@ -74,12 +74,12 @@ add_action( 'wpneo_campaign_story_right_sidebar', 'wpneo_campaign_story_right_si
 add_action( 'wpneo_campaign_loop_item_before_content', 'wpneo_crowdfunding_loop_item_thumbnail');
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_rating_html');
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_title');
-add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_author');
+//add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_author');
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_risk_class');//Fincrowd
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_interest_rate');//Fincrowd
-add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_interest_rate_insurance');//Fincrowd
+//add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_interest_rate_insurance');//Fincrowd
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_loan_duration');//Fincrowd
-add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_loan_insurance');//Fincrowd
+//add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_loan_insurance');//Fincrowd
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_location');
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_short_description');
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_fund_raised_percent');
