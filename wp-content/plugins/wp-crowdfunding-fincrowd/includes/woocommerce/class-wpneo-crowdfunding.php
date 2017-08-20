@@ -964,15 +964,15 @@ if (! class_exists('Wpneo_Crowdfunding')) {
 
             //$product = new WC_Product( $cart[key($cart)]['product_id']);//take first product (Normally always One and only one)
             $interest                 = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate', true );
-            $interest_insurance      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate_insurance', true );
+            //$interest_insurance      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate_insurance', true );
             $duration      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_duration', true );
-            $insurance = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_insurance', true );
+            //$insurance = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_insurance', true );
 
             $monthly_payment            = round(wpneo_fi_compute_monthly_payment( $total, $interest, $duration ),2);
-            $monthly_payment_insurance  = round(wpneo_fi_compute_monthly_payment( $total, $interest_insurance, $duration ),2);
+            //$monthly_payment_insurance  = round(wpneo_fi_compute_monthly_payment( $total, $interest_insurance, $duration ),2);
 
             $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
-            $total_interest_insurance = round(($duration * $monthly_payment_insurance  ) - $total,2);
+            //$total_interest_insurance = round(($duration * $monthly_payment_insurance  ) - $total,2);
 
 
             echo '<div id="wpneo_fi_interest_insurance"><h3>' . __('Intérêts') . '</h3>';
@@ -1020,21 +1020,21 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             }
 
             //WITH insurance
-            $monthly_interest_rate_insurance  = $interest_insurance / 12 / 100;
-            $total_left_to_pay    = $total;
-            for($i = 0 ; $i < $duration; $i++ ) {
-              $interest_by_month = round($total_left_to_pay * $monthly_interest_rate_insurance,2);
-              $capital_by_month = round($monthly_payment - $interest_by_month,2);
-
-              echo '<tr class="fi-interest-insurance-row">';
-              echo '<td>'.__('Mois ').$i.'</td>';
-              echo '<td>'.$capital_by_month.'</td>';
-              echo '<td>'.$interest_by_month.'</td>';
-              echo '<td>'.$monthly_payment_insurance.'</td>';
-              echo '</tr>';
-
-              $total_left_to_pay = $total_left_to_pay - $monthly_payment;
-            }
+            // $monthly_interest_rate_insurance  = $interest_insurance / 12 / 100;
+            // $total_left_to_pay    = $total;
+            // for($i = 0 ; $i < $duration; $i++ ) {
+            //   $interest_by_month = round($total_left_to_pay * $monthly_interest_rate_insurance,2);
+            //   $capital_by_month = round($monthly_payment - $interest_by_month,2);
+            //
+            //   echo '<tr class="fi-interest-insurance-row">';
+            //   echo '<td>'.__('Mois ').$i.'</td>';
+            //   echo '<td>'.$capital_by_month.'</td>';
+            //   echo '<td>'.$interest_by_month.'</td>';
+            //   echo '<td>'.$monthly_payment_insurance.'</td>';
+            //   echo '</tr>';
+            //
+            //   $total_left_to_pay = $total_left_to_pay - $monthly_payment;
+            // }
 
             echo '</table>';
 
@@ -1100,7 +1100,8 @@ if (! class_exists('Wpneo_Crowdfunding')) {
         function wpneo_fi_add_iban() {
           $cart = WC()->cart->get_cart();
           $iban = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_account_number', true );
-          echo '<div class="fi-iban">Numéro IBAN : '.$iban.'<div>';
+          //TODO olpi pas nécessaire puisque ailleurs?
+          //echo '<div class="fi-iban">Numéro IBAN : '.$iban.'<div>';
         }
 
 

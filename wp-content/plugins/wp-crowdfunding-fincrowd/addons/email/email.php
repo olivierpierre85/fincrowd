@@ -159,7 +159,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $wpneo_enable_accept_campaign_email_user = sanitize_text_field( wpneo_post('wpneo_enable_accept_campaign_email_user') );
                 wpneo_crowdfunding_update_option_checkbox( 'wpneo_enable_accept_campaign_email_user', $wpneo_enable_accept_campaign_email_user );
                 //Start fincrowd
-                //Cancel pledge tot campaign
+                //Cancel campaign
                 $wpneo_enable_cancel_campaign_email = sanitize_text_field( wpneo_post('wpneo_enable_cancel_campaign_email') );
                 wpneo_crowdfunding_update_option_checkbox( 'wpneo_enable_cancel_campaign_email', $wpneo_enable_cancel_campaign_email );
 
@@ -168,6 +168,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                 $wpneo_enable_cancel_campaign_email_user = sanitize_text_field( wpneo_post('wpneo_enable_cancel_campaign_email_user') );
                 wpneo_crowdfunding_update_option_checkbox( 'wpneo_enable_cancel_campaign_email_user', $wpneo_enable_cancel_campaign_email_user );
+
                 //Validate campaign after goal reached
                 $wpneo_enable_validate_campaign_email = sanitize_text_field( wpneo_post('wpneo_enable_validate_campaign_email') );
                 wpneo_crowdfunding_update_option_checkbox( 'wpneo_enable_validate_campaign_email', $wpneo_enable_validate_campaign_email );
@@ -207,6 +208,9 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $wpneo_cancel_campaign_email_template = sanitize_text_field(wpneo_post('wpneo_cancel_campaign_email_template'));
                 wpneo_crowdfunding_update_option_text( 'wpneo_cancel_campaign_email_template', $wpneo_cancel_campaign_email_template );
 
+                $wpneo_cancel_campaign_client_email_template = sanitize_text_field(wpneo_post('wpneo_cancel_campaign_client_email_template'));
+                wpneo_crowdfunding_update_option_text( 'wpneo_cancel_campaign_client_email_template', $wpneo_cancel_campaign_client_email_template );
+
                 //Validate campaign
                 $wpneo_validate_campaign_email_subject = sanitize_text_field(wpneo_post('wpneo_validate_campaign_email_subject'));
                 wpneo_crowdfunding_update_option_text( 'wpneo_validate_campaign_email_subject', $wpneo_validate_campaign_email_subject );
@@ -238,6 +242,9 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                 $wpneo_user_registration_email_template = wpneo_post('wpneo_user_registration_email_template');
                 wpneo_crowdfunding_update_option_text('wpneo_user_registration_email_template', $wpneo_user_registration_email_template);
+
+                $wpneo_user_registration_email_template_company = wpneo_post('wpneo_user_registration_email_template_company');
+                wpneo_crowdfunding_update_option_text('wpneo_user_registration_email_template_company', $wpneo_user_registration_email_template_company);
 
                 $wpneo_new_user_email_subject = sanitize_text_field(wpneo_post('wpneo_new_user_email_subject'));
                 wpneo_crowdfunding_update_option_text('wpneo_new_user_email_subject', $wpneo_new_user_email_subject);
@@ -279,12 +286,20 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     $email[]        = $admin_email;
                 }
 
-                $hash           = md5(microtime() . rand(111111, 999999));
-                add_user_meta( $user_id, 'activate_code', $hash );
-                $activate_link  = home_url('/') . 'user_activate?id=' . $user_id . '&key=' . $hash;
-                $shortcode      = array('[user_name]', '[user_activate_link]', '[site_title]');
-                $replace_str    = array($dislay_name, $activate_link, get_option('blogname'));
-                $str            = wp_unslash(get_option('wpneo_user_registration_email_template'));
+                if($_POST['fi_reg_type_person'] == "society"){
+                  $str  = wp_unslash(get_option('wpneo_user_registration_email_template_company'));
+                  $company_name = get_the_author_meta( 'fi_company_name', $user_id );
+                } else {
+                  $str  = wp_unslash(get_option('wpneo_user_registration_email_template'));
+                  $company_name = '';
+                }
+                //TODO olpi faire fonctionner ca !!!!
+                // $hash           = md5(microtime() . rand(111111, 999999));
+                // add_user_meta( $user_id, 'activate_code', $hash );
+                // $activate_link  = home_url('/') . 'user_activate?id=' . $user_id . '&key=' . $hash;
+                $shortcode      = array('[user_name]', '[user_activate_link]', '[site_title]','[company_name]');
+                $replace_str    = array($dislay_name, $activate_link, get_option('blogname'), $company_name);
+
                 $email_str      = str_replace($shortcode, $replace_str, $str);
                 $subject        = str_replace($shortcode, $replace_str, get_option('wpneo_new_user_email_subject'));
                 $headers        = array('Content-Type: text/html; charset=UTF-8'); //Set Headers content type to HTML
@@ -335,11 +350,13 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     $email[]    = $current_user->user_email;
                     //end fincrowd
 
+                    $iban = get_post_meta( $product_id, 'wpneo_fi_account_number', true );
+                    $company_name = get_user_meta( $author->ID,'fi_company_name',true );
                     $total_amount   = get_woocommerce_currency_symbol() . $order->get_total();
                     //$campaign_title  = $product->post->post_title;
                     $campaign_title  = get_post_field( 'post_title', $product_id );
-                    $shortcode      = array('[user_name]', '[site_title]', '[total_amount]', '[campaign_title]');
-                    $replace_str    = array($dislay_name, get_option('blogname'), $total_amount, $campaign_title);
+                    $shortcode      = array('[user_name]', '[site_title]', '[total_amount]', '[campaign_title]', '[iban]','[company_name]');
+                    $replace_str    = array($dislay_name, get_option('blogname'), $total_amount, $campaign_title, $iban,$company_name);
                     $str            = wp_unslash(get_option('wpneo_backer_email_template'));
                     $email_str      = str_replace($shortcode, $replace_str, $str);
                     $subject        = str_replace($shortcode, $replace_str, get_option('wpneo_new_backer_email_subject'));

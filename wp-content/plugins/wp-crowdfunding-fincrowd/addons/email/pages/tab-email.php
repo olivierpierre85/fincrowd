@@ -166,6 +166,15 @@ $arr =  array(
         'desc'      => __('Shortcode list for variable text.( [user_name], [site_title] )','wp-crowdfunding'),
     ),
 
+    // #New User Registration Template
+    array(
+        'id'        => 'wpneo_user_registration_email_template_company',
+        'type'      => 'textarea',
+        'value'     => '',
+        'label'     => __('New User Registration Template for company','wp-crowdfunding'),
+        'desc'      => __('Shortcode list for variable text.( [user_name], [site_title] )','wp-crowdfunding'),
+    ),
+
     //------------------------------ Email New Backed -------------------------------
     // #Email notification after new backed Seperator
     array(
@@ -386,6 +395,15 @@ $arr =  array(
         'type'      => 'textarea',
         'value'     => '',
         'label'     => __('Cancel Campaign Email Template','wp-crowdfunding'),
+        'desc'      => __('Below are shortcode list for variable text.( [user_name], [campaign_title] )','wp-crowdfunding'),
+    ),
+
+    // #cancel Campaign Email Template
+    array(
+        'id'        => 'wpneo_cancel_campaign_client_email_template',
+        'type'      => 'textarea',
+        'value'     => '',
+        'label'     => __('Cancel Campaign Email client Template','wp-crowdfunding'),
         'desc'      => __('Below are shortcode list for variable text.( [user_name], [campaign_title] )','wp-crowdfunding'),
     ),
     //------------------------------ Email Cancel Campaign pledge -------------------------------
