@@ -17,8 +17,8 @@ add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_t
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_loan_duration'); //Fincrowd
 //add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_loan_insurance'); //Fincrowd
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_company_number'); //Fincrowd
-add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_contact_person'); //Fincrowd
-add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_phone_number'); //Fincrowd
+//add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_contact_person'); //Fincrowd
+//add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_phone_number'); //Fincrowd
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_website'); //Fincrowd
 
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_loop_item_rating_html');
