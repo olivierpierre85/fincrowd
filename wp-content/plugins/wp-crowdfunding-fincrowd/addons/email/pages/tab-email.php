@@ -387,7 +387,60 @@ $arr =  array(
         'value'     => '',
         'label'     => __('Cancel Campaign Email Template','wp-crowdfunding'),
         'desc'      => __('Below are shortcode list for variable text.( [user_name], [campaign_title] )','wp-crowdfunding'),
-    ),//------------------------------ Email validate Campaign -------------------------------
+    ),
+    //------------------------------ Email Cancel Campaign pledge -------------------------------
+    // #Email notification after submit cancel
+    array(
+        'type'      => 'seperator',
+        'label'     => '',
+        'desc'      => __('Email Notification after cancel Campaign','wp-crowdfunding'),
+        'top_line'  => 'true',
+    ),
+
+    // #Email Notification After cancel Campaign
+    array(
+        'id'        => 'wpneo_enable_cancel_campaign_pledge_email',
+        'type'      => 'checkbox',
+        'value'     => 'true',
+        'label'     => __('Email Notification After cancel Campaign pledge','wp-crowdfunding'),
+        'desc'      => __('Enable email notification after cancel campaign pledge.','wp-crowdfunding'),
+    ),
+    // #Email Notification After cancel Campaign pledge
+    array(
+        'id'        => 'wpneo_enable_cancel_campaign_pledge_email_admin',
+        'type'      => 'checkbox',
+        'value'     => 'true',
+        'label'     => __('Email to','wp-crowdfunding'),
+        'desc'      => __('Admin','wp-crowdfunding'),
+    ),
+
+    // #Email Notification After cancel Campaign
+    array(
+        'id'        => 'wpneo_enable_cancel_campaign_pledge_email_user',
+        'type'      => 'checkbox',
+        'value'     => 'true',
+        'label'     => __('','wp-crowdfunding'),
+        'desc'      => __('User','wp-crowdfunding'),
+    ),
+
+    // #cancel Campaign Email Subject
+    array(
+        'id'        => 'wpneo_cancel_campaign_pledge_email_subject',
+        'type'      => 'text',
+        'value'     => '',
+        'label'     => __('Cancel Campaign pledge Email Subject','wp-crowdfunding'),
+        'desc'      => __('Subject line for cancel campaign pledge email.','wp-crowdfunding'),
+    ),
+
+    // #cancel Campaign Email Template
+    array(
+        'id'        => 'wpneo_cancel_campaign_pledge_email_template',
+        'type'      => 'textarea',
+        'value'     => '',
+        'label'     => __('Cancel Campaign Email Template','wp-crowdfunding'),
+        'desc'      => __('Below are shortcode list for variable text.( [user_name], [campaign_title] )','wp-crowdfunding'),
+    ),
+    //------------------------------ Email validate Campaign -------------------------------
     // #Email notification after submit validate
     array(
         'type'      => 'seperator',

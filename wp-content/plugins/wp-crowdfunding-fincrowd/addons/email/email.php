@@ -49,6 +49,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
             //start fincrowd mails
             add_action('wpneo_fi_after_cancel_order', array($this,'wpneo_fi_send_email_cancel_order'));
             add_action('wpneo_fi_after_validate_campaign', array($this,'wpneo_fi_send_email_validate_campaign'));
+            add_action('wpneo_fi_after_cancel_campaign', array($this,'wpneo_fi_send_email_cancel_campaign'));
 
             add_action('wpneo_fi_check_campaign_reach_end', array($this,'wpneo_fi_check_if_campaign_reach_end'));
             //endfincrowd
@@ -193,11 +194,19 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                 //start fincrowd save email template
                 //cancel pledge to campaign
+                $wpneo_cancel_campaign_pledge_email_subject = sanitize_text_field(wpneo_post('wpneo_cancel_campaign_pledge_email_subject'));
+                wpneo_crowdfunding_update_option_text( 'wpneo_cancel_campaign_pledge_email_subject', $wpneo_cancel_campaign_pledge_email_subject );
+
+                $wpneo_cancel_campaign_pledge_email_template = sanitize_text_field(wpneo_post('wpneo_cancel_campaign_pledge_email_template'));
+                wpneo_crowdfunding_update_option_text( 'wpneo_cancel_campaign_pledge_email_template', $wpneo_cancel_campaign_pledge_email_template );
+
+                //cancel campaign
                 $wpneo_cancel_campaign_email_subject = sanitize_text_field(wpneo_post('wpneo_cancel_campaign_email_subject'));
                 wpneo_crowdfunding_update_option_text( 'wpneo_cancel_campaign_email_subject', $wpneo_cancel_campaign_email_subject );
 
                 $wpneo_cancel_campaign_email_template = sanitize_text_field(wpneo_post('wpneo_cancel_campaign_email_template'));
                 wpneo_crowdfunding_update_option_text( 'wpneo_cancel_campaign_email_template', $wpneo_cancel_campaign_email_template );
+
                 //Validate campaign
                 $wpneo_validate_campaign_email_subject = sanitize_text_field(wpneo_post('wpneo_validate_campaign_email_subject'));
                 wpneo_crowdfunding_update_option_text( 'wpneo_validate_campaign_email_subject', $wpneo_validate_campaign_email_subject );
@@ -462,7 +471,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     $campaign_title  = $product->post->post_title;
                     $shortcode      = array( '[user_name]', '[campaign_title]' );
                     $replace_str    = array( $dislay_name, $campaign_title );
-                    $str            = wp_unslash( get_option( 'wpneo_cancel_campaign_email_template' ) );
+                    $str            = wp_unslash( get_option( 'wpneo_cancel_campaign_pledge_email_template' ) );
                     $email_str      = str_replace( $shortcode, $replace_str, $str );
                     $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_cancel_campaign_email_subject' ) );
                     $headers        = array('Content-Type: text/html; charset=UTF-8'); // Set Headers content type to HTML
@@ -601,6 +610,89 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
           }
         }
 
+        /**
+         * @param $campaign_id
+         * FINCROWD FCT
+         * Send Email after cancel campaign
+         */
+        function wpneo_fi_send_email_cancel_campaign($campaign_id){
+          if ( get_option( 'wpneo_enable_cancel_campaign_email' ) == 'true' ) {
+
+              global $wpdb;
+
+              $product        = wc_get_product($campaign_id);
+
+              if ($product->product_type === 'crowdfunding') {
+                  $email_creator    = array();
+                  $email_client    = array();
+
+                  //$author         = get_userdata($product->post->post_author);
+                  $post_author_id = get_post_field( 'post_author', $campaign_id );
+                  $author         = get_userdata($post_author_id);
+                  $dislay_name    = $author->display_name;
+                  if( 'true' == get_option( "wpneo_enable_cancel_campaign_email_user" ) ){
+                      $email_creator[]    = $author->user_email;
+                  }
+                  if( 'true' == get_option( "wpneo_enable_cancel_campaign_email_admin" ) ){
+                      $admin_email= get_option( 'admin_email' );
+                      $email_creator[]    = $admin_email;
+                      $email_client[]     = $admin_email;
+                  }
+
+                  //first get all order for the campaign
+                  $post_id = $campaign_id;
+                  $order_statuses = array_map( 'esc_sql', (array) get_option( 'wpcl_order_status_select', array('wc-completed') ) );
+                  $order_statuses_string = "'" . implode( "', '", $order_statuses ) . "'";
+                  $post_id = array_map( 'esc_sql', (array) $post_id );
+                  $post_string = "'" . implode( "', '", $post_id ) . "'";
+
+                  $item_sales = $wpdb->get_results( $wpdb->prepare(
+                    "SELECT o.ID as order_id, oi.order_item_id FROM
+                    {$wpdb->prefix}woocommerce_order_itemmeta oim
+                    INNER JOIN {$wpdb->prefix}woocommerce_order_items oi
+                    ON oim.order_item_id = oi.order_item_id
+                    INNER JOIN $wpdb->posts o
+                    ON oi.order_id = o.ID
+                    WHERE oim.meta_key = %s
+                    AND oim.meta_value IN ( $post_string )
+                    AND o.post_status IN ( $order_statuses_string )
+                    AND o.post_type NOT IN ('shop_order_refund')
+                    ORDER BY o.ID DESC",
+                    '_product_id'
+                  ));
+                  //Then get the author of the pledges
+                  foreach ($item_sales as $item) {
+                    $order          = new WC_Order($item->order_id);
+                    $user = $order->get_user();
+                    $email_client[]    = $user->user_email;
+                  }
+                  $email_client = array_unique($email_client);
+
+
+                  $campaign_title  = $product->post->post_title;
+                  $shortcode      = array( '[user_name]', '[campaign_title]' );
+                  $replace_str    = array( $dislay_name, $campaign_title );
+                  //Mail for creator, and mail for clients
+                  $str_creator            = wp_unslash( get_option( 'wpneo_cancel_campaign_email_template' ) );
+                  $email_str_creator      = str_replace( $shortcode, $replace_str, $str_creator  );
+
+                  $str_client            = wp_unslash( get_option( 'wpneo_cancel_campaign_client_email_template' ) );
+                  $email_str_client      = str_replace( $shortcode, $replace_str, $str_client  );
+
+                  $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_cancel_campaign_email_subject' ) );
+                  $headers        = array('Content-Type: text/html; charset=UTF-8'); // Set Headers content type to HTML
+
+                  //Send email now using wp_email();
+                  if(!empty( $email_client )){
+                      wp_mail( $email_client,  $subject, $email_str_client .'client', $headers );
+                  }
+
+                  if(!empty( $email_creator )){
+                      wp_mail( $email_creator, $subject, $email_str_creator .'creator', $headers );
+                  }
+              }
+          }
+        }
 
 
     }
