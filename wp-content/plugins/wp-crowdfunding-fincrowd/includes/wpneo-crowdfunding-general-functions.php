@@ -26,7 +26,7 @@ if (! function_exists('fi_interest_insurance_table')){
 
       $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
 
-      $table .= '<div id="wpneo_fi_interest_insurance"><h3>' . __('Intérêts') . '</h3>';
+      $table .= '<div id="wpneo_fi_interest_insurance"><h3>' . __('Tableau de remboursement') . '</h3>';
 
       $table .= '<div>' .__('Pour un prêt de ').'<b>'.$total.'</b>'.__(' euros, vous gagnez à terme : ').$total_interest.' Euros</div>';
 

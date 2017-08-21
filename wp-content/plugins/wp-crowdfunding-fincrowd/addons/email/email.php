@@ -294,9 +294,11 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                   $company_name = '';
                 }
                 //TODO olpi faire fonctionner ca !!!!
-                // $hash           = md5(microtime() . rand(111111, 999999));
-                // add_user_meta( $user_id, 'activate_code', $hash );
-                // $activate_link  = home_url('/') . 'user_activate?id=' . $user_id . '&key=' . $hash;
+                $hash           = md5(microtime() . rand(111111, 999999));
+                add_user_meta( $user_id, 'activate_code', $hash );
+                $activate_link  = home_url('/') . 'user_activate?id=' . $user_id . '&key=' . $hash;
+
+
                 $shortcode      = array('[user_name]', '[user_activate_link]', '[site_title]','[company_name]');
                 $replace_str    = array($dislay_name, $activate_link, get_option('blogname'), $company_name);
 
