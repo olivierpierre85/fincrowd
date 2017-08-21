@@ -78,3 +78,12 @@ a, .color, .base-color, .icon-list .pix-icon.color, .top-details a:hover, #lang-
 .wpneo-listing-content .woocommerce {
 	display: none;
 }
+
+.wpneo-links li a:hover, .wpneo-links li.active a {
+	background: #3971b7;
+}
+
+.wpneo-edit-btn, .wpneo-image-upload.float-right, .wpneo-save-btn, .removecampaignupdate, #addcampaignupdate, #wpneo_active_edit_form {
+	border-radius: 4px;
+	border: 0px;
+}
