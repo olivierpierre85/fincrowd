@@ -87,3 +87,8 @@ a, .color, .base-color, .icon-list .pix-icon.color, .top-details a:hover, #lang-
 	border-radius: 4px;
 	border: 0px;
 }
+
+.wpneo-fi-address-textarea{
+	resize: none;
+	border:none;
+}
