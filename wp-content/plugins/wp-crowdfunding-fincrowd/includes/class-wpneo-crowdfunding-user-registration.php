@@ -240,6 +240,13 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 $username   =   $email;
                 $password2   =   sanitize_text_field($_POST['password2']);
                 $iban   =   sanitize_text_field($_POST['fi_iban']);
+                $person_type = sanitize_text_field($_POST['fi_reg_type_person']);
+                $fi_company_responsible_status = sanitize_text_field($_POST['fi_company_responsible_status']);
+                $fi_company_name = sanitize_text_field($_POST['fi_company_name']);
+                $fi_company_status = sanitize_text_field($_POST['fi_company_status']);
+                $fi_company_number = sanitize_text_field($_POST['fi_company_number']);
+                $fi_user_address = sanitize_text_field($_POST['fi_user_address']);
+
                 if(isset($_POST['conditions'])){
                     $conditions   =   true;
                 }
@@ -257,7 +264,13 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                     $bio,
                     $birthday,
                     $conditions,
-                    $iban
+                    $iban,
+                    $person_type,
+                    $fi_company_responsible_status,
+                    $fi_company_name,
+                    $fi_company_status,
+                    $fi_company_number,
+                    $fi_user_address
                 );
                 $this->wpneo_complete_registration( $username, $password, $email, $website, $first_name, $last_name, $nickname, $bio );
             }else{
@@ -340,7 +353,8 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             }
         }
 
-        function wpneo_registration_validation( $username, $password,$password2, $email, $website, $first_name, $last_name, $nickname, $bio, $birthday,$conditions,$iban )  {
+        function wpneo_registration_validation( $username, $password,$password2, $email, $website, $first_name, $last_name, $nickname, $bio,
+          $birthday,$conditions,$iban,$person_type,$fi_company_responsible_status,$fi_company_name,$fi_company_status,$fi_company_number,$fi_user_address )  {
             global $reg_errors;
             $reg_errors = new WP_Error;
 
@@ -378,9 +392,32 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             }
 
             //Fincrowd
-            if ( ! (DateTime::createFromFormat('d/m/Y', $birthday)) !== FALSE && $_POST['fi_reg_type_person'] != 'society')  {
-                $reg_errors->add('birthday_invalid', __('Date de naissance non valide','wp-crowdfunding'));
+            //Societé
+            if($person_type == 'society'){
+              if ( empty($fi_company_responsible_status) ) {
+                  $reg_errors->add('company_responsible_status', __('Veuillez introduire la qualification de la personne responsable','wp-crowdfunding'));
+              }
+              if ( empty( $fi_company_name ) ) {
+                  $reg_errors->add('company_name', __('Veuillez introduire le nom de la société','wp-crowdfunding'));
+              }
+              if ( empty( $fi_company_status ) ) {
+                  $reg_errors->add('company_status', __('Veuillez introduire le status de la société','wp-crowdfunding'));
+              }
+              //TODO olpi validité du numéro BCE
+              if ( empty( $fi_company_number ) ) {
+                  $reg_errors->add('company_number', __('Veuillez introduire le numéro BCE de la société','wp-crowdfunding'));
+              }
+            } else {
+              //Personne physique
+              if ( ! (DateTime::createFromFormat('d/m/Y', $birthday)) !== FALSE )  {
+                  $reg_errors->add('birthday_invalid', __('Date de naissance non valide','wp-crowdfunding'));
+              }
             }
+
+            if ( empty( $fi_user_address ) ) {
+                $reg_errors->add('adresse', __('Veuillez introduire une adresse','wp-crowdfunding'));
+            }
+
 
             if ( $password != $password2 ) {
                 $reg_errors->add('password', __('Deux mots de passe différents','wp-crowdfunding'));
@@ -390,7 +427,7 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 $reg_errors->add('conditions', __('Vous devez accepter les conditions générales','wp-crowdfunding'));
             }
 
-            //TODO iban validation
+            //TODO olpi iban validation don't work
             if($this->checkIBAN($iban)){
                 $reg_errors->add('iban', __('Le numéro de compte n\'a pas un format correct IBAN','wp-crowdfunding'));
             }
