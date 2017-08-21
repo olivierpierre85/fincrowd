@@ -12,6 +12,10 @@ function wpneo_registration_shortcode() {
     <?php } else {
       global $reg_errors,$reg_success;
       $nonce = wp_create_nonce( 'wpneo-nonce-registration' );
+      //Get the link to the cgu document
+      $attachment_id = 54; //ID OF THE FILE,if new file !! change
+      $cguFile = wp_get_attachment_url( $attachment_id );
+      $cguLink = "J'accepte les conditions générales <a href='". $cguFile . "' target='_blank'>(Télécharger les conditions d'utilisation)</a>";
       ?>
         <div class="wpneo-user-registration-wrap">
             <form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" id="wpneo-registration" method="post">
@@ -200,7 +204,7 @@ function wpneo_registration_shortcode() {
                     ),
                     array(
                         'id'            => 'conditions',
-                        'label'         => __( "J'accepte les conditions générales (TOdO PDF)" , "wp-crowdfunding" ),
+                        'label'         => __( $cguLink , "wp-crowdfunding" ),
                         'type'          => 'checkbox',
                         'placeholder'   => __('', 'wp-crowdfunding'),
                         'value'         => '',
