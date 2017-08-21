@@ -9,8 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
     <ul>
         <li><p class="company-number">
             <!--TODOMat-->
-              Numéro de société : <?php echo wpneo_crowdfunding_get_company_number(get_the_ID()); ?>
-                </p>
+            <?php if(wpneo_crowdfunding_get_company_number(get_the_ID()) != 'false'){ ?>
+              Numéro d'entreprise : <?php echo wpneo_crowdfunding_get_company_number(get_the_ID()); ?>
+            <?php } ?>
+            </p>
         </li>
     </ul>
 </div>

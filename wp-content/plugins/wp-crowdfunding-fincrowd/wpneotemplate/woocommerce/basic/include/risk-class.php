@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="campaign-risk-class">
   <div class="risk-class">
-    Risque
+    Indice de risque    
     <?php switch (wpneo_crowdfunding_get_risk_class(get_the_ID())) {
       case "risk_a":
         echo "A";

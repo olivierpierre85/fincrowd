@@ -8,8 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="campaign-interest-rate">
     <ul>
         <li><p class="interest-rate">
-            <!--TODOMat-->
-              Intérêts : <?php echo wpneo_crowdfunding_get_interest_rate(get_the_ID()); ?>
+              Taux d'intérêts/an : <?php echo wpneo_crowdfunding_get_interest_rate(get_the_ID()); ?> %
                 </p>
         </li>
     </ul>

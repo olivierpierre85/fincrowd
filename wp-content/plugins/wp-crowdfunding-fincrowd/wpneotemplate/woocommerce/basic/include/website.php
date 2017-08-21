@@ -9,7 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
     <ul>
         <li><p class="website">
             <!--TODOMat-->
-              Site Web : <?php echo wpneo_crowdfunding_get_website(get_the_ID()); ?>
+            <?php if(wpneo_crowdfunding_get_website(get_the_ID()) != 'false'){ 
+                    echo wpneo_crowdfunding_get_website(get_the_ID());
+                  }
+              ?>
                 </p>
         </li>
     </ul>
