@@ -362,6 +362,9 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     $subject        = str_replace($shortcode, $replace_str, get_option('wpneo_new_backer_email_subject'));
                     $headers        = array('Content-Type: text/html; charset=UTF-8'); // Set Headers content type to HTML
 
+
+                    //Ajout tableau d'amortissement
+                    $email_str.= fi_interest_insurance_table($order_id);
                     //Send email now using wp_email();
                     if(!empty( $email )){
                         wp_mail( $email, $subject, $email_str, $headers );

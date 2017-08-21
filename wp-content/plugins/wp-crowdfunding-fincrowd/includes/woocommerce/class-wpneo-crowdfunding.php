@@ -47,7 +47,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             add_action( 'woocommerce_new_order',                            array($this, 'wpneo_fi_save_interest_type'));
             add_action('woocommerce_process_product_meta',                  array($this, 'wpneo_interest_type_field_save'));
 
-            add_action( 'woocommerce_before_checkout_form', array($this,'fi_interest_insurance_field'), 10, 1 );
+            add_action( 'woocommerce_before_checkout_form', array($this,'fi_interest_show_insurance_table'), 10, 1 );
 
             add_action( 'woocommerce_checkout_update_order_meta', array($this,'fi_interest_insurance_field_update_order_meta') );
             add_action( 'woocommerce_admin_order_data_after_billing_address', array($this,'fi_interest_insurance_field_display_admin_order_meta'), 10, 1 );
@@ -956,89 +956,11 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             }
         }
 
-
-        //Show a table of interests
-        function fi_interest_insurance_field( $checkout ) {
-            $total = WC()->cart->total;
-            $cart = WC()->cart->get_cart();
-
-            //$product = new WC_Product( $cart[key($cart)]['product_id']);//take first product (Normally always One and only one)
-            $interest                 = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate', true );
-            //$interest_insurance      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate_insurance', true );
-            $duration      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_duration', true );
-            //$insurance = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_insurance', true );
-
-            $monthly_payment            = round(wpneo_fi_compute_monthly_payment( $total, $interest, $duration ),2);
-            //$monthly_payment_insurance  = round(wpneo_fi_compute_monthly_payment( $total, $interest_insurance, $duration ),2);
-
-            $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
-            //$total_interest_insurance = round(($duration * $monthly_payment_insurance  ) - $total,2);
-
-
-            echo '<div id="wpneo_fi_interest_insurance"><h3>' . __('Intérêts') . '</h3>';
-            if($insurance == 'yes'){
-              echo '<div>' .__('Pour un prêt de ').'<b>'.$total.'</b>'.__(' euros, vous gagnez à terme :').'</div>';
-              echo '<div>'.__('Sans la garantie').': '.$total_interest.' Euros</div>';
-              echo '<div>'.__('Avec la garantie').': '.$total_interest_insurance.' Euros</div>';
-
-
-            woocommerce_form_field( 'wpneo_fi_interest_insurance', array(
-                'type'          => 'checkbox',
-                'class'         => array('interest-insurance-checkbox form-row-wide'),
-                'label'         => __('Utilisez la garantie ?'),
-                'placeholder'   => __('Enter something'),
-                ), $checkout->get_value( 'wpneo_fi_interest_insurance' ));
-
-            } else {
-              echo '<div>' .__('Pour un prêt de ').'<b>'.$total.'</b>'.__(' euros, vous gagnez à terme : ').$total_interest.' Euros</div>';
-            }
-
-            echo '</div>';
-            echo '<div class="fi-interest-tab">';
-            echo '<h4>'.__('Tableau de remboursement').'</h4>';
-
-            echo '<table id="fi-interest-table"><tr><th>'
-            . __('Mois') . '</th><th>'
-            . __('Capital remboursé') . '</th><th>'
-            . __('Intérêts') . '</th><th>'
-            . __('Remboursement par mois') . '</th></tr>';
-
-            $monthly_interest_rate  = $interest / 12 / 100;
-            $total_left_to_pay    = $total;
-            for($i = 0 ; $i < $duration; $i++ ) {
-              $interest_by_month = round($total_left_to_pay * $monthly_interest_rate,2);
-              $capital_by_month = round($monthly_payment - $interest_by_month,2);
-
-              echo '<tr class="fi-interest-row">';
-              echo '<td>'.__('Mois ').$i.'</td>';
-              echo '<td>'.$capital_by_month.'</td>';
-              echo '<td>'.$interest_by_month.'</td>';
-              echo '<td>'.$monthly_payment.'</td>';
-              echo '</tr>';
-
-              $total_left_to_pay = $total_left_to_pay - $monthly_payment;
-            }
-
-            //WITH insurance
-            // $monthly_interest_rate_insurance  = $interest_insurance / 12 / 100;
-            // $total_left_to_pay    = $total;
-            // for($i = 0 ; $i < $duration; $i++ ) {
-            //   $interest_by_month = round($total_left_to_pay * $monthly_interest_rate_insurance,2);
-            //   $capital_by_month = round($monthly_payment - $interest_by_month,2);
-            //
-            //   echo '<tr class="fi-interest-insurance-row">';
-            //   echo '<td>'.__('Mois ').$i.'</td>';
-            //   echo '<td>'.$capital_by_month.'</td>';
-            //   echo '<td>'.$interest_by_month.'</td>';
-            //   echo '<td>'.$monthly_payment_insurance.'</td>';
-            //   echo '</tr>';
-            //
-            //   $total_left_to_pay = $total_left_to_pay - $monthly_payment;
-            // }
-
-            echo '</table>';
-
+        function fi_interest_show_insurance_table() {
+          echo fi_interest_insurance_table();
         }
+
+
         /**
          * Fincrowd
          * Accept Donation without validation

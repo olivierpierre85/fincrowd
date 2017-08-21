@@ -20,7 +20,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 //FINCROWD after order page TODO olpi better handling
-$cart = WC()->cart->get_cart();
 $order = wc_get_order( $order_id );
 $items = $order->get_items();
 $iban = get_post_meta( $items[key($items)]['product_id'], 'wpneo_fi_account_number', true );

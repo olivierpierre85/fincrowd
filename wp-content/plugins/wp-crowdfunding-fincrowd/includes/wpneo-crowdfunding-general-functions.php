@@ -4,6 +4,65 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 //FINCROWD
+//Show a table of interests
+if (! function_exists('fi_interest_insurance_table')){
+  function fi_interest_insurance_table($order_id = null) {
+
+      $table = "";
+
+      $total = WC()->cart->total;
+      $cart = WC()->cart->get_cart();
+
+      if($order_id != null) {
+        $order = wc_get_order( $order_id );
+        $cart = $order->get_items();
+        $total = $cart[key($cart)]['line_total'];
+      }
+
+      $interest                 = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate', true );
+      $duration      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_duration', true );
+
+      $monthly_payment            = round(wpneo_fi_compute_monthly_payment( $total, $interest, $duration ),2);
+
+      $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
+
+      $table .= '<div id="wpneo_fi_interest_insurance"><h3>' . __('Intérêts') . '</h3>';
+
+      $table .= '<div>' .__('Pour un prêt de ').'<b>'.$total.'</b>'.__(' euros, vous gagnez à terme : ').$total_interest.' Euros</div>';
+
+
+      $table .= '</div>';
+      $table .= '<div class="fi-interest-tab">';
+      $table .= '<h4>'.__('Tableau de remboursement').'</h4>';
+
+      $table .= '<table id="fi-interest-table"><tr><th>'
+      . __('Mois') . '</th><th>'
+      . __('Capital remboursé') . '</th><th>'
+      . __('Intérêts') . '</th><th>'
+      . __('Remboursement par mois') . '</th></tr>';
+
+      $monthly_interest_rate  = $interest / 12 / 100;
+      $total_left_to_pay    = $total;
+      for($i = 1 ; $i <= $duration; $i++ ) {
+        $interest_by_month = round($total_left_to_pay * $monthly_interest_rate,2);
+        $capital_by_month = round($monthly_payment - $interest_by_month,2);
+
+        $table .= '<tr class="fi-interest-row">';
+        $table .= '<td>'.__('Mois ').$i.'</td>';
+        $table .= '<td>'.$capital_by_month.'</td>';
+        $table .= '<td>'.$interest_by_month.'</td>';
+        $table .= '<td>'.$monthly_payment.'</td>';
+        $table .= '</tr>';
+
+        $total_left_to_pay = $total_left_to_pay - $monthly_payment;
+      }
+
+      $table .= '</table>';
+
+      return $table;
+
+  }
+}
 //Return monthly payment
 if (! function_exists('wpneo_fi_compute_monthly_payment')){
   function wpneo_fi_compute_monthly_payment( $amt , $i, $term ) {
