@@ -39,6 +39,8 @@ if (! class_exists('Wpneo_Crowdfunding_Base')) {
             add_action( 'admin_init',               array($this, 'wpneo_crowdfunding_network_disable_notice'));
             add_action( 'admin_head',               array($this, 'wpneo_crowdfunding_add_mce_button'));
             add_filter( 'plugin_action_links_' . WPNEO_CROWDFUNDING_PLUGIN_BASENAME, array($this, 'wpneo_crowdfunding_settings_link'), 10, 5);
+            //change product author
+            add_action( 'init', array( $this, 'add_author_support_to_products') );
 
             //Ajax action
             add_action( 'wp_ajax_wpneo_crowdfunding_reset',  array($this, 'wpneo_crowdfunding_reset'));
@@ -47,6 +49,19 @@ if (! class_exists('Wpneo_Crowdfunding_Base')) {
             if (WPNEO_CROWDFUNDING_TYPE != 'free'){
                 add_filter( 'site_transient_update_plugins', array($this, 'wpnew_crowdfunding_disable_plugin_updates') );
             }
+        }
+
+        /**
+         * Add author support to product post type
+         *
+         * @author Ollie Murphy
+         * @since 1.0.0
+         *
+         */
+        public function add_author_support_to_products() {
+          if ( post_type_exists( 'product' ) ) {
+            add_post_type_support( 'product', 'author' );
+          }
         }
 
         public function load_wpneo_crowdfunding_functions(){
