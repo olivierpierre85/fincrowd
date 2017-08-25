@@ -91,7 +91,7 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 <td>
                   <select name="fi_company_status" id="fi_company_status" >
                   <?php
-                  $all_cat = ['SPRL','SA','SCRL'];
+                  $all_cat = ['S.A.','S.P.R.L.','S.C.R.L.','A.S.B.L','SPRL - Starter','SCRI','SNC','SCS'];
                   foreach ($all_cat as $value) {
                     //check if the category belongs to the product
                       if(get_the_author_meta( 'fi_company_status', $user->ID ) == $value) {

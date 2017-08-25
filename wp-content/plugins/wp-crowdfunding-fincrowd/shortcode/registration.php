@@ -102,7 +102,7 @@ function wpneo_registration_shortcode() {
                       'warpclass'     => 'fi_reg_pm',
                       'class'         => '',
                       'autocomplete'  => 'off',
-                      'choices'       => [__( "SPRL" , "wp-crowdfunding" ),__( "SA" , "wp-crowdfunding" ),__( "SCRL" , "wp-crowdfunding" )]
+                      'choices'       => ['S.A.','S.P.R.L.','S.C.R.L.','A.S.B.L','SPRL - Starter','SCRI','SNC','SCS']
                   ),
                   array(
                       'id'            => 'fi_company_number',

@@ -131,7 +131,7 @@ $html .= '<div class="wpneo-content">';
           //         $html .= '<input type="text" name="fi_company_status" id="fi_company_status" value="'.esc_attr( get_the_author_meta( 'fi_company_status', $current_user->ID ) ).'" disabled/>';
           //     $html .= '</div>';
           // $html .= '</div>';
-          $all_cat = ['SPRL','SA','SCRL'];
+          $all_cat = ['S.A.','S.P.R.L.','S.C.R.L.','A.S.B.L','SPRL - Starter','SCRI','SNC','SCS'];
           $html .= '<div class="wpneo-single">';
               $html .= '<div class="wpneo-name float-left">';
                   $html .= '<p>'.__( "Status de la société:" , "wp-crowdfunding" ).'</p>';
