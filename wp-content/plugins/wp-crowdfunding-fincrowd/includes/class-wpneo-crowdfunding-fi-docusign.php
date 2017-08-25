@@ -33,12 +33,12 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Pdf')) {
          * Wpneo_Crowdfunding_Fi_Pdf constructor.
          */
         public function __construct(){
-            require_once('fpdf\fpdf.php');
-            require_once('fpdi\fpdi.php');
+            //require_once('fpdf\fpdf.php');
+            //require_once('fpdi\fpdi.php');
 
 
             //start fincrowd mails
-            add_action('wpneo_fi_pdf_validate_campaign', array($this,'wpneo_fi_pdf_validate_campaign'));
+            add_action('wpneo_fi_docusign_validate_campaign', array($this,'wpneo_fi_docusign_validate_campaign'));
             //endfincrowd
 
         }
@@ -46,7 +46,16 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Pdf')) {
 
         /**
          * @param $campaign_id
-         * FINCROWD FCT
+         * Call docusign api after validate campaign to ask every one to sign
+         */
+        function wpneo_fi_docusign_validate_campaign($campaign_id){
+
+
+        }
+
+        /**
+         * @param $campaign_id
+         * FINCROWD FCT OBSOLETE
          * Create PDF after validate campaign
          */
         function wpneo_fi_pdf_validate_campaign($campaign_id){
