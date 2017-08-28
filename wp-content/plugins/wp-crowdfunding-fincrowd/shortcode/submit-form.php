@@ -93,13 +93,14 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
                 return $html;
             }
 
-            //if (is_user_logged_in()){
-                //fincrowd anyone can post campaign_form_submit
+            if (is_user_logged_in()){
+                //fincrowd only companies can post campaign_form_submit
                 //if (!current_user_can('campaign_form_submit')) {
-                //    $html .= '<div class="woocommerce-info">'.__("You Do not have permission to submit form.","wp-crowdfunding").'</div>';
-                //    return $html;
-                //}
-            //}
+                if( get_the_author_meta( 'physical_person', get_current_user_id() )) {
+                   $html .= '<div class="woocommerce-info">'.__("Seules les personnes morales peuvent créer une campagne.","wp-crowdfunding").'</div>';
+                   return $html;
+                }
+            }
 
 
             $html .= '<form type="post" action="" id="wpneofrontenddata">';
