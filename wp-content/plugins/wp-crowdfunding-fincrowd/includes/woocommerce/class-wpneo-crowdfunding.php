@@ -54,6 +54,8 @@ if (! class_exists('Wpneo_Crowdfunding')) {
 
             add_action( 'woocommerce_review_order_before_submit', array($this,'wpneo_fi_add_iban'), 10, 1 );
 
+            add_filter( 'woocommerce_update_order_review_fragments' ,   array($this, 'fi_override_back_to_shop_link') );
+
             //add_filter( 'woocommerce_locate_template', 'woo_adon_plugin_template', 1, 3 );//TODO doesn't work
             //    function woo_adon_plugin_template( $template, $template_name, $template_path ) {
             //      global $woocommerce;
@@ -1010,10 +1012,18 @@ if (! class_exists('Wpneo_Crowdfunding')) {
           return $fields;
         }
 
+
         /**
          * Fincrowd
          */
+        function fi_override_back_to_shop_link($link) {
+          $link['form.woocommerce-checkout'] = 'Session expirée <a href="<?php echo home_url(); ?>">Retour à l\'accueil</a>';
+          return $link;
+        }
 
+        /**
+         * Fincrowd
+         */
         function wpneo_fi_checkout_page_interest_table() {
           //load tab template
             //wpneo_crowdfunding_load_template('include/fincrowd/interest_tab');
