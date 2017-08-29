@@ -206,7 +206,7 @@ require_once WPNEO_CROWDFUNDING_DIR_PATH.'includes/class-wpneo-crowdfunding-user
 require_once WPNEO_CROWDFUNDING_DIR_PATH.'includes/class-wpneo-crowdfunding-product-search.php';
 require_once WPNEO_CROWDFUNDING_DIR_PATH.'includes/class-wpneo-crowdfunding-common.php';
 
-require_once WPNEO_CROWDFUNDING_DIR_PATH.'includes/class-wpneo-crowdfunding-fi-docusign.php';
+require_once WPNEO_CROWDFUNDING_DIR_PATH.'includes/class-wpneo-crowdfunding-fi-pdf-files.php';
 
 // Shortcode Add to the plugins
 include_once WPNEO_CROWDFUNDING_DIR_PATH.'shortcode/dashboard.php';

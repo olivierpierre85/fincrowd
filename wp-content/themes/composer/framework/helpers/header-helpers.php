@@ -201,6 +201,8 @@ function composer_display_header_elements( $elems, $header_pos = 'default-header
 
 	global $smof_data;
 
+	
+
 	if( $elems == 'tel' ){
 
 		echo composer_header_contact_info_tel();	

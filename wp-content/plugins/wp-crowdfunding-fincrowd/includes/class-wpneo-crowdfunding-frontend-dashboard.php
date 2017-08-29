@@ -52,7 +52,7 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
           if ($result){
             //FINCROWD ALL THE Things to do to update
             //Generate PDFs
-            do_action('wpneo_fi_docusign_validate_campaign',$campaign_id );
+            do_action('wpneo_fi_pdf_validate_campaign',$campaign_id );
             //Send mails
             do_action('wpneo_fi_after_validate_campaign',$campaign_id );
           }
