@@ -54,7 +54,7 @@ if (! function_exists('fi_interest_insurance_table')){
         $table .= '<td>'.$monthly_payment.'</td>';
         $table .= '</tr>';
 
-        $total_left_to_pay = $total_left_to_pay - $monthly_payment;
+        $total_left_to_pay = $total_left_to_pay - $capital_by_month;
       }
 
       $table .= '</table>';
