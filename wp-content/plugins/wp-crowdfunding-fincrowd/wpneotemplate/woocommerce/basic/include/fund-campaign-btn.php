@@ -75,7 +75,13 @@ if ( ! defined( 'ABSPATH' ) ) {
             _e('This campaigns is over.','wp-crowdfunding');
         }
       } else {
-          _e('Vous devez vous connecter pour investir dans ce projet.','wp-crowdfunding');//TODO add link to registration
+          //_e('Vous devez vous connecter pour investir dans ce projet.','wp-crowdfunding');//TODO add link to registration
+
+              //echo '<div class="woocommerce">';
+                  echo '<div class="woocommerce-info">'.__("Please logged in first?","wp-crowdfunding").' <a class="wpneoShowLogin" href="#">'.__("Click here to login","wp-crowdfunding").'</a></div>';
+                  echo wpneo_crowdfunding_wc_login_form();
+              //echo '</div>';
+
       }
     }
 
