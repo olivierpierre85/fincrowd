@@ -38,7 +38,7 @@ if (! function_exists('fi_interest_insurance_table')){
       $table .= '<table id="fi-interest-table"><tr><th>'
       . __('Mois') . '</th><th>'
       . __('Capital remboursé') . '</th><th>'
-      . __('Intérêts') . '</th><th>'
+      . __('Intérêts bruts') . '</th><th>'
       . __('Remboursement par mois') . '</th></tr>';
 
       $monthly_interest_rate  = $interest / 12 / 100;
