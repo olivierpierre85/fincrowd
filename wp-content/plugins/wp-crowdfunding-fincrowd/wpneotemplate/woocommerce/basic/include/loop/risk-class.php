@@ -19,10 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                     case "risk_c":
                       echo "C";
                       break;
-                    case "risk_d":
+                    case "risk_D":
                       echo "D";
                       break;
-                    case "risk_e":
+                    case "risk_E":
                       echo "E";
                       break;
                     }
