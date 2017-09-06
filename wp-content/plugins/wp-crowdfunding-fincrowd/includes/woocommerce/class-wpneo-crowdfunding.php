@@ -1017,7 +1017,10 @@ if (! class_exists('Wpneo_Crowdfunding')) {
          * Fincrowd
          */
         function fi_override_back_to_shop_link($link) {
-          $link['form.woocommerce-checkout'] = 'Session expirée <a href="<?php echo home_url(); ?>">Retour à l\'accueil</a>';
+          if ( WC()->cart->is_empty() ) {
+            $link['form.woocommerce-checkout'] = 'Session expirée <a href="'.home_url().'">Retour à l\'accueil</a>';
+          }
+          
           return $link;
         }
 

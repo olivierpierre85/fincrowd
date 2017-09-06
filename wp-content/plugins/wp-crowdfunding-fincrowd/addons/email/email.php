@@ -350,15 +350,21 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     //start fincrowd get logged in user Adress TOO !
                     $current_user = wp_get_current_user();
                     $email[]    = $current_user->user_email;
+                    $lender_name = $current_user->first_name. " " . $current_user->last_name ;
                     //end fincrowd
 
                     $iban = get_post_meta( $product_id, 'wpneo_fi_account_number', true );
                     $company_name = get_user_meta( $author->ID,'fi_company_name',true );
                     $total_amount   = get_woocommerce_currency_symbol() . $order->get_total();
+
+
                     //$campaign_title  = $product->post->post_title;
                     $campaign_title  = get_post_field( 'post_title', $product_id );
-                    $shortcode      = array('[user_name]', '[site_title]', '[total_amount]', '[campaign_title]', '[iban]','[company_name]');
-                    $replace_str    = array($dislay_name, get_option('blogname'), $total_amount, $campaign_title, $iban,$company_name);
+
+                    $reference = $campaign_title.'-'.get_current_user_id();
+
+                    $shortcode      = array('[user_name]', '[site_title]', '[total_amount]', '[campaign_title]', '[iban]','[company_name]','[reference]','[lender_name]');
+                    $replace_str    = array($dislay_name, get_option('blogname'), $total_amount, $campaign_title, $iban,$company_name,$reference, $lender_name);
                     $str            = wp_unslash(get_option('wpneo_backer_email_template'));
                     $email_str      = str_replace($shortcode, $replace_str, $str);
                     $subject        = str_replace($shortcode, $replace_str, get_option('wpneo_new_backer_email_subject'));
