@@ -26,6 +26,4 @@ $iban = get_post_meta( $items[key($items)]['product_id'], 'wpneo_fi_account_numb
 
 ?>
 <h2>Merci pour votre investissement !</h2>
-Message message
 <a href="<?php echo home_url(); ?>">Retour à l'accueil</a>
-Numéro IBAN à transférer à <?php echo $iban; ?>
