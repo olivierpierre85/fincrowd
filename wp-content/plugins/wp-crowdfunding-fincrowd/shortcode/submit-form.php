@@ -627,7 +627,7 @@ add_shortcode( 'wpneo_crowdfunding_form','wpneo_shortcode_croudfunding_form' ); 
             $requirement_title = get_option( 'wpneo_requirement_title', '' );
             $requirement_text = get_option( 'wpneo_requirement_text', '' );
             //Get the link to the cgu document
-            $attachment_id = 54; //ID OF THE FILE,if new file !! change
+            $attachment_id = 193; //ID OF THE FILE,if new file !! change
             $cguFile = wp_get_attachment_url( $attachment_id );
             $cguLink = "J'accepte les conditions générales <a href='". $cguFile . "' target='_blank'>(Télécharger les conditions d'utilisation)</a>";
             $requirement_agree_title =   $cguLink;//get_option( 'wpneo_requirement_agree_title', '' );

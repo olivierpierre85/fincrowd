@@ -495,12 +495,12 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     $replace_str    = array( $dislay_name, $campaign_title );
                     $str            = wp_unslash( get_option( 'wpneo_cancel_campaign_pledge_email_template' ) );
                     $email_str      = str_replace( $shortcode, $replace_str, $str );
-                    $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_cancel_campaign_email_subject' ) );
+                    $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_cancel_campaign_pledge_email_subject' ) );
                     $headers        = array('Content-Type: text/html; charset=UTF-8'); // Set Headers content type to HTML
 
                     //Send email now using wp_email();
                     if(!empty( $email )){
-                        wp_mail( $email, $subject, $email_str.'CANCEL TODO', $headers );
+                        wp_mail( $email, $subject, $email_str, $headers );
                     }
                 }
             }
