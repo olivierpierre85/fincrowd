@@ -5,11 +5,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 add_action( 'wpneo_before_crowdfunding_single_campaign_summery', 'wpneo_crowdfunding_campaign_single_feature_image');
 add_action( 'wpneo_crowdfunding_after_feature_img', 'wpneo_crowdfunding_campaign_single_description');
+
 /**
  * Single campaign Template hook (NOT listing summary)
  *  Mathieu, ici se trouve l'ordre des champs pour l'affichage global d'un projet
  */
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_campaign_title');
+
+add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_loop_item_short_description');
+
 //add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_campaign_author');
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_risk_class'); //Fincrowd
 add_action( 'wpneo_crowdfunding_single_campaign_summery' , 'wpneo_crowdfunding_template_interest_rate'); //Fincrowd
