@@ -20,7 +20,6 @@ if ( ! defined( 'ABSPATH' ) ) {
               $max_price = get_option('wpneo_fi_company_max_funding');
 
             } else {
-              //TODO Si personne physique, elle doit être autorisée (pour le projet ?) ou 150 premier = servi
               $min_price = get_option('wpneo_fi_person_min_funding');
               $max_price = get_option('wpneo_fi_person_max_funding');
             }
