@@ -85,7 +85,7 @@ add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_i
 //add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_interest_rate_insurance');//Fincrowd
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_loan_duration');//Fincrowd
 //add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_loan_insurance');//Fincrowd
-add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_location');
+//add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_location');
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_short_description');
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_fund_raised_percent');
 add_action( 'wpneo_campaign_loop_item_content' , 'wpneo_crowdfunding_loop_item_funding_goal');
