@@ -201,6 +201,7 @@ function wpneo_registration_shortcode() {
                         'class'         => '',
                         'warpclass'     => '',
                         'autocomplete'  => 'off',
+                        'checked'       => 'checked',
                     ),
                     array(
                         'id'            => 'conditions',
@@ -211,6 +212,7 @@ function wpneo_registration_shortcode() {
                         'class'         => '',
                         'warpclass'     => '',
                         'autocomplete'  => 'off',
+                        'checked'       => '',
                     ),
                     /*
                     array(
@@ -274,7 +276,7 @@ function wpneo_registration_shortcode() {
                             }
                             break;
                         case 'checkbox':
-                          echo '<input type="checkbox" id="'.$item['id'].'" autocomplete="'.$item['autocomplete'].'" class="'.$item['class'].'" name="'.$item['id'].'" placeholder="'.$item['placeholder'].'">';
+                          echo '<input type="checkbox" id="'.$item['id'].'" autocomplete="'.$item['autocomplete'].'" class="'.$item['class'].'" name="'.$item['id'].'" placeholder="'.$item['placeholder'].'" '.$item['checked'].'>';
                             break;
                         case 'select':
                           echo '<select id="'.$item['id'].'" autocomplete="'.$item['autocomplete'].'" class="'.$item['class'].'" name="'.$item['id'].'">';
