@@ -4,6 +4,48 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 //FINCROWD
+// override core function of activation_failed
+add_action( 'template_redirect', 'fincrowd_activate_user' );
+function fincrowd_activate_user() {
+    if ( is_page() && get_the_ID() == get_option('page_on_front') ) {
+        $user_id = filter_input( INPUT_GET, 'id', FILTER_VALIDATE_INT, array( 'options' => array( 'min_range' => 1 ) ) );
+        if ( $user_id ) {
+            // get user meta activation hash field
+            $code = get_user_meta( $user_id, 'activate_code', true );
+            if ( $code == filter_input( INPUT_GET, 'key' ) ) {
+                delete_user_meta( $user_id, 'activate_code' );
+            }
+        }
+    }
+}
+
+if ( !function_exists('wp_authenticate') ) {
+  function wp_authenticate($username, $password) {
+      $username = sanitize_user($username);
+      $password = trim($password);
+
+      $user = apply_filters('authenticate', null, $username, $password);
+
+      if ( $user == null ) {
+          // TODO what should the error message be? (Or would these even happen?)
+          // Only needed if all authentication handlers fail to return anything.
+          $user = new WP_Error('authentication_failed', __('<strong>ERROR</strong>: Invalid username or incorrect password.'));
+      } elseif ( property_exists($user, 'ID') ) {
+        if(get_user_meta( $user->ID, 'activate_code', true ) == true){
+          $user = new WP_Error('activation_failed', __('<strong>ERROR</strong>: Activez votre compte en cliquant sur le lien situé dans le mail d\'inscription.'));
+        }
+      }
+
+      $ignore_codes = array('empty_username', 'empty_password');
+
+      if (is_wp_error($user) && !in_array($user->get_error_code(), $ignore_codes) ) {
+          do_action('wp_login_failed', $username);
+      }
+
+      return $user;
+  }
+}
+
 //Show a table of interests
 if (! function_exists('fi_interest_insurance_table')){
   function fi_interest_insurance_table($order_id = null) {

@@ -300,12 +300,13 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                     do_action( 'wpneo_crowdfunding_after_user_registration', $user_id );
                     //$redirect = get_permalink(get_option('wpneo_crowdfunding_dashboard_page_id'));
 
-                    $user = get_user_by( 'id', $user_id );
-                    if( $user ) {
-                        wp_set_current_user( $user_id, $user->user_login );
-                        wp_set_auth_cookie( $user_id );
-                        do_action( 'wp_login', $user->user_login );
-                    }
+                    //Connect a registration (not anymore)
+                    // $user = get_user_by( 'id', $user_id );
+                    // if( $user ) {
+                    //     wp_set_current_user( $user_id, $user->user_login );
+                    //     wp_set_auth_cookie( $user_id );
+                    //     do_action( 'wp_login', $user->user_login );
+                    // }
 
                     $redirect = get_home_url();
 

@@ -283,7 +283,6 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 }
                 if( 'true' == get_option( "wpneo_enable_new_user_registration_email_admin" ) ){
                     $admin_email    = get_option( 'admin_email' );
-                    $email[]        = $admin_email;
                 }
 
                 if($_POST['fi_reg_type_person'] == "society"){
@@ -293,10 +292,11 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                   $str  = wp_unslash(get_option('wpneo_user_registration_email_template'));
                   $company_name = '';
                 }
-                //TODO olpi faire fonctionner ca !!!!
+
+                //two way registration
                 $hash           = md5(microtime() . rand(111111, 999999));
                 add_user_meta( $user_id, 'activate_code', $hash );
-                $activate_link  = home_url('/') . 'user_activate?id=' . $user_id . '&key=' . $hash;
+                $activate_link  = home_url('/') . '?id=' . $user_id . '&key=' . $hash;
 
 
                 $shortcode      = array('[user_name]', '[user_activate_link]', '[site_title]','[company_name]');
@@ -304,11 +304,15 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                 $email_str      = str_replace($shortcode, $replace_str, $str);
                 $subject        = str_replace($shortcode, $replace_str, get_option('wpneo_new_user_email_subject'));
-                $headers        = array('Content-Type: text/html; charset=UTF-8'); //Set Headers content type to HTML
+                $headers        = array();
+                $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
+                $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
+                $headers[]      = 'CC: '.$admin_email;
+                $headers[]      = 'Bcc: '.$admin_email;//in bcc
 
                 //Send email now using wp_email();
                 if(!empty($email)){
-                    wp_mail( $email, $subject, $email_str, $headers );
+                    $result = wp_mail( $email, $subject, $email_str, $headers );
                 }
             }
         }

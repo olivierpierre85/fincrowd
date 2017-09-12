@@ -69,20 +69,23 @@ jQuery(document).ready(function($){
             '</div>' +
             '</div>';
 
-        if ($('.wpneo-modal-wrapper').length == 0){
-            $('body').append(html);
+        //FIncrowd fix (not sure if impact somewhere else)
+        if ($('.wpneo-modal-wrapper').length != 0){
+          $('.wpneo-modal-wrapper').remove();
+        }
 
-            if (data.redirect){
-                if ( $('#wpneo_crowdfunding_redirect_url').length == 0 ){
-                    $('body').append('<input type="hidden" id="wpneo_crowdfunding_redirect_url" value="'+data.redirect+'" />');
-                }
+        $('body').append(html);
+
+        if (data.redirect){
+            if ( $('#wpneo_crowdfunding_redirect_url').length == 0 ){
+                $('body').append('<input type="hidden" id="wpneo_crowdfunding_redirect_url" value="'+data.redirect+'" />');
             }
         }
 
         if (data.success == 1){
             $('.wpneo-modal-wrapper #wpneo_crowdfunding_modal_message').html(data.message);
             $('.wpneo-modal-wrapper').css({'display': 'block'});
-            //$("#wpneofrontenddata")[0].reset();
+            //$("#wpneofrontenddata")[0].reset();//FINCRowd not sure if impact
             return true;
         }else {
             $('.wpneo-modal-wrapper #wpneo_crowdfunding_modal_message').html(data.message);
