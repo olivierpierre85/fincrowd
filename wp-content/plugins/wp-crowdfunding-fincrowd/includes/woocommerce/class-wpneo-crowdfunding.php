@@ -171,7 +171,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
                     )
             );
 */
-            //FI classe de risque // TODO move to tab ?
+            //FI classe de risque
             $options = array();
 
             $options['risk_a'] = 'A';
@@ -346,6 +346,17 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             }
             */
             echo '<div class="options_group"></div>';
+
+            // Funding goal/ target
+            woocommerce_wp_text_input(
+                array(
+                    'id'            => 'wpneo_funding_minimum_price',
+                    'label'         => __( 'Montant minimal ('.get_woocommerce_currency_symbol().')', 'wp-crowdfunding' ),
+                    'placeholder'   => __( 'Montant minimal','wp-crowdfunding' ),
+                    'description'   => __('Montant minimal pour acceptation', 'wp-crowdfunding' ),
+                    'class'         => 'wc_input_price'
+                    )
+            );
 
             // Funding goal/ target
             woocommerce_wp_text_input(
@@ -630,8 +641,8 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             wpneo_crowdfunding_update_post_meta_text($post_id, '_nf_funding_goal', $_nf_funding_goal);
 
             // wpneo_funding_minimum_price
-            //$wpneo_funding_minimum_price = intval( sanitize_text_field($_POST['wpneo_funding_minimum_price']) );
-            $wpneo_funding_minimum_price = 500;//Fincrowd TODO put in constant Todo filter when client = company!
+            $wpneo_funding_minimum_price = intval( sanitize_text_field($_POST['wpneo_funding_minimum_price']) );
+            //$wpneo_funding_minimum_price = 500;//Fincrowd TODO put in constant Todo filter when client = company!
             wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_funding_minimum_price', $wpneo_funding_minimum_price);
 
             // wpneo_funding_maximum_price
@@ -1020,7 +1031,7 @@ if (! class_exists('Wpneo_Crowdfunding')) {
           if ( WC()->cart->is_empty() ) {
             $link['form.woocommerce-checkout'] = 'Session expirée <a href="'.home_url().'">Retour à l\'accueil</a>';
           }
-          
+
           return $link;
         }
 
