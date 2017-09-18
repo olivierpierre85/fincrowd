@@ -13,7 +13,7 @@ function wpneo_registration_shortcode() {
       global $reg_errors,$reg_success;
       $nonce = wp_create_nonce( 'wpneo-nonce-registration' );
       //Get the link to the cgu document
-      $attachment_id = 193;
+      $attachment_id = 258;
       $cguFile = wp_get_attachment_url( $attachment_id );
       $cguLink = "J'accepte les conditions générales <a href='". $cguFile . "' target='_blank'>(Télécharger les conditions d'utilisation)</a>";
       ?>
