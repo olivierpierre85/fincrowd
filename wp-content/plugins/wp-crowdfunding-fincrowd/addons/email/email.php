@@ -373,7 +373,9 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     $str            = wp_unslash(get_option('wpneo_backer_email_template'));
                     $email_str      = str_replace($shortcode, $replace_str, $str);
                     $subject        = str_replace($shortcode, $replace_str, get_option('wpneo_new_backer_email_subject'));
-                    $headers        = array('Content-Type: text/html; charset=UTF-8'); // Set Headers content type to HTML
+                    $headers        = array();
+                    $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
+                    $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
 
 
                     //Ajout tableau d'amortissement
@@ -415,7 +417,9 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $str            = wp_unslash( get_option( 'wpneo_campaign_email_template' ) );
                 $email_str      = str_replace( $shortcode, $replace_str, $str );
                 $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_new_campaign_email_subject' ) );
-                $headers        = array('Content-Type: text/html; charset=UTF-8'); // Set Headers content type to HTML
+                $headers        = array();
+                $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
+                $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
 
                 // Send To Author Email
                 if(!empty($email)){
@@ -454,7 +458,9 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $str            = wp_unslash( get_option( 'wpneo_accept_campaign_email_template' ) );
                 $email_str      = str_replace( $shortcode, $replace_str, $str );
                 $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_accept_campaign_email_subject' ) );
-                $headers        = array('Content-Type: text/html; charset=UTF-8'); // Set Headers content type to HTML
+                $headers        = array();
+                $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
+                $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
 
                 // Send To Author Email
                 if(!empty( $email )){
@@ -507,7 +513,9 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     $str            = wp_unslash( get_option( 'wpneo_cancel_campaign_pledge_email_template' ) );
                     $email_str      = str_replace( $shortcode, $replace_str, $str );
                     $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_cancel_campaign_pledge_email_subject' ) );
-                    $headers        = array('Content-Type: text/html; charset=UTF-8'); // Set Headers content type to HTML
+                    $headers        = array();
+                    $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
+                    $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
 
                     //Send email now using wp_email();
                     if(!empty( $email )){
@@ -629,7 +637,9 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                   $email_str_client      = str_replace( $shortcode, $replace_str, $str_client  );
 
                   $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_validate_campaign_email_subject' ) );
-                  $headers        = array('Content-Type: text/html; charset=UTF-8'); // Set Headers content type to HTML
+                  $headers        = array();
+                  $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
+                  $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
 
                   //Send email now using wp_email();
                   if(!empty( $email_client )){
@@ -713,7 +723,9 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                   $email_str_client      = str_replace( $shortcode, $replace_str, $str_client  );
 
                   $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_cancel_campaign_email_subject' ) );
-                  $headers        = array('Content-Type: text/html; charset=UTF-8'); // Set Headers content type to HTML
+                  $headers        = array();
+                  $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
+                  $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
 
                   //Send email now using wp_email();
                   if(!empty( $email_client )){

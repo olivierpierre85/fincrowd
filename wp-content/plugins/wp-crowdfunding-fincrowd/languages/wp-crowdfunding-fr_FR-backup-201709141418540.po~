@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2017-04-17 09:55+0200\n"
-"PO-Revision-Date: 2017-09-14 14:18+0000\n"
+"PO-Revision-Date: 2017-08-25 09:38+0000\n"
 "Last-Translator: olpi <olivierpierre85@gmail.com>\n"
 "Language-Team: French (France)\n"
 "Language: fr-FR\n"
@@ -1509,7 +1509,7 @@ msgstr "Montant soulevé"
 #: wpneotemplate/woocommerce/basic/include/fund_raised_percent.php:9
 #: wpneotemplate/woocommerce/basic/include/loop/fund_raised_percent.php:9
 msgid "Raised Percent"
-msgstr "Fonds déjà recueillis"
+msgstr "Fond déjà recueillis"
 
 #: includes/class-wpneo-crowdfunding-base.php:162
 msgid ""
