@@ -38,7 +38,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Pdf')) {
 
 
             //start fincrowd mails
-            add_action('wpneo_fi_pdf_validate_campaign', array($this,'wpneo_fi_pdf_validate_campaign'));
+            //add_action('wpneo_fi_pdf_validate_campaign', array($this,'wpneo_fi_pdf_validate_campaign'));
             //endfincrowd
 
         }

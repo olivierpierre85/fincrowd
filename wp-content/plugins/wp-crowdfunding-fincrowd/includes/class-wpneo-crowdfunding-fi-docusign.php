@@ -58,23 +58,30 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
               if ($product->product_type === 'crowdfunding') {
                   $signers = array();
 
+                  $campaign_title  = get_post_field( 'post_title', $campaign_id );
                   //First get campaign creator
                   $post_author_id = get_post_field( 'post_author', $campaign_id );
                   $borrower         = get_userdata($post_author_id);
+
+                  $descBorrower = 'La '.get_the_author_meta( 'fi_company_status', $user->ID ).' ' .get_the_author_meta( 'fi_company_name', $borrower->ID );
+                  $descBorrower .= 'dont le siège social est établi à ' . get_the_author_meta( 'fi_user_address', $borrower->ID );
+                  $descBorrower .= 'et immatriculé à la BCE sous le n° '. get_the_author_meta( 'fi_company_number', $user->ID );
+                  $descBorrower .= 'représentée aux fins de la présente par '. $borrower->display_name .'(' . get_the_author_meta( 'fi_company_responsible_status', $user->ID ) . ')';
+                  $descBorrower .= ', en l’espèce ';
+
                   $signers[] = array(
                   "email" => $borrower->user_email,
                   "name" => $borrower->display_name,
-                  "roleName" => 'lender',
+                  "roleName" => 'borrower',
                   "tabs" => array(
                         "textTabs" => array(
                             array(
-                                "tabLabel"=> "testtest",
-                                "value" => "WOOOOOW"
+                                "tabLabel"=> "descBorrower",
+                                "value" => $descBorrower
                             )
                         )
                     )
                   );
-                  //TODO Create docusign object based on product and borrower
 
 
                   //then get all order for the campaign
@@ -101,8 +108,53 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                   //Then get the author of the pledges
                   foreach ($item_sales as $item) {
                     $order          = new WC_Order($item->order_id);
+                    $cart = $order->get_items();
+
                     $user = $order->get_user();
-                    //TODO create docusign object with order and user option
+                    $user_adr = esc_attr( get_the_author_meta( 'fi_user_address', $user->ID ) );
+
+                    $descLender = $user->display_name. " domicilié(s) ". $user_adr ;
+
+                    $interestDuration = get_post_meta( $campaign_id, 'wpneo_fi_interest_rate', true );
+                    $interestRate     = get_post_meta( $campaign_id, 'wpneo_fi_loan_duration', true );
+
+                    $conventionNumber = $campaign_title.'-'.$user->ID ;
+                    $totalAmount = $cart[key($cart)]['line_total'];
+                    $dateValidation = date("Y-m-d");
+
+                    $signers[] = array(
+                    "email" => $user->user_email,
+                    "name" => $user->display_name,
+                    "roleName" => 'lender',
+                    "tabs" => array(
+                          "textTabs" => array(
+                            array(
+                                "tabLabel"=> "descLender",
+                                "value" => $descLender
+                            ),
+                            array(
+                                "tabLabel"=> "interestDuration",
+                                "value" => $interestDuration
+                            ),
+                            array(
+                                "tabLabel"=> "interestRate",
+                                "value" => $interestRate
+                            ),
+                            array(
+                                "tabLabel"=> "conventionNumber",
+                                "value" => $conventionNumber
+                            ),
+                            array(
+                                "tabLabel"=> "totalAmount",
+                                "value" => $totalAmount
+                            ),
+                            array(
+                                "tabLabel"=> "dateValidation",
+                                "value" => $dateValidation
+                            ),
+                          )
+                      )
+                    );
                   }
 
                   $this->sendDocusign($signers);
@@ -206,7 +258,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                 $lenderFileName = "CampagneNamez".$campaign_id."Emprunteur".".pdf";
 
                 //PDF pour les prêteurs (un par user)
-                $lenderPdf =& new FPDI();
+                $lenderPdf = new FPDI();
                 // get the page count
                 $pageCount = $lenderPdf->setSourceFile($pdfDir."convention_de_pret_modele.pdf");
                 // iterate through all pages
