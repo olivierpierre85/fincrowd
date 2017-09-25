@@ -307,11 +307,13 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $headers        = array();
                 $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
                 $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
-                //$headers[]      = 'Bcc: '.$admin_email;//fincrowd Does'nt work, so two emails
-
+                $headers[]      = 'Cc: '.$admin_email;//fincrowd Does'nt work, so two emails
+                $headers[]      = 'Bcc: '.$admin_email;
                 //Send email now using wp_email();
                 if(!empty($email)){
+
                     $result = wp_mail( $email, $subject, $email_str, $headers );
+                    //var_dump($result);
                     //copy to the admin
                     $result = wp_mail( $admin_email, $subject, $email_str, $headers );
                 }

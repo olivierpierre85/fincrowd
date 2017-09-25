@@ -63,11 +63,13 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                   $post_author_id = get_post_field( 'post_author', $campaign_id );
                   $borrower         = get_userdata($post_author_id);
 
-                  $descBorrower = 'La '.get_the_author_meta( 'fi_company_status', $user->ID ).' ' .get_the_author_meta( 'fi_company_name', $borrower->ID );
-                  $descBorrower .= 'dont le siège social est établi à ' . get_the_author_meta( 'fi_user_address', $borrower->ID );
-                  $descBorrower .= 'et immatriculé à la BCE sous le n° '. get_the_author_meta( 'fi_company_number', $user->ID );
-                  $descBorrower .= 'représentée aux fins de la présente par '. $borrower->display_name .'(' . get_the_author_meta( 'fi_company_responsible_status', $user->ID ) . ')';
-                  $descBorrower .= ', en l’espèce ';
+                  $descBorrower = 'La '.get_the_author_meta( 'fi_company_status', $borrower->ID ).' ' .get_the_author_meta( 'fi_company_name', $borrower->ID );
+                  $descBorrower .= ' dont le siège social est établi à ' . get_the_author_meta( 'fi_user_address', $borrower->ID );
+                  $descBorrower .= ' et immatriculé à la BCE sous le n° '. get_the_author_meta( 'fi_company_number', $borrower->ID );
+                  $descBorrower .= ' représentée aux fins de la présente par '. $borrower->display_name .' ( ' . get_the_author_meta( 'fi_company_responsible_status', $borrower->ID ) . ' )';
+
+
+                  $dateValidation = date("d-m-Y");
 
                   $signers[] = array(
                   "email" => $borrower->user_email,
@@ -78,6 +80,10 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                             array(
                                 "tabLabel"=> "descBorrower",
                                 "value" => $descBorrower
+                            ),
+                            array(
+                                "tabLabel"=> "\\*dateValidation",
+                                "value" => $dateValidation
                             )
                         )
                     )
@@ -120,7 +126,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
 
                     $conventionNumber = $campaign_title.'-'.$user->ID ;
                     $totalAmount = $cart[key($cart)]['line_total'];
-                    $dateValidation = date("Y-m-d");
+
 
                     $signers[] = array(
                     "email" => $user->user_email,
@@ -128,6 +134,10 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                     "roleName" => 'lender',
                     "tabs" => array(
                           "textTabs" => array(
+                            array(
+                                "tabLabel"=> "descBorrower",
+                                "value" => $descBorrower
+                            ),
                             array(
                                 "tabLabel"=> "descLender",
                                 "value" => $descLender
@@ -141,7 +151,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                                 "value" => $interestRate
                             ),
                             array(
-                                "tabLabel"=> "conventionNumber",
+                                "tabLabel"=> "\\*conventionNumber",
                                 "value" => $conventionNumber
                             ),
                             array(
@@ -149,7 +159,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                                 "value" => $totalAmount
                             ),
                             array(
-                                "tabLabel"=> "dateValidation",
+                                "tabLabel"=> "\\*dateValidation",
                                 "value" => $dateValidation
                             ),
                           )
@@ -173,8 +183,8 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
           $email = 'olivierpierre85@gmail.com';	// your account email.
           $password = 'ngi54JL&';		// your account password //not great
           $integratorKey = '5bf42f5f-d4f9-4b62-9c7e-57b2a1775a92'; // your account integrator key, found on (Preferences -> API page)
-          $templateId = '32503515-4bab-482d-95d3-dd0a87f8862e';
-
+          //$templateId = '32503515-4bab-482d-95d3-dd0a87f8862e';
+          $templateId = '0da1dcd6-4259-4d72-a9f0-e8adb0022a28';
           // Start...
 
           // construct the authentication header:
