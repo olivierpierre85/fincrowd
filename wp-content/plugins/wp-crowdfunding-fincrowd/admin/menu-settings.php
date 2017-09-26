@@ -66,7 +66,7 @@ function wpneo_crowdfunding_settings_generate_field( $arr ){
                     $output .= '<tr>';
                     $output .= '<th><label for="'.$value['id'].'">'.$value['label'].'</label></th>';
                     $output .= '<td>';
-                    $var = get_option( $value['id'] );
+                    $var = str_replace("\'", "'",get_option( $value['id'] ));
                     $default_value = ( isset($value["value"])) ? $value["value"] : '';
                     $output .= '<input type="text" id="'.$value['id'].'" value="'.( $var ? $var : $default_value ).'" name="'.$value['id'].'">';
                     if( isset($value['desc']) ){ $output .= '<p>'.$value['desc'].'</p>'; }
@@ -89,7 +89,7 @@ function wpneo_crowdfunding_settings_generate_field( $arr ){
                     $output .= '<tr>';
                     $output .= '<th><label for="'.$value['id'].'">'.$value['label'].'</label></th>';
                     $output .= '<td>';
-                    $var = get_option( $value['id'] );
+                    $var = str_replace("\'", "'",get_option( $value['id'] ));
                     $output .= '<textarea name="'.$value['id'].'" id="'.$value['id'].'">'.( $var ? $var : $value["value"] ).'</textarea>';
                     if( isset($value['desc']) ){ $output .= '<p>'.$value['desc'].'</p>'; }
                     $output .= '</td>';
@@ -473,7 +473,7 @@ function neo_crowdfunding_go_premium(){
     $html .= '<li class="dashicons-before dashicons-yes"><span>Analytical Reports</span> - Generate crowdfunding sales report and top campaign lists.</li>';
     $html .= '<li class="dashicons-before dashicons-yes"><span>Social Share</span> - Share the campaigns on popular social media.</li>';
     $html .= '<li class="dashicons-before dashicons-yes"><span>Native Wallet System</span> - An alternate way of PayPal And Stripe Connect to spilt raised amount between campaign creator and website admin .</li>';
-    
+
     $html .= '<li class="dashicons-before dashicons-yes"><span>1 Year Support</span> - Dedicated support for any issue.</li>';
     $html .= '<li class="dashicons-before dashicons-yes"><span>1 Year Update</span> - You can get immidiate fixes and regular updates.</li>';
     $html .= '<li class="dashicons-before dashicons-yes"><span>1 Free Theme</span> - You will get a free WordPress theme, check the <a href="http://demo.wpneo.com/crowdfunding" target="_blank">demo theme</a>.</li>';
@@ -504,7 +504,7 @@ function wpneo_custom_css(){
         $style = '';
 
         if( $button_bg ){
-            $style .= '.wpneo_donate_button, 
+            $style .= '.wpneo_donate_button,
                         #wpneo-tab-reviews .submit,
                         .wpneo-edit-btn,
                         .wpneo-image-upload.float-right,
@@ -523,7 +523,7 @@ function wpneo_custom_css(){
                         .wpneo-submit-campaign,
                         .wpneo_donate_button{ background-color:'.$button_bg.' !important; color:'.$button_text_color.' !important; }';
 
-            $style .= '.wpneo_donate_button:hover, 
+            $style .= '.wpneo_donate_button:hover,
                         #wpneo-tab-reviews .submit:hover,
                         .wpneo-edit-btn:hover,
                         .wpneo-image-upload.float-right:hover,
