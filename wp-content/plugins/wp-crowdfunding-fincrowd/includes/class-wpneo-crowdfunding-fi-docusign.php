@@ -124,7 +124,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                     $interestDuration = get_post_meta( $campaign_id, 'wpneo_fi_interest_rate', true );
                     $interestRate     = get_post_meta( $campaign_id, 'wpneo_fi_loan_duration', true );
 
-                    $conventionNumber = $campaign_title.'-'.$user->ID ;
+                    $conventionNumber = substr ( $campaign_title , 0 , 20 ).'-'.$user->ID ;
                     $totalAmount = $cart[key($cart)]['line_total'];
 
 

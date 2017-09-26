@@ -368,7 +368,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     //$campaign_title  = $product->post->post_title;
                     $campaign_title  = get_post_field( 'post_title', $product_id );
 
-                    $reference = $campaign_title.'-'.get_current_user_id();
+                    $reference = substr ( $campaign_title , 0 , 20 ).'-'.get_current_user_id();
 
                     $shortcode      = array('[user_name]', '[site_title]', '[total_amount]', '[campaign_title]', '[iban]','[company_name]','[reference]','[lender_name]');
                     $replace_str    = array($dislay_name, get_option('blogname'), $total_amount, $campaign_title, $iban,$company_name,$reference, $lender_name);
