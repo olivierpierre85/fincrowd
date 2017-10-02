@@ -681,14 +681,14 @@ if (! class_exists('Wpneo_Crowdfunding')) {
             $wpneo_fi_interest_rate = sanitize_text_field( $_POST['wpneo_fi_interest_rate'] );
             wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_fi_interest_rate', $wpneo_fi_interest_rate);
 
-            $wpneo_fi_interest_rate_insurance = sanitize_text_field( $_POST['wpneo_fi_interest_rate_insurance'] );
-            wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_fi_interest_rate_insurance', $wpneo_fi_interest_rate_insurance);
+            //$wpneo_fi_interest_rate_insurance = sanitize_text_field( $_POST['wpneo_fi_interest_rate_insurance'] );
+            //wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_fi_interest_rate_insurance', $wpneo_fi_interest_rate_insurance);
 
             $wpneo_fi_loan_duration = sanitize_text_field( $_POST['wpneo_fi_loan_duration'] );
             wpneo_crowdfunding_update_post_meta_text($post_id, 'wpneo_fi_loan_duration', $wpneo_fi_loan_duration);
 
-            $wpneo_fi_loan_insurance = sanitize_text_field( $_POST['wpneo_fi_loan_insurance'] );
-            wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_fi_loan_insurance', $wpneo_fi_loan_insurance);
+            //$wpneo_fi_loan_insurance = sanitize_text_field( $_POST['wpneo_fi_loan_insurance'] );
+            //wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_fi_loan_insurance', $wpneo_fi_loan_insurance);
 
             $wpneo_fi_account_number = sanitize_text_field( $_POST['wpneo_fi_account_number'] );
             wpneo_crowdfunding_update_post_meta_checkbox($post_id, 'wpneo_fi_account_number', $wpneo_fi_account_number);
@@ -955,8 +955,8 @@ if (! class_exists('Wpneo_Crowdfunding')) {
          * At validation save the options of the product
          */
         public function wpneo_interest_type_field_save($order_id){
-            $wpneo_fi_interest_insurance    = $_POST['wpneo_fi_interest_insurance'];
-            update_post_meta($order_id, 'wpneo_fi_interest_insurance', $wpneo_fi_interest_insurance);
+            //$wpneo_fi_interest_insurance    = $_POST['wpneo_fi_interest_insurance'];
+            //update_post_meta($order_id, 'wpneo_fi_interest_insurance', $wpneo_fi_interest_insurance);
         }
 
         function fi_interest_insurance_field_display_admin_order_meta($order){
