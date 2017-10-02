@@ -56,7 +56,8 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
               $product        = wc_get_product($campaign_id);
 
               if ($product->product_type === 'crowdfunding') {
-                  $signers = array();
+                  $signersB = array();
+                  $signersL = array();
 
                   $campaign_title  = get_post_field( 'post_title', $campaign_id );
                   //First get campaign creator
@@ -71,9 +72,10 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
 
                   $dateValidation = date("d-m-Y");
 
-                  $signers[] = array(
+                  $signersB[] = array(
                   "email" => $borrower->user_email,
                   "name" => $borrower->display_name,
+                  "recipientId"=> "1",
                   "roleName" => 'borrower',
                   "tabs" => array(
                         "textTabs" => array(
@@ -128,9 +130,10 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                     $totalAmount = $cart[key($cart)]['line_total'];
 
 
-                    $signers[] = array(
+                    $signersL[] = array(
                     "email" => $user->user_email,
                     "name" => $user->display_name,
+                    "recipientId"=> "1",
                     "roleName" => 'lender',
                     "tabs" => array(
                           "textTabs" => array(
@@ -216,11 +219,51 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
           /////////////////////////////////////////////////////////////////////////////////////////////////
         	// STEP 2 - Create and send
         	/////////////////////////////////////////////////////////////////////////////////////////////////
-          $data = array("accountId" => $accountId,
-          	"emailSubject" => "DocuSign API - Signature Request from Template",
-          	"templateId" => $templateId,
-          	"templateRoles" => $signers ,
-          	"status" => "sent");
+          //Single template
+          // $data = array("accountId" => $accountId,
+          // 	"emailSubject" => "DocuSign API - Signature Request from Template",
+          // 	"templateId" => $templateId,
+          // 	"templateRoles" => $signers ,
+          // 	"status" => "sent");
+
+          // $data = array("accountId" => $accountId,
+          // 	"emailSubject" => "DocuSign API - Signature Request from Template",
+          // 	"templateId" => $templateId,
+          // 	"templateRoles" => $signers ,
+          // 	"status" => "sent");
+
+            $data = array(
+              "accountId" => $accountId,
+            	"emailSubject" => "DocuSign API - Signature Request from Template",
+            	//"templateId" => $templateId,
+            	//"templateRoles" => $signers ,
+            	"status" => "sent",
+              "compositeTemplates"=> [ array(
+                      "serverTemplates"=> [array(
+                          "sequence"=> "1",
+                          "templateId"=> $templateId,
+                      )],
+                      "inlineTemplates"=> [array(
+                          "sequence"=> "1",
+                          "recipients"=> array(
+                              "signers"=> $signersB
+                          )
+                      )]
+                  ), array(
+                      "serverTemplates"=> [array(
+                          "sequence"=> "2",
+                          "templateId"=> $templateId,
+                      )],
+                      "inlineTemplates"=> [array(
+                          "sequence"=> "2",
+                          "recipients"=> array(
+                              "signers"=> $signersL
+                          )
+                      )]
+                  )]
+            );
+
+
 
           $data_string = json_encode($data);
           $curl = curl_init($baseUrl . "/envelopes" );
