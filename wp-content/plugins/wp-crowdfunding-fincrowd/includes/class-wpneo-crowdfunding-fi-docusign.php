@@ -78,6 +78,14 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                   "recipientId"=> "1",
                   "roleName" => 'borrower',
                   "tabs" => array(
+                    "signHereTabs" => array(
+                      array(
+                        "xPosition" => "100",
+                        "yPosition" => "100",
+                        "documentId" => "1",
+                        "pageNumber" => "1"
+                      )
+                    ),
                         "textTabs" => array(
                             array(
                                 "tabLabel"=> "descBorrower",
@@ -136,6 +144,14 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                     "recipientId"=> "1",
                     "roleName" => 'lender',
                     "tabs" => array(
+                      "signHereTabs" => array(
+                        array(
+                          "xPosition" => "100",
+                          "yPosition" => "100",
+                          "documentId" => "1",
+                          "pageNumber" => "1"
+                        )
+                      ),
                           "textTabs" => array(
                             array(
                                 "tabLabel"=> "descBorrower",

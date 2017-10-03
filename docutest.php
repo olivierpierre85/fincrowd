@@ -8,6 +8,100 @@ $result =  request_signature_on_a_document(
 );
 
 echo 'flute!';
+function getTextTabs($idDocument){
+	//Test value
+	$descBorrower = "borromir";
+	$dateValidation = "01-01-2017";
+	//$idDocument = 1;
+	return array(
+		array(
+				"tabLabel"=> "descBorrower",
+				"value" => $descBorrower,
+				"locked" => "true",
+				"xPosition" => "35",
+				"yPosition" => "272",
+				"width" => "283",
+				"height" => "132",
+				"documentId" => $idDocument,
+				"pageNumber" => "1"
+		),
+		array(
+				"tabLabel"=> "\\*dateValidation",
+				"value" => $dateValidation,
+				"locked" => "true",
+				"xPosition" => "311",
+				"yPosition" => "187",
+				"documentId" => $idDocument,
+				"pageNumber" => "1"
+		),
+		array(
+				"tabLabel"=> "descLender",
+				"value" => 'descLender',
+				"locked" => "true",
+				"xPosition" => "299",
+				"yPosition" => "272",
+				"width" => "283",
+				"height" => "132",
+				"documentId" => $idDocument,
+				"pageNumber" => "1"
+		),
+		array(
+				"tabLabel"=> "interestDuration",
+				"value" => 'interestDuration',
+				"locked" => "true",
+				"xPosition" => "258",
+				"yPosition" => "290",
+				"documentId" => $idDocument,
+				"pageNumber" => "3"
+		),
+		array(
+				"tabLabel"=> "interestRate",
+				"value" => 'interestRate',
+				"locked" => "true",
+				"xPosition" => "310",
+				"yPosition" => "277",
+				"documentId" => $idDocument,
+				"pageNumber" => "3"
+		),
+		array(
+				"tabLabel"=> "\\*conventionNumber",
+				"value" => 'conventionNumber',
+				"locked" => "true",
+				"xPosition" => "339",
+				"yPosition" => "660",
+				"documentId" => $idDocument,
+				"pageNumber" => "5"
+		),
+		array(
+				"tabLabel"=> "\\*conventionNumber",
+				"value" => 'conventionNumber',
+				"locked" => "true",
+				"xPosition" => "143",
+				"yPosition" => "166",
+				"documentId" => $idDocument,
+				"pageNumber" => "1"
+		),
+		array(
+				"tabLabel"=> "totalAmount",
+				"value" => 'totalAmount',
+				"locked" => "true",
+				"xPosition" => "344",
+				"yPosition" => "235",
+				"documentId" => $idDocument,
+				"pageNumber" => "3"
+		),
+		array(
+				"tabLabel"=> "\\*dateValidation2",
+				"value" => $dateValidation,
+				"locked" => "true",
+				"xPosition" => "171",
+				"yPosition" => "451",
+				"documentId" => $idDocument,
+				"pageNumber" => "5"
+		),
+	);
+
+}
 
 function request_signature_on_a_document(
 	$recipientEmail,  // signer's email
@@ -59,6 +153,9 @@ function request_signature_on_a_document(
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	// the following envelope request body will place 1 signature tab on the document, located
 	// 100 pixels to the right and 100 pixels down from the top left of the document
+
+
+
 	$data =
 		array (
 			"emailSubject" => "DocuSign API - Please sign " . $documentName,
@@ -87,28 +184,53 @@ function request_signature_on_a_document(
 						"tabs" => array(
 							"signHereTabs" => array(
 								array(
-									"xPosition" => "100",
-									"yPosition" => "100",
+									"xPosition" => "93",
+									"yPosition" => "507",
 									"documentId" => "1",
-									"pageNumber" => "1"
+									"pageNumber" => "5"
+								),
+								array(
+									"xPosition" => "93",
+									"yPosition" => "507",
+									"documentId" => "2",
+									"pageNumber" => "5"
 								)
-							)
+							),
+
 						)
 					)
-          ,array(
-						"email" => 'olivierpierre85@gmail.com',
+          , array(
+						"email" => 'olpi@olpiweb.be',
 						"name" => 'User 2',
 						"recipientId" => "2",
 						//"excludedDocuments" => ['1'],
 						"tabs" => array(
 							"signHereTabs" => array(
 								array(
-									"xPosition" => "200",
-									"yPosition" => "200",
-									"documentId" => "2",
-									"pageNumber" => "1"
+									"xPosition" => "410",
+									"yPosition" => "507",
+									"documentId" => "1",
+									"pageNumber" => "5"
 								)
-							)
+							),
+							"textTabs" => getTextTabs(1)
+						)
+					),
+					array(
+						"email" => 'info@kohalis.com',
+						"name" => 'User 3',
+						"recipientId" => "3",
+						//"excludedDocuments" => ['1'],
+						"tabs" => array(
+							"signHereTabs" => array(
+								array(
+									"xPosition" => "410",
+									"yPosition" => "507",
+									"documentId" => "2",
+									"pageNumber" => "5"
+								)
+							),
+							"textTabs" => getTextTabs(2)
 						)
 					)
 				)
