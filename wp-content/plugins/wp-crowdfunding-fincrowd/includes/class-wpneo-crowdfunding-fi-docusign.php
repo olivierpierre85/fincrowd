@@ -43,6 +43,102 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         }
 
 
+        //FILL all tabs for a signer
+        public function getTextTabs($idDocument){
+        	//Test value
+        	$descBorrower = "borromir";
+        	$dateValidation = "01-01-2017";
+        	//$idDocument = 1;
+        	return array(
+        		array(
+        				"tabLabel"=> "descBorrower",
+        				"value" => $descBorrower,
+        				"locked" => "true",
+        				"xPosition" => "35",
+        				"yPosition" => "272",
+        				"width" => "283",
+        				"height" => "132",
+        				"documentId" => $idDocument,
+        				"pageNumber" => "1"
+        		),
+        		array(
+        				"tabLabel"=> "\\*dateValidation",
+        				"value" => $dateValidation,
+        				"locked" => "true",
+        				"xPosition" => "311",
+        				"yPosition" => "187",
+        				"documentId" => $idDocument,
+        				"pageNumber" => "1"
+        		),
+        		array(
+        				"tabLabel"=> "descLender",
+        				"value" => 'descLender',
+        				"locked" => "true",
+        				"xPosition" => "299",
+        				"yPosition" => "272",
+        				"width" => "283",
+        				"height" => "132",
+        				"documentId" => $idDocument,
+        				"pageNumber" => "1"
+        		),
+        		array(
+        				"tabLabel"=> "interestDuration",
+        				"value" => 'interestDuration',
+        				"locked" => "true",
+        				"xPosition" => "258",
+        				"yPosition" => "290",
+        				"documentId" => $idDocument,
+        				"pageNumber" => "3"
+        		),
+        		array(
+        				"tabLabel"=> "interestRate",
+        				"value" => 'interestRate',
+        				"locked" => "true",
+        				"xPosition" => "310",
+        				"yPosition" => "277",
+        				"documentId" => $idDocument,
+        				"pageNumber" => "3"
+        		),
+        		array(
+        				"tabLabel"=> "\\*conventionNumber",
+        				"value" => 'conventionNumber',
+        				"locked" => "true",
+        				"xPosition" => "339",
+        				"yPosition" => "660",
+        				"documentId" => $idDocument,
+        				"pageNumber" => "5"
+        		),
+        		array(
+        				"tabLabel"=> "\\*conventionNumber",
+        				"value" => 'conventionNumber',
+        				"locked" => "true",
+        				"xPosition" => "143",
+        				"yPosition" => "166",
+        				"documentId" => $idDocument,
+        				"pageNumber" => "1"
+        		),
+        		array(
+        				"tabLabel"=> "totalAmount",
+        				"value" => 'totalAmount',
+        				"locked" => "true",
+        				"xPosition" => "344",
+        				"yPosition" => "235",
+        				"documentId" => $idDocument,
+        				"pageNumber" => "3"
+        		),
+        		array(
+        				"tabLabel"=> "\\*dateValidation2",
+        				"value" => $dateValidation,
+        				"locked" => "true",
+        				"xPosition" => "171",
+        				"yPosition" => "451",
+        				"documentId" => $idDocument,
+        				"pageNumber" => "5"
+        		),
+        	);
+
+        }
+
         /**
          * @param $campaign_id
          * Call docusign api after validate campaign to ask every one to sign
@@ -69,33 +165,29 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                   $descBorrower .= ' et immatriculé à la BCE sous le n° '. get_the_author_meta( 'fi_company_number', $borrower->ID );
                   $descBorrower .= ' représentée aux fins de la présente par '. $borrower->display_name .' ( ' . get_the_author_meta( 'fi_company_responsible_status', $borrower->ID ) . ' )';
 
-
                   $dateValidation = date("d-m-Y");
+
 
                   $signersB[] = array(
                   "email" => $borrower->user_email,
                   "name" => $borrower->display_name,
-                  "recipientId"=> "1",
-                  "roleName" => 'borrower',
+                  "recipientId"=> "99999",
+                  //"roleName" => 'borrower',
                   "tabs" => array(
-                    "signHereTabs" => array(
-                      array(
-                        "xPosition" => "100",
-                        "yPosition" => "100",
-                        "documentId" => "1",
-                        "pageNumber" => "1"
-                      )
-                    ),
-                        "textTabs" => array(
-                            array(
-                                "tabLabel"=> "descBorrower",
-                                "value" => $descBorrower
-                            ),
-                            array(
-                                "tabLabel"=> "\\*dateValidation",
-                                "value" => $dateValidation
-                            )
+                    "signHereTabs" => array(//TODO loop on number of signers
+                        array(
+                          "xPosition" => "93",
+                          "yPosition" => "507",
+                          "documentId" => "1",
+                          "pageNumber" => "5"
+                        ),
+                        array(
+                          "xPosition" => "93",
+                          "yPosition" => "507",
+                          "documentId" => "2",
+                          "pageNumber" => "5"
                         )
+                      )
                     )
                   );
 
@@ -122,6 +214,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                     '_product_id'
                   ));
                   //Then get the author of the pledges
+                  $iSigner = 1;
                   foreach ($item_sales as $item) {
                     $order          = new WC_Order($item->order_id);
                     $cart = $order->get_items();
@@ -137,56 +230,28 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                     $conventionNumber = substr ( $campaign_title , 0 , 20 ).'-'.$user->ID ;
                     $totalAmount = $cart[key($cart)]['line_total'];
 
-
                     $signersL[] = array(
-                    "email" => $user->user_email,
-                    "name" => $user->display_name,
-                    "recipientId"=> "1",
-                    "roleName" => 'lender',
-                    "tabs" => array(
-                      "signHereTabs" => array(
-                        array(
-                          "xPosition" => "100",
-                          "yPosition" => "100",
-                          "documentId" => "1",
-                          "pageNumber" => "1"
+                      "email" => $user->user_email,
+                      "name" => $user->display_name,
+                      "recipientId"=> $iSigner,
+                      //"roleName" => 'lender',
+                      "tabs" => array(
+                        "signHereTabs" => array(
+                            array(
+                              "xPosition" => "410",
+                              "yPosition" => "507",
+                              "documentId" => "1",
+                              "pageNumber" => "5"
+                            )
+                          ),
+                          "textTabs" => $this->getTextTabs($iSigner)
                         )
-                      ),
-                          "textTabs" => array(
-                            array(
-                                "tabLabel"=> "descBorrower",
-                                "value" => $descBorrower
-                            ),
-                            array(
-                                "tabLabel"=> "descLender",
-                                "value" => $descLender
-                            ),
-                            array(
-                                "tabLabel"=> "interestDuration",
-                                "value" => $interestDuration
-                            ),
-                            array(
-                                "tabLabel"=> "interestRate",
-                                "value" => $interestRate
-                            ),
-                            array(
-                                "tabLabel"=> "\\*conventionNumber",
-                                "value" => $conventionNumber
-                            ),
-                            array(
-                                "tabLabel"=> "totalAmount",
-                                "value" => $totalAmount
-                            ),
-                            array(
-                                "tabLabel"=> "\\*dateValidation",
-                                "value" => $dateValidation
-                            ),
-                          )
-                      )
-                    );
+                      );
+
+                      $iSigner ++;
                   }
 
-                  $this->sendDocusign($signersL,$signersB);
+                  $this->sendDocusign(array_merge($signersL,$signersB));
                 }
           }
         }
@@ -195,7 +260,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         /**
          * Really send to docusign based on borrower and lender list
          */
-        function sendDocusign($signersL,$signersB){
+        function sendDocusign($signers){
           //var TODO fincrowd olpi store somewhere else data docusign
           $url = "https://demo.docusign.net/restapi/v2/login_information"; // change for production
 
@@ -242,42 +307,29 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
           // 	"templateRoles" => $signers ,
           // 	"status" => "sent");
 
-          // $data = array("accountId" => $accountId,
-          // 	"emailSubject" => "DocuSign API - Signature Request from Template",
-          // 	"templateId" => $templateId,
-          // 	"templateRoles" => $signers ,
-          // 	"status" => "sent");
-
-            $data = array(
-              "accountId" => $accountId,
-            	"emailSubject" => "DocuSign API - Signature Request from Template",
-            	//"templateId" => $templateId,
-            	//"templateRoles" => $signers ,
-            	"status" => "sent",
-              "compositeTemplates"=> [ array(
-                      "serverTemplates"=> [array(
-                          "sequence"=> "1",
-                          "templateId"=> $templateId,
-                      )],
-                      "inlineTemplates"=> [array(
-                          "sequence"=> "1",
-                          "recipients"=> array(
-                              "signers"=> $signersB
-                          )
-                      )]
-                  ), array(
-                      "serverTemplates"=> [array(
-                          "sequence"=> "2",
-                          "templateId"=> $templateId,
-                      )],
-                      "inlineTemplates"=> [array(
-                          "sequence"=> "2",
-                          "recipients"=> array(
-                              "signers"=> $signersL
-                          )
-                      )]
-                  )]
-            );
+          $documentFileName = getcwd().'\convention_de_pret_modele_v2.pdf';
+          $data = array (
+        			"emailSubject" => "Veuillez signer la convention de prêt ",
+        			"documents" => array(
+                  array(
+                    "documentBase64"=> base64_encode(file_get_contents($documentFileName)),
+                    "documentId"=> "1",
+                    "fileExtension"=> "pdf",
+                    "name"=> "test.pdf"
+                  ),
+                  array(
+                    "documentBase64"=> base64_encode(file_get_contents($documentFileName)),
+                    "documentId"=> "2",
+                    "fileExtension"=> "pdf",
+                    "name"=> "test2.pdf"
+                  )
+        				),
+      			"recipients" => array(
+		           "signers" => $signers
+             ),
+        		"status" => "sent",
+        		"enforceSignerVisibility" =>  true,
+        	);
 
 
 
@@ -305,57 +357,6 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
 
           $response = json_decode($json_response, true);
           $envelopeId = $response["envelopeId"];
-
-        }
-
-        /**
-         * @param $campaign_id
-         * FINCROWD FCT OBSOLETE
-         * Create PDF after validate campaign
-         */
-        function wpneo_fi_pdf_validate_campaign($campaign_id){
-          if ( get_option( 'wpneo_enable_validate_campaign_email' ) == 'true' ) {
-
-              global $wpdb;
-
-              $product        = wc_get_product($campaign_id);
-
-              if ($product->product_type === 'crowdfunding') {
-                //1 PDF pour l'emprunteur
-
-                $pdfDir = plugin_dir_path( __DIR__ ).'contrats\\';
-                $lenderFileName = "CampagneNamez".$campaign_id."Emprunteur".".pdf";
-
-                //PDF pour les prêteurs (un par user)
-                $lenderPdf = new FPDI();
-                // get the page count
-                $pageCount = $lenderPdf->setSourceFile($pdfDir."convention_de_pret_modele.pdf");
-                // iterate through all pages
-                for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
-                    // import a page
-                    $templateId = $lenderPdf->importPage($pageNo);
-                    // get the size of the imported page
-                    $size = $lenderPdf->getTemplateSize($templateId);
-
-                    // create a page (landscape or portrait depending on the imported page size)
-                    if ($size['w'] > $size['h']) {
-                        $lenderPdf->AddPage('L', array($size['w'], $size['h']));
-                    } else {
-                        $lenderPdf->AddPage('P', array($size['w'], $size['h']));
-                    }
-
-                    // use the imported page
-                    $lenderPdf->useTemplate($templateId);
-
-                    $lenderPdf->SetFont('Helvetica');
-                    $lenderPdf->SetXY(5, 5);
-                    $lenderPdf->Write(8, 'YAHA je suis un chat');
-                }
-
-                $lenderPdf->Output($pdfDir.$lenderFileName,'F');
-
-              }
-          }
 
         }
 
