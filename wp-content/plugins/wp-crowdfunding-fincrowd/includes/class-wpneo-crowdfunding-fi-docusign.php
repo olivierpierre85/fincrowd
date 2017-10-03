@@ -170,7 +170,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                     );
                   }
 
-                  $this->sendDocusign($signers);
+                  $this->sendDocusign($signersL,$signersB);
                 }
           }
         }
@@ -179,7 +179,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         /**
          * Really send to docusign based on borrower and lender list
          */
-        function sendDocusign($signers){
+        function sendDocusign($signersL,$signersB){
           //var TODO fincrowd olpi store somewhere else data docusign
           $url = "https://demo.docusign.net/restapi/v2/login_information"; // change for production
 
