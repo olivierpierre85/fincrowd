@@ -83,17 +83,17 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         				"tabLabel"=> "interestDuration",
         				"value" => $interestDuration,
         				"locked" => "true",
-        				"xPosition" => "258",
-        				"yPosition" => "290",
+                "xPosition" => "310",
+                "yPosition" => "277",
         				"documentId" => $idDocument,
         				"pageNumber" => "3"
         		),
         		array(
         				"tabLabel"=> "interestRate",
         				"value" => $interestRate,
-        				"locked" => "true",
-        				"xPosition" => "310",
-        				"yPosition" => "277",
+        				"locked" => "true",                
+                "xPosition" => "258",
+                "yPosition" => "290",
         				"documentId" => $idDocument,
         				"pageNumber" => "3"
         		),
@@ -165,30 +165,10 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
 
                   $dateValidation = date("d-m-Y");
 
-
-                  $signersB[] = array(
-                  "email" => $borrower->user_email,
-                  "name" => $borrower->display_name,
-                  "recipientId"=> "99999",
-                  //"roleName" => 'borrower',
-                  "tabs" => array(
-                    "signHereTabs" => array(//TODO loop on number of signers
-                        array(
-                          "xPosition" => "93",
-                          "yPosition" => "507",
-                          "documentId" => "1",
-                          "pageNumber" => "5"
-                        ),
-                        array(
-                          "xPosition" => "93",
-                          "yPosition" => "507",
-                          "documentId" => "2",
-                          "pageNumber" => "5"
-                        )
-                      )
-                    )
-                  );
-
+                  $signBorrower = array();
+                  $documents = array();
+                  $documentFileName = getcwd().'\convention_de_pret_modele_v2.pdf';
+                  $documentData = base64_encode(file_get_contents($documentFileName));
 
                   //then get all order for the campaign
                   $post_id = $campaign_id;
@@ -211,6 +191,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                     ORDER BY o.ID DESC",
                     '_product_id'
                   ));
+
                   //Then get the author of the pledges
                   $iSigner = 1;
                   foreach ($item_sales as $item) {
@@ -233,12 +214,13 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                       "name" => $user->display_name,
                       "recipientId"=> $iSigner,
                       //"roleName" => 'lender',
+                      "routingOrder" => "1",
                       "tabs" => array(
                         "signHereTabs" => array(
                             array(
                               "xPosition" => "410",
                               "yPosition" => "507",
-                              "documentId" => "1",
+                              "documentId" => $iSigner,
                               "pageNumber" => "5"
                             )
                           ),
@@ -246,10 +228,37 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                         )
                       );
 
+                      //add a field to be signed by borrower for the lender
+                      $signBorrower [] = array(
+                                          "xPosition" => "93",
+                                          "yPosition" => "507",
+                                          "documentId" => $iSigner,
+                                          "pageNumber" => "5"
+                                        );
+
+                      //add a document by lender
+                      $documents[] =  array(
+                            "documentBase64"=> $documentData,
+                            "documentId"=> $iSigner,
+                            "fileExtension"=> "pdf",
+                            "name"=> "convention_de_pret.pdf"
+                          );
+
                       $iSigner ++;
                   }
 
-                  $this->sendDocusign(array_merge($signersL,$signersB));
+                  $signersB[] = array(
+                    "email" => $borrower->user_email,
+                    "name" => $borrower->display_name,
+                    "recipientId"=> "99999",
+                    "routingOrder" => "2",
+                    //"roleName" => 'borrower',
+                    "tabs" => array(
+                      "signHereTabs" => $signBorrower,
+                    )
+                  );
+
+                  $this->sendDocusign(array_merge($signersL,$signersB),$documents);
                 }
           }
         }
@@ -258,7 +267,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         /**
          * Really send to docusign based on borrower and lender list
          */
-        function sendDocusign($signers){
+        function sendDocusign($signers,$documents){
           //var TODO fincrowd olpi store somewhere else data docusign
           $url = "https://demo.docusign.net/restapi/v2/login_information"; // change for production
 
@@ -305,26 +314,12 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
           // 	"templateRoles" => $signers ,
           // 	"status" => "sent");
 
-          $documentFileName = getcwd().'\convention_de_pret_modele_v2.pdf';
           $data = array (
         			"emailSubject" => "Veuillez signer la convention de prêt ",
-        			"documents" => array(
-                  array(
-                    "documentBase64"=> base64_encode(file_get_contents($documentFileName)),
-                    "documentId"=> "1",
-                    "fileExtension"=> "pdf",
-                    "name"=> "test.pdf"
-                  ),
-                  array(
-                    "documentBase64"=> base64_encode(file_get_contents($documentFileName)),
-                    "documentId"=> "2",
-                    "fileExtension"=> "pdf",
-                    "name"=> "test2.pdf"
-                  )
-        				),
-      			"recipients" => array(
-		           "signers" => $signers
-             ),
+        			"documents" => $documents,
+      			  "recipients" => array(
+		              "signers" => $signers
+                ),
         		"status" => "sent",
         		"enforceSignerVisibility" =>  true,
         	);
