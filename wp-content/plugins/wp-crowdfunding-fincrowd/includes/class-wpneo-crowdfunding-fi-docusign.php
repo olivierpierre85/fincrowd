@@ -32,7 +32,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         /**
          * Wpneo_Crowdfunding_Fi_Docusign constructor.
          */
-        public function __construct(){
+        public function __construct() {
             //require_once('fpdf\fpdf.php');
             //require_once('fpdi\fpdi.php');
 
@@ -44,10 +44,8 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
 
 
         //FILL all tabs for a signer
-        public function getTextTabs($idDocument){
-        	//Test value
-        	$descBorrower = "borromir";
-        	$dateValidation = "01-01-2017";
+        public function getTextTabs($idDocument,$descLender,$interestDuration,
+          $interestRate,$conventionNumber,$totalAmount,$descBorrower,$dateValidation) {
         	//$idDocument = 1;
         	return array(
         		array(
@@ -72,7 +70,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         		),
         		array(
         				"tabLabel"=> "descLender",
-        				"value" => 'descLender',
+        				"value" => $descLender,
         				"locked" => "true",
         				"xPosition" => "299",
         				"yPosition" => "272",
@@ -83,7 +81,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         		),
         		array(
         				"tabLabel"=> "interestDuration",
-        				"value" => 'interestDuration',
+        				"value" => $interestDuration,
         				"locked" => "true",
         				"xPosition" => "258",
         				"yPosition" => "290",
@@ -92,7 +90,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         		),
         		array(
         				"tabLabel"=> "interestRate",
-        				"value" => 'interestRate',
+        				"value" => $interestRate,
         				"locked" => "true",
         				"xPosition" => "310",
         				"yPosition" => "277",
@@ -101,7 +99,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         		),
         		array(
         				"tabLabel"=> "\\*conventionNumber",
-        				"value" => 'conventionNumber',
+        				"value" => $conventionNumber,
         				"locked" => "true",
         				"xPosition" => "339",
         				"yPosition" => "660",
@@ -110,7 +108,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         		),
         		array(
         				"tabLabel"=> "\\*conventionNumber",
-        				"value" => 'conventionNumber',
+        				"value" => $conventionNumber,
         				"locked" => "true",
         				"xPosition" => "143",
         				"yPosition" => "166",
@@ -119,7 +117,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         		),
         		array(
         				"tabLabel"=> "totalAmount",
-        				"value" => 'totalAmount',
+        				"value" => $totalAmount,
         				"locked" => "true",
         				"xPosition" => "344",
         				"yPosition" => "235",
@@ -244,7 +242,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                               "pageNumber" => "5"
                             )
                           ),
-                          "textTabs" => $this->getTextTabs($iSigner)
+                          "textTabs" => $this->getTextTabs($iSigner,$descLender,$interestDuration,$interestRate,$conventionNumber,$totalAmount,$descBorrower,$dateValidation)
                         )
                       );
 
