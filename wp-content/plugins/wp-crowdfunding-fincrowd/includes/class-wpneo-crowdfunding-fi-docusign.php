@@ -91,7 +91,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         		array(
         				"tabLabel"=> "interestRate",
         				"value" => $interestRate,
-        				"locked" => "true",                
+        				"locked" => "true",
                 "xPosition" => "258",
                 "yPosition" => "290",
         				"documentId" => $idDocument,
@@ -167,7 +167,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
 
                   $signBorrower = array();
                   $documents = array();
-                  $documentFileName = getcwd().'\convention_de_pret_modele_v2.pdf';
+                  $documentFileName = getcwd().'/convention_de_pret_modele_v2.pdf';
                   $documentData = base64_encode(file_get_contents($documentFileName));
 
                   //then get all order for the campaign
