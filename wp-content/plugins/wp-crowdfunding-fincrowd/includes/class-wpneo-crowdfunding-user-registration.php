@@ -310,7 +310,7 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
 
                     $redirect = get_home_url();
 
-                    die(json_encode(array('success'=> 1, 'message' => __('Registration complete.', 'wp-crowdfunding'), 'redirect' => $redirect )));
+                    die(json_encode(array('success'=> 1, 'message' => __('Enregistrement terminé.<br>  Si vous n’avez pas reçu de mail de confirmation, merci de nous contacter : info@five-fincrowd.be', 'wp-crowdfunding'), 'redirect' => $redirect )));
                 } else {
                     $errors = '';
                     if ( is_wp_error( $reg_errors ) ) {
