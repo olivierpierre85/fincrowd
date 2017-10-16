@@ -74,9 +74,9 @@ $html .= '<div class="wpneo-content">';
                                 //$operation_btn .= '<span><a href="?page_type=update&postid=' . get_the_ID() . '">'.__("Update", "wp-crowdfunding").'</a></span>';
                                 if ($is_admin) {
                                   //TODO fincrowd if campaign date up OR goal Reached ? Or all the time ?
-                                  if(WPNEOCF()->campaignValid() && ! get_post_meta(get_the_ID(), 'wpneo_fi_campaign_validated', true)){
+                                  //if(WPNEOCF()->campaignValid() && ! get_post_meta(get_the_ID(), 'wpneo_fi_campaign_validated', true)){
                                     $operation_btn .= '<span><a href="javascript:;" id="wpneo_fi_validate_campaign" data-campaign-id="'.get_the_ID().'">'.__( 'Validez la fin de la campagne', 'wp-crowdfunding' ).'</a></span>';
-                                  }
+                                  //}
                                   if(WPNEOCF()->dateRemaining()){
                                     $operation_btn .= '<span><a href="javascript:;" id="wpneo_fi_cancel_campaign" data-campaign-id="'.get_the_ID().'">'.__( 'Annuler la campagne', 'wp-crowdfunding' ).'</a></span>';
                                   }
