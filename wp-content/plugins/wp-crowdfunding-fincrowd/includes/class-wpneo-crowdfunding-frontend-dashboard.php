@@ -48,7 +48,7 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
         public function wpneo_fi_validate_campaign() {
           //TODO fincrowd admin check ?
           $campaign_id        = sanitize_text_field($_POST['campaign_id']);
-          $result = wpneo_crowdfunding_update_post_meta_text($campaign_id, 'wpneo_fi_campaign_validated', true);
+          $result = true;//TODOwpneo_crowdfunding_update_post_meta_text($campaign_id, 'wpneo_fi_campaign_validated', true);
           if ($result){
             //FINCROWD ALL THE Things to do to update
             //Generate PDFs
