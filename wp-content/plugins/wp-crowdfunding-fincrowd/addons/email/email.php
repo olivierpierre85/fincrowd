@@ -307,8 +307,8 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $headers        = array();
                 $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
                 $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
-                $headers[]      = 'Cc: '.$admin_email;//fincrowd Does'nt work, so two emails
-                $headers[]      = 'Bcc: '.$admin_email;
+                //$headers[]      = 'Cc: '.$admin_email;//fincrowd Does'nt work, so two emails
+                //$headers[]      = 'Bcc: '.$admin_email;
                 //Send email now using wp_email();
                 if(!empty($email)){
 
