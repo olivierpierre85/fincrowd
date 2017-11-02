@@ -133,6 +133,22 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         				"documentId" => $idDocument,
         				"pageNumber" => "5"
         		),
+            array(
+                "value" => 'Naninne',
+                "locked" => "true",
+                "xPosition" => "156",
+        				"yPosition" => "187",
+                "documentId" => $idDocument,
+                "pageNumber" => "1"
+            ),
+            array(
+                "value" => 'Naninne',
+                "locked" => "true",
+                "xPosition" => "64",
+                "yPosition" => "451",
+                "documentId" => $idDocument,
+                "pageNumber" => "5"
+            ),
         	);
 
         }
@@ -315,7 +331,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
           // 	"status" => "sent");
 
           $data = array (
-        			"emailSubject" => "Veuillez signer la convention de prêt ",
+        			"emailSubject" => "Convention de prêt ",
         			"documents" => $documents,
       			  "recipients" => array(
 		              "signers" => $signers
