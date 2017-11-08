@@ -159,8 +159,6 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
          */
         function wpneo_fi_docusign_validate_campaign($campaign_id){
 
-          if ( get_option( 'wpneo_enable_validate_campaign_email' ) == 'true' ) {
-
               global $wpdb;
 
               $product        = wc_get_product($campaign_id);
@@ -276,7 +274,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
 
                   $this->sendDocusign(array_merge($signersL,$signersB),$documents);
                 }
-          }
+
         }
 
 
