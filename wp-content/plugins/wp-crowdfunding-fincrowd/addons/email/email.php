@@ -215,10 +215,10 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $wpneo_validate_campaign_email_subject = sanitize_text_field(wpneo_post('wpneo_validate_campaign_email_subject'));
                 wpneo_crowdfunding_update_option_text( 'wpneo_validate_campaign_email_subject', $wpneo_validate_campaign_email_subject );
 
-                $wpneo_validate_campaign_email_template = sanitize_text_field(wpneo_post('wpneo_validate_campaign_email_template'));
+                $wpneo_validate_campaign_email_template = wpneo_post('wpneo_validate_campaign_email_template');
                 wpneo_crowdfunding_update_option_text( 'wpneo_validate_campaign_email_template', $wpneo_validate_campaign_email_template );
 
-                $wpneo_validate_campaign_client_email_template = sanitize_text_field(wpneo_post('wpneo_validate_campaign_client_email_template'));
+                $wpneo_validate_campaign_client_email_template = wpneo_post('wpneo_validate_campaign_client_email_template');
                 wpneo_crowdfunding_update_option_text( 'wpneo_validate_campaign_client_email_template', $wpneo_validate_campaign_client_email_template );
                 //end fincrowd
 
@@ -645,11 +645,11 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                   //Send email now using wp_email();
                   if(!empty( $email_client )){
-                      wp_mail( $email_client,  $subject, $email_str_client .'client', $headers );
+                      wp_mail( $email_client,  $subject, $email_str_client, $headers );
                   }
 
                   if(!empty( $email_creator )){
-                      wp_mail( $email_creator, $subject, $email_str_creator .'creator', $headers );
+                      wp_mail( $email_creator, $subject, $email_str_creator, $headers );
                   }
               }
           }
