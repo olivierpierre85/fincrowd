@@ -306,7 +306,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $subject        = str_replace($shortcode, $replace_str, get_option('wpneo_new_user_email_subject'));
                 $headers        = array();
                 $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
-                $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
+                $headers[]      = 'From: Five-Fincrowd <info@five-fincrowd.be>';
                 //$headers[]      = 'Cc: '.$admin_email;//fincrowd Does'nt work, so two emails
                 //$headers[]      = 'Bcc: '.$admin_email;
                 //Send email now using wp_email();
@@ -377,7 +377,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     $subject        = str_replace($shortcode, $replace_str, get_option('wpneo_new_backer_email_subject'));
                     $headers        = array();
                     $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
-                    $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
+                    $headers[]      = 'From: Five-Fincrowd <info@five-fincrowd.be>';
 
 
                     //Ajout tableau d'amortissement
@@ -421,7 +421,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_new_campaign_email_subject' ) );
                 $headers        = array();
                 $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
-                $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
+                $headers[]      = 'From: Five-Fincrowd <info@five-fincrowd.be>';
 
                 // Send To Author Email
                 if(!empty($email)){
@@ -462,7 +462,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                 $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_accept_campaign_email_subject' ) );
                 $headers        = array();
                 $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
-                $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
+                $headers[]      = 'From: Five-Fincrowd <info@five-fincrowd.be>';
 
                 // Send To Author Email
                 if(!empty( $email )){
@@ -517,7 +517,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                     $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_cancel_campaign_pledge_email_subject' ) );
                     $headers        = array();
                     $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
-                    $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
+                    $headers[]      = 'From: Five-Fincrowd <info@five-fincrowd.be>';
 
                     //Send email now using wp_email();
                     if(!empty( $email )){
@@ -641,7 +641,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                   $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_validate_campaign_email_subject' ) );
                   $headers        = array();
                   $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
-                  $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
+                  $headers[]      = 'From: Five-Fincrowd <info@five-fincrowd.be>';
 
                   //Send email now using wp_email();
                   if(!empty( $email_client )){
@@ -727,7 +727,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                   $subject        = str_replace( $shortcode, $replace_str, get_option( 'wpneo_cancel_campaign_email_subject' ) );
                   $headers        = array();
                   $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
-                  $headers[]      = 'From: Five-Insurance <info@five-fincrowd.be>';
+                  $headers[]      = 'From: Five-Fincrowd <info@five-fincrowd.be>';
 
                   //Send email now using wp_email();
                   if(!empty( $email_client )){
