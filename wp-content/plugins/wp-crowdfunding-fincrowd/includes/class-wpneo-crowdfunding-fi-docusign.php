@@ -272,7 +272,27 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                     )
                   );
 
-                  $this->sendDocusign(array_merge($signersL,$signersB),$documents);
+                  //MAIL to send clients TODO USE The email field in the crowfunding param
+                  $emailContent = 'Bonjour,';
+                  $emailContent .= '<br><br>';
+                  $emailContent .= 'Nous vous remercions pour votre confiance et votre investissement dans le projet "'.$campaign_title.'"';
+                  $emailContent .= '<br><br>';
+                  $emailContent .= 'La levée de fonds fut un réel succès.';
+                  $emailContent .= '<br><br>';
+                  $emailContent .= 'Nous vous transmettons la Convention de prêt. Vous y retrouverez toutes les conditions de prêt. ';
+                  $emailContent .= 'Merci de la signer électroniquement.';
+                  $emailContent .= '<br><br>';
+                  $emailContent .= 'Vous recevrez ultérieurement une Convention de prêt définitive, validée par l’Emprunteur.';
+                  $emailContent .= '<br><br>';
+                  $emailContent .= 'Nous vous tiendrons informé de tous nouveaux projets et de l’actualité relative à Five Fincrowd.';
+                  $emailContent .= '<br><br>';
+                  $emailContent .= 'Sincères salutations.';
+                  $emailContent .= '<br><br>';
+                  $emailContent .= 'Pour Five Fincrowd,';
+                  $emailContent .= '<br>';
+                  $emailContent .= 'Philippe DENIS';
+
+                  $this->sendDocusign(array_merge($signersL,$signersB),$documents,$emailContent);
                 }
 
         }
@@ -281,12 +301,15 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         /**
          * Really send to docusign based on borrower and lender list
          */
-        function sendDocusign($signers,$documents){
+        function sendDocusign($signers,$documents,$emailContent){
           //var TODO fincrowd olpi store somewhere else data docusign
-          $url = "https://www.docusign.net/restapi/v2/login_information"; // change for production
+          // $url = "https://www.docusign.net/restapi/v2/login_information"; // change for production
+          // $email = 'info@five-fincrowd.be';	// your account email.
+          // $password = 'Thm7#l82';		// your account password //not great
+          $url = "https://demo.docusign.net/restapi/v2/login_information"; // change for production
+          $email = 'olivierpierre85@gmail.com';	// your account email.
+          $password = 'ngi54JL&';		// your account password //not great
 
-          $email = 'info@five-fincrowd.be';	// your account email.
-          $password = 'Thm7#l82';		// your account password //not great
           $integratorKey = '5bf42f5f-d4f9-4b62-9c7e-57b2a1775a92'; // your account integrator key, found on (Preferences -> API page)
           //$templateId = '32503515-4bab-482d-95d3-dd0a87f8862e';
           $templateId = '0da1dcd6-4259-4d72-a9f0-e8adb0022a28';
@@ -328,8 +351,10 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
           // 	"templateRoles" => $signers ,
           // 	"status" => "sent");
 
+
           $data = array (
         			"emailSubject" => "Convention de prêt ",
+              "emailBlurb" => $emailContent,
         			"documents" => $documents,
       			  "recipients" => array(
 		              "signers" => $signers
