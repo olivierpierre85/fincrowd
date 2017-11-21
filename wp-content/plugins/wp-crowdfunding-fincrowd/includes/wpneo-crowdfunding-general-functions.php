@@ -64,44 +64,64 @@ if (! function_exists('fi_interest_insurance_table')){
       $interest                 = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate', true );
       $duration      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_duration', true );
 
-      $monthly_payment            = round(wpneo_fi_compute_monthly_payment( $total, $interest, $duration ),2);
+      $monthly_payment          = round(wpneo_fi_compute_monthly_payment( $total, $interest, $duration ),2);
 
       $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
+      $total_net_interest = round($total_interest * 0.70,2);
 
-      $table .= '<div id="wpneo_fi_interest_insurance"><h3>' . __('Tableau de remboursement') . '</h3>';
+      $interest_payment = round($total_interest / $duration,2);
+      $interest_net_payment = round($total_net_interest / $duration,2);
 
-      $table .= '<div>' .__('Pour un prêt de ').'<b>'.$total.'</b>'.__(' euros, vous gagnez à terme : ').$total_interest.' Euros</div>';
+      $monthly_net_payment = round(( $total + $total_net_interest ) / $duration,2);
 
+      //$monthly_net_payment      = round(wpneo_fi_compute_monthly_payment( $total, $interest * 0.70, $duration ),2);
+      //$total_net_interest        = round(($duration * $monthly_net_payment  ) - $total,2);
 
-      $table .= '</div>';
-      $table .= '<div class="fi-interest-tab">';
+      $interest_text = '<div id="wpneo_fi_interest_insurance"><h3>' . __('Remboursement') . '</h3>';
+
+      $interest_text .= '<div>' .__('Pour un prêt de ').'<b>'.$total.'</b>'
+                    .__(' euros, vous gagnez à terme : '). $total_interest . ' € en intérêt bruts et <b>'. $total_net_interest . ' €</b>  en intérêts nets (Après prélévement de 30 % de taxes).<br><br>'
+                    .'Vous serez donc remboursé de <b>' . $monthly_net_payment . ' €</b> par mois pendant ' . $duration . ' mois.'
+                    .' </div><br>';
+
+      //NO more amortissement table, just calculus
+      $table .= '<div class="fi-interest">';
       $table .= '<h4>'.__('Tableau de remboursement').'</h4>';
 
       $table .= '<table id="fi-interest-table"><tr><th>'
-      . __('Mois') . '</th><th>'
-      . __('Capital remboursé') . '</th><th>'
-      . __('Intérêts bruts') . '</th><th>'
-      . __('Remboursement par mois') . '</th></tr>';
+      . __('Mensualité n°') . '</th><th>'
+      . __('Solde Initial') . '</th><th>'
+      . __('Mensualité en capital') . '</th><th>'
+      . __('Mensualité intérêts bruts') . '</th><th>'
+      . __('Mensualité intérêts nets') . '</th><th>'
+      . __('Versement') . '</th><th>'
+      . __('Capital Remboursé') . '</th><th>'
+      . __('Intérêts bruts payés') . '</th></tr>';
 
       $monthly_interest_rate  = $interest / 12 / 100;
       $total_left_to_pay    = $total;
+      $total_interest_paid = $interest_payment;
       for($i = 1 ; $i <= $duration; $i++ ) {
-        $interest_by_month = round($total_left_to_pay * $monthly_interest_rate,2);
-        $capital_by_month = round($monthly_payment - $interest_by_month,2);
-
+      //  $interest_by_month = round($total_left_to_pay * $monthly_interest_rate,2);
+        $capital_by_month = round($monthly_payment - $interest_payment,2);
         $table .= '<tr class="fi-interest-row">';
-        $table .= '<td>'.__('Mois ').$i.'</td>';
+        $table .= '<td>'.$i.'</td>';
+        $table .= '<td>'.$total_left_to_pay.'</td>';
         $table .= '<td>'.$capital_by_month.'</td>';
-        $table .= '<td>'.$interest_by_month.'</td>';
-        $table .= '<td>'.$monthly_payment.'</td>';
+        $table .= '<td>'.$interest_payment.'</td>';
+        $table .= '<td>'.$interest_net_payment.'</td>';
+        $table .= '<td>'.$monthly_net_payment.'</td>';
+        $table .= '<td>'.($total - $total_left_to_pay + $capital_by_month).'</td>';
+        $table .= '<td>'.$total_interest_paid.'</td>';
         $table .= '</tr>';
 
         $total_left_to_pay = $total_left_to_pay - $capital_by_month;
+        $total_interest_paid = $total_interest_paid + $interest_payment;
       }
 
       $table .= '</table>';
 
-      return $table;
+      return $interest_text.$table;
 
   }
 }

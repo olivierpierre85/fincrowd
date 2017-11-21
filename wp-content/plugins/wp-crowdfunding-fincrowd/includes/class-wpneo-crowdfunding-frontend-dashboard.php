@@ -94,19 +94,21 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
           $duration      = get_post_meta( $campaign_id, 'wpneo_fi_loan_duration', true );
 
           $interest                 = get_post_meta( $campaign_id, 'wpneo_fi_interest_rate', true );
-          $monthly_payment            = wpneo_fi_compute_monthly_payment( $total, $interest, $duration );
+          $monthly_payment          = round(wpneo_fi_compute_monthly_payment( $total, $interest, $duration ),2);
           $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
 
-          $insurance = get_post_meta( $campaign_id, 'wpneo_fi_loan_insurance', true );
-          if($insurance == "true"){
-            $interest_insurance      = get_post_meta( $campaign_id, 'wpneo_fi_interest_rate_insurance', true );
-            $monthly_payment_insurance  = wpneo_fi_compute_monthly_payment( $total, $interest_insurance, $duration );
-            $total_interest_insurance = round(($duration * $monthly_payment_insurance  ) - $total,2);
+          // $insurance = get_post_meta( $campaign_id, 'wpneo_fi_loan_insurance', true );
+          // if($insurance == "true"){
+          //   $interest_insurance      = get_post_meta( $campaign_id, 'wpneo_fi_interest_rate_insurance', true );
+          //   $monthly_payment_insurance  = wpneo_fi_compute_monthly_payment( $total, $interest_insurance, $duration );
+          //   $total_interest_insurance = round(($duration * $monthly_payment_insurance  ) - $total,2);
+          //
+          //   die(__('Intérêts totaux :'.$total_interest.' ( '.$total_interest_insurance.' avec la garantie)', 'wp-crowdfunding'));
+          // } else {
 
-            die(__('Intérêts totaux :'.$total_interest.' ( '.$total_interest_insurance.' avec la garantie)', 'wp-crowdfunding'));
-          } else {
-            die(__('Intérêts totaux :'.$total_interest, 'wp-crowdfunding'));
-          }
+          die(__('Intérêts Bruts totaux : '.$total_interest. ' €', 'wp-crowdfunding'));
+
+          //}
 
 
           //TODO error handling
