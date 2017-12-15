@@ -61,13 +61,16 @@ if (! function_exists('fi_interest_insurance_table')){
         $total = $cart[key($cart)]['line_total'];
       }
 
-      $interest                 = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate', true );
+      $interest      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_interest_rate', true );
       $duration      = get_post_meta( $cart[key($cart)]['product_id'], 'wpneo_fi_loan_duration', true );
 
-      $monthly_payment          = round(wpneo_fi_compute_monthly_payment( $total, $interest, $duration ),2);
+      //$monthly_payment          = round(wpneo_fi_compute_monthly_payment( $total, $interest, $duration ),2);
+      $monthly_payment          = wpneo_fi_compute_monthly_payment( $total, $interest, $duration );
 
-      $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
+      $total_interest     = round(($duration * $monthly_payment  ) - $total,2);
       $total_net_interest = round($total_interest * 0.70,2);
+      $total_tax_deduction = $total_interest * 0.30;
+      $monthly_tax_deduction = $total_tax_deduction / $duration;
 
       $interest_payment = round($total_interest / $duration,2);
       $interest_net_payment = round($total_net_interest / $duration,2);
@@ -93,10 +96,12 @@ if (! function_exists('fi_interest_insurance_table')){
       . __('Solde Initial') . '</th><th>'
       . __('Mensualité en capital') . '</th><th>'
       . __('Mensualité intérêts bruts') . '</th><th>'
-      . __('Mensualité intérêts nets') . '</th><th>'
-      . __('Versement') . '</th><th>'
-      . __('Capital Remboursé') . '</th><th>'
-      . __('Intérêts bruts payés') . '</th></tr>';
+      //. __('Mensualité intérêts nets') . '</th><th>'
+      . __('Précompte 30%') . '</th><th>'
+      . __('Versement Total') . '</th><th>'
+      //. __('Capital Remboursé') . '</th><th>'
+      //. __('Intérêts bruts payés') . '</th></tr>'
+      ;
 
       $monthly_interest_rate  = $interest / 12 / 100;
       $total_left_to_pay    = $total;
@@ -109,19 +114,23 @@ if (! function_exists('fi_interest_insurance_table')){
         $table .= '<td>'.$total_left_to_pay.'</td>';
         $table .= '<td>'.$capital_by_month.'</td>';
         $table .= '<td>'.$interest_payment.'</td>';
-        $table .= '<td>'.$interest_net_payment.'</td>';
-        $table .= '<td>'.$monthly_net_payment.'</td>';
-        $table .= '<td>'.($total - $total_left_to_pay + $capital_by_month).'</td>';
-        $table .= '<td>'.$total_interest_paid.'</td>';
+        //$table .= '<td>'.$interest_net_payment.'</td>';
+        $table .= '<td>'.$monthly_tax_deduction.'</td>';
+        $table .= '<td>' .($capital_by_month + $interest_payment - $monthly_tax_deduction).'</td>';
+        //$table .= '<td>'.$monthly_net_payment.'</td>';
+        //$table .= '<td>'.($total - $total_left_to_pay + $capital_by_month).'</td>';
+        //$table .= '<td>'.$total_interest_paid.'</td>';
         $table .= '</tr>';
 
-        $total_left_to_pay = $total_left_to_pay - $capital_by_month;
-        $total_interest_paid = $total_interest_paid + $interest_payment;
+        //$total_left_to_pay = $total_left_to_pay - $capital_by_month;
+        //$total_interest_paid = $total_interest_paid + $interest_payment;
       }
 
       $table .= '</table>';
 
-      return $interest_text.$table;
+      //NO table until fixed !
+      //return $interest_text.$table;
+      return $interest_text;
 
   }
 }
