@@ -94,7 +94,7 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
           $duration      = get_post_meta( $campaign_id, 'wpneo_fi_loan_duration', true );
 
           $interest                 = get_post_meta( $campaign_id, 'wpneo_fi_interest_rate', true );
-          $monthly_payment          = round(wpneo_fi_compute_monthly_payment( $total, $interest, $duration ),2);
+          $monthly_payment          = wpneo_fi_compute_monthly_payment( $total, $interest, $duration );
           $total_interest           = round(($duration * $monthly_payment  ) - $total,2);
 
           // $insurance = get_post_meta( $campaign_id, 'wpneo_fi_loan_insurance', true );
