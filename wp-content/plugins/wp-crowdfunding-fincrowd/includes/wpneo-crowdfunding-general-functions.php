@@ -2,7 +2,33 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
+function get_city_from_address($borrower_address){
+  $apiKey = "AIzaSyD0qS90zf49aZHK0dFxwdH8IcyIijJJv3k";//TODO const for gmaps AND change to FIVE API
 
+  $url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($borrower_address) ."&key=".$apiKey;
+
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_URL,$url);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);//TODO not so good
+  $result=curl_exec($ch);
+  curl_close($ch);
+
+  $data = json_decode($result,true);
+
+  $components = $data["results"][0]["address_components"];
+
+  // filter the address_components field for type : $type
+  function filter($components, $type)
+  {
+      return array_filter($components, function($component) use ($type) {
+          return array_filter($component["types"], function($data) use ($type) {
+              return $data == $type;
+          });
+      });
+  }
+  return array_values(filter($components, "locality"))[0]["long_name"];
+}
 //FINCROWD
 // override core function of activation_failed
 add_action( 'template_redirect', 'fincrowd_activate_user' );

@@ -45,7 +45,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
 
         //FILL all tabs for a signer
         public function getTextTabs($idDocument,$descLender,$interestDuration,
-          $interestRate,$conventionNumber,$totalAmount,$descBorrower,$dateValidation) {
+          $interestRate,$conventionNumber,$totalAmount,$descBorrower,$dateValidation,$city) {
         	//$idDocument = 1;
         	return array(
         		array(
@@ -134,7 +134,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
         				"pageNumber" => "5"
         		),
             array(
-                "value" => 'Naninne',
+                "value" => $city,
                 "locked" => "true",
                 "xPosition" => "156",
         				"yPosition" => "187",
@@ -142,7 +142,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                 "pageNumber" => "1"
             ),
             array(
-                "value" => 'Naninne',
+                "value" => $city,
                 "locked" => "true",
                 "xPosition" => "64",
                 "yPosition" => "451",
@@ -172,8 +172,12 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                   $post_author_id = get_post_field( 'post_author', $campaign_id );
                   $borrower         = get_userdata($post_author_id);
 
+                  $borrower_address = get_the_author_meta( 'fi_user_address', $borrower->ID );
+
+                  $city = get_city_from_address($borrower_address);//use to display before date
+
                   $descBorrower = 'La '.get_the_author_meta( 'fi_company_status', $borrower->ID ).' ' .get_the_author_meta( 'fi_company_name', $borrower->ID );
-                  $descBorrower .= ' dont le siège social est établi à ' . get_the_author_meta( 'fi_user_address', $borrower->ID );
+                  $descBorrower .= ' dont le siège social est établi à ' . $borrower_address;
                   $descBorrower .= ' et immatriculé à la BCE sous le n° '. get_the_author_meta( 'fi_company_number', $borrower->ID );
                   $descBorrower .= ' représentée aux fins de la présente par '. $borrower->display_name .' ( ' . get_the_author_meta( 'fi_company_responsible_status', $borrower->ID ) . ' )';
 
@@ -238,7 +242,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Fi_Docusign')) {
                               "pageNumber" => "5"
                             )
                           ),
-                          "textTabs" => $this->getTextTabs($iSigner,$descLender,$interestDuration,$interestRate,$conventionNumber,$totalAmount,$descBorrower,$dateValidation)
+                          "textTabs" => $this->getTextTabs($iSigner,$descLender,$interestDuration,$interestRate,$conventionNumber,$totalAmount,$descBorrower,$dateValidation,$city)
                         )
                       );
 

@@ -117,11 +117,11 @@ function wpneo_registration_shortcode() {
                   array(
                       'id'            => 'fi_user_address',
                       'label'         => __( "Adresse" , "wp-crowdfunding" ),
-                      'type'          => 'textarea',
+                      'type'          => 'text',
                       'placeholder'   => __('Entrez l\'adresse', 'wp-crowdfunding'),
                       'value'         => '',
                       'class'         => '',
-                      'warpclass'     => 'wpneo-first-half',
+                      'warpclass'     => '',
                       'autocomplete'  => 'off',
                   ),
                   array(
@@ -303,6 +303,7 @@ function wpneo_registration_shortcode() {
                 </div>
 
             </form>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0qS90zf49aZHK0dFxwdH8IcyIijJJv3k&libraries=places"></script>
         </div>
         <?php
     }

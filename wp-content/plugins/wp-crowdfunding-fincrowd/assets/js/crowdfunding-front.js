@@ -2,6 +2,13 @@
  * Neo Crowdfunding
  * ======================================================================== */
 jQuery(document).ready(function($){
+
+    //Google place autocomplete for adresse
+    if (typeof google !== 'undefined') {
+      var input = document.getElementById('fi_user_address');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    }
+
     var count = 0;
     var numItems = $('.wpneo-block').length;
     if(numItems!=0){ count = numItems; }
@@ -599,5 +606,6 @@ jQuery(document).ready(function($){
               }
           });
     });
+
 
 });

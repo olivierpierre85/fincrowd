@@ -1,4 +1,12 @@
 <?php
+//add places js TODO only on registration page
+// function my_custom_js() {
+//     echo '<script type="text/javascript" src="myjsfile.js"></script>';
+// }
+// // Add hook for admin <head></head>
+// add_action('admin_head', 'my_custom_js');
+// // Add hook for front-end <head></head>
+// add_action('wp_head', 'my_custom_js');
 
 add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
 function add_login_logout_link($items, $args) {
