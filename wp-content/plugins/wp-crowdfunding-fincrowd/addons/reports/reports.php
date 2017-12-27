@@ -54,7 +54,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Reports')) {
                 return;
 
             wp_enqueue_script( 'field-date-js', plugins_url( '/assets/js_reports.js', __FILE__ ), array('jquery', 'jquery-ui-core', 'jquery-ui-datepicker'), time(),true );
-            wp_register_style('jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css');
+            wp_register_style('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css');
             wp_enqueue_style( 'jquery-ui' );
         }
 

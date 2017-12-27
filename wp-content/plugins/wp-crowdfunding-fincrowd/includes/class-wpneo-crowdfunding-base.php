@@ -91,7 +91,7 @@ if (! class_exists('Wpneo_Crowdfunding_Base')) {
         public function wpneo_enqueue_frontend_script(){
             wp_enqueue_script( 'jquery' );
             wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
-            wp_register_style( 'jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css');
+            wp_register_style( 'jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css');
             wp_enqueue_style( 'jquery-ui' );
             wp_enqueue_script( 'wp-neo-jquery-scripts-front', WPNEO_CROWDFUNDING_DIR_URL .'assets/js/crowdfunding-front.js', array('jquery'), WPNEO_CROWDFUNDING_VERSION, true);
             wp_localize_script( 'wp-neo-jquery-scripts-front', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
