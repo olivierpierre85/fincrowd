@@ -404,9 +404,11 @@ if (! function_exists('wpneo_crowdfunding_wc_login_form')) {
 if (! function_exists('wpneo_crowdfunding_wc_toggle_login_form')) {
     function wpneo_crowdfunding_wc_toggle_login_form(){
         $html = '';
+        $html .= '<div class="wpneo_fi_loginfirst">';
         $html .= '<div class="woocommerce">';
         $html .= '<div class="woocommerce-info">' . __("Please logged in first?", "wp-crowdfunding") . ' <a class="wpneoShowLogin" href="#">' . __("Click here to login", "wp-crowdfunding") . '</a></div>';
         $html .= wpneo_crowdfunding_wc_login_form();
+        $html .= '</div>';
         $html .= '</div>';
         return $html;
     }

@@ -75,10 +75,11 @@ if ( ! defined( 'ABSPATH' ) ) {
         }
       } else {
           //_e('Vous devez vous connecter pour investir dans ce projet.','wp-crowdfunding');//TODO add link to registration
+          echo wpneo_crowdfunding_wc_toggle_login_form();
 
               //echo '<div class="woocommerce">';
-                  echo '<div class="woocommerce-info">'.__("Please logged in first?","wp-crowdfunding").' <a class="wpneoShowLogin" href="#">'.__("Click here to login","wp-crowdfunding").'</a></div>';
-                  echo wpneo_crowdfunding_wc_login_form();
+              //    echo '<div class="woocommerce-info">'.__("Please logged in first?","wp-crowdfunding").' <a class="wpneoShowLogin" href="#">'.__("Click here to login","wp-crowdfunding").'</a></div>';
+              //    echo wpneo_crowdfunding_wc_login_form();
               //echo '</div>';
 
       }
