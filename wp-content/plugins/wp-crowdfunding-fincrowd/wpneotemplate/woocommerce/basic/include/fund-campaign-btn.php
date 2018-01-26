@@ -8,10 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
     global $post, $woocommerce, $product;
     $currency = '$';
     if ($product->product_type == 'crowdfunding') {
-      if ( is_user_logged_in() ) {
+      if ( true ) { //TODO de if ( is_user_logged_in() ) {
         if (WPNEOCF()->campaignValid()) {
 
-          if(WPNEOCF()->userHasRights()){
+          if(true){ // Allow everyone to test if(WPNEOCF()->userHasRights()){
             $recomanded_price = get_post_meta($product->id, 'wpneo_funding_recommended_price', true);
 
             //Fincrowd
