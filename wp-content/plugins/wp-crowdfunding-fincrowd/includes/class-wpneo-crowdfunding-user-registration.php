@@ -444,9 +444,9 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             }
 
             //TODO olpi iban validation don't work
-            //if($this->checkIBAN($iban)){
-            //    $reg_errors->add('iban', __('Le numéro de compte n\'a pas un format correct IBAN','wp-crowdfunding'));
-            //}
+            if(! $this->checkIBAN($iban)){
+                $reg_errors->add('iban', __('Le numéro de compte n\'a pas un format correct IBAN','wp-crowdfunding'));
+            }
 
         }
 
