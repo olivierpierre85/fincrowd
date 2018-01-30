@@ -327,39 +327,43 @@ jQuery(document).ready(function($){
                 $('.wpneo-tooltip-max').css({'visibility': 'visible'});
                 $('#wpneo-fi-donate-button').prop("disabled",true);
             }
-        }else{
+        } else {
             $('.wpneo-tooltip-min,.wpneo-tooltip-max').delay( 500 ).css({'visibility': 'hidden'});
             $('#wpneo-fi-donate-button').prop("disabled",false);
             //Si montant ok, pré-calcul des intérêts
-            $('#wpneo-fi-total-interest').html('');
-            $('.wpneofiloader').show();
-            var campaign_id = $(this).data('campaign-id');
-            currentRequest = $.ajax(
-                      {
-                          async: true,
-                          url : ajax_object.ajax_url,
-                          beforeSend : function()    {
-                              if(currentRequest != null) {
-                                  currentRequest.abort();
-                              }
-                          },
-                          type: "POST",
-                          data: {'action': 'wpneo_fi_compute_interest', 'campaign_id': campaign_id, 'total': $(this).val() },
-                          success:function(data, textStatus, jqXHR) {
-                              //wpneo_crowdfunding_modal(data);
-                              //return_data = data;
-                              $('.wpneofiloader').hide();
-                              $('#wpneo-fi-total-interest').html(data);
-                              isComputingInterest = null;
-
-                          },
-                          error: function(jqXHR, textStatus, errorThrown){
-                            //$('.wpneofiloader').hide();
-                            //todoHIDE IF NOT ABORT
-                              //wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
-                              //TODO fincrowd error management
-                          }
-                      });
+            //DESACTIVER PRE CALCUL DES intérêts, TROP lent TOUT est dans le page suivante
+            // $('#wpneo-fi-total-interest').html('');
+            // $('.wpneofiloader').show();
+            // var campaign_id = $(this).data('campaign-id');
+            // currentRequest = $.ajax(
+            //           {
+            //               async: true,
+            //               url : ajax_object.ajax_url,
+            //               beforeSend : function()    {
+            //                   if(currentRequest != null) {
+            //                       currentRequest.abort();
+            //                   }
+            //               },
+            //               type: "POST",
+            //               data: {'action': 'wpneo_fi_compute_interest', 'campaign_id': campaign_id, 'total': $(this).val() },
+            //               success:function(data, textStatus, jqXHR) {
+            //                   //wpneo_crowdfunding_modal(data);
+            //                   //return_data = data;
+            //                   $('.wpneofiloader').hide();
+            //                   isComputingInterest = null;
+            //                   if( data != 0) {
+            //                     $('#wpneo-fi-total-interest').html(data);
+            //                   }
+            //
+            //
+            //               },
+            //               error: function(jqXHR, textStatus, errorThrown){
+            //                 //$('.wpneofiloader').hide();
+            //                 //todoHIDE IF NOT ABORT
+            //                   //wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
+            //                   //TODO fincrowd error management
+            //               }
+            //           });
 
         }
     });

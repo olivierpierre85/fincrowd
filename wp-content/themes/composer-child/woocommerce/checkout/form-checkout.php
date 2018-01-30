@@ -65,7 +65,8 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
 <?php } else {
   echo '<div class="fincrowd-alert">';
 	echo __( 'Attention, pour investir vous devez posséder un compte et être connecté ! ', 'wp-crowdfunding' );
-	echo '<a href="'.wp_login_url().'">'. __( 'Cliquez ici pour vous connecter.', 'wp-crowdfunding' ).'</a>';
+	echo '<br><a href="'.wp_login_url(home_url()).'">'. __( 'Cliquez ici pour vous connecter.', 'wp-crowdfunding' ).'</a>';
+	echo '<br><a href="/cf-user-registration/">'. __( 'Cliquez ici pour vous créer un compte.', 'wp-crowdfunding' ).'</a>';
 	echo '</div>';
 
 } ?>
