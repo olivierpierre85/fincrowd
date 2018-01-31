@@ -2,6 +2,46 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
+
+//Return if a user has already invest in a campaign
+function has_already_invest($user_id, $campaign_id) {
+
+  //first get all order for the campaign
+  global $wpdb;
+  
+  $post_id = $campaign_id;
+  $order_statuses = array_map( 'esc_sql', (array) get_option( 'wpcl_order_status_select', array('wc-completed') ) );
+  $order_statuses_string = "'" . implode( "', '", $order_statuses ) . "'";
+  $post_id = array_map( 'esc_sql', (array) $post_id );
+  $post_string = "'" . implode( "', '", $post_id ) . "'";
+
+  $item_sales = $wpdb->get_results( $wpdb->prepare(
+    "SELECT o.ID as order_id, oi.order_item_id FROM
+    {$wpdb->prefix}woocommerce_order_itemmeta oim
+    INNER JOIN {$wpdb->prefix}woocommerce_order_items oi
+    ON oim.order_item_id = oi.order_item_id
+    INNER JOIN $wpdb->posts o
+    ON oi.order_id = o.ID
+    WHERE oim.meta_key = %s
+    AND oim.meta_value IN ( $post_string )
+    AND o.post_status IN ( $order_statuses_string )
+    AND o.post_type NOT IN ('shop_order_refund')
+    ORDER BY o.ID DESC",
+    '_product_id'
+  ));
+  //Then get the author of the pledges
+  foreach ($item_sales as $item) {
+    $order          = new WC_Order($item->order_id);
+    $user = $order->get_user();
+
+    if($user->ID == $user_id ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+
 function get_city_from_address($borrower_address){
   $apiKey = "AIzaSyD0qS90zf49aZHK0dFxwdH8IcyIijJJv3k";//TODO const for gmaps AND change to FIVE API
 
