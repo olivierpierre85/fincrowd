@@ -1,12 +1,4 @@
 <?php
-//add places js TODO only on registration page
-// function my_custom_js() {
-//     echo '<script type="text/javascript" src="myjsfile.js"></script>';
-// }
-// // Add hook for admin <head></head>
-// add_action('admin_head', 'my_custom_js');
-// // Add hook for front-end <head></head>
-// add_action('wp_head', 'my_custom_js');
 
 add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
 function add_login_logout_link($items, $args) {
@@ -18,15 +10,6 @@ function add_login_logout_link($items, $args) {
     return $items;
 }
 
-/**
- * Changes the redirect URL for the Return To Shop button in the cart.
- *
- * @return string
- */
-function wc_empty_cart_redirect_url() {
-	return home_url();
-}
-add_filter( 'woocommerce_return_to_shop_redirect', 'wc_empty_cart_redirect_url' );
 
 /* *********************************************************************************************
  PLEASE DO NOT DELETE THIS FUNCTION BECAUSE THIS FUNCTION IS CALLING CHILD THIME CSS FILE

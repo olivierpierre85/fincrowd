@@ -11,6 +11,15 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107252137-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments)};
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-107252137-1');
+	</script>
 
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<?php composer_head(); ?>

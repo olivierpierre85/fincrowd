@@ -5,9 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="campaign-risk-class">
-  <div class="risk-class">
-    Indice de risque
+<ul class="campaign-characteristics">
+<!-- <div class="campaign-risk-class">
+  <div class="risk-class"> -->
+  <li class="campaign-risk-class">
+    <p class="risk-class">
+    Indice de risque : <span>
     <?php switch (wpneo_crowdfunding_get_risk_class(get_the_ID())) {
       case "risk_a":
         echo "A";
@@ -27,5 +30,8 @@ if ( ! defined( 'ABSPATH' ) ) {
       }
 
       ?>
-  </div>
-</div>
+      </span><a href="/a-propos/#quelEstLeRisque" class="pixicon-info" target="_blank"></a>
+    </p>
+  </li>
+  <!-- </div>
+</div> -->

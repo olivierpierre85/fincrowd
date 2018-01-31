@@ -5,12 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="campaign-loan-duration">
-    <ul>
-        <li><p class="loan-duration">
+<!-- <div class="campaign-loan-duration"> -->
+    <!-- <ul> -->
+        <li class="campaign-loan-duration">
+            <p class="loan-duration">
             <!--TODOMat-->
-              Durée du prêt : <?php echo wpneo_crowdfunding_get_loan_duration(get_the_ID()); ?> mois
-                </p>
+              Durée du prêt : <span><?php echo wpneo_crowdfunding_get_loan_duration(get_the_ID()); ?></span> mois
+            </p>
         </li>
     </ul>
-</div>
+<!-- </div> -->

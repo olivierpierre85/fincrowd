@@ -1,9 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-04-17 09:55+0200\n"
-"PO-Revision-Date: 2017-09-14 14:18+0000\n"
-"Last-Translator: olpi <olivierpierre85@gmail.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-08 08:52+0000\n"
+"PO-Revision-Date: 2018-01-08 08:52+0000\n"
+"Last-Translator: Arnaud Pigné <arnaud.pigne@five.be>\n"
 "Language-Team: French (France)\n"
 "Language: fr-FR\n"
 "MIME-Version: 1.0\n"
@@ -11,8 +12,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco - https://localise.biz/\n"
 "X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=2; plural=n > 1\n"
-"Report-Msgid-Bugs-To: "
+"Plural-Forms: nplurals=2; plural=n > 1"
+
+msgid "Register"
+msgstr "S'inscrire"
+
+#: includes/woocommerce/class-wpneo-frontend-campaign-submit-form.php:106
+#, fuzzy
+msgid "You do not have permission to submit form."
+msgstr "Vous n'avez pas la permission de soumettre un formulaire."
 
 #: addons/authorizenet/authorizenet.php:86
 msgid "Authorize.Net settings for WP Crowdfunding"
@@ -1009,7 +1017,7 @@ msgstr "Montant du retrait"
 #: addons/wallet/pages/payment_details_by_campaign.php:249
 #: addons/wallet/wpneo_withdraw_request_table.php:91
 msgid "Message"
-msgstr "Méssage"
+msgstr "Message"
 
 #: addons/wallet/pages/payment_details_by_campaign.php:252
 #: addons/wallet/wpneo_withdraw_request_table.php:91
@@ -1985,10 +1993,6 @@ msgstr "Connectez-vous d'abord?"
 msgid "Click here to login"
 msgstr "Cliquez ici pour vous identifier"
 
-#: includes/woocommerce/class-wpneo-frontend-campaign-submit-form.php:106
-msgid "You Do not have permission to submit form."
-msgstr "Vous n'avez pas la permission de soumettre un formulaire."
-
 #: includes/woocommerce/class-wpneo-frontend-campaign-submit-form.php:120
 msgid "Put the campaign title here"
 msgstr "Mettez le titre de la campagne ici"
@@ -2893,3 +2897,12 @@ msgstr " Récompenses à gauche"
 #: wpneotemplate/woocommerce/basic/wpneo-functions.php:9
 msgid "Campaigns by: "
 msgstr "Campagnes par: "
+
+msgid "To get a simulation"
+msgstr "Pour obtenir une simulation"
+
+msgid "Login"
+msgstr "Se connecter"
+
+msgid "Please, sign in :"
+msgstr "Veuillez-vous identifier :"

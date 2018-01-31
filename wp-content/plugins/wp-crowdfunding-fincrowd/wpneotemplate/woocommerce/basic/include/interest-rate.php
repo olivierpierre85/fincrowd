@@ -5,11 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="campaign-interest-rate">
-    <ul>
-        <li><p class="interest-rate">
-              Taux d'intérêts/an : <?php echo wpneo_crowdfunding_get_interest_rate(get_the_ID()); ?> %
-                </p>
+<!-- <div class="campaign-interest-rate"> -->
+    <!-- <ul> -->
+        <li class="campaign-loan-duration">
+            <p class="interest-rate">
+              Taux d'intérêts/an : <span><?php echo wpneo_crowdfunding_get_interest_rate(get_the_ID()); ?></span> %
+            </p>
         </li>
-    </ul>
-</div>
+    <!-- </ul> -->
+<!-- </div> -->

@@ -8,10 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
     global $post, $woocommerce, $product;
     $currency = '$';
     if ($product->product_type == 'crowdfunding') {
-      if ( true ) { //TODO de if ( is_user_logged_in() ) {
+      if ( is_user_logged_in() ) {
         if (WPNEOCF()->campaignValid()) {
 
-          if(true){ // Allow everyone to test if(WPNEOCF()->userHasRights()){
+          if(WPNEOCF()->userHasRights()){
             $recomanded_price = get_post_meta($product->id, 'wpneo_funding_recommended_price', true);
 
             //Fincrowd
@@ -49,7 +49,6 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <span class="wpneo-tooltip-max"><?php _e('Maximum amount is ','wp-crowdfunding'); echo $currency.$max_price; ?></span>
             </span>
 
-<?php if( ! has_already_invest(get_current_user_id(),$product->id) ) {?>
             <form enctype="multipart/form-data" method="post" class="cart">
                 <?php do_action('before_wpneo_donate_field'); ?>
                 <!--Voulez-vous profiter de la garantie (taux réduit) ?
@@ -57,15 +56,14 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <input type="number" min="0" placeholder="<?php echo  get_woocommerce_currency_symbol().' '.$recomanded_price; ?>" name="wpneo_donate_amount_field" class="input-text amount wpneo_donate_amount_field text" value="<?php echo $recomanded_price; ?>" data-campaign-id="<?php echo esc_attr($product->id); ?>" data-min-price="<?php echo $min_price ?>" data-max-price="<?php echo $max_price ?>" >
 
                 <?php do_action('after_wpneo_donate_field'); ?>
-                  <input type="hidden" value="<?php echo esc_attr($product->id); ?>" name="add-to-cart">
+                <input type="hidden" value="<?php echo esc_attr($product->id); ?>" name="add-to-cart">
                 <button disabled id="wpneo-fi-donate-button" type="submit" class="<?php echo apply_filters('add_to_donate_button_class', 'wpneo_donate_button'); ?>"><?php _e('Back This Campaign', 'wp-crowdfunding'); ?>
                 </button>
                 <div class="wpneofiloader" hidden></div>
                 <div id="wpneo-fi-total-interest" class="wpneo-fi-total-interest" ></div>
             </form>
-<?php } else {
-  _e('Vous avez déjà participé à cette campagne ! ','wp-crowdfunding');
-} ?>
+
+
 
 
             <?php

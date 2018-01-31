@@ -1,5 +1,6 @@
 /*
 * Add child theme CSS Rules
+This is the prod CSS
 */
 
 .wpneo-campaign-summary-inner {
@@ -91,4 +92,303 @@ a, .color, .base-color, .icon-list .pix-icon.color, .top-details a:hover, #lang-
 .wpneo-fi-address-textarea{
 	resize: none;
 	border:none;
+}
+
+.wpneo-fields input[type="number"], .wpneo-fields input[type="text"], .wpneo-fields input[type="email"], .wpneo-fields input[type="password"], .wpneo-fields textarea {
+	border: 2px solid #3c72b7;
+	padding: 5px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+	margin: 5px 5px 5px 0;
+}
+
+#back-top {
+	bottom: 50px;
+}
+
+#cookie-notice .button.bootstrap {
+	height: auto;
+}
+
+/* Single-product */
+.single-product .wpneo_fi_loginfirst .woocommerce-info {
+	line-height: 0;
+	margin: 0;
+	line-height: initial;
+	font-family: 'Open Sans', Helvetica, sans-serif;
+	letter-spacing: normal;
+	width: auto;
+	height: auto;
+	-webkit-box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+	padding: 0; 
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info:before {
+	line-height: initial;
+	left: 7px;
+	top: 2px;
+	display: none;
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__primary {
+	padding: 16px;
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__primary .card__title {
+	-webkit-font-smoothing: antialiased;
+    font-size: 1.5em;
+    font-weight: bold;
+    letter-spacing: normal;
+	line-height: 2em;
+	margin: 0;
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__primary .card__subtitle {
+	-webkit-font-smoothing: antialiased;
+    font-size: 0.875em;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+	line-height: 1.25em;
+	padding: 0;
+	margin: 0;
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__actions {
+	display: flex;
+	box-sizing: border-box;
+	padding: 8px;
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__actions a,
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__loginForm .login-submit input {
+	-webkit-font-smoothing: antialiased;
+    font-size: 0.875em;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    line-height: 3em;
+    text-decoration: none;
+	text-transform: uppercase;
+	display: inline-block;
+	position: relative;
+	box-sizing: border-box;
+    min-width: 64px;
+	height: 36px;
+	text-align: center;
+	overflow: hidden;
+	vertical-align: middle;
+	border-radius: 2px;
+	margin: 0 8px 0 0;
+	padding: 0 8px;
+	color: #FB8C00;
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__actions a:hover {
+	/* color: #343738; */
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__actions a::before,
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__actions a::after{
+	background-color: #FB8C00;
+	top: calc(50% - 100%);
+    left: calc(50% - 100%);
+    width: 200%;
+	height: 200%;
+	transition: opacity 15ms linear;
+	position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    content: "";
+    will-change: transform, opacity;
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__actions a:hover::before,
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__actions a:hover::after {
+	opacity: 0.06;
+}
+/* .single-product .wpneo_fi_loginfirst .woocommerce-info .card__actions a:focus::before,
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__actions a:focus::after {
+	transition-duration: 75ms;
+    opacity: 0.12;
+} */
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__actions a.wpneoShowLogin.not-active {
+	background-color: transparent;
+    color: rgba(0, 0, 0, 0.38);
+    cursor: default;
+    pointer-events: none;
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__actions a.wpneoSignUp {
+
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__loginForm {
+	padding: 8px;
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__loginForm .wpneo_login_form_div {
+	/* clear: both; */
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__loginForm p {
+	font-size: unset;
+	padding: 0 8px; 
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__loginForm p.login-submit {
+	padding: 0;
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__loginForm .login-submit input {
+	float: none;
+	border: none;
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__loginForm .login-submit input:hover {
+	background-color: #FFF1E2;
+}
+.single-product .wpneo_fi_loginfirst .woocommerce-info .card__loginForm .login-submit input:focus {
+	background-color: #FFE3C8;
+}
+
+#main .pix_button a { 
+    color: #3971b7;
+    background-color: white;
+    border: 2px solid white;
+}
+
+#main .pix_button a:hover { 
+    color: #f7a438 !important;
+	border: 2px solid #f7a438 !important;
+}
+
+#menu-menu-principal li:last-child a {
+	color: #f7a438;
+}
+
+#menu-menu-principal li.current-menu-item a {
+	text-decoration: underline;
+	text-decoration-skip: ink;
+}
+
+#primary #main h4 a, #content .wpneo-campaign-summary-inner h2 { color: #3971b7; }
+ul.campaign-characteristics {
+	/* margin: 0 18px 18px 18px; */
+	margin: 10px 0 18px;
+	/* border-color: #3971b7; */
+	padding: 15px;
+	/* border-radius: 3px; */
+	background-color: rgba(57, 113, 183, 0.1);
+}
+
+ul.campaign-characteristics li p {
+	font-weight: lighter;
+    font-size: 1.2em;
+    color: black;
+    letter-spacing: 1px;
+}
+
+ul.campaign-characteristics li p > span {
+	font-weight: bold;
+	color: #3971b7;
+	text-transform: uppercase;
+	}
+
+/*ul.campaign-characteristics .risk-class:after {
+   content: "\e019";
+    font-family: pix-fonts;
+    color: #5b91b2;
+    top: -8px;
+    position: relative;
+    left: 0;
+    line-height: 47px;
+    font-size: 12px;
+}*/
+.btn-campaign-analysis, .btn-campaign-plan, .btn-campaign-youtube, .btn-campaign-view {
+	color: white;
+	display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin: 5px 0;
+    text-align: center;
+    font-size: 0.9em;
+	width: 49%;
+	border: 1px solid;
+}
+
+.btn-campaign-analysis {
+	border-color: #3971b7;
+	background-color: #3971b7;
+}
+
+.btn-campaign-analysis:hover {
+	color: #3971b7;
+	border-color: #3971b7;
+	border-radius: 3px;
+	background-color: white;
+}
+
+.btn-campaign-plan {
+	border-color: #39b73d;
+	background-color: #39b73d;
+}
+
+.btn-campaign-plan:hover {
+	color: #39b73d;
+	border-color: #39b73d;
+	border-radius: 3px;
+	background-color: white;
+}
+
+.btn-campaign-youtube {
+	border-color: #cc181e;
+	background-color: #cc181e;
+}
+
+.btn-campaign-youtube:hover {
+	color: #cc181e;
+	border-color: #cc181e;
+	border-radius: 3px;
+	background-color: white;
+}
+
+.ctn-btn-campaign-view {
+	display: block;
+	text-align: center;
+	height: 52px;
+	margin-top: -23px;
+	border-width: 0px 1px;
+    border-style: solid;
+    border-color: #e9e9e9;
+}
+
+.btn-campaign-view {
+	position: absolute;
+	width: auto;
+	height: auto;
+	transform: translateX(-50%);
+	padding: 5px 20px;
+	color: white;
+	border-color: #f7a438;
+	border-radius: 3px;
+	background-color: #f7a438;
+	font-size: 13px;
+	-webkit-box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+.btn-campaign-view:hover {
+	color: #f7a438;
+	/* border-color: #f7a438; */
+	/* border-radius: 3px; */
+	background-color: white;
+}
+
+.no-vc-active {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	}
+
+@media (max-width: 480px) {
+	.container, .main-side-left .container, .pix-container, .main-side-left .left-menu-content .pix-container, .left-main-menu .menu-container {
+		max-width: 100% !important;
+	}
+	.no-vc-active {
+		font-size: 0.8em;
+	}	
+}
+
+.pixicon-info {
+	font-size: 12px;
+    top: -1px;
+    position: relative;
+}
+
+.wpneo-listings.first {
+	padding : 0px 1%;
 }

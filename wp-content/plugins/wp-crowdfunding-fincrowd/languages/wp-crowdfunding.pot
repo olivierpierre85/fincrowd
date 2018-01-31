@@ -2,20 +2,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Crowdfunding\n"
-"POT-Creation-Date: 2017-04-17 09:51+0200\n"
-"PO-Revision-Date: 2017-02-28 14:51+0600\n"
+"POT-Creation-Date: 2018-01-08 08:52+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Loco - https://localise.biz/\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION"
 
 #: addons/authorizenet/authorizenet.php:86
 msgid "Authorize.Net settings for WP Crowdfunding"
@@ -118,8 +120,8 @@ msgstr ""
 
 #: addons/authorizenet/authorizenet.php:159
 msgid ""
-"Enable Authorize Only Mode (Authorize & Capture If Unchecked).<span style="
-"\"color:red;\">Make sure to keep <b>Unchecked</b> if your Address "
+"Enable Authorize Only Mode (Authorize & Capture If Unchecked).<span "
+"style=\"color:red;\">Make sure to keep <b>Unchecked</b> if your Address "
 "Verification Service (AVS) is set to hold transaction for review.</span>"
 msgstr ""
 
@@ -575,8 +577,9 @@ msgstr ""
 
 #: addons/recaptcha/pages/tab-recaptcha.php:49
 msgid ""
-"Put your Google reCAPTCHA public key here. <a href=\"https://www.google.com/"
-"recaptcha/admin#list\" target=\"_blank\">Visit this link</a> to generate one."
+"Put your Google reCAPTCHA public key here. <a href=\"https://www.google."
+"com/recaptcha/admin#list\" target=\"_blank\">Visit this link</a> to generate "
+"one."
 msgstr ""
 
 #: addons/recaptcha/pages/tab-recaptcha.php:57
@@ -585,8 +588,9 @@ msgstr ""
 
 #: addons/recaptcha/pages/tab-recaptcha.php:58
 msgid ""
-"Put your Google reCAPTCHA Secret key here. <a href=\"https://www.google.com/"
-"recaptcha/admin#list\" target=\"_blank\">Visit this link</a> to generate one."
+"Put your Google reCAPTCHA Secret key here. <a href=\"https://www.google."
+"com/recaptcha/admin#list\" target=\"_blank\">Visit this link</a> to generate "
+"one."
 msgstr ""
 
 #: addons/recaptcha/recaptcha-functions.php:72
@@ -1891,7 +1895,7 @@ msgid "Click here to login"
 msgstr ""
 
 #: includes/woocommerce/class-wpneo-frontend-campaign-submit-form.php:106
-msgid "You Do not have permission to submit form."
+msgid "You do not have permission to submit form."
 msgstr ""
 
 #: includes/woocommerce/class-wpneo-frontend-campaign-submit-form.php:120
@@ -2797,4 +2801,16 @@ msgstr ""
 
 #: wpneotemplate/woocommerce/basic/wpneo-functions.php:9
 msgid "Campaigns by: "
+msgstr ""
+
+msgid "To get a simulation"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "Register"
+msgstr ""
+
+msgid "Please, sign in :"
 msgstr ""

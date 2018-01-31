@@ -421,12 +421,6 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
               //Personne physique
               if ( ! (DateTime::createFromFormat('d/m/Y', $birthday)) !== FALSE )  {
                   $reg_errors->add('birthday_invalid', __('Date de naissance non valide','wp-crowdfunding'));
-              } else {
-                //Check if at least 18
-                $birthday = (DateTime::createFromFormat('d/m/Y', $birthday));
-                if( (time() - $birthday->getTimestamp() ) < (18 * 31556926))  {
-                  $reg_errors->add('age_invalid', __('Vous devez avoir 18 ans pour investir !','wp-crowdfunding'));
-                }
               }
             }
 
@@ -444,9 +438,9 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             }
 
             //TODO olpi iban validation don't work
-            if(! $this->checkIBAN($iban)){
-                $reg_errors->add('iban', __('Le numéro de compte n\'a pas un format correct IBAN','wp-crowdfunding'));
-            }
+            //if($this->checkIBAN($iban)){
+            //    $reg_errors->add('iban', __('Le numéro de compte n\'a pas un format correct IBAN','wp-crowdfunding'));
+            //}
 
         }
 

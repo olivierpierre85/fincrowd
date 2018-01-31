@@ -13,3 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 	</div>
 </div>
+<div class="ctn-btn-campaign-view">
+	<a class="btn-campaign-view" href="<?php  echo get_permalink(); ?> "><?php _e('View Campaign','wp-crowdfunding'); ?></a>
+</div>
