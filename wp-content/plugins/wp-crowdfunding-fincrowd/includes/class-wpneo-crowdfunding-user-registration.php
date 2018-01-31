@@ -443,10 +443,10 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 $reg_errors->add('conditions', __('Vous devez accepter les conditions générales','wp-crowdfunding'));
             }
 
-            //TODO olpi iban validation don't work
-            if(! $this->checkIBAN($iban)){
-                $reg_errors->add('iban', __('Le numéro de compte n\'a pas un format correct IBAN','wp-crowdfunding'));
-            }
+            //TODO olpi iban validation don't work on SERVERS (but ok on local? check php  version)
+            //if(! $this->checkIBAN($iban)){
+            //    $reg_errors->add('iban', __('Le numéro de compte n\'a pas un format correct IBAN','wp-crowdfunding'));
+            //}
 
         }
 
