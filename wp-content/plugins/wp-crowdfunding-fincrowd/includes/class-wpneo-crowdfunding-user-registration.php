@@ -330,6 +330,25 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 die(json_encode(array('success'=> 0, 'message' => $errors )));
             }
         }
+
+
+        //FIx error checkIBAN
+        function my_bcmod( $x, $y )
+        {
+            // how many numbers to take at once? carefull not to exceed (int)
+            $take = 5;
+            $mod = '';
+
+            do
+            {
+                $a = (int)$mod.substr( $x, 0, $take );
+                $x = substr( $x, $take );
+                $mod = $a % $y;
+            }
+            while ( strlen($x) );
+
+            return (int)$mod;
+        }
         //Fincrowd
         function checkIBAN($iban)
         {
@@ -350,7 +369,8 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                     $NewString .= $MovedCharArray[$key];
                 }
 
-                if(bcmod($NewString, '97') == 1)
+                //if(bcmod($NewString, '97') == 1)
+                if($this->my_bcmod($NewString, '97') == 1)
                 {
                     return TRUE;
                 }
@@ -444,9 +464,9 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
             }
 
             //TODO olpi iban validation don't work on SERVERS (but ok on local? check php  version)
-            //if(! $this->checkIBAN($iban)){
-            //    $reg_errors->add('iban', __('Le numéro de compte n\'a pas un format correct IBAN','wp-crowdfunding'));
-            //}
+            if(! $this->checkIBAN($iban)){
+               $reg_errors->add('iban', __('Le numéro de compte n\'a pas un format correct IBAN','wp-crowdfunding'));
+            }
 
         }
 
