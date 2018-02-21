@@ -433,9 +433,19 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
               if ( empty( $fi_company_status ) ) {
                   $reg_errors->add('company_status', __('Veuillez introduire le status de la société','wp-crowdfunding'));
               }
-              //TODO olpi validité du numéro BCE
+
               if ( empty( $fi_company_number ) ) {
                   $reg_errors->add('company_number', __('Veuillez introduire le numéro BCE de la société','wp-crowdfunding'));
+              } else {
+                //validité du numéro BCE (10 chiffres?)
+                //Enlever le BE si il existe, sinon pas grave
+                $proper_num = str_replace ( 'BE','', $fi_company_number);
+                $proper_num = str_replace ( 'be','', $proper_num);
+                if (! preg_match('/^[0-9]*$/', $proper_num) || strlen($proper_num) != 10 )
+                {
+                  $reg_errors->add('company_number', __(  'Le numéro TVA n\'est pas correct (Il doit être de 10 chiffres)','wp-crowdfunding'));
+                }
+
               }
             } else {
               //Personne physique
@@ -463,7 +473,7 @@ if (! class_exists('Wpneo_Crowdfunding_User_Registration')) {
                 $reg_errors->add('conditions', __('Vous devez accepter les conditions générales','wp-crowdfunding'));
             }
 
-            //TODO olpi iban validation don't work on SERVERS (but ok on local? check php  version)
+            //iban validation
             if(! $this->checkIBAN($iban)){
                $reg_errors->add('iban', __('Le numéro de compte n\'a pas un format correct IBAN','wp-crowdfunding'));
             }
