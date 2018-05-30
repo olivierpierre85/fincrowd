@@ -332,38 +332,38 @@ jQuery(document).ready(function($){
             $('#wpneo-fi-donate-button').prop("disabled",false);
             //Si montant ok, pré-calcul des intérêts
             //DESACTIVER PRE CALCUL DES intérêts, TROP lent TOUT est dans le page suivante
-            // $('#wpneo-fi-total-interest').html('');
-            // $('.wpneofiloader').show();
-            // var campaign_id = $(this).data('campaign-id');
-            // currentRequest = $.ajax(
-            //           {
-            //               async: true,
-            //               url : ajax_object.ajax_url,
-            //               beforeSend : function()    {
-            //                   if(currentRequest != null) {
-            //                       currentRequest.abort();
-            //                   }
-            //               },
-            //               type: "POST",
-            //               data: {'action': 'wpneo_fi_compute_interest', 'campaign_id': campaign_id, 'total': $(this).val() },
-            //               success:function(data, textStatus, jqXHR) {
-            //                   //wpneo_crowdfunding_modal(data);
-            //                   //return_data = data;
-            //                   $('.wpneofiloader').hide();
-            //                   isComputingInterest = null;
-            //                   if( data != 0) {
-            //                     $('#wpneo-fi-total-interest').html(data);
-            //                   }
-            //
-            //
-            //               },
-            //               error: function(jqXHR, textStatus, errorThrown){
-            //                 //$('.wpneofiloader').hide();
-            //                 //todoHIDE IF NOT ABORT
-            //                   //wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
-            //                   //TODO fincrowd error management
-            //               }
-            //           });
+            $('#wpneo-fi-total-interest').html('');
+            $('.wpneofiloader').show();
+            var campaign_id = $(this).data('campaign-id');
+            currentRequest = $.ajax(
+                      {
+                          async: true,
+                          url : ajax_object.ajax_url,
+                          beforeSend : function()    {
+                              if(currentRequest != null) {
+                                  currentRequest.abort();
+                              }
+                          },
+                          type: "POST",
+                          data: {'action': 'wpneo_fi_compute_interest', 'campaign_id': campaign_id, 'total': $(this).val() },
+                          success:function(data, textStatus, jqXHR) {
+                              //wpneo_crowdfunding_modal(data);
+                              //return_data = data;
+                              $('.wpneofiloader').hide();
+                              isComputingInterest = null;
+                              if( data != 0) {
+                                $('#wpneo-fi-total-interest').html(data);
+                              }
+
+
+                          },
+                          error: function(jqXHR, textStatus, errorThrown){
+                            //$('.wpneofiloader').hide();
+                            //todoHIDE IF NOT ABORT
+                              //wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
+                              //TODO fincrowd error management
+                          }
+                      });
 
         }
     });
