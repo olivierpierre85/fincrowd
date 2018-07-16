@@ -32,8 +32,14 @@ if (! class_exists('Wpneo_Crowdfunding_Common')) {
             add_action( 'wp_ajax_remove_love_campaign_action',   array($this, 'remove_love_campaign_action') );
             add_action( 'wp_ajax_love_campaign_action',          array($this, 'love_this_campaign_action') );
             add_action( 'wp_ajax_nopriv_love_campaign_action',   array($this, 'love_this_campaign_action') );
+            //FINCROWD
+            add_action( 'woocommerce_thankyou', array($this, 'wpneo_crowdfunding_fincrowd_check_end_campaign') ); //Add action after got a backed
         }
 
+        public function wpneo_crowdfunding_fincrowd_check_end_campaign($order_id){
+          //Fincrowd Check if we are getting close to the end of the campaign.
+          //Done in email.php
+        }
 
 
         public function love_this_campaign_action(){
