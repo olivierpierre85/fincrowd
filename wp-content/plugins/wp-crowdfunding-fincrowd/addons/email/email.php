@@ -263,6 +263,14 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                 $wpneo_backer_email_template = wpneo_post('wpneo_backer_email_template');
                 wpneo_crowdfunding_update_option_text('wpneo_backer_email_template', $wpneo_backer_email_template);
+
+                //Start fincrowd
+                $wpneo_backer_end_email_template = wpneo_post('wpneo_backer_end_email_template');
+                wpneo_crowdfunding_update_option_text('wpneo_backer_end_email_template', $wpneo_backer_end_email_template);
+
+                $wpneo_backer_reminder_email_template = wpneo_post('wpneo_backer_reminder_email_template');
+                wpneo_crowdfunding_update_option_text('wpneo_backer_reminder_email_template', $wpneo_backer_reminder_email_template);
+                //end fincrowd
             }
         }
 

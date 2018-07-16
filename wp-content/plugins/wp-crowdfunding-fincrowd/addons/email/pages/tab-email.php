@@ -226,9 +226,36 @@ $arr =  array(
         'id'        => 'wpneo_backer_email_template',
         'type'      => 'textarea',
         'value'     => '',
-        'label'     => __('New Backer Email Template','wp-crowdfunding'),
+        'label'     => __('Message pour nouvel investisseur en début de campagne','wp-crowdfunding'),
         'desc'      => __('Below are shortcode list for variable text.( [user_name], [site_title], [total_amount], [campaign_title] )','wp-crowdfunding'),
     ),
+
+
+    //Fincrowd new mails after backed campaign
+    //------------------------------------------------------
+
+    // #New Backer Email Template
+    array(
+        'id'        => 'wpneo_backer_end_email_template',
+        'type'      => 'textarea',
+        'value'     => '',
+        'label'     => __('Message pour nouvel investisseur après certain montant atteint','wp-crowdfunding'),
+        'desc'      => __('Below are shortcode list for variable text.( [user_name], [site_title], [total_amount], [campaign_title] )','wp-crowdfunding'),
+    ),
+
+    // #New Backer Email Template
+    array(
+        'id'        => 'wpneo_backer_reminder_email_template',
+        'type'      => 'textarea',
+        'value'     => '',
+        'label'     => __('Message de rappel envoyé à tous les investisseurs après un certain pourcentage atteint','wp-crowdfunding'),
+        'desc'      => __('Below are shortcode list for variable text.( [user_name], [site_title], [total_amount], [campaign_title] )','wp-crowdfunding'),
+    ),
+
+
+
+
+    //end fincrowd
 
     //------------------------------ Email Submit Campaign -------------------------------
     // #Email Notification after Submit Campaign
