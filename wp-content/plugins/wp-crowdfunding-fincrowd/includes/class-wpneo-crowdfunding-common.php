@@ -38,7 +38,7 @@ if (! class_exists('Wpneo_Crowdfunding_Common')) {
 
         public function wpneo_crowdfunding_fincrowd_check_end_campaign($order_id){
           //Fincrowd Check if we are getting close to the end of the campaign.
-          //Done in email.php
+          //$raised_percent = WPNEOCF()->isEndofCampaignClose();
         }
 
 

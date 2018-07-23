@@ -197,7 +197,7 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
             //TODO OLPI fincrowd FOR NOW everyone has the rights. MUST be reevalute after 150 physical_person
             return true;
 
-            // global $post;           
+            // global $post;
             //
             // if(get_the_author_meta( 'physical_person', get_current_user_id() )){
             //   $selected_users = explode(';', get_post_meta( $post->ID, 'wpneo_fi_users_list', true ));
@@ -288,6 +288,12 @@ if (! class_exists('WPNEO_Frontend_Hook')) {
         public function getFundRaisedPercentFormat(){
             return $this->getFundRaisedPercent().'%';
         }
+
+        //Start fincrowd
+        public function isEndofCampaignClose($campaign_id,$order_total){
+          return ( $this->getFundRaisedPercent($campaign_id) + $order_total) > get_option('wpneo_fi_end_campaign_percent');
+        }
+        //end fincrowd
 
         public function wpneo_wc_remove_crowdfunding_quantity_fields( $return, $product ) {
             if ($product->product_type == 'crowdfunding'){

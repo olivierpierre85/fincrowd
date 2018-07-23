@@ -270,6 +270,10 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                 $wpneo_backer_reminder_email_template = wpneo_post('wpneo_backer_reminder_email_template');
                 wpneo_crowdfunding_update_option_text('wpneo_backer_reminder_email_template', $wpneo_backer_reminder_email_template);
+
+                $wpneo_fi_end_campaign_percent = wpneo_post('wpneo_fi_end_campaign_percent');
+                wpneo_crowdfunding_update_option_text('wpneo_fi_end_campaign_percent', $wpneo_fi_end_campaign_percent);
+
                 //end fincrowd
             }
         }
@@ -380,7 +384,13 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                     $shortcode      = array('[user_name]', '[site_title]', '[total_amount]', '[campaign_title]', '[iban]','[company_name]','[reference]','[lender_name]');
                     $replace_str    = array($dislay_name, get_option('blogname'), $total_amount, $campaign_title, $iban,$company_name,$reference, $lender_name);
-                    $str            = wp_unslash(get_option('wpneo_backer_email_template'));
+                    //if close to end of campaign ask for money right away
+                    if ( ! WPNEOCF()->isEndofCampaignClose($product_id,$order->get_total() )) {
+                      $str            = wp_unslash(get_option('wpneo_backer_email_template'));
+                    } else {
+                      $str            = wp_unslash(get_option('wpneo_backer_end_email_template'));
+                    }
+
                     $email_str      = str_replace($shortcode, $replace_str, $str);
                     $subject        = str_replace($shortcode, $replace_str, get_option('wpneo_new_backer_email_subject'));
                     $headers        = array();
@@ -390,6 +400,7 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
 
                     //Ajout tableau d'amortissement
                     $email_str.= fi_interest_insurance_table($order_id);
+
                     //Send email now using wp_email();
                     if(!empty( $email )){
                         wp_mail( $email, $subject, $email_str, $headers );

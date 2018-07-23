@@ -234,6 +234,14 @@ $arr =  array(
     //Fincrowd new mails after backed campaign
     //------------------------------------------------------
 
+    // #Percentage to be considered close to the end
+    array(
+        'id'        => 'wpneo_fi_end_campaign_percent',
+        'type'      => 'text',
+        'label'     => __('Pourcent à partir duquel nous sommes en fin de campagne','wp-crowdfunding'),
+        'desc'      => __('Pourcentage (chiffres uniquement)','wp-crowdfunding'),
+    ),
+
     // #New Backer Email Template
     array(
         'id'        => 'wpneo_backer_end_email_template',
