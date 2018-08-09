@@ -80,6 +80,9 @@ $html .= '<div class="wpneo-content">';
                                   if(WPNEOCF()->dateRemaining()){
                                     $operation_btn .= '<span><a href="javascript:;" id="wpneo_fi_cancel_campaign" data-campaign-id="'.get_the_ID().'">'.__( 'Annuler la campagne', 'wp-crowdfunding' ).'</a></span>';
                                   }
+
+                                  $operation_btn .= '<span><a href="javascript:;" id="wpneo_fi_reminder_mail" data-campaign-id="'.get_the_ID().'">'.__( 'Envoyer Mail de rappel', 'wp-crowdfunding' ).'</a></span>';
+
                                 }
                               }
                         }

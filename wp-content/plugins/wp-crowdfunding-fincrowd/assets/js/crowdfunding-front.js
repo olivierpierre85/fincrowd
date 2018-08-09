@@ -611,5 +611,25 @@ jQuery(document).ready(function($){
           });
     });
 
+    // Dashboard mail reminder
+    $(document).on('click', '#wpneo_fi_reminder_mail', function () {
+      var campaign_id = $(this).data('campaign-id');
+      $.ajax(
+          {
+              async: false,
+              url : ajax_object.ajax_url,
+              type: "POST",
+              data: {'action': 'wpneo_fi_reminder_mail', 'campaign_id': campaign_id },
+              success:function(data, textStatus, jqXHR) {
+                  wpneo_crowdfunding_modal(data);
+                  return_data = data;
+                  location.reload();
+              },
+              error: function(jqXHR, textStatus, errorThrown){
+                  wpneo_crowdfunding_modal({'success':0, 'message':'Error sending data'})
+              }
+          });
+    });
+
 
 });

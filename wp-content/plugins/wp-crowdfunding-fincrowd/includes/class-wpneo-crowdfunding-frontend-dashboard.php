@@ -42,6 +42,8 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
             add_action( 'wp_ajax_wpneo_fi_compute_interest',      array($this, 'wpneo_fi_compute_interest'));
             add_action( 'wp_ajax_wpneo_fi_validate_campaign',      array($this, 'wpneo_fi_validate_campaign'));
             add_action( 'wp_ajax_wpneo_fi_cancel_campaign',      array($this, 'wpneo_fi_cancel_campaign'));
+            add_action( 'wp_ajax_wpneo_fi_reminder_mail',      array($this, 'wpneo_fi_reminder_mail'));
+
         }
         //Fincrowd
         //Validate campaign
@@ -82,6 +84,20 @@ if (! class_exists('Wpneo_Crowdfunding_Frontend_Dashboard')) {
               die(json_encode(array('success'=> 0, 'message' => __('Error updating, please try again', 'wp-crowdfunding'))));
           }
         }
+
+        public function wpneo_fi_reminder_mail() {
+          //TODO fincrowd admin check ?
+          $campaign_id        = sanitize_text_field($_POST['campaign_id']);
+
+          //Send reminder mail
+          try {
+            do_action('wpneo_fi_after_reminder_mail',$campaign_id );
+            die(json_encode(array('success'=> 1, 'message' => __('Mail de rappel envoyé', 'wp-crowdfunding'))));
+          } catch (Exception $e) {
+            die(json_encode(array('success'=> 0, 'message' => __('Erreur dans l\'envoir du mail', 'wp-crowdfunding'))));
+          }
+        }
+
 
         //compute interest frontend
         public function wpneo_fi_compute_interest() {

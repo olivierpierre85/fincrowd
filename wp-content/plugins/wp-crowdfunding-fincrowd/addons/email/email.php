@@ -50,6 +50,8 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
             add_action('wpneo_fi_after_cancel_order', array($this,'wpneo_fi_send_email_cancel_order'));
             add_action('wpneo_fi_after_validate_campaign', array($this,'wpneo_fi_send_email_validate_campaign'));
             add_action('wpneo_fi_after_cancel_campaign', array($this,'wpneo_fi_send_email_cancel_campaign'));
+            add_action('wpneo_fi_after_reminder_mail', array($this,'wpneo_fi_send_email_reminder'));
+
 
             add_action('wpneo_fi_check_campaign_reach_end', array($this,'wpneo_fi_check_if_campaign_reach_end'));
             //endfincrowd
@@ -758,6 +760,76 @@ if ( ! class_exists('Wpneo_Crowdfunding_Email')) {
                   }
               }
           }
+        }
+
+
+        /**
+         * @param $campaign_id
+         * FINCROWD FCT
+         * Send Email Reminder
+         */
+        function wpneo_fi_send_email_reminder($campaign_id){
+              global $wpdb;
+
+              $product        = wc_get_product($campaign_id);
+
+              if ($product->product_type === 'crowdfunding') {
+                  $email_creator    = array();
+                  $email_client    = array();
+
+                  $post_author_id = get_post_field( 'post_author', $campaign_id );
+                  $author         = get_userdata($post_author_id);
+                  $dislay_name    = $author->display_name;
+
+                  //first get all order for the campaign
+                  $post_id = $campaign_id;
+                  $order_statuses = array_map( 'esc_sql', (array) get_option( 'wpcl_order_status_select', array('wc-completed') ) );
+                  $order_statuses_string = "'" . implode( "', '", $order_statuses ) . "'";
+                  $post_id = array_map( 'esc_sql', (array) $post_id );
+                  $post_string = "'" . implode( "', '", $post_id ) . "'";
+
+                  $item_sales = $wpdb->get_results( $wpdb->prepare(
+                    "SELECT o.ID as order_id, oi.order_item_id FROM
+                    {$wpdb->prefix}woocommerce_order_itemmeta oim
+                    INNER JOIN {$wpdb->prefix}woocommerce_order_items oi
+                    ON oim.order_item_id = oi.order_item_id
+                    INNER JOIN $wpdb->posts o
+                    ON oi.order_id = o.ID
+                    WHERE oim.meta_key = %s
+                    AND oim.meta_value IN ( $post_string )
+                    AND o.post_status IN ( $order_statuses_string )
+                    AND o.post_type NOT IN ('shop_order_refund')
+                    ORDER BY o.ID DESC",
+                    '_product_id'
+                  ));
+                  //Then get the author of the pledges
+                  foreach ($item_sales as $item) {
+                    $order          = new WC_Order($item->order_id);
+                    $user = $order->get_user();
+                    $email_client[]    = $user->user_email;
+                  }
+                  $email_client = array_unique($email_client);
+
+
+                  $campaign_title  = $product->post->post_title;
+                  $shortcode      = array( '[user_name]', '[campaign_title]' );
+                  $replace_str    = array( $dislay_name, $campaign_title );
+
+                  $str_client            = wp_unslash( get_option( 'wpneo_backer_reminder_email_template' ) );
+                  $email_str_client      = str_replace( $shortcode, $replace_str, $str_client  );
+
+                  $subject        = str_replace( $shortcode, $replace_str, "Rappel Investissement Fincrowd");
+                  $headers        = array();
+                  $headers[]      = 'Content-Type: text/html; charset=UTF-8'; //Set Headers content type to HTML
+                  $headers[]      = 'From: Five-Fincrowd <info@five-fincrowd.be>';
+
+                  //Send email now using wp_email();
+                  if(!empty( $email_client )){
+                      wp_mail( $email_client,  $subject, $email_str_client .'client', $headers );
+                  }
+
+              }
+
         }
 
 
